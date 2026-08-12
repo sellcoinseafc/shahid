@@ -14,9 +14,6 @@
     <!-- الأيقونات -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- RMZ Embed Script الرسمية -->
-    <script src="https://rmz.gg/embed/rmz-embed.js"></script>
-
     <style>
         :root {
             --bg-body: #05030a;
@@ -353,6 +350,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            text-decoration: none;
             transition: all 0.2s ease;
             box-shadow: 0 4px 20px var(--accent-green-glow);
         }
@@ -534,7 +532,7 @@
             z-index: 999;
         }
 
-        .mobile-cta button {
+        .mobile-cta a, .mobile-cta button {
             flex: 1;
             padding: 12px;
             font-size: 0.85rem;
@@ -599,16 +597,11 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر الشراء بالمفتاح الجديد hYJycm6zIUMEdb491fVxML2D -->
-                        <button class="btn-buy" 
-                                data-rmz-product="103287" 
-                                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
-                                data-rmz-theme="auto" 
-                                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'
-                                onclick="openRmzModal('103287')">
+                        <!-- رابط الدفع الفوري والمباشر المضمون 100% من RMZ -->
+                        <a href="https://pay.rmz.gg/checkout/01KZVZTFSEWP72HC29C6KZ0WDNNFU9RZAH" target="_blank" class="btn-buy">
                             <i data-lucide="shopping-cart" size="18"></i>
-                            شراء المنتج
-                        </button>
+                            اطلب الآن
+                        </a>
 
                         <button onclick="triggerWhatsApp('card-3m')" class="btn-installment">
                             <i data-lucide="credit-card" size="18"></i>
@@ -649,16 +642,11 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر الشراء بالمفتاح الجديد hYJycm6zIUMEdb491fVxML2D -->
-                        <button class="btn-buy" 
-                                data-rmz-product="103287" 
-                                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
-                                data-rmz-theme="auto" 
-                                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'
-                                onclick="openRmzModal('103287')">
+                        <!-- رابط الدفع الفوري والمباشر المضمون 100% من RMZ -->
+                        <a href="https://pay.rmz.gg/checkout/01KZVZTFSEWP72HC29C6KZ0WDNNFU9RZAH" target="_blank" class="btn-buy">
                             <i data-lucide="shopping-cart" size="18"></i>
-                            شراء المنتج
-                        </button>
+                            اطلب الآن
+                        </a>
 
                         <button onclick="triggerWhatsApp('card-1y')" class="btn-installment">
                             <i data-lucide="credit-card" size="18"></i>
@@ -839,15 +827,10 @@
 
     <!-- Mobile Fixed Bottom CTA Bar -->
     <div class="mobile-cta">
-        <button class="btn-buy" 
-                data-rmz-product="103287" 
-                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
-                data-rmz-theme="auto" 
-                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'
-                onclick="openRmzModal('103287')">
+        <a href="https://pay.rmz.gg/checkout/01KZVZTFSEWP72HC29C6KZ0WDNNFU9RZAH" target="_blank" class="btn-buy">
             <i data-lucide="shopping-cart" size="16"></i>
-            شراء المنتج
-        </button>
+            اطلب الآن
+        </a>
         <button onclick="sendWhatsAppInstallment('عام', 0, 0)" class="btn-installment">
             <i data-lucide="message-circle" size="16"></i>
             قسّط عبر تابي/تمارا
@@ -877,25 +860,6 @@
             card.setAttribute('data-months', months);
             const perMonth = Math.round(price / months);
             card.querySelector('.res-val').innerText = perMonth + ' ريال';
-        }
-
-        // دالة فتح الـ Modal المربوطة بالمفتاح الجديد hYJycm6zIUMEdb491fVxML2D
-        function openRmzModal(productId) {
-            const publicKey = "rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D";
-
-            if (window.RMZEmbed && typeof window.RMZEmbed.open === 'function') {
-                window.RMZEmbed.open(productId, {
-                    key: publicKey,
-                    theme: 'dark',
-                    config: {
-                        hideQuantity: true,
-                        hideCoupon: true
-                    }
-                });
-            } else {
-                // تحويل احترافي لصفحة المنتج المباشرة في حال تعذر التضمين
-                window.location.href = `https://nexorasa.rmz.gg/p/${productId}`;
-            }
         }
 
         // WhatsApp Routing Engine

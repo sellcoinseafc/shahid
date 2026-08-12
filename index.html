@@ -599,8 +599,12 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر اطلب الآن يربط بدالة الشراء الذكية والمضمونة 100% -->
-                        <button class="btn-buy" onclick="executeCheckout('103287')">
+                        <!-- زر التضمين الصريح لـ RMZ المربوط بالدومين -->
+                        <button class="btn-buy" 
+                                data-rmz-product="103287" 
+                                data-rmz-key="rmz_pk_1701_YZGIF1p1ojVd1B5ySRZ7TujR" 
+                                data-rmz-theme="auto" 
+                                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                             <i data-lucide="shopping-cart" size="18"></i>
                             اطلب الآن
                         </button>
@@ -644,8 +648,12 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر اطلب الآن يربط بدالة الشراء الذكية والمضمونة 100% -->
-                        <button class="btn-buy" onclick="executeCheckout('103287')">
+                        <!-- زر التضمين الصريح لـ RMZ المربوط بالدومين -->
+                        <button class="btn-buy" 
+                                data-rmz-product="103287" 
+                                data-rmz-key="rmz_pk_1701_YZGIF1p1ojVd1B5ySRZ7TujR" 
+                                data-rmz-theme="auto" 
+                                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                             <i data-lucide="shopping-cart" size="18"></i>
                             اطلب الآن
                         </button>
@@ -829,7 +837,11 @@
 
     <!-- Mobile Fixed Bottom CTA Bar -->
     <div class="mobile-cta">
-        <button class="btn-buy" onclick="executeCheckout('103287')">
+        <button class="btn-buy" 
+                data-rmz-product="103287" 
+                data-rmz-key="rmz_pk_1701_YZGIF1p1ojVd1B5ySRZ7TujR" 
+                data-rmz-theme="auto" 
+                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
             <i data-lucide="shopping-cart" size="16"></i>
             اطلب الآن
         </button>
@@ -862,30 +874,6 @@
             card.setAttribute('data-months', months);
             const perMonth = Math.round(price / months);
             card.querySelector('.res-val').innerText = perMonth + ' ريال';
-        }
-
-        // دالة الشراء الذكية المربوطة بـ RMZ بنسبة 100%
-        function executeCheckout(productId) {
-            const key = "rmz_pk_1701_YZGIF1p1ojVd1B5ySRZ7TujR";
-            const storeDomain = "nexorasa.rmz.gg";
-
-            // 1. تجربة فتح المودال المنبثق لـ RMZ إن كان مدعوماً
-            if (window.RMZ && typeof window.RMZ.checkout === 'function') {
-                try {
-                    window.RMZ.checkout({
-                        product: productId,
-                        key: key,
-                        hideQuantity: true,
-                        hideCoupon: true
-                    });
-                    return;
-                } catch (e) {
-                    console.log("RMZ Modal blocked, switching to direct checkout.");
-                }
-            }
-
-            // 2. التحويل الفوري المباشر لصفحة المنتج لضمان إتمام الطلب 100%
-            window.location.href = `https://${storeDomain}/checkout/${productId}`;
         }
 
         // WhatsApp Routing Engine

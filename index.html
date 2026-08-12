@@ -19,7 +19,6 @@
 
     <style>
         :root {
-            /* Theme Variables - Dark Mode Default */
             --bg-dark: #07050d;
             --purple-primary: #7c3aed;
             --purple-glow: #a855f7;
@@ -33,7 +32,6 @@
             --hint-bg: rgba(255, 255, 255, 0.02);
         }
 
-        /* Light Mode Variables Override */
         [data-theme="light"] {
             --bg-dark: #f8fafc;
             --purple-primary: #7c3aed;
@@ -64,15 +62,16 @@
             position: relative;
         }
 
-        /* خلفية الأضواء الساطعة Background Glow */
+        /* خلفيات الإضاءة مع حمايتها بعيداً عن العناصر */
         .glow-sphere-1 {
             position: absolute;
             top: -100px;
             right: -100px;
             width: 450px;
             height: 450px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .glow-sphere-2 {
@@ -81,18 +80,22 @@
             left: -150px;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
         section {
             padding: 50px 0;
+            clear: both;
         }
 
         .section-title {
@@ -105,7 +108,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Navbar Header & Theme Toggle */
+        /* Navbar Header */
         .store-navbar {
             padding: 16px 0;
             border-bottom: 1px solid var(--glass-border);
@@ -150,13 +153,14 @@
             border-color: var(--purple-glow);
         }
 
-        /* Hero Section - معالجة التداخل نهائياً */
+        /* Hero Section - إصلاح التداخل والارتفاع */
         .hero {
             display: flex;
             flex-direction: column;
             gap: 32px;
-            padding-top: 32px;
-            padding-bottom: 32px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            min-height: auto;
         }
 
         @media (min-width: 992px) {
@@ -253,12 +257,14 @@
             box-shadow: 0 0 25px rgba(124, 58, 237, 0.45);
         }
 
-        /* Safe Responsive Device Cards */
+        /* Safe Devices Display Grid */
         .hero-devices-display {
             display: flex;
             flex-direction: column;
             gap: 12px;
             width: 100%;
+            position: relative;
+            z-index: 2;
         }
 
         .device-preview-card {
@@ -270,6 +276,7 @@
             align-items: center;
             gap: 16px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            backdrop-filter: blur(12px);
         }
 
         .device-icon-box {
@@ -300,13 +307,16 @@
             background: var(--glass-bg);
             border-top: 1px solid var(--glass-border);
             border-bottom: 1px solid var(--glass-border);
-            padding: 18px 0;
+            padding: 20px 0;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .trust-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 14px;
+            gap: 16px;
             text-align: center;
         }
 
@@ -324,7 +334,17 @@
             color: var(--purple-glow);
         }
 
-        /* Glass Cards General */
+        /* Pricing Section Layout */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(16px);
@@ -336,27 +356,13 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
         }
 
-        .glass-card:hover {
-            border-color: var(--card-hover-border);
-        }
-
-        /* Pricing Section Layout - منع التداخل داخل بطاقات الأسعار */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
         .pricing-card {
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             text-align: center;
-            padding: 32px 20px;
-            height: 100%;
+            padding: 36px 20px 24px;
         }
 
         .pricing-card.popular {
@@ -375,6 +381,7 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 700;
+            z-index: 5;
         }
 
         .pricing-title {

@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexorasa - اشتراك شاهد VIP الرسمي على حسابك الشخصي</title>
+    <meta name="description" content="احصل على اشتراك شاهد VIP رسمي على إيميلك الشخصي مباشرة من متجر Nexorasa. بدون إعلانات وبجودة Full HD مع خيارات التقسيط.">
+    
+    <!-- الخط العالمي Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- RMZ Embed Script -->
+    <script src="https://rmz.gg/embed/rmz-embed.js"></script>
+
+    <style>
+        :root {
+            /* Theme Variables - Dark Mode Default */
+            --bg-dark: #07050d;
+            --purple-primary: #7c3aed;
+            --purple-glow: #a855f7;
+            --green-accent: #10b981;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --navbar-bg: rgba(7, 5, 13, 0.85);
+            --card-hover-border: rgba(168, 85, 247, 0.4);
+            --hint-bg: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Light Mode Variables Override */
+        [data-theme="light"] {
+            --bg-dark: #f8fafc;
+            --purple-primary: #7c3aed;
+            --purple-glow: #6d28d9;
+            --green-accent: #059669;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(124, 58, 237, 0.15);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --navbar-bg: rgba(255, 255, 255, 0.9);
+            --card-hover-border: rgba(124, 58, 237, 0.5);
+            --hint-bg: rgba(124, 58, 237, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* خلفية الأضواء الساطعة Background Glow */
+        .glow-sphere-1 {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+        }
+
+        .glow-sphere-2 {
+            position: absolute;
+            top: 40%;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin-bottom: 36px;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Navbar Header & Theme Toggle */
+        .store-navbar {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--glass-border);
+            background: var(--navbar-bg);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--text-main), var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .theme-toggle-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 8px 14px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--purple-glow);
+        }
+
+        /* Hero Section - معالجة التداخل نهائياً */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+
+        @media (min-width: 992px) {
+            .hero {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: 40px;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 50px;
+            color: var(--purple-glow);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--purple-glow);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        @media (min-width: 576px) {
+            .btn {
+                width: auto;
+            }
+        }
+
+        .btn-green {
+            background-color: var(--green-accent);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+        }
+
+        .btn-green:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.45);
+        }
+
+        .btn-purple {
+            background-color: var(--purple-primary);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.25);
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.45);
+        }
+
+        /* Safe Responsive Device Cards */
+        .hero-devices-display {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .device-preview-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .device-icon-box {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: rgba(124, 58, 237, 0.15);
+            color: var(--purple-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .device-info h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .device-info p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--glass-bg);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 18px 0;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+            text-align: center;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .trust-item i {
+            color: var(--purple-glow);
+        }
+
+        /* Glass Cards General */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .glass-card:hover {
+            border-color: var(--card-hover-border);
+        }
+
+        /* Pricing Section Layout - منع التداخل داخل بطاقات الأسعار */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            padding: 32px 20px;
+            height: 100%;
+        }
+
+        .pricing-card.popular {
+            border: 1px solid var(--purple-glow);
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.15);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--purple-primary), var(--purple-glow));
+            color: #fff;
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .pricing-title {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+
+        .pricing-sub {
+            color: var(--purple-glow);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .pricing-price {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .pricing-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* حاسبة التقسيط التفاعلية */
+        .calc-wrapper {
+            margin-top: 8px;
+            padding: 12px;
+            background: var(--hint-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+        }
+
+        .calc-tabs {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .calc-tab {
+            flex: 1;
+            padding: 6px 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .calc-tab.active {
+            background: var(--purple-primary);
+            color: #fff;
+            border-color: var(--purple-glow);
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
+        }
+
+        .installment-result {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .installment-result strong {
+            color: var(--purple-glow);
+            font-size: 1.05rem;
+        }
+
+        /* Features Section Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(124, 58, 237, 0.15);
+            color: var(--purple-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* Supported Devices Section */
+        .devices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 14px;
+        }
+
+        .device-item-card {
+            text-align: center;
+            padding: 20px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .device-icon-wrapper {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--purple-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+        }
+
+        .device-item-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        /* Why Us Section */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+        }
+
+        .why-card {
+            position: relative;
+            padding: 24px 18px;
+        }
+
+        .why-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--purple-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .why-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            cursor: pointer;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, margin-top 0.3s ease;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 150px;
+            margin-top: 12px;
+        }
+
+        .faq-item.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .chevron-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navbar-bg);
+            border-top: 1px solid var(--glass-border);
+            padding: 40px 0 24px;
+            margin-top: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            margin-bottom: 28px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--purple-glow);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--glass-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--purple-primary);
+            border-color: var(--purple-glow);
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Floating CTA for Mobile */
+        .floating-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--navbar-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--glass-border);
+            padding: 10px 14px;
+            display: flex;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .floating-cta .btn {
+            flex: 1;
+            padding: 12px 6px;
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (min-width: 769px) {
+            .floating-cta {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-sphere-1"></div>
+    <div class="glow-sphere-2"></div>
+
+    <!-- Store Navigation Bar with Theme Switcher -->
+    <nav class="store-navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">Nexorasa</a>
+            <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()">
+                <i data-lucide="sun" id="theme-icon" size="18"></i>
+                <span id="theme-text">الوضع النهاري</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="container hero">
+        <div class="hero-content fade-in">
+            <div class="hero-badge">
+                <i data-lucide="tv"></i>
+                <span>شاهد VIP - متجر Nexorasa</span>
+            </div>
+            <h1 class="hero-title">اشتراك شاهد VIP</h1>
+            <div class="hero-subtitle">على إيميلك الشخصي مباشرة</div>
+            <p class="hero-desc">استمتع بمشاهدة أحدث المسلسلات والأفلام الحصرية وعروض شاهد الأصلية على حسابك الخاص وبأعلى جودة وبدون أي إعلانات مزعجة.</p>
+            <div class="hero-btns">
+                <a href="#pricing" class="btn btn-green">
+                    <i data-lucide="shopping-cart"></i>
+                    اشترك الآن
+                </a>
+                <button onclick="sendWhatsAppInstallment('عام', 0, 0)" class="btn btn-purple">
+                    <i data-lucide="credit-card"></i>
+                    قسّط عبر تابي وتمارا
+                </button>
+            </div>
+        </div>
+
+        <!-- Safe Responsive Device Cards -->
+        <div class="hero-devices-display fade-in">
+            <div class="device-preview-card">
+                <div class="device-icon-box"><i data-lucide="tv" size="24"></i></div>
+                <div class="device-info">
+                    <h4>مشاهدة على التلفزيون الذكي</h4>
+                    <p>دقة Full HD وتجربة عائلية ممتازة</p>
+                </div>
+            </div>
+            <div class="device-preview-card">
+                <div class="device-icon-box"><i data-lucide="laptop" size="24"></i></div>
+                <div class="device-info">
+                    <h4>الكمبيوتر واللابتوب</h4>
+                    <p>بث سلس عبر المتصفح في أي وقت</p>
+                </div>
+            </div>
+            <div class="device-preview-card">
+                <div class="device-icon-box"><i data-lucide="smartphone" size="24"></i></div>
+                <div class="device-info">
+                    <h4>الجوال والآيباد</h4>
+                    <p>تابع مسلسلاتك وتحميل أوفلاين أثناء التنقل</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar fade-in">
+        <div class="container trust-grid">
+            <div class="trust-item">
+                <i data-lucide="zap"></i>
+                <span>تفعيل سريع</span>
+            </div>
+            <div class="trust-item">
+                <i data-lucide="shield-check"></i>
+                <span>حساب شخصي 100%</span>
+            </div>
+            <div class="trust-item">
+                <i data-lucide="globe"></i>
+                <span>يعمل عالمياً</span>
+            </div>
+            <div class="trust-item">
+                <i data-lucide="smartphone"></i>
+                <span>يدعم جميع الأجهزة</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <section class="container" id="pricing">
+        <h2 class="section-title fade-in">اختر الباقة المناسبة لك</h2>
+        <div class="pricing-grid">
+            <!-- 3 Months Card -->
+            <div class="glass-card pricing-card fade-in" id="card-3m" data-price="65" data-plan="اشتراك شاهد VIP (3 أشهر)" data-months="3">
+                <div>
+                    <h3 class="pricing-title">3 Months</h3>
+                    <div class="pricing-sub">تفعيل على إيميلك الشخصي</div>
+                    <div class="pricing-price">65 <span>ريال</span></div>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">تفعيل رسمي ومضمون طوال فترة الاشتراك مع وصول لكامل المكتبة العائلية بدون إعلانات.</p>
+                </div>
+                <div class="pricing-btns">
+                    <!-- زر RMZ المباشر لباقة 3 أشهر -->
+                    <button class="btn btn-green" data-rmz-product="103287" data-rmz-key="rmz_pk_1701_YZGIF1p1ojVd1B5ySRZ7TujR" data-rmz-theme="auto" data-rmz-config='{"buttonStyle":"outline"}'>
+                        <i data-lucide="shopping-cart"></i>
+                        اطلب الآن
+                    </button>
+                    
+                    <button onclick="triggerWhatsApp('card-3m')" class="btn btn-purple">
+                        <i data-lucide="credit-card"></i>
+                        قسّط عبر تابي وتمارا
+                    </button>
+
+                    <div class="calc-wrapper">
+                        <div class="calc-tabs">
+                            <button class="calc-tab" onclick="updateInstallment('card-3m', 65, 2, this)">شهرين</button>
+                            <button class="calc-tab active" onclick="updateInstallment('card-3m', 65, 3, this)">3 أشهر</button>
+                            <button class="calc-tab" onclick="updateInstallment('card-3m', 65, 4, this)">4 أشهر</button>
+                        </div>
+                        <div class="installment-result">
+                            ادفع اليوم <strong class="res-val">22 ريال</strong> / شهر
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1 Year Card -->
+            <div class="glass-card pricing-card popular fade-in" id="card-1y" data-price="190" data-plan="اشتراك شاهد VIP (سنة كاملة)" data-months="4">
+                <div class="popular-badge">الأكثر طلباً ⭐</div>
+                <div>
+                    <h3 class="pricing-title">1 Year</h3>
+                    <div class="pricing-sub">تفعيل على إيميلك الشخصي</div>
+                    <div class="pricing-price">190 <span>ريال</span></div>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">وفر أكثر مع الاشتراك السنوي الشامل لكل أعمال شاهد الأصلية بجودة عالية وضمان متواصل.</p>
+                </div>
+                <div class="pricing-btns">
+                    <button class="btn btn-green" data-rmz-product="103287" data-rmz-key="rmz_pk_1701_YZGIF1p1ojVd1B5ySRZ7TujR" data-rmz-theme="auto" data-rmz-config='{"buttonStyle":"outline"}'>
+                        <i data-lucide="shopping-cart"></i>
+                        اطلب الآن
+                    </button>
+                    
+                    <button onclick="triggerWhatsApp('card-1y')" class="btn btn-purple">
+                        <i data-lucide="credit-card"></i>
+                        قسّط عبر تابي وتمارا
+                    </button>
+
+                    <div class="calc-wrapper">
+                        <div class="calc-tabs">
+                            <button class="calc-tab" onclick="updateInstallment('card-1y', 190, 2, this)">شهرين</button>
+                            <button class="calc-tab" onclick="updateInstallment('card-1y', 190, 3, this)">3 أشهر</button>
+                            <button class="calc-tab active" onclick="updateInstallment('card-1y', 190, 4, this)">4 أشهر</button>
+                        </div>
+                        <div class="installment-result">
+                            ادفع اليوم <strong class="res-val">48 ريال</strong> / شهر
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container">
+        <h2 class="section-title fade-in">مميزات الاشتراك</h2>
+        <div class="grid-3">
+            <div class="glass-card feature-card fade-in">
+                <div class="feature-icon"><i data-lucide="film"></i></div>
+                <h3>أكثر من 40,000 حلقة</h3>
+                <p>مكتبة ضخمة متجددة يومياً تضمن لك متابعة كل جديد أولاً بأول.</p>
+            </div>
+            <div class="glass-card feature-card fade-in">
+                <div class="feature-icon"><i data-lucide="sparkles"></i></div>
+                <h3>أعمال شاهد الأصلية</h3>
+                <p>محتوى حصري وعروض أصلية تتضمن أرقى الإنتاجات العربية.</p>
+            </div>
+            <div class="glass-card feature-card fade-in">
+                <div class="feature-icon"><i data-lucide="ban"></i></div>
+                <h3>بدون إعلانات</h3>
+                <p>مشاهدة متواصلة وسلسة بدون أي إعلانات تجارية تقطع استمتاعك.</p>
+            </div>
+            <div class="glass-card feature-card fade-in">
+                <div class="feature-icon"><i data-lucide="monitor"></i></div>
+                <h3>جودة Full HD</h3>
+                <p>وضوح عالي ودقة ممتازة في الصوت والصورة لجميع العروض.</p>
+            </div>
+            <div class="glass-card feature-card fade-in">
+                <div class="feature-icon"><i data-lucide="globe"></i></div>
+                <h3>متاح عالمياً</h3>
+                <p>يعمل الاشتراك بكل كفاءة في أي مكان حول العالم دون أي قيود جغرافية.</p>
+            </div>
+            <div class="glass-card feature-card fade-in">
+                <div class="feature-icon"><i data-lucide="download"></i></div>
+                <h3>تحميل للمشاهدة أوفلاين</h3>
+                <p>حمل مسلسلاتك المفضلة وشاهدها بدون الحاجة لاتصال بالإنترنت.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Devices Section -->
+    <section class="container">
+        <h2 class="section-title fade-in">الأجهزة المدعومة</h2>
+        <div class="devices-grid">
+            <div class="glass-card device-item-card fade-in">
+                <div class="device-icon-wrapper"><i data-lucide="smartphone" size="26"></i></div>
+                <h4>الجوال</h4>
+            </div>
+            <div class="glass-card device-item-card fade-in">
+                <div class="device-icon-wrapper"><i data-lucide="tablet" size="26"></i></div>
+                <h4>الآيباد</h4>
+            </div>
+            <div class="glass-card device-item-card fade-in">
+                <div class="device-icon-wrapper"><i data-lucide="tablet" size="26"></i></div>
+                <h4>التابلت</h4>
+            </div>
+            <div class="glass-card device-item-card fade-in">
+                <div class="device-icon-wrapper"><i data-lucide="laptop" size="26"></i></div>
+                <h4>اللابتوب</h4>
+            </div>
+            <div class="glass-card device-item-card fade-in">
+                <div class="device-icon-wrapper"><i data-lucide="monitor" size="26"></i></div>
+                <h4>الكمبيوتر</h4>
+            </div>
+            <div class="glass-card device-item-card fade-in">
+                <div class="device-icon-wrapper"><i data-lucide="tv" size="26"></i></div>
+                <h4>التلفزيون الذكي</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="container">
+        <h2 class="section-title fade-in">لماذا تختار Nexorasa؟</h2>
+        <div class="why-grid">
+            <div class="glass-card why-card fade-in">
+                <div class="why-card-icon"><i data-lucide="mail"></i></div>
+                <h3>تفعيل على إيميلك</h3>
+                <p>نُفعّل الخدمة فوراً على بريدك الشخصي الخاص لضمان الخصوصية والتحكم المستقل.</p>
+            </div>
+            <div class="glass-card why-card fade-in">
+                <div class="why-card-icon"><i data-lucide="shield-check"></i></div>
+                <h3>اشتراك رسمي 100%</h3>
+                <p>ضمان كامل ومستمر طوال فترة الاشتراك المحددة مع استقرار كلي بالحساب.</p>
+            </div>
+            <div class="glass-card why-card fade-in">
+                <div class="why-card-icon"><i data-lucide="headphones"></i></div>
+                <h3>دعم فني متواصل</h3>
+                <p>فريقنا متواجد لخدمتك والإجابة عن أي استفسار بشكل سريع ومباشر.</p>
+            </div>
+            <div class="glass-card why-card fade-in">
+                <div class="why-card-icon"><i data-lucide="lock"></i></div>
+                <h3>خصوصية كاملة</h3>
+                <p>بياناتك وأجهزتك المسجلة مشفرة ومحمية بخصوصية تامة لأسرتك.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container">
+        <h2 class="section-title fade-in">الأسئلة الشائعة</h2>
+        <div class="faq-list">
+            <div class="glass-card faq-item fade-in">
+                <div class="faq-question">
+                    <span>هل الاشتراك على حسابي الشخصي؟</span>
+                    <i data-lucide="chevron-down" class="chevron-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    نعم، التفعيل يتم مباشرة على حسابك الشخصي وعلى إيميلك الخاص لضمان الخصوصية والراحة التامة.
+                </div>
+            </div>
+            <div class="glass-card faq-item fade-in">
+                <div class="faq-question">
+                    <span>هل يشمل المحتوى الرياضي؟</span>
+                    <i data-lucide="chevron-down" class="chevron-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    هذا الاشتراك مخصص لمحتوى شاهد VIP (المسلسلات والأفلام والأعمال الأصلية). للمحتوى الرياضي يرجى مراجعة باقة شاهد VIP + الرياضة في متجرنا.
+                </div>
+            </div>
+            <div class="glass-card faq-item fade-in">
+                <div class="faq-question">
+                    <span>كم عدد الأجهزة المسموح بها؟</span>
+                    <i data-lucide="chevron-down" class="chevron-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    يمكنك تسجيل الدخول على أجهزة متعددة ومتابعة المحتوى بحرية حسب شروط الخدمة الرسمية لشركة شاهد.
+                </div>
+            </div>
+            <div class="glass-card faq-item fade-in">
+                <div class="faq-question">
+                    <span>هل يعمل الاشتراك خارج السعودية؟</span>
+                    <i data-lucide="chevron-down" class="chevron-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    نعم، الاشتراك يعمل في كافة دول العالم بدون أي مشاكل أو الحاجة لتفعيل VPN.
+                </div>
+            </div>
+            <div class="glass-card faq-item fade-in">
+                <div class="faq-question">
+                    <span>متى يتم تفعيل الاشتراك بعد الطلب؟</span>
+                    <i data-lucide="chevron-down" class="chevron-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    يتم تنفيذ الطلب والتفعيل بسرعة فائقة تتراوح عادة بين 15 دقيقة إلى ساعات قليلة كحد أقصى من إتمام عملية الدفع.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Nexorasa</h3>
+                    <p>المتجر الرسمي والأول الموثوق لتفعيل اشتراكات شاهد VIP على إيميلك الشخصي مباشرة وبأعلى معايير الأمان والسرعة.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#pricing">الباقات والأسعار</a></li>
+                        <li><a href="#pricing">طرق التقسيط</a></li>
+                        <li><a href="#">سياسة الاستخدام والخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>تواصل معنا</h4>
+                    <ul>
+                        <li><a href="https://wa.me/966551040375" target="_blank">خدمة العملاء (واتساب)</a></li>
+                        <li><a href="#">الدعم الفني المباشر</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://wa.me/966551040375" class="social-btn" target="_blank"><i data-lucide="message-circle" size="18"></i></a>
+                        <a href="#" class="social-btn" target="_blank"><i data-lucide="instagram" size="18"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                جميع الحقوق محفوظة © Nexorasa 2026
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Buttons (Mobile Only) -->
+    <div class="floating-cta">
+        <button class="btn btn-green" data-rmz-product="103287" data-rmz-key="rmz_pk_1701_YZGIF1p1ojVd1B5ySRZ7TujR" data-rmz-theme="auto" data-rmz-config='{"buttonStyle":"outline"}'>
+            <i data-lucide="shopping-cart" size="18"></i>
+            اطلب الآن
+        </button>
+        <button onclick="sendWhatsAppInstallment('عام', 0, 0)" class="btn btn-purple">
+            <i data-lucide="message-circle" size="18"></i>
+            قسّط عبر تابي وتمارا
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // تفعيل أيقونات Lucide
+        lucide.createIcons();
+
+        // تفعيل الأكورديون للأسئلة الشائعة FAQ
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // حركات الظهور عند السكرول (Scroll Animation)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // كود تبديل الوضع الليلي / النهاري
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            
+            const themeText = document.getElementById('theme-text');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (newTheme === 'light') {
+                themeText.innerText = 'الوضع الليلي';
+                themeIcon.setAttribute('data-lucide', 'moon');
+            } else {
+                themeText.innerText = 'الوضع النهاري';
+                themeIcon.setAttribute('data-lucide', 'sun');
+            }
+            lucide.createIcons();
+        }
+
+        // كود حاسبة التقسيط التفاعلية
+        function updateInstallment(cardId, price, months, btn) {
+            const card = document.getElementById(cardId);
+            
+            card.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            
+            card.setAttribute('data-months', months);
+            
+            const perMonth = Math.round(price / months);
+            card.querySelector('.res-val').innerText = perMonth + ' ريال';
+        }
+
+        function triggerWhatsApp(cardId) {
+            const card = document.getElementById(cardId);
+            const planName = card.getAttribute('data-plan');
+            const price = parseInt(card.getAttribute('data-price'));
+            const months = parseInt(card.getAttribute('data-months'));
+            
+            sendWhatsAppInstallment(planName, price, months);
+        }
+
+        function sendWhatsAppInstallment(planName, totalPrice, months) {
+            const phone = "966551040375";
+            let message = "";
+
+            if (totalPrice === 0) {
+                message = "مرحباً متجر Nexorasa 👋\nأرغب في الاستفسار عن خدمة تقسيط اشتراكات شاهد VIP عبر تابي أو تمارا.";
+            } else {
+                const firstPayment = Math.round(totalPrice / months);
+                message = `مرحباً متجر Nexorasa 👋\nأرغب في طلب تقسيط الاشتراك التالي:\n\n` +
+                          `📌 *الباقة:* ${planName}\n` +
+                          `💰 *المبلغ الإجمالي:* ${totalPrice} ريال\n` +
+                          `📅 *خيار التقسيط:* ${months} أشهر (عبر تابي / تمارا)\n` +
+                          `💵 *المبلغ المستحق دفعه اليوم:* ${firstPayment} ريال فقط\n\n` +
+                          `يرجى تزويدي برابط وتفاصيل الدفع لإتمام الطلب.`;
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>

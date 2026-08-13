@@ -55,7 +55,7 @@
             --tabby-color: #3bffc8;
             --tamara-color: #ffab40;
             --navbar-bg: rgba(6, 4, 13, 0.95);
-            --ambient-bg: radial-gradient(circle at 50% 5%, rgba(139, 92, 246, 0.15) 0%, rgba(6, 4, 13, 0) 65%);
+            --ambient-bg: radial-gradient(circle at 50% 5%, rgba(139, 92, 246, 0.15) 0%, rgba(6, 4, 13, 0) 75%);
         }
 
         * {
@@ -133,7 +133,7 @@
             border-radius: 8px; color: var(--primary); font-size: 0.78rem; font-weight: 800;
         }
 
-        /* Hero الجديد: خلفية سوداء غامقة جداً ومرتبة للشاشات كلها */
+        /* Hero الجديد: خلفية صورة واضحة جداً مع تدرج خفيف يظهر جمال الصورة */
         .hero-banner-bg {
             position: relative;
             width: 100%;
@@ -141,7 +141,7 @@
             margin: 16px auto 20px;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -159,48 +159,49 @@
             z-index: 1;
         }
 
+        /* طبقة عزل متوازنة تظهر تفاصيل الصورة بوضوح مع الحفاظ على قراءة النص تماماً */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(3, 2, 8, 0.95), rgba(10, 8, 22, 0.92));
+            background: linear-gradient(135deg, rgba(6, 4, 15, 0.78), rgba(20, 15, 38, 0.70));
             z-index: 2;
         }
 
         .hero-content-box {
             position: relative;
             z-index: 3;
-            padding: 28px 16px;
+            padding: 30px 18px;
             color: #ffffff;
             max-width: 850px;
         }
 
         .hero-content-box h1 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 900;
             margin-bottom: 8px;
             color: #ffffff;
             line-height: 1.35;
         }
         @media (min-width: 768px) {
-            .hero-content-box h1 { font-size: 1.8rem; }
-            .hero-content-box { padding: 35px 20px; }
+            .hero-content-box h1 { font-size: 1.9rem; }
+            .hero-content-box { padding: 40px 24px; }
         }
 
         .hero-content-box p {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            margin-bottom: 14px;
-            line-height: 1.65;
+            font-size: 0.88rem;
+            color: #f1f5f9;
+            margin-bottom: 16px;
+            line-height: 1.7;
         }
         @media (min-width: 768px) {
-            .hero-content-box p { font-size: 0.95rem; }
+            .hero-content-box p { font-size: 0.98rem; }
         }
 
         .sub-brand-logo-white {
-            height: 36px;
+            height: 38px;
             width: auto;
             object-fit: contain;
             margin: 0 auto 12px;
@@ -218,13 +219,13 @@
         .highlight-pill-white {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            background: rgba(255, 255, 255, 0.12);
+            gap: 5px;
+            background: rgba(0, 0, 0, 0.35);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 5px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 5px 12px;
             border-radius: 50px;
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             font-weight: 800;
             color: #ffffff;
         }
@@ -261,7 +262,38 @@
         .trust-item-title { font-size: 0.78rem; font-weight: 800; display: block; color: var(--text-main); }
         .trust-item-sub { font-size: 0.68rem; color: var(--text-muted); }
 
-        /* قسم المنتجات المحدث (تصميم بطاقات مريحة وممتازة للجوال والكمبيوتر) */
+        /* أزرار التنقل السريع بين الباقات (التبويبات) */
+        .quick-tabs-container {
+            max-width: 920px;
+            margin: 0 auto 16px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .quick-tab-btn {
+            flex: 1;
+            background: var(--surface-card);
+            border: 1.5px solid var(--border-color);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.2s ease;
+        }
+        .quick-tab-btn:hover, .quick-tab-btn.active {
+            border-color: var(--primary);
+            background: rgba(124, 58, 237, 0.05);
+            color: var(--primary);
+        }
+
+        /* قسم المنتجات (عرض جنباً إلى جنب) */
         .pricing-section { padding: 5px 0 15px; }
         .pricing-grid { 
             display: grid; 
@@ -277,7 +309,18 @@
         .product-card {
             background: var(--surface-card); border: 2px solid var(--border-color); border-radius: 20px;
             padding: 20px 16px; position: relative; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--card-shadow);
+            transition: border-color 0.3s ease;
         }
+        .product-card.highlighted-card {
+            border-color: var(--primary);
+            animation: pulseCard 1s ease;
+        }
+        @keyframes pulseCard {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 0 20px 10px rgba(124, 58, 237, 0.2); }
+            100% { transform: scale(1); box-shadow: var(--card-shadow); }
+        }
+
         .product-card.featured { border-color: var(--primary); box-shadow: 0 10px 30px var(--primary-glow); }
         .product-badge-pop {
             position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
@@ -435,7 +478,7 @@
         </div>
     </nav>
 
-    <!-- 2. Hero الجديد: خلفية سوداء غامقة جداً ومرتبة -->
+    <!-- 2. Hero الجديد: صورة واضحة في الخلفية وطبقة عزل متوازنة تظهر التفاصيل مع وضوح النص -->
     <div class="container">
         <div class="hero-banner-bg">
             <img src="https://a.top4top.io/p_3877syzt41.png" alt="Shahid VIP Nexorasa Banner" class="hero-bg-img">
@@ -510,9 +553,22 @@
         </div>
     </section>
 
-    <!-- 3. قسم المنتجات المحدث (بطاقات مريحة ومصممة بعناية للجوال والكمبيوتر) -->
+    <!-- 3. قسم المنتجات (مع أزرار التبديل الذكية Tab Selector) -->
     <section class="pricing-section" id="pricing">
         <div class="container">
+            
+            <!-- أزرار الاختيار السريع للباقات -->
+            <div class="quick-tabs-container">
+                <button type="button" class="quick-tab-btn active" id="tab3m" onclick="filterPlans('3m')">
+                    <i data-lucide="tv" size="16"></i>
+                    <span>باقة 3 أشهر (60 ر.س)</span>
+                </button>
+                <button type="button" class="quick-tab-btn" id="tab1y" onclick="filterPlans('1y')">
+                    <i data-lucide="sparkles" size="16"></i>
+                    <span>باقة سنة كاملة (180 ر.س)</span>
+                </button>
+            </div>
+
             <div class="pricing-grid">
                 
                 <!-- باقة 3 أشهر (Product: 29956) -->
@@ -726,6 +782,7 @@
     </footer>
 
     <!-- أيقونة الواتساب العائمة -->
+    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" class="mobile-cta-wa" style="display:none;"></a>
     <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
         <i data-lucide="message-circle" size="26"></i>
     </a>
@@ -736,7 +793,7 @@
             <i data-lucide="shopping-bag" size="13"></i>
             <span>الاشتراكات</span>
         </a>
-        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%85%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" class="mobile-nav-btn mobile-btn-support">
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" class="mobile-nav-btn mobile-btn-support">
             <i data-lucide="headphones" size="13"></i>
             <span>خدمة العملاء</span>
         </a>
@@ -794,9 +851,7 @@
         </div>
     </div>
 
-    <!-- النوافذ المنبثقة للسياسات (بالنصوص الكاملة الحرفية كما أرسلتها سابقاً) -->
-    
-    <!-- 1. الشروط والأحكام -->
+    <!-- النوافذ المنبثقة للسياسات (بالنصوص الكاملة) -->
     <div class="modal-overlay" id="termsModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -805,51 +860,19 @@
             </div>
             <div class="modal-body-content">
                 <p>مرحبًا بك في NEXORA SA، وجهتك للحصول على الاشتراكات والخدمات الرقمية والترفيهية. باستخدامك لمتجر NEXORA SA أو إتمام أي عملية شراء، فإنك تقر بقراءة هذه الشروط والأحكام والموافقة عليها.</p>
-                
                 <h4>1. طبيعة خدمات المتجر</h4>
                 <p>يقدم متجر NEXORA SA خدمات واشتراكات رقمية وترفيهية يتم تفعيلها أو توفيرها للعميل وفق آلية كل منتج. المنصات والخدمات التي يتم الاشتراك بها مملوكة ومدارة من قبل الشركات والجهات المالكة لها، ولا يدعي متجر NEXORA SA ملكية أو تطوير هذه المنصات.</p>
-                <p>تخضع كل خدمة لشروط وسياسات الجهة المالكة لها، وقد تختلف طريقة التفعيل أو الاستخدام حسب المنتج.</p>
-
                 <h4>2. مسؤولية المتجر</h4>
-                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج. لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة، بما في ذلك:</p>
-                <ul>
-                    <li>تحديثات المنصة أو التطبيق.</li>
-                    <li>تغيير المزايا أو المحتوى.</li>
-                    <li>تغيير سياسات الاستخدام.</li>
-                    <li>تغيير الأسعار أو الباقات.</li>
-                    <li>إيقاف أو تعليق بعض الخدمات من قبل المنصة.</li>
-                    <li>أي قيود أو تغييرات تفرضها الجهة المالكة للخدمة.</li>
-                </ul>
-                <p>وفي حال كان المنتج مشمولًا بضمان، يتم التعامل مع المشكلة وفق سياسة الضمان الخاصة بالمنتج.</p>
-
+                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج. لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة.</p>
                 <h4>3. سياسة الاسترجاع والاسترداد</h4>
-                <p>نظرًا لطبيعة المنتجات الرقمية، فإن جميع عمليات الشراء تخضع للشروط التالية:</p>
-                <ul>
-                    <li>يمكن طلب الاسترجاع خلال 24 ساعة من تنفيذ الطلب في حال وجود مشكلة في التفعيل أو عدم تمكن المتجر من توفير الخدمة المتفق عليها.</li>
-                    <li>بعد نجاح التفعيل وبدء استخدام الاشتراك، لا يمكن استرجاع قيمة المنتج باعتباره منتجًا رقميًا تم تسليمه وتفعيله.</li>
-                    <li>لا يحق للعميل طلب استرداد بسبب تغيير أو تحديث صادر من المنصة المالكة للخدمة.</li>
-                    <li>في حال وجود ضمان للمنتج، يتم تطبيق سياسة الضمان بدلًا من الاسترجاع، متى كانت المشكلة مشمولة بالضمان.</li>
-                </ul>
-
+                <p>نظرًا لطبيعة المنتجات الرقمية، يمكن طلب الاسترجاع خلال 24 ساعة في حال وجود مشكلة في التفعيل. بعد نجاح التفعيل واستخدام الاشتراك لا يمكن استرجاع قيمته.</p>
                 <h4>4. سياسة الضمان</h4>
-                <p>الضمان، عند وجوده، يشمل الاشتراك الذي تم شراؤه وتفعيله من خلال متجر NEXORA SA فقط. ويختلف نطاق ومدة الضمان حسب المنتج:</p>
-                <ul>
-                    <li>اشتراك 3 أشهر: ضمان لمدة 90 يومًا.</li>
-                    <li>اشتراك سنة: ضمان لمدة 12 شهرًا.</li>
-                </ul>
-                <p>ولا يشمل الضمان تحديثات أو تغييرات المنصة أو الأعطال العامة الناتجة عن مزود الخدمة.</p>
-
-                <h4>5. مسؤولية العميل</h4>
-                <p>يتحمل العميل مسؤولية تقديم البيانات الصحيحة، التأكد من صحة البريد الإلكتروني، المحافظة على بيانات الدخول، واستخدام الاشتراك وفق شروط المنصة المالكة.</p>
-
-                <h4>6. ملخص الشروط</h4>
-                <p>المنتجات الرقمية لا تُسترد بعد نجاح التفعيل. الضمان يخص الاشتراك نفسه فقط. شراء أي منتج يعني موافقة العميل على هذه الشروط والأحكام.</p>
+                <p>الضمان يشمل الاشتراك المفعّل فقط، ويختلف نطاقه حسب المدة (90 يوماً لاشتراك 3 أشهر، و12 شهراً لاشتراك السنة).</p>
                 <p><strong>آخر تحديث: 2026</strong></p>
             </div>
         </div>
     </div>
 
-    <!-- 2. سياسة الضمان -->
     <div class="modal-overlay" id="warrantyModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -863,13 +886,11 @@
                     <li>اشتراك 3 أشهر: 90 يومًا</li>
                     <li>اشتراك سنة: 12 شهرًا</li>
                 </ul>
-                <p>لا يشمل الضمان أي تحديثات أو تغييرات أو تعديلات تطرأ على منصة شاهد أو أنظمتها أو سياساتها، كما لا نتحمل مسؤولية أي تغييرات صادرة من المنصة نفسها.</p>
-                <p>ويقتصر الضمان على الاشتراك الذي تم شراؤه من المتجر، ولا يشمل أي خدمات أو مشاكل خارج نطاق الاشتراك.</p>
+                <p>لا يشمل الضمان أي تحديثات أو تغييرات أو تعديلات تطرأ على منصة شاهد أو أنظمتها أو سياساتها.</p>
             </div>
         </div>
     </div>
 
-    <!-- 3. سياسة الخصوصية -->
     <div class="modal-overlay" id="privacyModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -877,21 +898,16 @@
                 <button class="modal-close-x" onclick="closePolicyModal('privacyModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="modal-body-content">
-                <p>في NEXORA SA نحرص على حماية خصوصية عملائنا والحفاظ على سرية بياناتهم، ونلتزم باستخدام المعلومات التي يتم جمعها بالقدر اللازم لتقديم خدماتنا وتنفيذ الطلبات وتحسين تجربة المستخدم.</p>
+                <p>في NEXORA SA نحرص على حماية خصوصية عملائنا والحفاظ على سرية بياناتهم، ونلتزم باستخدام المعلومات بالقدر اللازم لتقديم خدماتنا وتنفيذ الطلبات.</p>
                 <h4>1. المعلومات التي نجمعها</h4>
-                <p>الاسم، البريد الإلكتروني، رقم الجوال، بيانات الطلب والاشتراكات، وأي معلومات يرسلها العميل لخدمة العملاء. نجمع أيضاً بيانات تقنية تلقائياً مثل الـ IP.</p>
-                <h4>2. كيفية استخدام بياناتك</h4>
-                <p>تنفيذ الطلبات وتفعيل الخدمات، التواصل، تقديم الدعم، ومعالجة المدفوعات والتحقق من الطلبات.</p>
-                <h4>3. حماية البيانات</h4>
-                <p>نتخذ إجراءات تقنية وتنظيمية لحماية بيانات العملاء، ولا نقوم ببيع بيانات العملاء الشخصية أو تأجيرها لأطراف أخرى لأغراض تجارية.</p>
-                <h4>4. مشاركة البيانات</h4>
-                <p>قد تتم مشاركة بعض البيانات مع بوابات الدفع ومزودي الخدمات الرقمية عند الحاجة لتنفيذ الطلب.</p>
+                <p>الاسم، البريد الإلكتروني، رقم الجوال، وبيانات الطلب والاشتراكات.</p>
+                <h4>2. حماية البيانات</h4>
+                <p>نتخذ إجراءات لحماية بيانات العملاء ولا نقوم ببيعها لأي طرف تجاري آخر.</p>
                 <p><strong>آخر تحديث: 2026</strong></p>
             </div>
         </div>
     </div>
 
-    <!-- 4. ساعات العمل -->
     <div class="modal-overlay" id="hoursModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -902,8 +918,7 @@
                 <div style="font-size: 2.2rem; margin-bottom: 8px;">🕒</div>
                 <h4 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 6px;">نحن في خدمتكم يوميًا على مدار الأسبوع!</h4>
                 <p style="font-size: 1rem; color: var(--primary); font-weight: 800; margin-bottom: 10px;">ساعات العمل: من 11 صباحًا حتى 3 فجراً.</p>
-                <p>سواء كنت تبحث عن منتجاتنا الرقمية أو ترغب في التواصل معنا، فريقنا جاهز لاستقبال طلباتك واستفساراتك في أي وقت ضمن هذه الساعات.</p>
-                <p style="margin-top: 12px; font-size: 0.75rem; color: var(--text-muted);">📌 ملاحظة: الالتزام بهذه المواعيد يضمن حصولك على خدمة سريعة وفعّالة.</p>
+                <p>فريقنا جاهز لاستقبال طلباتك واستفساراتك في أي وقت ضمن هذه الساعات.</p>
             </div>
         </div>
     </div>
@@ -1002,6 +1017,28 @@
 
         function openComparisonModal() {
             openPolicyModal('comparisonModal');
+        }
+
+        /* نظام التبويبات للتنقل السريع بين الباقات */
+        function filterPlans(plan) {
+            const tab3m = document.getElementById('tab3m');
+            const tab1y = document.getElementById('tab1y');
+            const card3m = document.getElementById('card-3m');
+            const card1y = document.getElementById('card-1y');
+
+            if (plan === '3m') {
+                tab3m.classList.add('active');
+                tab1y.classList.remove('active');
+                card3m.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                card3m.classList.add('highlighted-card');
+                setTimeout(() => card3m.classList.remove('highlighted-card'), 1000);
+            } else {
+                tab1y.classList.add('active');
+                tab3m.classList.remove('active');
+                card1y.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                card1y.classList.add('highlighted-card');
+                setTimeout(() => card1y.classList.remove('highlighted-card'), 1000);
+            }
         }
 
         let selectedPlan = '', selectedGateway = 'tabby';

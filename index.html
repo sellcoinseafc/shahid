@@ -133,7 +133,7 @@
             border-radius: 8px; color: var(--primary); font-size: 0.78rem; font-weight: 800;
         }
 
-        /* البانر الاحترافي في أعلى الصفحة (محدث بالرابط الجديد وبصيغة contain لضمان ظهور الصورة كاملة على الجوال والكمبيوتر) */
+        /* البانر الاحترافي في أعلى الصفحة */
         .top-banner-wrapper {
             max-width: 1140px;
             margin: 16px auto 14px;
@@ -152,49 +152,97 @@
             max-height: none;
         }
 
-        /* قسم النبذة والبيانات تحت الصورة مباشرة */
+        /* قسم النبذة والبيانات (مستطيل بارز وفخم) */
         .banner-info-box {
             max-width: 1140px;
             margin: 0 auto 16px;
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            border: 1.5px solid rgba(139, 92, 246, 0.4);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+            background: var(--surface-card);
+            border: 2px solid var(--border-active);
+            border-radius: 20px;
+            padding: 22px 18px;
+            box-shadow: 0 12px 35px var(--primary-glow);
             text-align: center;
         }
-        .banner-info-box h2 {
-            font-size: 1.25rem;
+        
+        /* المستطيل الخاص بالعنوان محصور على عرض الكلام مع لمعان فخم وبدون أي لون أزرق */
+        .banner-title-wrap {
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(135deg, #0f0b1e, #1a142e);
+            border: 1.5px solid rgba(139, 92, 246, 0.5);
+            border-radius: 12px;
+            padding: 8px 20px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .banner-title-wrap::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.12) 50%, transparent 70%);
+            transform: rotate(30deg);
+            animation: titleShine 3s infinite linear;
+            pointer-events: none;
+        }
+        @keyframes titleShine {
+            0% { transform: translateY(-100%) rotate(30deg); }
+            100% { transform: translateY(100%) rotate(30deg); }
+        }
+        .banner-title-wrap h2 {
+            font-size: 1.1rem;
             font-weight: 900;
             color: #ffffff;
-            margin-bottom: 6px;
+            letter-spacing: 0.3px;
         }
+
         .banner-info-box p {
-            font-size: 0.88rem;
-            color: #f1f5f9;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto 12px;
+            max-width: 850px;
+            margin: 0 auto 16px;
         }
-        .banner-highlights {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        
+        .banner-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 8px;
+            max-width: 850px;
+            margin: 0 auto;
         }
-        .banner-pill {
-            display: inline-flex;
+        @media (max-width: 600px) {
+            .banner-features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .banner-feature-card {
+            background: rgba(124, 58, 237, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px 8px;
+            display: flex;
             align-items: center;
-            gap: 5px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: #ffffff;
+            justify-content: center;
+            gap: 6px;
+            text-align: center;
         }
-        .banner-pill i { color: #3bffc8; }
+        .banner-feature-icon {
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .banner-feature-text {
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
 
         /* مستطيل بارز وفخم جداً مع تأثير اللمعان لأزرار التبديل السريع */
         .quick-tabs-container {
@@ -247,11 +295,11 @@
             z-index: 2;
         }
         .quick-tab-btn:hover, .quick-tab-btn.active {
-            border-color: #3b82f6;
-            background: #3b82f6;
+            border-color: #8b5cf6;
+            background: #8b5cf6;
             color: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 20px var(--primary-glow);
         }
 
         /* زر المقارنة السريعة في الأعلى */
@@ -379,12 +427,12 @@
             transition: border-color 0.3s ease;
         }
         .product-card.highlighted-card {
-            border-color: #3b82f6;
+            border-color: #8b5cf6;
             animation: pulseCard 1s ease;
         }
         @keyframes pulseCard {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 0 20px 10px rgba(59, 130, 246, 0.2); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 0 20px 10px rgba(139, 92, 246, 0.2); }
             100% { transform: scale(1); box-shadow: var(--card-shadow); }
         }
 
@@ -503,7 +551,7 @@
             .floating-whatsapp-btn { display: flex; position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; border-radius: 50%; background: #25d366; color: #ffffff; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 998; text-decoration: none; }
         }
 
-        /* النوافذ المنبثقة الشاملة وبطاقة زر التأكيد الأزرق */
+        /* النوافذ المنبثقة الشاملة وبطاقة زر التأكيد المدمج المتناسق */
         .modal-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px);
             display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 16px;
@@ -518,7 +566,7 @@
         .modal-close-x { background: rgba(124, 58, 237, 0.1); border: none; color: var(--text-main); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .modal-body-content { overflow-y: auto; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; text-align: right; }
         
-        /* خريطة التقسيط وزر البطاقة الزرقاء */
+        /* خريطة التقسيط وزر التأكيد المتناسق مع هوية المتجر البنفسجية */
         .timeline-container { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 8px; margin-bottom: 10px; }
         .timeline-title { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 10px; text-align: center; }
         .timeline-steps { display: flex; align-items: center; justify-content: space-between; position: relative; }
@@ -532,27 +580,27 @@
         .summary-total-bar { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; }
         .modal-saudi-note { background: rgba(217, 119, 6, 0.08); border: 1px dashed rgba(217, 119, 6, 0.3); color: var(--accent-gold); padding: 6px 8px; border-radius: 8px; font-size: 0.72rem; font-weight: 800; text-align: center; margin-bottom: 10px; }
         
-        /* تصميم بطاقة زر التأكيد الأزرق الجديد */
+        /* زر التأكيد بتصميم متناسق مع درجات البنفسجي الخاصة بالمتجر */
         .modal-btn-confirm { 
             width: 100%; 
             padding: 14px; 
             border-radius: 12px; 
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8); 
+            background: linear-gradient(135deg, var(--primary), #7c3aed); 
             color: #ffffff; 
             font-weight: 900; 
             font-size: 0.95rem; 
-            border: 1px solid rgba(59, 130, 246, 0.5); 
+            border: 1px solid rgba(139, 92, 246, 0.5); 
             cursor: pointer; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             gap: 8px; 
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+            box-shadow: 0 6px 20px var(--primary-glow);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .modal-btn-confirm:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5); 
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6); 
         }
     </style>
 </head>
@@ -575,24 +623,35 @@
         </div>
     </nav>
 
-    <!-- 2. البانر الاحترافي في أعلى الصفحة (محدث بالرابط الجديد من المستودع وبصيغة contain لضمان ظهور الصورة كاملة على الجوال والكمبيوتر) -->
+    <!-- 2. البانر الاحترافي في أعلى الصفحة -->
     <div class="container">
         <div class="top-banner-wrapper">
             <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/file_000000004ebc820a8e09e1fd70998f58.png" alt="Nexorasa Banner" class="top-banner-img">
         </div>
     </div>
 
-    <!-- 3. النبذة والبيانات تحت الصورة مباشرة -->
+    <!-- 3. النبذة والبيانات (مع مستطيل بارز وفخم محصور على عرض عنوان شاهد VIP ومزود باللمعان) -->
     <div class="container">
         <div class="banner-info-box">
-            <h2>اشتراك شاهد VIP — إيميلك الخاص وشخصي</h2>
+            <div class="banner-title-wrap">
+                <h2>اشتراك شاهد VIP - مسلسلات وأفلام</h2>
+            </div>
             <p>
-                احصل على اشتراك شاهد VIP رسمي ومضمون. نحن نُفعل الاشتراك مباشرة <strong>على بريدك الإلكتروني الشخصي (إيميلك الخاص)</strong> لضمان الأمان والخصوصية التامة، وهو الخيار الأفضل والأكثر راحة مقارنة بالحسابات المشتركة لتستمتع بمتابعة أحدث المسلسلات والأفلام بحرية كاملة.
+                احصل على اشتراك شاهد VIP رسمي ومضمون. نحن نُفعل الاشتراك مباشرة <strong>على بريدك الإلكتروني الشخصي (إيميلك الخاص)</strong> لضمان الأمان والخصوصية التامة، وهو الخيار الأفضل والأكثر راحة لتستمتع بمتابعة أحدث المسلسلات والأفلام بحرية كاملة.
             </p>
-            <div class="banner-highlights">
-                <div class="banner-pill"><i data-lucide="check-circle" size="13"></i> تفعيل على إيميلك الخاص</div>
-                <div class="banner-pill"><i data-lucide="check-circle" size="13"></i> بدون إعلانات</div>
-                <div class="banner-pill"><i data-lucide="check-circle" size="13"></i> ضمان كامل المدة</div>
+            <div class="banner-features-grid">
+                <div class="banner-feature-card">
+                    <div class="banner-feature-icon"><i data-lucide="lock" size="15"></i></div>
+                    <div class="banner-feature-text">خصوصية وأمان تام</div>
+                </div>
+                <div class="banner-feature-card">
+                    <div class="banner-feature-icon"><i data-lucide="zap" size="15"></i></div>
+                    <div class="banner-feature-text">تفعيل على إيميلك الشخصي</div>
+                </div>
+                <div class="banner-feature-card">
+                    <div class="banner-feature-icon"><i data-lucide="shield-check" size="15"></i></div>
+                    <div class="banner-feature-text">ضمان كامل المدة</div>
+                </div>
             </div>
         </div>
     </div>
@@ -713,7 +772,7 @@
                     <div>
                         <div class="product-header">
                             <div class="product-thumb-icon"><i data-lucide="tv" size="20"></i></div>
-                            <div class="product-title-wrap">
+                            <div class="product-title-wrap-card">
                                 <h3>شاهد VIP — 3 أشهر</h3>
                                 <span class="product-duration">على إيميلك الخاص</span>
                             </div>
@@ -770,7 +829,7 @@
                     <div>
                         <div class="product-header">
                             <div class="product-thumb-icon" style="background: rgba(5, 150, 105, 0.15); color: var(--accent-green);"><i data-lucide="sparkles" size="20"></i></div>
-                            <div class="product-title-wrap">
+                            <div class="product-title-wrap-card">
                                 <h3>شاهد VIP — سنة كاملة</h3>
                                 <span class="product-duration">على إيميلك الخاص</span>
                             </div>

@@ -792,7 +792,7 @@
         .footer-col a:hover, .footer-col button:hover { color: var(--primary); }
         .footer-bottom { text-align: center; padding-top: 14px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.78rem; }
 
-        /* الشريط السفلي للجوال (محدث بأيقونات دقيقة) */
+        /* الشريط السفلي للجوال (الاشتراكات + خدمة العملاء + أيقونة ساعات العمل + واتساب) */
         .mobile-cta {
             position: fixed;
             bottom: 8px;
@@ -811,7 +811,7 @@
         }
 
         .mobile-nav-btn {
-            flex: 1;
+            flex: 1.2;
             padding: 8px 6px;
             border-radius: 50px;
             font-weight: 800;
@@ -832,16 +832,26 @@
             box-shadow: 0 2px 10px var(--primary-glow);
         }
 
-        .mobile-btn-hours {
-            background: rgba(124, 58, 237, 0.08);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            color: var(--primary);
-        }
-
         .mobile-btn-support {
             background: rgba(5, 150, 105, 0.08);
             border: 1px solid rgba(5, 150, 105, 0.2);
             color: var(--accent-green);
+            flex: 1.3;
+        }
+
+        .mobile-btn-icon-only {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.08);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
 
         .mobile-btn-icon-wa {
@@ -1522,20 +1532,19 @@
         <i data-lucide="message-circle" size="28"></i>
     </a>
 
-    <!-- الشريط السفلي للجوال (محدث بأيقونات: الاشتراكات، ساعات العمل، خدمة العملاء، ومحادثة واتساب) -->
+    <!-- الشريط السفلي للجوال (محدث: الاشتراكات، خدمة العملاء، أيقونة ساعات العمل، وأيقونة واتساب) -->
     <div class="mobile-cta">
         <a href="#pricing" class="mobile-nav-btn mobile-btn-subscriptions">
             <i data-lucide="shopping-bag" size="14"></i>
             <span>الاشتراكات</span>
         </a>
-        <button type="button" class="mobile-nav-btn mobile-btn-hours" onclick="openPolicyModal('hoursModal')">
-            <i data-lucide="clock" size="14"></i>
-            <span>ساعات العمل</span>
-        </button>
-        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" target="_blank" class="mobile-nav-btn mobile-btn-support">
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" class="mobile-nav-btn mobile-btn-support">
             <i data-lucide="headphones" size="14"></i>
             <span>خدمة العملاء</span>
         </a>
+        <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')" title="ساعات عمل المتجر">
+            <i data-lucide="clock" size="18"></i>
+        </button>
         <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B" target="_blank" class="mobile-btn-icon-wa" title="محادثة واتساب">
             <i data-lucide="message-circle" size="18"></i>
         </a>

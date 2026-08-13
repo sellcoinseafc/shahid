@@ -14,6 +14,9 @@
     <!-- الأيقونات -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- RMZ Embed Script -->
+    <script src="https://rmz.gg/embed/rmz-embed.js"></script>
+
     <style>
         :root {
             --bg-body: #05030a;
@@ -329,14 +332,14 @@
             font-size: 1.1rem;
         }
 
-        /* Button Group & Styling */
+        /* Button Group & RMZ Button Styling (بدون !important لضمان عمل المودال) */
         .btn-group {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
 
-        .btn-buy {
+        button[data-rmz-product] {
             width: 100%;
             padding: 14px;
             border-radius: 12px;
@@ -344,18 +347,17 @@
             color: #ffffff;
             font-weight: 800;
             font-size: 1rem;
-            border: none;
+            border: 0;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            text-decoration: none;
-            transition: all 0.2s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
             box-shadow: 0 4px 20px var(--accent-green-glow);
         }
 
-        .btn-buy:hover {
+        button[data-rmz-product]:hover {
             transform: translateY(-2px);
             opacity: 0.95;
         }
@@ -532,7 +534,7 @@
             z-index: 999;
         }
 
-        .mobile-cta a, .mobile-cta button {
+        .mobile-cta button {
             flex: 1;
             padding: 12px;
             font-size: 0.85rem;
@@ -597,11 +599,11 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- رابط الدفع الفوري والمباشر المضمون 100% من RMZ -->
-                        <a href="https://pay.rmz.gg/checkout/01KZVZTFSEWP72HC29C6KZ0WDNNFU9RZAH" target="_blank" class="btn-buy">
+                        <!-- زر الشراء المباشر الخاص بشركة RMZ للباقة الأولى -->
+                        <button data-rmz-product="103287" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="dark" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                             <i data-lucide="shopping-cart" size="18"></i>
                             اطلب الآن
-                        </a>
+                        </button>
 
                         <button onclick="triggerWhatsApp('card-3m')" class="btn-installment">
                             <i data-lucide="credit-card" size="18"></i>
@@ -642,11 +644,11 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- رابط الدفع الفوري والمباشر المضمون 100% من RMZ -->
-                        <a href="https://pay.rmz.gg/checkout/01KZVZTFSEWP72HC29C6KZ0WDNNFU9RZAH" target="_blank" class="btn-buy">
+                        <!-- يمكنك استبدال data-rmz-product برقم منتج السنة عند إضافته في لوحة رمز -->
+                        <button data-rmz-product="103287" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="dark" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                             <i data-lucide="shopping-cart" size="18"></i>
                             اطلب الآن
-                        </a>
+                        </button>
 
                         <button onclick="triggerWhatsApp('card-1y')" class="btn-installment">
                             <i data-lucide="credit-card" size="18"></i>
@@ -827,10 +829,10 @@
 
     <!-- Mobile Fixed Bottom CTA Bar -->
     <div class="mobile-cta">
-        <a href="https://pay.rmz.gg/checkout/01KZVZTFSEWP72HC29C6KZ0WDNNFU9RZAH" target="_blank" class="btn-buy">
+        <button data-rmz-product="103287" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="dark" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
             <i data-lucide="shopping-cart" size="16"></i>
             اطلب الآن
-        </a>
+        </button>
         <button onclick="sendWhatsAppInstallment('عام', 0, 0)" class="btn-installment">
             <i data-lucide="message-circle" size="16"></i>
             قسّط عبر تابي/تمارا

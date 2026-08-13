@@ -252,7 +252,7 @@
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
-        /* شريط وسائل الدفع وتنسيق الأيقونات بالحجم الكبير داخل المربعات بالوضع الليلي والنهاري */
+        /* شريط وسائل الدفع (الترتيب: السطر الأول مدى، أبل بي، فيزا، ماستركارد، اس تي سي باي | السطر الثاني تابي وتمارا) */
         .payment-methods-bar {
             max-width: 1140px; 
             margin: 0 auto 16px; 
@@ -273,21 +273,28 @@
         .payment-grid-layout { display: flex; flex-direction: column; gap: 8px; }
         .pay-row-top { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
         .pay-row-bottom { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+        @media (max-width: 768px) {
+            .pay-row-top { grid-template-columns: repeat(3, 1fr); }
+            .pay-row-top .pay-badge-card:nth-child(4),
+            .pay-row-top .pay-badge-card:nth-child(5) {
+                grid-column: span 1.5;
+            }
+        }
         
         .pay-badge-card {
             background: #ffffff; 
             border: 1.5px solid var(--border-color); 
-            padding: 8px; 
-            border-radius: 10px;
+            padding: 6px 10px; 
+            border-radius: 12px;
             text-align: center; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transition: transform 0.2s ease, border-color 0.2s ease;
-            height: 52px;
+            height: 48px;
         }
-        /* خلفية نقية وواضحة جداً في الوضع الليلي والنهاري لشعارات الدفع لتكون بارزة ومقروءة تماماً */
         body:not(.light-theme) .pay-badge-card {
             background: #ffffff;
             border-color: rgba(255, 255, 255, 0.3);
@@ -299,11 +306,11 @@
         }
         .pay-badge-card:hover { transform: translateY(-2px); border-color: var(--primary); }
         
-        /* جعل الصور تملأ المربع والمستطيل بشكل كبير وواضح ومتناسق */
         .pay-logo-img {
-            height: 38px;
+            height: 100%;
+            max-height: 34px;
             width: 100%;
-            max-width: 90px;
+            max-width: 100%;
             object-fit: contain;
             display: block;
         }
@@ -377,10 +384,31 @@
         .pay-today-tag { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 900; color: var(--text-main); }
         .pay-today-tag i { color: var(--accent-green); }
         .pay-today-amount { background: var(--accent-green); color: #ffffff; padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 900; }
+        
+        /* أزرار التقسيط داخل الكارد بخلفية بيضاء وشعارات كبيرة وواضحة تماماً مثل طرق الدفع */
         .card-gateway-btns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
-        .card-gw-btn { background: var(--surface-card); border: 1px solid var(--border-color); padding: 8px; border-radius: 8px; font-size: 0.78rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .card-gw-btn.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); }
-        .card-gw-btn.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); }
+        .card-gw-btn { 
+            background: #ffffff !important; 
+            border: 1.5px solid var(--border-color); 
+            padding: 8px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 48px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .card-gw-btn:hover { transform: translateY(-2px); border-color: var(--primary); }
+        .btn-pay-logo { 
+            height: 100%; 
+            max-height: 32px; 
+            width: 100%; 
+            max-width: 100%; 
+            object-fit: contain; 
+            display: block; 
+        }
 
         /* زر المقارنة الذكي */
         .comparison-trigger-box { max-width: 920px; margin: 16px auto 0; text-align: center; }
@@ -545,41 +573,44 @@
         </div>
     </div>
 
-    <!-- شريط وسائل الدفع بالترتيب الجديد والمقاسات الكبيرة المضيئة في الليل -->
+    <!-- شريط وسائل الدفع بدقة: السطر الأول (مدى، أبل باي، فيزا، ماستركارد، اس تي سي باي) والسطر الثاني (تابي وتمارا) -->
     <div class="container">
         <div class="payment-methods-bar">
             <span class="payment-methods-title">طرق الدفع المتوفرة:</span>
             <div class="payment-grid-layout">
-                <div class="pay-row-top" style="grid-template-columns: repeat(5, 1fr);">
-                    <!-- Mada -->
-                    <div class="pay-badge-card" title="مدى">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/Mada-01.svg" alt="Mada" class="pay-logo-img">
+                <!-- السطر الأول -->
+                <div class="pay-row-top">
+                    <!-- 1. مدى -->
+                    <div class="pay-badge-card" title="Mada">
+                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183130.png" alt="Mada" class="pay-logo-img">
                     </div>
-                    <!-- Apple Pay -->
+                    <!-- 2. أبل باي -->
                     <div class="pay-badge-card" title="Apple Pay">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/Apple-Pay-01.svg" alt="Apple Pay" class="pay-logo-img">
+                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183055.png" alt="Apple Pay" class="pay-logo-img">
                     </div>
-                    <!-- Visa -->
+                    <!-- 3. فيزا -->
                     <div class="pay-badge-card" title="Visa">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/Visa-01.svg" alt="Visa" class="pay-logo-img">
+                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183155.png" alt="Visa" class="pay-logo-img">
                     </div>
-                    <!-- Mastercard -->
+                    <!-- 4. ماستركارد -->
                     <div class="pay-badge-card" title="Mastercard">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/Mastercard-01.svg" alt="Mastercard" class="pay-logo-img">
+                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183255.png" alt="Mastercard" class="pay-logo-img">
                     </div>
-                    <!-- STC Pay -->
+                    <!-- 5. اس تي سي باي -->
                     <div class="pay-badge-card" title="STC Pay">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/STC-pay-01.svg" alt="STC Pay" class="pay-logo-img">
+                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_182948.png" alt="STC Pay" class="pay-logo-img">
                     </div>
                 </div>
-                <div class="pay-row-bottom" style="grid-template-columns: repeat(2, 1fr);">
-                    <!-- Tabby -->
+                
+                <!-- السطر الثاني (تابي وتمارا في الأسفل بشكل منفصل) -->
+                <div class="pay-row-bottom">
+                    <!-- تابي -->
                     <div class="pay-badge-card" title="Tabby">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/Tabby-01.svg" alt="Tabby" class="pay-logo-img">
+                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183233.png" alt="Tabby" class="pay-logo-img">
                     </div>
-                    <!-- Tamara -->
+                    <!-- تمارا -->
                     <div class="pay-badge-card" title="Tamara">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/Tamara2-01.svg" alt="Tamara" class="pay-logo-img">
+                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183018.png" alt="Tamara" class="pay-logo-img">
                     </div>
                 </div>
             </div>
@@ -670,9 +701,14 @@
                                 </div>
                                 <div class="pay-today-amount">17 ريال فقط</div>
                             </div>
+                            <!-- أزرار التقسيط داخل الكارد بخلفية بيضاء وشعارات كبيرة وواضحة مثل طرق الدفع -->
                             <div class="card-gateway-btns">
-                                <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-gw-btn tabby">تابي (Tabby)</button>
-                                <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-gw-btn tamara">تمارا (Tamara)</button>
+                                <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-gw-btn">
+                                    <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183233.png" alt="Tabby" class="btn-pay-logo">
+                                </button>
+                                <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-gw-btn">
+                                    <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183018.png" alt="Tamara" class="btn-pay-logo">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -722,9 +758,14 @@
                                 </div>
                                 <div class="pay-today-amount">50 ريال فقط</div>
                             </div>
+                            <!-- أزرار التقسيط داخل الكارد بخلفية بيضاء وشعارات كبيرة وواضحة مثل طرق الدفع -->
                             <div class="card-gateway-btns">
-                                <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="card-gw-btn tabby">تابي (Tabby)</button>
-                                <button type="button" onclick="openGatewayModal('1y', 'tamara')" class="card-gw-btn tamara">تمارا (Tamara)</button>
+                                <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="card-gw-btn">
+                                    <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183233.png" alt="Tabby" class="btn-pay-logo">
+                                </button>
+                                <button type="button" onclick="openGatewayModal('1y', 'tamara')" class="card-gw-btn">
+                                    <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183018.png" alt="Tamara" class="btn-pay-logo">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -838,8 +879,8 @@
     </footer>
 
     <!-- أيقونة الواتساب العائمة -->
-    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%8للعملاء" class="mobile-cta-wa" style="display:none;"></a>
-    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
+    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A1" class="mobile-cta-wa" style="display:none;"></a>
+    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%85%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
         <i data-lucide="message-circle" size="26"></i>
     </a>
 
@@ -849,7 +890,7 @@
             <i data-lucide="shopping-bag" size="13"></i>
             <span>الاشتراكات</span>
         </a>
-        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%85%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" class="mobile-nav-btn mobile-btn-support">
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%85%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A1" class="mobile-nav-btn mobile-btn-support">
             <i data-lucide="headphones" size="13"></i>
             <span>خدمة العملاء</span>
         </a>
@@ -1118,7 +1159,7 @@
                 <p>سيتم نشر النسخة المحدثة من السياسة على هذه الصفحة، ويُنصح بمراجعتها بشكل دوري.</p>
 
                 <p style="margin-top: 14px; background: rgba(124,58,237,0.06); padding: 10px; border-radius: 8px;">
-                    📌 <strong>تنويه:</strong> باستخدامك لمتجر NEXORA SA، فإنك تقر باطلاعك على سياسة الخصوصية هذه وفهمك لكيفية جمع واستخدام وحماية بياناتك وفقًا هو موضح فيها.<br>
+                    📌 <strong>تنويه:</strong> باستخدامك لمتجر NEXORA SA، فإنك تقر باطلاعك على سياسة الخصوصية هذه وفهمك لكيفية جمع واستخدام وحماية بياناتك وفقًا لما هو موضح فيها.<br>
                     <strong>آخر تحديث: 2026</strong>
                 </p>
             </div>

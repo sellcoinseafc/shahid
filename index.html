@@ -246,6 +246,7 @@
             color: var(--accent-green);
         }
 
+        /* ضبط تنسيق إطار الصورة لتناسب أي قياس بدقة 100% */
         .hero-media-card {
             width: 100%;
             border-radius: 24px;
@@ -254,35 +255,17 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.08);
             background: var(--surface-card);
             position: relative;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-media-card img {
             width: 100%;
-            height: 340px;
+            height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .shahid-badge-overlay {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(10px);
-            padding: 8px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.18);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .shahid-badge-overlay span {
-            color: #fff;
-            font-weight: 900;
-            font-size: 0.92rem;
-            letter-spacing: 0.5px;
         }
 
         /* شريط الثقة */
@@ -912,7 +895,7 @@
         </div>
     </nav>
 
-    <!-- 2. Hero Section مع الصورة العائلية وشعار شاهد VIP -->
+    <!-- 2. Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
@@ -934,11 +917,8 @@
 
                 <div class="hero-media">
                     <div class="hero-media-card">
-                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1000&auto=format&fit=crop" alt="Family Watching Shahid VIP">
-                        <div class="shahid-badge-overlay">
-                            <i data-lucide="tv" size="18" style="color: var(--primary);"></i>
-                            <span>شاهد VIP - تفعيل رسمي</span>
-                        </div>
+                        <!-- رابط صورتك المصممة المباشر مع ملاءمة كاملة للإطار -->
+                        <img src="https://e.top4top.io/p_3877drff41.png" alt="Shahid VIP Nexorasa Banner">
                     </div>
                 </div>
             </div>
@@ -1113,7 +1093,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="mail" size="22"></i></div>
                     <h3>حسابك الشخصي</h3>
-                    <p>نُفعّل الاشتراك على إيميلك الخاص لضمان الخصوصية الكاملة واستقلالية الاستخدام.</p>
+                    <p>نُفعّل الاشتراك على إيميلك الخاص لضمان الخخصوصية الكاملة واستقلالية الاستخدام.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="zap" size="22"></i></div>

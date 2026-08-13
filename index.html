@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="dark-theme">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -18,8 +18,28 @@
     <script src="https://embed-js.rmz.gg/rmz-embed.js"></script>
 
     <style>
-        /* الوضع النهاري الافتراضي (Light Mode) */
+        /* الوضع الليلي كوضع أساسي افتراضي */
         :root {
+            --bg-body: #06040d;
+            --surface-card: rgba(18, 14, 33, 0.95);
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.35);
+            --accent-green: #10b981;
+            --accent-green-glow: rgba(16, 185, 129, 0.25);
+            --accent-gold: #f59e0b;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --border-active: rgba(139, 92, 246, 0.5);
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            --tabby-color: #3bffc8;
+            --tamara-color: #ffab40;
+            --navbar-bg: rgba(6, 4, 13, 0.95);
+            --ambient-bg: radial-gradient(circle at 50% 5%, rgba(139, 92, 246, 0.15) 0%, rgba(6, 4, 13, 0) 75%);
+        }
+
+        /* الوضع النهاري (Light Mode) عند التبديل */
+        body.light-theme {
             --bg-body: #f8fafc;
             --surface-card: #ffffff;
             --primary: #7c3aed;
@@ -36,26 +56,6 @@
             --tamara-color: #d97706;
             --navbar-bg: rgba(255, 255, 255, 0.95);
             --ambient-bg: radial-gradient(circle at 50% 5%, rgba(124, 58, 237, 0.06) 0%, rgba(248, 250, 252, 0) 60%);
-        }
-
-        /* الوضع الليلي (Dark Mode) */
-        body.dark-theme {
-            --bg-body: #06040d;
-            --surface-card: rgba(18, 14, 33, 0.95);
-            --primary: #8b5cf6;
-            --primary-glow: rgba(139, 92, 246, 0.35);
-            --accent-green: #10b981;
-            --accent-green-glow: rgba(16, 185, 129, 0.25);
-            --accent-gold: #f59e0b;
-            --border-color: rgba(255, 255, 255, 0.12);
-            --border-active: rgba(139, 92, 246, 0.5);
-            --text-main: #ffffff;
-            --text-muted: #e2e8f0;
-            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            --tabby-color: #3bffc8;
-            --tamara-color: #ffab40;
-            --navbar-bg: rgba(6, 4, 13, 0.95);
-            --ambient-bg: radial-gradient(circle at 50% 5%, rgba(139, 92, 246, 0.15) 0%, rgba(6, 4, 13, 0) 75%);
         }
 
         * {
@@ -101,7 +101,7 @@
             z-index: 1;
         }
 
-        /* Header */
+        /* Header المتجر الرسمي */
         .navbar {
             padding: 10px 0;
             border-bottom: 1px solid var(--border-color);
@@ -120,7 +120,7 @@
 
         .brand-logo { display: flex; align-items: center; text-decoration: none; }
         .logo-img { height: 46px; width: auto; object-fit: contain; display: block; transition: filter 0.3s ease; }
-        body.dark-theme .logo-img { filter: brightness(0) invert(1); }
+        body:not(.light-theme) .logo-img { filter: brightness(0) invert(1); }
 
         .nav-actions { display: flex; align-items: center; gap: 8px; }
         .theme-icon-btn {
@@ -129,122 +129,114 @@
         }
         .store-badge-header {
             display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px;
-            background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.2);
+            background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(139, 92, 246, 0.3);
             border-radius: 8px; color: var(--primary); font-size: 0.78rem; font-weight: 800;
         }
 
-        /* Hero */
-        .hero-banner-bg {
-            position: relative;
-            width: 100%;
+        /* البانر الاحترافي في أعلى الصفحة */
+        .top-banner-wrapper {
             max-width: 1140px;
             margin: 16px auto 14px;
-            border-radius: 20px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--surface-card);
+        }
+        .top-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 16 / 7;
+        }
+        @media (min-width: 768px) {
+            .top-banner-img { aspect-ratio: 16 / 6; }
+        }
+
+        /* قسم النبذة والبيانات تحت الصورة مباشرة */
+        .banner-info-box {
+            max-width: 1140px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border: 1.5px solid rgba(139, 92, 246, 0.4);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
             text-align: center;
         }
-
-        .hero-bg-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(6, 4, 15, 0.78), rgba(20, 15, 38, 0.70));
-            z-index: 2;
-        }
-
-        .hero-content-box {
-            position: relative;
-            z-index: 3;
-            padding: 30px 18px;
-            color: #ffffff;
-            max-width: 850px;
-        }
-
-        .hero-content-box h1 {
-            font-size: 1.5rem;
+        .banner-info-box h2 {
+            font-size: 1.25rem;
             font-weight: 900;
-            margin-bottom: 8px;
             color: #ffffff;
-            line-height: 1.35;
+            margin-bottom: 6px;
         }
-        @media (min-width: 768px) {
-            .hero-content-box h1 { font-size: 1.9rem; }
-            .hero-content-box { padding: 40px 24px; }
-        }
-
-        .hero-content-box p {
+        .banner-info-box p {
             font-size: 0.88rem;
             color: #f1f5f9;
-            margin-bottom: 16px;
-            line-height: 1.7;
-        }
-        @media (min-width: 768px) {
-            .hero-content-box p { font-size: 0.98rem; }
-        }
-
-        .sub-brand-logo-white {
-            height: 38px;
-            width: auto;
-            object-fit: contain;
+            line-height: 1.6;
+            max-width: 900px;
             margin: 0 auto 12px;
-            display: block;
-            filter: brightness(0) invert(1);
         }
-
-        .hero-highlights-row {
+        .banner-highlights {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
         }
-
-        .highlight-pill-white {
+        .banner-pill {
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.12);
             border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 5px 12px;
             border-radius: 50px;
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             font-weight: 800;
             color: #ffffff;
         }
-        .highlight-pill-white i { color: #3bffc8; }
+        .banner-pill i { color: #3bffc8; }
 
-        /* أزرار التنقل السريع بين الباقات (التبويبات تحت الصورة وفوق طرق الدفع) */
+        /* مستطيل بارز وفخم جداً مع تأثير اللمعان لأزرار التبديل السريع */
         .quick-tabs-container {
+            position: relative;
             max-width: 1140px;
-            margin: 0 auto 12px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(139, 92, 246, 0.08));
+            border: 2px solid var(--primary);
+            border-radius: 18px;
+            padding: 14px;
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
+            box-shadow: 0 8px 30px var(--primary-glow);
+            overflow: hidden;
         }
+        .quick-tabs-container::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+            transform: rotate(30deg);
+            animation: shineGlow 3s infinite linear;
+            pointer-events: none;
+        }
+        @keyframes shineGlow {
+            0% { transform: translateY(-100%) rotate(30deg); }
+            100% { transform: translateY(100%) rotate(30deg); }
+        }
+
         .quick-tab-btn {
             flex: 1;
             background: var(--surface-card);
-            border: 1.5px solid var(--border-color);
-            padding: 12px 14px;
+            border: 2px solid var(--border-color);
+            padding: 14px;
             border-radius: 14px;
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             font-weight: 900;
             color: var(--text-main);
             cursor: pointer;
@@ -252,45 +244,92 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: var(--card-shadow);
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+            z-index: 2;
         }
         .quick-tab-btn:hover, .quick-tab-btn.active {
             border-color: var(--primary);
-            background: rgba(124, 58, 237, 0.08);
-            color: var(--primary);
+            background: var(--primary);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--primary-glow);
         }
 
-        /* شريط وسائل الدفع */
+        /* طرق الدفع المتناسقة مع الوضع الليلي (تصميم فخم ومريح للعين) */
         .payment-methods-bar {
-            max-width: 1140px; margin: 0 auto 16px; background: var(--surface-card);
-            border: 1px solid var(--border-color); border-radius: 14px; padding: 10px 14px; box-shadow: var(--card-shadow);
+            max-width: 1140px; 
+            margin: 0 auto 16px; 
+            background: var(--surface-card);
+            border: 1.5px solid var(--border-active); 
+            border-radius: 16px; 
+            padding: 14px 16px; 
+            box-shadow: var(--card-shadow);
         }
-        .payment-methods-title { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-align: center; margin-bottom: 8px; display: block; }
-        .payment-grid-layout { display: flex; flex-direction: column; gap: 6px; }
-        .pay-row-top { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-        .pay-row-bottom { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+        .payment-methods-title { 
+            font-size: 0.8rem; 
+            font-weight: 900; 
+            color: var(--text-main); 
+            text-align: center; 
+            margin-bottom: 12px; 
+            display: block; 
+        }
+        .payment-grid-layout { display: flex; flex-direction: column; gap: 8px; }
+        .pay-row-top { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .pay-row-bottom { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+        
         .pay-badge-card {
-            background: var(--bg-body); border: 1px solid var(--border-color); padding: 6px; border-radius: 8px;
-            font-size: 0.72rem; font-weight: 800; color: var(--text-main); text-align: center; display: flex; align-items: center; justify-content: center; gap: 4px;
+            background: rgba(255, 255, 255, 0.06); 
+            border: 1.5px solid var(--border-color); 
+            padding: 10px 8px; 
+            border-radius: 10px;
+            font-size: 0.8rem; 
+            font-weight: 900; 
+            color: #ffffff; 
+            text-align: center; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
         }
-        .pay-badge-card.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); background: rgba(5, 150, 105, 0.04); }
-        .pay-badge-card.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); background: rgba(217, 119, 6, 0.04); }
+        body.light-theme .pay-badge-card {
+            background: #ffffff;
+            color: #0f172a;
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .pay-badge-card:hover { transform: translateY(-2px); border-color: var(--primary); background: rgba(139, 92, 246, 0.15); }
+        
+        .pay-badge-card.tabby { 
+            background: rgba(16, 185, 129, 0.12); 
+            color: #3bffc8; 
+            border-color: rgba(16, 185, 129, 0.4); 
+        }
+        body.light-theme .pay-badge-card.tabby { background: #ecfdf5; color: #047857; border-color: #10b981; }
+
+        .pay-badge-card.tamara { 
+            background: rgba(245, 158, 11, 0.12); 
+            color: #ffab40; 
+            border-color: rgba(245, 158, 11, 0.4); 
+        }
+        body.light-theme .pay-badge-card.tamara { background: #fffbeb; color: #b45309; border-color: #f59e0b; }
 
         /* شريط الثقة */
         .trust-bar {
-            max-width: 1140px; margin: 0 auto 24px; padding: 10px 12px; background: var(--surface-card);
+            max-width: 1140px; margin: 0 auto 24px; padding: 12px 14px; background: var(--surface-card);
             border: 1px solid var(--border-color); border-radius: 14px; box-shadow: var(--card-shadow);
         }
         .trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         @media (min-width: 768px) { .trust-grid { grid-template-columns: repeat(4, 1fr); } }
         .trust-item { display: flex; align-items: center; gap: 8px; padding: 4px; }
         .trust-item-icon {
-            width: 30px; height: 30px; border-radius: 8px; background: rgba(124, 58, 237, 0.1);
+            width: 32px; height: 32px; border-radius: 8px; background: rgba(124, 58, 237, 0.15);
             color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
-        .trust-item-title { font-size: 0.78rem; font-weight: 800; display: block; color: var(--text-main); }
-        .trust-item-sub { font-size: 0.68rem; color: var(--text-muted); }
+        .trust-item-title { font-size: 0.82rem; font-weight: 800; display: block; color: var(--text-main); }
+        .trust-item-sub { font-size: 0.72rem; color: var(--text-muted); }
 
         /* قسم المنتجات */
         .pricing-section { padding: 5px 0 15px; }
@@ -326,7 +365,7 @@
             background: linear-gradient(90deg, var(--primary), #a855f7); color: #fff; padding: 2px 14px; border-radius: 50px; font-size: 0.72rem; font-weight: 900; white-space: nowrap;
         }
         .product-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
-        .product-thumb-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(124, 58, 237, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .product-thumb-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(124, 58, 237, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .product-title-wrap h3 { font-size: 1.1rem; font-weight: 900; color: var(--text-main); }
         .product-duration { color: #ffffff !important; font-size: 0.75rem; font-weight: 800; background: rgba(124, 58, 237, 0.85); padding: 2px 8px; border-radius: 6px; display: inline-block; margin-top: 4px; }
         .price-container { margin: 8px 0; display: flex; align-items: baseline; gap: 6px; }
@@ -334,7 +373,7 @@
         .current-price span { font-size: 0.8rem; color: var(--text-muted); }
         .product-features-list { list-style: none; margin: 10px 0 16px; display: flex; flex-direction: column; gap: 8px; }
         .product-features-list li { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-muted); }
-        .product-features-list li i { color: var(--accent-green); flex-shrink: 0; }
+        .product-features-list li i { flex-shrink: 0; }
         .btn-group { display: flex; flex-direction: column; gap: 10px; }
         .rmz-button-wrapper { width: 100%; }
         .rmz-button-wrapper button, .rmz-button-wrapper button[data-rmz-product] {
@@ -400,7 +439,8 @@
         .footer-content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 16px; align-items: center; }
         @media (min-width: 768px) { .footer-content { grid-template-columns: repeat(3, 1fr); } }
         .footer-logo-img { height: 40px; width: auto; object-fit: contain; display: block; margin-bottom: 6px; }
-        body.dark-theme .footer-logo-img { filter: brightness(0) invert(1); }
+        body:not(.light-theme) .footer-logo-img { filter: brightness(0) invert(1); }
+        
         .footer-brand p { color: var(--text-muted); font-size: 0.75rem; }
         .footer-col h4 { color: var(--primary); margin-bottom: 8px; font-size: 0.82rem; font-weight: 800; }
         .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
@@ -462,7 +502,7 @@
 
     <div class="ambient-glow"></div>
 
-    <!-- 1. Header المتجر الاحترافي -->
+    <!-- 1. Header المتجر الرسمي -->
     <nav class="navbar">
         <div class="container nav-wrapper">
             <a href="#" class="brand-logo">
@@ -471,47 +511,49 @@
             <div class="nav-actions">
                 <span class="store-badge-header"><i data-lucide="shield-check" size="13"></i> متجر موثوق</span>
                 <button class="theme-icon-btn" onclick="toggleTheme()" id="themeToggleBtn" title="تبديل الوضع">
-                    <i data-lucide="moon" size="16"></i>
+                    <i data-lucide="sun" size="16"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- 2. Hero: صورة خلفية واضحة جداً وفوقها النبذة -->
+    <!-- 2. البانر الاحترافي في أعلى الصفحة -->
     <div class="container">
-        <div class="hero-banner-bg">
-            <img src="https://a.top4top.io/p_3877syzt41.png" alt="Shahid VIP Nexorasa Banner" class="hero-bg-img">
-            <div class="hero-overlay"></div>
-            <div class="hero-content-box">
-                <img src="https://c.top4top.io/p_3877h1xkz1.png" alt="Nexorasa Logo White" class="sub-brand-logo-white">
-                <h1>اشتراك شاهد VIP — إيميلك الخاص وشخصي</h1>
-                <p>
-                    احصل على اشتراك شاهد VIP رسمي ومضمون. نحن نُفعل الاشتراك مباشرة <strong>على بريدك الإلكتروني الشخصي (إيميلك الخاص)</strong> لضمان الأمان والخصوصية التامة، وهو الخيار الأفضل والأكثر راحة مقارنة بالحسابات المشتركة لتستمتع بمتابعة أحدث المسلسلات والأفلام بحرية كاملة.
-                </p>
-                <div class="hero-highlights-row">
-                    <div class="highlight-pill-white"><i data-lucide="check-circle" size="13"></i> تفعيل على إيميلك الخاص</div>
-                    <div class="highlight-pill-white"><i data-lucide="check-circle" size="13"></i> بدون إعلانات</div>
-                    <div class="highlight-pill-white"><i data-lucide="check-circle" size="13"></i> ضمان كامل المدة</div>
-                </div>
+        <div class="top-banner-wrapper">
+            <img src="https://l.top4top.io/p_3877s760u1.png" alt="Nexorasa Banner" class="top-banner-img">
+        </div>
+    </div>
+
+    <!-- 3. النبذة والبيانات تحت الصورة مباشرة -->
+    <div class="container">
+        <div class="banner-info-box">
+            <h2>اشتراك شاهد VIP — إيميلك الخاص وشخصي</h2>
+            <p>
+                احصل على اشتراك شاهد VIP رسمي ومضمون. نحن نُفعل الاشتراك مباشرة <strong>على بريدك الإلكتروني الشخصي (إيميلك الخاص)</strong> لضمان الأمان والخصوصية التامة، وهو الخيار الأفضل والأكثر راحة مقارنة بالحسابات المشتركة لتستمتع بمتابعة أحدث المسلسلات والأفلام بحرية كاملة.
+            </p>
+            <div class="banner-highlights">
+                <div class="banner-pill"><i data-lucide="check-circle" size="13"></i> تفعيل على إيميلك الخاص</div>
+                <div class="banner-pill"><i data-lucide="check-circle" size="13"></i> بدون إعلانات</div>
+                <div class="banner-pill"><i data-lucide="check-circle" size="13"></i> ضمان كامل المدة</div>
             </div>
         </div>
     </div>
 
-    <!-- 3. أزرار التنقل السريع بين الباقات (التبويبات في المكان الجديد تحت الصورة وفوق طرق الدفع) -->
+    <!-- 4. مستطيل بارز وفخم جداً مع تأثير اللمعان لأزرار التبديل السريع بين الباقات -->
     <div class="container">
         <div class="quick-tabs-container">
             <button type="button" class="quick-tab-btn active" id="tab3m" onclick="filterPlans('3m')">
-                <i data-lucide="tv" size="16"></i>
+                <i data-lucide="tv" size="18"></i>
                 <span>باقة 3 أشهر (60 ر.س)</span>
             </button>
             <button type="button" class="quick-tab-btn" id="tab1y" onclick="filterPlans('1y')">
-                <i data-lucide="sparkles" size="16"></i>
+                <i data-lucide="sparkles" size="18"></i>
                 <span>باقة سنة كاملة (180 ر.س)</span>
             </button>
         </div>
     </div>
 
-    <!-- شريط وسائل الدفع -->
+    <!-- شريط وسائل الدفع المتاحة -->
     <div class="container">
         <div class="payment-methods-bar">
             <span class="payment-methods-title">طرق الدفع المتوفرة:</span>
@@ -566,7 +608,7 @@
         </div>
     </section>
 
-    <!-- 4. قسم المنتجات -->
+    <!-- 5. قسم المنتجات (مع أيقونات مخصصة لكل ميزة) -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             <div class="pricing-grid">
@@ -587,10 +629,10 @@
                         </div>
 
                         <ul class="product-features-list">
-                            <li><i data-lucide="check" size="14"></i><span>مكتبة العروض والأعمال الكاملة</span></li>
-                            <li><i data-lucide="check" size="14"></i><span>مشاهدة بجودة Full HD بدون إعلانات</span></li>
-                            <li><i data-lucide="check" size="14"></i><span>تفعيل على بريدك الإلكتروني الشخصي</span></li>
-                            <li><i data-lucide="check" size="14"></i><span>ضمان شامل لمدة 90 يوماً</span></li>
+                            <li><i data-lucide="layers" size="14" style="color: var(--primary);"></i><span>مكتبة العروض والأعمال الكاملة</span></li>
+                            <li><i data-lucide="monitor-play" size="14" style="color: var(--accent-green);"></i><span>مشاهدة بجودة Full HD بدون إعلانات</span></li>
+                            <li><i data-lucide="user-check" size="14" style="color: var(--accent-gold);"></i><span>تفعيل على بريدك الإلكتروني الشخصي</span></li>
+                            <li><i data-lucide="shield-check" size="14" style="color: var(--primary);"></i><span>ضمان شامل لمدة 90 يوماً</span></li>
                         </ul>
                     </div>
 
@@ -627,7 +669,7 @@
                     <div class="product-badge-pop">الأكثر طلباً ⭐</div>
                     <div>
                         <div class="product-header">
-                            <div class="product-thumb-icon" style="background: rgba(5, 150, 105, 0.1); color: var(--accent-green);"><i data-lucide="sparkles" size="20"></i></div>
+                            <div class="product-thumb-icon" style="background: rgba(5, 150, 105, 0.15); color: var(--accent-green);"><i data-lucide="sparkles" size="20"></i></div>
                             <div class="product-title-wrap">
                                 <h3>شاهد VIP — سنة كاملة</h3>
                                 <span class="product-duration">على إيميلك الخاص</span>
@@ -639,10 +681,10 @@
                         </div>
 
                         <ul class="product-features-list">
-                            <li><i data-lucide="check" size="14"></i><span>وصول كامل لكافة أعمال شاهد الأصلية</span></li>
-                            <li><i data-lucide="check" size="14"></i><span>عرض بأعلى جودة بدقة Full HD/4K</span></li>
-                            <li><i data-lucide="check" size="14"></i><span>بدون أي فواصل أو إعلانات</span></li>
-                            <li><i data-lucide="check" size="14"></i><span>ضمان شامل لمدة 12 شهراً</span></li>
+                            <li><i data-lucide="film" size="14" style="color: var(--primary);"></i><span>وصول كامل لكافة أعمال شاهد الأصلية</span></li>
+                            <li><i data-lucide="tv-2" size="14" style="color: var(--accent-green);"></i><span>عرض بأعلى جودة بدقة Full HD/4K</span></li>
+                            <li><i data-lucide="ban" size="14" style="color: #ef4444;"></i><span>بدون أي فواصل أو إعلانات</span></li>
+                            <li><i data-lucide="shield-alert" size="14" style="color: var(--accent-gold);"></i><span>ضمان شامل لمدة 12 شهراً</span></li>
                         </ul>
                     </div>
 
@@ -686,7 +728,7 @@
         </div>
     </section>
 
-    <!-- 5. قسم التقييمات الاحترافي والمتحرك -->
+    <!-- 6. قسم التقييمات الاحترافي والمتحرك -->
     <section class="reviews-section">
         <div class="container">
             <div class="reviews-header-title">
@@ -782,8 +824,7 @@
     </footer>
 
     <!-- أيقونة الواتساب العائمة -->
-    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" class="mobile-cta-wa" style="display:none;"></a>
-    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
+    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
         <i data-lucide="message-circle" size="26"></i>
     </a>
 
@@ -800,7 +841,7 @@
         <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')" title="ساعات عمل المتجر">
             <i data-lucide="clock" size="16"></i>
         </button>
-        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B" target="_blank" class="mobile-btn-icon-wa" title="محادثة واتساب">
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%85%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B" target="_blank" class="mobile-btn-icon-wa" title="محادثة واتساب">
             <i data-lucide="message-circle" size="16"></i>
         </a>
     </div>
@@ -859,16 +900,112 @@
                 <button class="modal-close-x" onclick="closePolicyModal('termsModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="modal-body-content">
-                <p>مرحبًا بك في NEXORA SA، وجهتك للحصول على الاشتراكات والخدمات الرقمية والترفيهية. باستخدامك لمتجر NEXORA SA أو إتمام أي عملية شراء، فإنك تقر بقراءة هذه الشروط والأحكام والموافقة عليها.</p>
+                <p>مرحبًا بك في NEXORA SA، وجهتك للحصول على الاشتراكات والخدمات الرقمية والترفيهية.</p>
+                <p>باستخدامك لمتجر NEXORA SA أو إتمام أي عملية شراء، فإنك تقر بقراءة هذه الشروط والأحكام والموافقة عليها.</p>
+                
                 <h4>1. طبيعة خدمات المتجر</h4>
-                <p>يقدم متجر NEXORA SA خدمات واشتراكات رقمية وترفيهية يتم تفعيلها أو توفيرها للعميل وفق آلية كل منتج. المنصات والخدمات التي يتم الاشتراك بها مملوكة ومدارة من قبل الشركات والجهات المالكة لها، ولا يدعي متجر NEXORA SA ملكية أو تطوير هذه المنصات.</p>
+                <p>يقدم متجر NEXORA SA خدمات واشتراكات رقمية وترفيهية يتم تفعيلها أو توفيرها للعميل وفق آلية كل منتج.</p>
+                <p>المنصات والخدمات التي يتم الاشتراك بها مملوكة ومدارة من قبل الشركات والجهات المالكة لها، ولا يدعي متجر NEXORA SA ملكية أو تطوير هذه المنصات.</p>
+                <p>تخضع كل خدمة لشروط وسياسات الجهة المالكة لها، وقد تختلف طريقة التفعيل أو الاستخدام حسب المنتج.</p>
+
                 <h4>2. مسؤولية المتجر</h4>
-                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج. لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة.</p>
+                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج.</p>
+                <p>لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة، بما في ذلك:</p>
+                <ul>
+                    <li>تحديثات المنصة أو التطبيق.</li>
+                    <li>تغيير المزايا أو المحتوى.</li>
+                    <li>تغيير سياسات الاستخدام.</li>
+                    <li>تغيير الأسعار أو الباقات.</li>
+                    <li>إيقاف أو تعليق بعض الخدمات من قبل المنصة.</li>
+                    <li>أي قيود أو تغييرات تفرضها الجهة المالكة للخدمة.</li>
+                </ul>
+                <p>وفي حال كان المنتج مشمولًا بضمان، يتم التعامل مع المشكلة وفق سياسة الضمان الخاصة بالمنتج.</p>
+
                 <h4>3. سياسة الاسترجاع والاسترداد</h4>
-                <p>نظرًا لطبيعة المنتجات الرقمية، يمكن طلب الاسترجاع خلال 24 ساعة في حال وجود مشكلة في التفعيل. بعد نجاح التفعيل واستخدام الاشتراك لا يمكن استرجاع قيمته.</p>
+                <p>نظرًا لطبيعة المنتجات الرقمية، فإن جميع عمليات الشراء تخضع للشروط التالية:</p>
+                <ul>
+                    <li>يمكن طلب الاسترجاع خلال 24 ساعة من تنفيذ الطلب في حال وجود مشكلة في التفعيل أو عدم تمكن المتجر من توفير الخدمة المتفق عليها.</li>
+                    <li>بعد نجاح التفعيل وبدء استخدام الاشتراك، لا يمكن استرجاع قيمة المنتج باعتباره منتجًا رقميًا تم تسليمه وتفعيله.</li>
+                    <li>لا يحق للعميل طلب استرداد بسبب تغيير أو تحديث صادر من المنصة المالكة للخدمة.</li>
+                    <li>في حال وجود ضمان للمنتج، يتم تطبيق سياسة الضمان بدلًا من الاسترجاع، متى كانت المشكلة مشمولة بالضمان.</li>
+                </ul>
+
                 <h4>4. سياسة الضمان</h4>
-                <p>الضمان يشمل الاشتراك المفعّل فقط، ويغطي استمرارية الاشتراك خلال مدة الضمان المحددة للمنتج (90 يوماً لاشتراك 3 أشهر، و12 شهراً لاشتراك السنة).</p>
-                <p><strong>آخر تحديث: 2026</strong></p>
+                <p>الضمان، عند وجوده، يشمل الاشتراك الذي تم شراؤه وتفعيله من خلال متجر NEXORA SA فقط.</p>
+                <p>ويختلف نطاق ومدة الضمان حسب المنتج، ويتم توضيح ذلك في صفحة المنتج قبل إتمام عملية الشراء. على سبيل المثال:</p>
+                <ul>
+                    <li>اشتراك 3 أشهر: ضمان لمدة 90 يومًا.</li>
+                    <li>اشتراك سنة: ضمان لمدة 12 شهرًا.</li>
+                </ul>
+                <p>يشمل الضمان المشاكل المتعلقة بالاشتراك نفسه خلال مدة الضمان المحددة، وفق طبيعة المنتج.</p>
+                <p>ولا يشمل الضمان:</p>
+                <ul>
+                    <li>تحديثات أو تغييرات المنصة.</li>
+                    <li>تغيير سياسات أو أنظمة مزود الخدمة.</li>
+                    <li>تغيير المحتوى أو المزايا.</li>
+                    <li>الأعطال العامة الناتجة عن المنصة.</li>
+                    <li>إيقاف أو تعليق الخدمة من قبل الشركة المالكة.</li>
+                    <li>المشاكل الناتجة عن استخدام العميل للخدمة بطريقة مخالفة لشروط المنصة.</li>
+                    <li>أي مشكلة لا تتعلق مباشرة بالاشتراك الذي تم شراؤه من المتجر.</li>
+                </ul>
+                <p>وفي حال حدوث مشكلة مشمولة بالضمان، يعمل المتجر على تقديم الحل المناسب وفق حالة الاشتراك وسياسة المنتج.</p>
+
+                <h4>5. مسؤولية العميل</h4>
+                <p>يتحمل العميل مسؤولية:</p>
+                <ul>
+                    <li>تقديم البيانات الصحيحة المطلوبة لتنفيذ الطلب.</li>
+                    <li>التأكد من صحة البريد الإلكتروني أو بيانات الحساب قبل إرسالها.</li>
+                    <li>المحافظة على بيانات الدخول وعدم مشاركتها بشكل يخالف شروط الخدمة.</li>
+                    <li>استخدام الاشتراك وفق شروط وسياسات المنصة المالكة للخدمة.</li>
+                </ul>
+                <p>ولا يتحمل المتجر مسؤولية أي مشكلة ناتجة عن بيانات غير صحيحة أو استخدام مخالف من جانب العميل.</p>
+
+                <h4>6. طبيعة الاشتراكات والخدمات</h4>
+                <p>قد تختلف تفاصيل كل اشتراك من منتج إلى آخر، مثل:</p>
+                <ul>
+                    <li>مدة الاشتراك.</li>
+                    <li>طريقة التفعيل.</li>
+                    <li>الأجهزة المدعومة.</li>
+                    <li>عدد المشاهدات أو الاستخدامات المتزامنة.</li>
+                    <li>المزايا المتاحة.</li>
+                    <li>مدة الضمان.</li>
+                </ul>
+                <p>لذلك يجب على العميل قراءة تفاصيل المنتج وشروطه الخاصة قبل إتمام عملية الشراء.</p>
+
+                <h4>7. التغييرات الصادرة من مزود الخدمة</h4>
+                <p>يحق للمنصة أو الشركة المالكة للخدمة إجراء أي تحديثات أو تغييرات على خدماتها وفق سياساتها الخاصة.</p>
+                <p>ولا يترتب على هذه التغييرات التزام على NEXORA SA بتوفير مزايا إضافية أو تمديد مدة الاشتراك، ما لم تكن المشكلة ضمن نطاق الضمان الموضح في صفحة المنتج.</p>
+
+                <h4>8. إتمام عملية الشراء</h4>
+                <p>إتمام عملية الشراء من متجر NEXORA SA يعني أن العميل:</p>
+                <ul>
+                    <li>اطلع على تفاصيل المنتج.</li>
+                    <li>اطلع على مدة الاشتراك والضمان إن وجد.</li>
+                    <li>اطلع على طريقة التفعيل.</li>
+                    <li>قرأ الشروط والأحكام.</li>
+                    <li>وافق على سياسة الاسترجاع والضمان.</li>
+                </ul>
+
+                <h4>9. التواصل والدعم</h4>
+                <p>في حال وجود مشكلة في الطلب، يمكن للعميل التواصل مع خدمة العملاء خلال مدة الضمان، عند وجود ضمان، مع تزويد فريق الدعم ببيانات الطلب اللازمة للتحقق من الحالة.</p>
+                <p>نسعى دائمًا إلى معالجة المشاكل المتعلقة بالطلبات بأسرع وقت ممكن وتقديم الحل المناسب وفق طبيعة كل حالة.</p>
+
+                <h4>10. ملخص الشروط</h4>
+                <p>باختصار:</p>
+                <ul>
+                    <li>المنتجات الرقمية لا تُسترد بعد نجاح التفعيل.</li>
+                    <li>يمكن طلب الاسترجاع خلال 24 ساعة في حالات مشاكل التفعيل وفق الشروط.</li>
+                    <li>الضمان، إن وجد، يخص الاشتراك نفسه فقط.</li>
+                    <li>مدة الضمان تختلف حسب المنتج ويتم توضيحها في صفحة المنتج.</li>
+                    <li>تحديثات وتغييرات المنصة لا تقع ضمن مسؤولية المتجر.</li>
+                    <li>يجب استخدام الخدمة وفق شروط المنصة المالكة لها.</li>
+                    <li>شراء أي منتج يعني موافقة العميل على هذه الشروط والأحكام.</li>
+                </ul>
+
+                <p style="margin-top: 14px; background: rgba(124,58,237,0.06); padding: 10px; border-radius: 8px;">
+                    📌 <strong>تنويه:</strong> هدف NEXORA SA هو تقديم تجربة شراء وتفعيل سهلة وموثوقة، ونحرص على معالجة أي مشكلة تتعلق بطلبات عملائنا وفق سياسة كل منتج وبما يضمن التعامل معها بصورة واضحة وعادلة قدر الإمكان.<br>
+                    <strong>آخر تحديث: 2026</strong>
+                </p>
             </div>
         </div>
     </div>
@@ -881,12 +1018,15 @@
             </div>
             <div class="modal-body-content">
                 <p>الضمان يشمل الاشتراك المفعّل فقط، ويغطي استمرارية الاشتراك خلال مدة الضمان المحددة للمنتج.</p>
+                
                 <h4>مدة الضمان:</h4>
                 <ul>
                     <li>اشتراك 3 أشهر: 90 يومًا</li>
                     <li>اشتراك سنة: 12 شهرًا</li>
                 </ul>
-                <p>لا يشمل الضمان أي تحديثات أو تغييرات أو تعديلات تطرأ على منصة شاهد أو أنظمتها أو سياساتها.</p>
+
+                <p>لا يشمل الضمان أي تحديثات أو تغييرات أو تعديلات تطرأ على منصة شاهد أو أنظمتها أو سياساتها، كما لا نتحمل مسؤولية أي تغييرات صادرة من المنصة نفسها.</p>
+                <p>ويقتصر الضمان على الاشتراك الذي تم شراؤه من المتجر، ولا يشمل أي خدمات أو مشاكل خارج نطاق الاشتراك.</p>
             </div>
         </div>
     </div>
@@ -898,12 +1038,74 @@
                 <button class="modal-close-x" onclick="closePolicyModal('privacyModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="modal-body-content">
-                <p>في NEXORA SA نحرص على حماية خصوصية عملائنا والحفاظ على سرية بياناتهم، ونلتزم باستخدام المعلومات بالقدر اللازم لتقديم خدماتنا وتنفيذ الطلبات.</p>
+                <p>في NEXORA SA نحرص على حماية خصوصية عملائنا والحفاظ على سرية بياناتهم، ونلتزم باستخدام المعلومات التي يتم جمعها بالقدر اللازم لتقديم خدماتنا وتنفيذ الطلبات وتحسين تجربة المستخدم.</p>
+
                 <h4>1. المعلومات التي نجمعها</h4>
-                <p>الاسم، البريد الإلكتروني، رقم الجوال، وبيانات الطلب والاشتراكات.</p>
-                <h4>2. حماية البيانات</h4>
-                <p>نتخذ إجراءات لحماية بيانات العملاء ولا نقوم ببيعها لأي طرف تجاري آخر.</p>
-                <p><strong>آخر تحديث: 2026</strong></p>
+                <p>قد نجمع المعلومات التي يقدمها العميل عند إنشاء الطلب أو استخدام المتجر، مثل:</p>
+                <ul>
+                    <li>الاسم.</li>
+                    <li>البريد الإلكتروني.</li>
+                    <li>رقم الجوال.</li>
+                    <li>بيانات الطلب والاشتراكات التي تم شراؤها.</li>
+                    <li>أي معلومات يرسلها العميل إلى خدمة العملاء.</li>
+                </ul>
+                <p>وقد يتم جمع بعض البيانات التقنية تلقائيًا، مثل نوع الجهاز والمتصفح وعنوان IP، وذلك لأغراض تشغيل الموقع وتحسين الأمان وتجربة المستخدم.</p>
+
+                <h4>2. كيفية استخدام بياناتك</h4>
+                <p>نستخدم البيانات التي يتم جمعها للأغراض التالية:</p>
+                <ul>
+                    <li>تنفيذ الطلبات وتفعيل الخدمات والاشتراكات.</li>
+                    <li>التواصل مع العميل بشأن طلبه.</li>
+                    <li>تقديم الدعم وخدمة العملاء.</li>
+                    <li>معالجة عمليات الدفع والتحقق من الطلبات.</li>
+                    <li>تحسين أداء المتجر وتجربة المستخدم.</li>
+                    <li>إرسال العروض أو التحديثات التسويقية عند توفرها، ويمكن للعميل إلغاء استقبال الرسائل التسويقية في أي وقت.</li>
+                </ul>
+
+                <h4>3. حماية بياناتك</h4>
+                <p>نتخذ إجراءات تقنية وتنظيمية مناسبة للمساعدة في حماية بيانات العملاء من الوصول غير المصرح به أو الاستخدام أو التعديل أو الفقدان.</p>
+                <p>ولا نقوم ببيع بيانات العملاء الشخصية أو تأجيرها لأطراف أخرى لأغراض تجارية.</p>
+
+                <h4>4. مشاركة البيانات مع الأطراف الأخرى</h4>
+                <p>قد تتم مشاركة بعض البيانات مع مزودي الخدمات الذين نحتاج إلى التعامل معهم لتنفيذ الطلب، مثل:</p>
+                <ul>
+                    <li>بوابات وخدمات الدفع الإلكتروني.</li>
+                    <li>مزودي الخدمات الرقمية عند الحاجة لتفعيل الاشتراك.</li>
+                    <li>مزودي خدمات الاستضافة والتقنيات اللازمة لتشغيل المتجر.</li>
+                </ul>
+                <p>تقتصر مشاركة البيانات على المعلومات اللازمة لتقديم الخدمة أو تنفيذ العملية.</p>
+                <p>كما قد يتم الإفصاح عن بعض المعلومات إذا كان ذلك مطلوبًا بموجب الأنظمة أو من قبل الجهات المختصة.</p>
+
+                <h4>5. ملفات تعريف الارتباط (Cookies)</h4>
+                <p>قد يستخدم متجر NEXORA SA ملفات تعريف الارتباط (Cookies) لتحسين تجربة التصفح، وتذكر بعض الإعدادات، وتحسين أداء الموقع.</p>
+                <p>يمكن للعميل التحكم في ملفات تعريف الارتباط أو تعطيلها من إعدادات المتصفح، إلا أن تعطيلها قد يؤثر على بعض وظائف الموقع.</p>
+
+                <h4>6. بيانات الدفع</h4>
+                <p>تتم معالجة عمليات الدفع من خلال مزودي خدمات الدفع المعتمدين.</p>
+                <p>لا نطلب من العميل مشاركة كلمات المرور أو بيانات البطاقات البنكية الحساسة عبر وسائل التواصل الاجتماعي أو قنوات الدعم غير المخصصة لذلك.</p>
+
+                <h4>7. حقوق العميل</h4>
+                <p>يحق للعميل، وفقًا للأنظمة المعمول بها، طلب:</p>
+                <ul>
+                    <li>معرفة البيانات الشخصية التي نحتفظ بها عنه.</li>
+                    <li>تصحيح البيانات غير الصحيحة.</li>
+                    <li>تحديث بياناته.</li>
+                    <li>طلب حذف بياناته عندما يكون ذلك ممكنًا نظاميًا.</li>
+                    <li>الاستفسار عن طريقة استخدام بياناته.</li>
+                </ul>
+                <p>يمكن التواصل معنا عبر قنوات الدعم الرسمية للمتجر لتقديم أي طلب متعلق بالخصوصية.</p>
+
+                <h4>8. الاحتفاظ بالبيانات</h4>
+                <p>نحتفظ بالبيانات الشخصية للمدة اللازمة لتنفيذ الأغراض التي جُمعت من أجلها، أو للمدة التي تتطلبها الالتزامات النظامية والتشغيلية، وبعد ذلك يتم حذفها أو إتلافها عندما لا تعود هناك حاجة مشروعة للاحتفاظ بها.</p>
+
+                <h4>9. تحديث سياسة الخصوصية</h4>
+                <p>قد يتم تحديث سياسة الخصوصية من وقت لآخر بما يتناسب مع التغييرات التشغيلية أو التقنية أو المتطلبات النظامية.</p>
+                <p>سيتم نشر النسخة المحدثة من السياسة على هذه الصفحة، ويُنصح بمراجعتها بشكل دوري.</p>
+
+                <p style="margin-top: 14px; background: rgba(124,58,237,0.06); padding: 10px; border-radius: 8px;">
+                    📌 <strong>تنويه:</strong> باستخدامك لمتجر NEXORA SA، فإنك تقر باطلاعك على سياسة الخصوصية هذه وفهمك لكيفية جمع واستخدام وحماية بياناتك وفقًا لما هو موضح فيها.<br>
+                    <strong>آخر تحديث: 2026</strong>
+                </p>
             </div>
         </div>
     </div>
@@ -916,9 +1118,10 @@
             </div>
             <div class="modal-body-content" style="text-align: center; padding: 10px 0;">
                 <div style="font-size: 2.2rem; margin-bottom: 8px;">🕒</div>
-                <h4 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 6px;">نحن في خدمتكم يوميًا على مدار الأسبوع!</h4>
-                <p style="font-size: 1rem; color: var(--primary); font-weight: 800; margin-bottom: 10px;">ساعات العمل: من 11 صباحًا حتى 3 فجراً.</p>
-                <p>فريقنا جاهز لاستقبال طلباتك واستفساراتك في أي وقت ضمن هذه الساعات.</p>
+                <h4 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 8px;">نحن في خدمتكم يوميًا على مدار الأسبوع!</h4>
+                <p style="font-size: 1.1rem; color: var(--primary); font-weight: 800; margin-bottom: 14px;">ساعات العمل: من 11 صباحًا حتى 3 فجراً.</p>
+                <p>سواء كنت تبحث عن منتجاتنا الرقمية أو ترغب في التواصل معنا، فريقنا جاهز لاستقبال طلباتك واستفساراتك في أي وقت ضمن هذه الساعات.</p>
+                <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);">📌 ملاحظة: الالتزام بهذه المواعيد يضمن حصولك على خدمة سريعة وفعّالة.</p>
             </div>
         </div>
     </div>
@@ -957,20 +1160,22 @@
     <script>
         lucide.createIcons();
 
-        function initAutoTheme() {
+        // تعيين الوضع الليلي كوضع أساسي افتراضي
+        function initDefaultTheme() {
             try {
-                const now = new Date();
-                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-                const makkahTime = new Date(utc + (3600000 * 3));
-                const hours = makkahTime.getHours();
-                if (!(hours >= 6 && hours < 18)) {
-                    document.body.classList.add('dark-theme');
+                const savedTheme = localStorage.getItem('nx_theme');
+                if (savedTheme === 'light') {
+                    document.body.classList.add('light-theme');
+                    const btn = document.getElementById('themeToggleBtn');
+                    if(btn) { btn.querySelector('i').setAttribute('data-lucide', 'moon'); lucide.createIcons(); }
+                } else {
+                    document.body.classList.remove('light-theme');
                     const btn = document.getElementById('themeToggleBtn');
                     if(btn) { btn.querySelector('i').setAttribute('data-lucide', 'sun'); lucide.createIcons(); }
                 }
             } catch (e) {}
         }
-        initAutoTheme();
+        initDefaultTheme();
 
         const rawReviews = [
             "عبد الله محمد|سرعة بالتفعيل وتجاوب ممتاز، الحساب تفعل على إيميلي بنفس اللحظة! ⭐⭐⭐⭐⭐",
@@ -992,11 +1197,13 @@
         setInterval(nextReview, 7000);
 
         function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            const isDark = document.body.classList.contains('dark-theme');
+            const isLight = document.body.classList.toggle('light-theme');
             const btn = document.getElementById('themeToggleBtn');
-            btn.querySelector('i').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            btn.querySelector('i').setAttribute('data-lucide', isLight ? 'moon' : 'sun');
             lucide.createIcons();
+            try {
+                localStorage.setItem('nx_theme', isLight ? 'light' : 'dark');
+            } catch(e){}
         }
 
         function toggleFaq(element) {
@@ -1019,7 +1226,6 @@
             openPolicyModal('comparisonModal');
         }
 
-        /* نظام التبويبات للتنقل السريع بين الباقات وتحديد الفوكس عليها */
         function filterPlans(plan) {
             const tab3m = document.getElementById('tab3m');
             const tab1y = document.getElementById('tab1y');

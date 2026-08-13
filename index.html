@@ -14,7 +14,7 @@
     <!-- الأيقونات -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- RMZ Embed Script -->
+    <!-- RMZ Embed Script الرسمي -->
     <script src="https://rmz.gg/embed/rmz-embed.js"></script>
 
     <style>
@@ -339,7 +339,8 @@
             gap: 10px;
         }
 
-        .btn-buy {
+        /* تنسيق زر RMZ التلقائي (نظيف وبدون !important) */
+        button[data-rmz-product] {
             width: 100%;
             padding: 14px;
             border-radius: 12px;
@@ -357,7 +358,7 @@
             box-shadow: 0 4px 20px var(--accent-green-glow);
         }
 
-        .btn-buy:hover {
+        button[data-rmz-product]:hover {
             transform: translateY(-2px);
             opacity: 0.95;
         }
@@ -599,8 +600,13 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر الشراء المباشر التفاعلي المضمون 100% -->
-                        <button type="button" class="btn-buy" onclick="triggerRMZCheckout('103287')">
+                        <!-- زر رمز المباشر لباقة الـ 3 أشهر -->
+                        <button type="button" 
+                                class="btn-buy" 
+                                data-rmz-product="103287" 
+                                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
+                                data-rmz-theme="dark" 
+                                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                             <i data-lucide="shopping-cart" size="18"></i>
                             اطلب الآن
                         </button>
@@ -644,8 +650,13 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر الشراء المباشر التفاعلي المضمون 100% -->
-                        <button type="button" class="btn-buy" onclick="triggerRMZCheckout('103287')">
+                        <!-- زر رمز المباشر لباقة السنة (قم باستبدال 103287 برقم منتج السنة الخاص بك في رمز) -->
+                        <button type="button" 
+                                class="btn-buy" 
+                                data-rmz-product="103287" 
+                                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
+                                data-rmz-theme="dark" 
+                                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                             <i data-lucide="shopping-cart" size="18"></i>
                             اطلب الآن
                         </button>
@@ -829,7 +840,12 @@
 
     <!-- Mobile Fixed Bottom CTA Bar -->
     <div class="mobile-cta">
-        <button type="button" class="btn-buy" onclick="triggerRMZCheckout('103287')">
+        <button type="button" 
+                class="btn-buy" 
+                data-rmz-product="103287" 
+                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
+                data-rmz-theme="dark" 
+                data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
             <i data-lucide="shopping-cart" size="16"></i>
             اطلب الآن
         </button>
@@ -843,32 +859,6 @@
     <script>
         // Lucide Icons Initialization
         lucide.createIcons();
-
-        // المفتاح العام الثابت المخصص لمتجرك
-        const RMZ_PUBLIC_KEY = "rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D";
-
-        // المحرك الرئيسي الصريح لفتح المودال المباشر بنسبة 100%
-        function triggerRMZCheckout(productId) {
-            // 1. الاستدعاء المباشر الصريح لـ API المكتبة الرسمية
-            if (window.RMZEmbed && typeof window.RMZEmbed.open === 'function') {
-                try {
-                    window.RMZEmbed.open(productId, {
-                        key: RMZ_PUBLIC_KEY,
-                        theme: 'dark',
-                        config: {
-                            hideQuantity: true,
-                            hideCoupon: true
-                        }
-                    });
-                    return;
-                } catch (e) {
-                    console.warn("RMZ Embed Execution Exception:", e);
-                }
-            }
-
-            // 2. التحويل الحارس الاحتياطي فقط في حال حظر الجافاسكريبت بالكامل بالمتصفح
-            window.location.href = `https://nexorasa.rmz.gg/p/${productId}`;
-        }
 
         // FAQ Toggle
         function toggleFaq(element) {

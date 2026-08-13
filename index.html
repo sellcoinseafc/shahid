@@ -367,40 +367,67 @@
             justify-content: center;
         }
 
-        /* شريط وسائل الدفع المتاحة */
+        /* شريط وسائل الدفع المتاحة المرتب خصيصاً للجوال والكمبيوتر */
         .payment-methods-bar {
             max-width: 920px;
             margin: 0 auto 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 10px 14px;
             background: var(--surface-card);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 16px;
+            padding: 14px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
 
         .payment-methods-title {
-            font-size: 0.78rem;
+            font-size: 0.82rem;
             font-weight: 800;
             color: var(--text-muted);
-            margin-left: 6px;
+            text-align: center;
+            margin-bottom: 12px;
+            display: block;
         }
 
-        .pay-badge {
+        .payment-grid-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pay-row-top {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        @media (min-width: 576px) {
+            .pay-row-top {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .pay-row-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .pay-badge-card {
             background: var(--bg-body);
             border: 1px solid var(--border-color);
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
             font-weight: 800;
             color: var(--text-main);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
-        .pay-badge.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); }
-        .pay-badge.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); }
+        .pay-badge-card.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); background: rgba(5, 150, 105, 0.04); }
+        .pay-badge-card.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); background: rgba(217, 119, 6, 0.04); }
 
         /* قسم الباقات */
         .pricing-section { padding: 10px 0 40px; }
@@ -815,7 +842,7 @@
             .mobile-cta { display: none; }
         }
 
-        /* أيقونة الواتساب العائمة تظهر فقط في الشاشات الكبيرة (متصفح الكمبيوتر) وتختفي في الجوال */
+        /* أيقونة الواتساب العائمة (تظهر في الكمبيوتر فقط وتختفي في الجوال) */
         .floating-whatsapp-btn {
             display: none;
         }
@@ -1155,15 +1182,21 @@
                 </div>
             </div>
 
-            <!-- شريط خيارات ووسائل الدفع المتاحة بالمتجر -->
+            <!-- شريط خيارات ووسائل الدفع المرتب خصيصاً للشاشات (مدى، فيزا، ماستر كارد، تابي، تمارا) -->
             <div class="payment-methods-bar">
                 <span class="payment-methods-title">خيارات الدفع المتاحة:</span>
-                <span class="pay-badge">مدى mada</span>
-                <span class="pay-badge">Apple Pay</span>
-                <span class="pay-badge">Visa</span>
-                <span class="pay-badge">Mastercard</span>
-                <span class="pay-badge tabby">تابي Tabby</span>
-                <span class="pay-badge tamara">تمارا Tamara</span>
+                <div class="payment-grid-layout">
+                    <div class="pay-row-top">
+                        <div class="pay-badge-card">مدى mada</div>
+                        <div class="pay-badge-card">Apple Pay</div>
+                        <div class="pay-badge-card">Visa</div>
+                        <div class="pay-badge-card">Mastercard</div>
+                    </div>
+                    <div class="pay-row-bottom">
+                        <div class="pay-badge-card tabby">تابي Tabby</div>
+                        <div class="pay-badge-card tamara">تمارا Tamara</div>
+                    </div>
+                </div>
             </div>
 
             <div class="pricing-grid">
@@ -1463,12 +1496,12 @@
         </div>
     </footer>
 
-    <!-- أيقونة الواتساب العائمة (تظهر في الكمبيوتر فقط وتختفي في الجوال بناءً على طلبك) -->
+    <!-- أيقونة الواتساب العائمة (تظهر في شاشات الكمبيوتر فقط) -->
     <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
         <i data-lucide="message-circle" size="28"></i>
     </a>
 
-    <!-- الشريط السفلي المطور للجوال (الاشتراكات + خدمة العملاء + أيقونة واتساب) -->
+    <!-- الشريط السفلي المطور لشاشات الجوال فقط -->
     <div class="mobile-cta">
         <a href="#pricing" class="mobile-nav-btn mobile-btn-subscriptions">
             <i data-lucide="shopping-bag" size="14"></i>
@@ -1544,16 +1577,15 @@
         // Lucide Icons Initialization
         lucide.createIcons();
 
-        // 1. الوضع الليلي والنهاري التلقائي بناءً على توقيت أم القرى (السعودية)
+        // التشغيل التلقائي للوضع الليلي والنهاري بناءً على توقيت أم القرى (السعودية)
         function initAutoTheme() {
             try {
-                // حساب توقيت مكة المكرمة (توقيت أم القرى UTC+3 ثابتة)
                 const now = new Date();
                 const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
                 const makkahTime = new Date(utc + (3600000 * 3));
                 const hours = makkahTime.getHours();
 
-                // يعتبر النهار من الساعة 6 صباحاً (06:00) وحتى الساعة 6 مساءً (18:00)
+                // يعتبر النهار من الساعة 6 صباحاً حتى 6 مساءً
                 const isDaytime = hours >= 6 && hours < 18;
 
                 if (!isDaytime) {
@@ -1565,7 +1597,7 @@
                     }
                 }
             } catch (e) {
-                console.log("Theme init error:", e);
+                console.log("Auto Theme error:", e);
             }
         }
         initAutoTheme();

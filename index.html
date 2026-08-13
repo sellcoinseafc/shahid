@@ -1,23 +1,310 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMZ Embed Test</title>
-    <!-- سكريبت التضمين الرسمي لرمز -->
-    <script src="https://rmz.gg/embed/rmz-embed.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RMZ Embed Diagnostic</title>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #07070a;
+      color: #f4f4f5;
+      font-family: Arial, Tahoma, sans-serif;
+      line-height: 1.6;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    .card {
+      background: #111116;
+      border: 1px solid #27272f;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    h1 { margin: 0 0 8px; font-size: 24px; }
+    h2 { margin: 0 0 12px; font-size: 18px; }
+    .muted { color: #a1a1aa; }
+    .status {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      background: #18181d;
+      border-radius: 10px;
+      border: 1px solid #27272f;
+    }
+    .ok { color: #34d399; }
+    .bad { color: #fb7185; }
+    .warn { color: #fbbf24; }
+    .unknown { color: #a1a1aa; }
+
+    #rmz-test {
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: 12px;
+      background: #10b981;
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    #local-test {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid #3f3f46;
+      border-radius: 12px;
+      background: #18181d;
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #09090b;
+      border: 1px solid #27272f;
+      border-radius: 12px;
+      padding: 14px;
+      min-height: 120px;
+      max-height: 420px;
+      overflow: auto;
+      direction: ltr;
+      text-align: left;
+      font-size: 12px;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #71717a;
+    }
+
+    code {
+      background: #18181d;
+      padding: 2px 5px;
+      border-radius: 5px;
+      direction: ltr;
+      unicode-bidi: plaintext;
+    }
+  </style>
+
+  <!-- RMZ Embed Code -->
+  <script
+    id="rmz-embed-script"
+    src="https://rmz.gg/embed/rmz-embed.js"
+    onload="window.__rmzScriptLoaded = true; diagnostic('RMZ script: onload fired');"
+    onerror="window.__rmzScriptError = true; diagnostic('RMZ script: onerror fired');">
+  </script>
 </head>
-<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; background-color: #0d0a1a; color: #fff;">
 
-    <h1>اختبار تضمين منصة رمز (RMZ)</h1>
-    <p>اضغط على الزر أدناه لاختبار ظهور النافذة المنبثقة (Modal):</p>
-    
-    <br>
+<body>
+<div class="wrap">
 
-    <!-- شفرة التضمين الرسمية كما هي بدون أي تعديل -->
-    <button data-rmz-product="103287" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-        شراء المنتج
+  <div class="card">
+    <h1>تشخيص RMZ Embed</h1>
+    <div class="muted">
+      هذه الصفحة معزولة عن صفحة Nexorasa. هدفها معرفة هل مكتبة رمز تُحمّل وهل تتعرف على زر الشراء أم لا.
+    </div>
+
+    <div class="status">
+      <div class="row">
+        <span>النطاق الحالي</span>
+        <strong id="origin">جارٍ الفحص...</strong>
+      </div>
+
+      <div class="row">
+        <span>تحميل مكتبة RMZ</span>
+        <strong id="script-status" class="unknown">جارٍ الفحص...</strong>
+      </div>
+
+      <div class="row">
+        <span>window.RMZEmbed</span>
+        <strong id="global-status" class="unknown">جارٍ الفحص...</strong>
+      </div>
+
+      <div class="row">
+        <span>حالة زر RMZ</span>
+        <strong id="button-status" class="unknown">جارٍ الفحص...</strong>
+      </div>
+
+      <div class="row">
+        <span>آخر تفاعل مع الزر</span>
+        <strong id="click-status" class="unknown">لم يتم الضغط</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>اختبار زر RMZ الحقيقي</h2>
+
+    <button
+      id="rmz-test"
+      type="button"
+      data-rmz-product="103287"
+      data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D"
+      data-rmz-theme="auto"
+      data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
+      شراء المنتج عبر RMZ
     </button>
 
+    <button id="local-test" type="button">
+      اختبار JavaScript المحلي
+    </button>
+
+    <div class="small">
+      إذا ظهر تفاعل في اختبار JavaScript المحلي ولم يحدث شيء في زر RMZ، فالمشكلة ليست من متصفحك أو JavaScript العام للصفحة.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>سجل التشخيص</h2>
+    <pre id="log"></pre>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const logBox = document.getElementById('log');
+  const originBox = document.getElementById('origin');
+  const scriptBox = document.getElementById('script-status');
+  const globalBox = document.getElementById('global-status');
+  const buttonBox = document.getElementById('button-status');
+  const clickBox = document.getElementById('click-status');
+  const rmzButton = document.getElementById('rmz-test');
+
+  function diagnostic(message) {
+    const time = new Date().toLocaleTimeString('ar-SA');
+    logBox.textContent += '[' + time + '] ' + message + '\n';
+    logBox.scrollTop = logBox.scrollHeight;
+  }
+
+  window.diagnostic = diagnostic;
+
+  function setStatus(el, text, cls) {
+    el.textContent = text;
+    el.className = cls || 'unknown';
+  }
+
+  originBox.textContent = location.origin;
+  diagnostic('Page loaded: ' + location.href);
+  diagnostic('User agent: ' + navigator.userAgent);
+
+  // Catch page-level errors.
+  window.addEventListener('error', function (event) {
+    diagnostic(
+      'WINDOW ERROR: ' +
+      (event.message || 'unknown') +
+      ' | file=' + (event.filename || '') +
+      ' | line=' + (event.lineno || '')
+    );
+  });
+
+  window.addEventListener('unhandledrejection', function (event) {
+    diagnostic('UNHANDLED PROMISE: ' + String(event.reason));
+  });
+
+  // Local button test.
+  document.getElementById('local-test').addEventListener('click', function () {
+    clickBox.textContent = 'JavaScript المحلي يعمل ✓';
+    setStatus(clickBox, 'JavaScript المحلي يعمل ✓', 'ok');
+    diagnostic('LOCAL BUTTON CLICK: JavaScript works.');
+  });
+
+  // Capture clicks before/after RMZ potentially changes the element.
+  rmzButton.addEventListener('click', function () {
+    setStatus(clickBox, 'تم تسجيل نقرة على زر RMZ ✓', 'ok');
+    diagnostic('RMZ BUTTON CLICK EVENT FIRED.');
+  }, true);
+
+  function inspect() {
+    const script = document.getElementById('rmz-embed-script');
+
+    if (window.__rmzScriptLoaded) {
+      setStatus(scriptBox, 'تم تحميل السكربت ✓', 'ok');
+    } else if (window.__rmzScriptError) {
+      setStatus(scriptBox, 'فشل تحميل السكربت ✗', 'bad');
+    } else if (script && script.readyState === 'complete') {
+      setStatus(scriptBox, 'اكتمل تحميل الصفحة، لكن حالة السكربت غير مؤكدة', 'warn');
+    } else {
+      setStatus(scriptBox, 'لم تتأكد الحالة بعد', 'warn');
+    }
+
+    if (typeof window.RMZEmbed !== 'undefined') {
+      setStatus(globalBox, 'موجود ✓', 'ok');
+      diagnostic('window.RMZEmbed exists. Type: ' + typeof window.RMZEmbed);
+      try {
+        diagnostic('RMZEmbed keys: ' + Object.keys(window.RMZEmbed).join(', '));
+      } catch (e) {
+        diagnostic('Could not inspect RMZEmbed keys: ' + e);
+      }
+    } else {
+      setStatus(globalBox, 'غير موجود ✗', 'bad');
+    }
+
+    const btn = document.getElementById('rmz-test');
+    if (!btn) {
+      setStatus(buttonBox, 'العنصر غير موجود ✗', 'bad');
+      return;
+    }
+
+    const attrs = [
+      'data-rmz-product=' + btn.getAttribute('data-rmz-product'),
+      'data-rmz-key=' + (btn.getAttribute('data-rmz-key') ? 'موجود' : 'مفقود'),
+      'data-rmz-theme=' + btn.getAttribute('data-rmz-theme'),
+      'data-rmz-config=' + btn.getAttribute('data-rmz-config')
+    ];
+
+    diagnostic('RMZ button attributes: ' + attrs.join(' | '));
+
+    if (btn.tagName.toLowerCase() !== 'button') {
+      setStatus(buttonBox, 'RMZ غيّر العنصر إلى ' + btn.tagName + ' ✓', 'ok');
+      diagnostic('RMZ appears to have transformed the button element.');
+    } else {
+      setStatus(buttonBox, 'ما زال BUTTON الأصلي', 'warn');
+      diagnostic('Button is still a normal BUTTON element. This may indicate RMZ did not bind to it.');
+    }
+  }
+
+  // Give the external script time to initialize.
+  setTimeout(inspect, 500);
+  setTimeout(inspect, 1500);
+  setTimeout(inspect, 3000);
+
+  // Observe DOM changes because RMZ may replace/modify the button.
+  const observer = new MutationObserver(function (mutations) {
+    for (const mutation of mutations) {
+      if (mutation.type === 'childList' || mutation.type === 'attributes') {
+        diagnostic(
+          'DOM mutation: type=' + mutation.type +
+          (mutation.attributeName ? ', attribute=' + mutation.attributeName : '')
+        );
+      }
+    }
+    inspect();
+  });
+
+  observer.observe(document.body, {
+    subtree: true,
+    childList: true,
+    attributes: true
+  });
+
+  diagnostic('Diagnostic initialized.');
+})();
+</script>
 </body>
 </html>

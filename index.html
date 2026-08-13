@@ -36,6 +36,13 @@
             --tamara-color: #ffab40;
             --navbar-bg: rgba(6, 4, 13, 0.95);
             --ambient-bg: radial-gradient(circle at 50% 5%, rgba(139, 92, 246, 0.15) 0%, rgba(6, 4, 13, 0) 75%);
+            
+            /* ألوان مخصصة لمستطيل ادفع اليوم المتكيف */
+            --pay-today-bg: linear-gradient(135deg, #0f0b1e, #1a142e);
+            --pay-today-border: rgba(139, 92, 246, 0.5);
+            --pay-today-text: #ffffff;
+            --pay-today-val-bg: rgba(139, 92, 246, 0.2);
+            --pay-today-val-text: #3bffc8;
         }
 
         /* الوضع النهاري (Light Mode) عند التبديل */
@@ -56,6 +63,13 @@
             --tamara-color: #d97706;
             --navbar-bg: rgba(255, 255, 255, 0.95);
             --ambient-bg: radial-gradient(circle at 50% 5%, rgba(124, 58, 237, 0.06) 0%, rgba(248, 250, 252, 0) 60%);
+            
+            /* ألوان مخصصة لمستطيل ادفع اليوم للوضع النهاري (أسود لامع أنيق على أبيض) */
+            --pay-today-bg: linear-gradient(135deg, #ffffff, #f8fafc);
+            --pay-today-border: #cbd5e1;
+            --pay-today-text: #0f172a;
+            --pay-today-val-bg: #0f172a;
+            --pay-today-val-text: #ffffff;
         }
 
         * {
@@ -152,7 +166,7 @@
             max-height: none;
         }
 
-        /* قسم النبذة والبيانات (مستطيل بارز وفخم) */
+        /* قسم النبذة والبيانات */
         .banner-info-box {
             max-width: 1140px;
             margin: 0 auto 16px;
@@ -164,7 +178,6 @@
             text-align: center;
         }
         
-        /* المستطيل الخاص بالعنوان محصور على عرض الكلام مع لمعان فخم وبدون أي لون أزرق */
         .banner-title-wrap {
             display: inline-block;
             position: relative;
@@ -244,7 +257,7 @@
             white-space: nowrap;
         }
 
-        /* مستطيل بارز وفخم جداً مع تأثير اللمعان لأزرار التبديل السريع */
+        /* أزرار التبديل السريع بين الباقات */
         .quick-tabs-container {
             position: relative;
             max-width: 1140px;
@@ -259,23 +272,6 @@
             box-shadow: 0 8px 30px var(--primary-glow);
             overflow: hidden;
         }
-        .quick-tabs-container::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
-            transform: rotate(30deg);
-            animation: shineGlow 3s infinite linear;
-            pointer-events: none;
-        }
-        @keyframes shineGlow {
-            0% { transform: translateY(-100%) rotate(30deg); }
-            100% { transform: translateY(100%) rotate(30deg); }
-        }
-
         .quick-tab-btn {
             flex: 1;
             background: var(--surface-card);
@@ -290,7 +286,6 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             transition: all 0.25s ease;
             z-index: 2;
         }
@@ -302,7 +297,7 @@
             box-shadow: 0 6px 20px var(--primary-glow);
         }
 
-        /* زر المقارنة السريعة في الأعلى */
+        /* زر المقارنة السريعة */
         .comparison-trigger-box { max-width: 1140px; margin: 0 auto 16px; text-align: center; }
         .comparison-btn {
             background: rgba(124, 58, 237, 0.1); border: 1.5px dashed var(--primary);
@@ -312,7 +307,7 @@
         }
         .comparison-btn:hover { background: var(--primary); color: #ffffff; }
 
-        /* شريط وسائل الدفع حسب الترتيب الدقيق */
+        /* شريط وسائل الدفع */
         .payment-methods-bar {
             max-width: 1140px; 
             margin: 0 auto 16px; 
@@ -331,7 +326,6 @@
             display: block; 
         }
         .payment-grid-layout { display: flex; flex-direction: column; gap: 8px; }
-        
         .pay-row-line1 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .pay-row-line2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .pay-row-line3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
@@ -351,47 +345,15 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s ease, border-color 0.2s ease;
             height: 48px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        body:not(.light-theme) .pay-badge-card {
-            background: #ffffff;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        body.light-theme .pay-badge-card {
-            background: #ffffff;
-            border-color: #cbd5e1;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        }
-        .pay-badge-card:hover { transform: translateY(-2px); border-color: var(--primary); }
-        
-        .pay-logo-img {
-            height: 100%;
-            max-height: 34px;
-            width: 100%;
-            max-width: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
+        .pay-logo-img { height: 100%; max-height: 34px; width: 100%; object-fit: contain; display: block; }
         .pay-text-card {
-            background: #ffffff; 
-            border: 1.5px solid var(--border-color); 
-            padding: 6px 10px; 
-            border-radius: 12px;
-            text-align: center; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            height: 48px;
-            color: #0f172a;
-            font-weight: 900;
-            font-size: 0.85rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            background: #ffffff; border: 1.5px solid var(--border-color); padding: 6px 10px; border-radius: 12px;
+            text-align: center; display: flex; align-items: center; justify-content: center; height: 48px;
+            color: #0f172a; font-weight: 900; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        .pay-text-card:hover { transform: translateY(-2px); border-color: var(--primary); }
 
         /* شريط الثقة */
         .trust-bar {
@@ -408,92 +370,194 @@
         .trust-item-title { font-size: 0.82rem; font-weight: 800; display: block; color: var(--text-main); }
         .trust-item-sub { font-size: 0.72rem; color: var(--text-muted); }
 
-        /* قسم المنتجات */
+        /* ==========================================================
+           🌟 [تصميم بطاقة المنتجات السينمائية الفاخرة مع مستطيل "ادفع اليوم" المتكيف] 🌟
+           ========================================================== */
         .pricing-section { padding: 5px 0 15px; }
         .pricing-grid { 
             display: grid; 
             grid-template-columns: 1fr; 
-            gap: 16px; 
-            max-width: 920px; 
+            gap: 22px; 
+            max-width: 940px; 
             margin: 0 auto; 
         }
         @media (min-width: 768px) {
-            .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
         }
 
         .product-card {
-            background: var(--surface-card); border: 2px solid var(--border-color); border-radius: 20px;
-            padding: 20px 16px; position: relative; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--card-shadow);
-            transition: border-color 0.3s ease;
+            background: linear-gradient(145deg, rgba(22, 17, 42, 0.98), rgba(10, 7, 20, 0.99));
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 24px;
+            padding: 24px 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 25px 55px rgba(139, 92, 246, 0.3);
         }
         .product-card.highlighted-card {
-            border-color: #8b5cf6;
+            border-color: #3b82f6;
             animation: pulseCard 1s ease;
         }
         @keyframes pulseCard {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 0 20px 10px rgba(139, 92, 246, 0.2); }
-            100% { transform: scale(1); box-shadow: var(--card-shadow); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
-        .product-card.featured { border-color: var(--primary); box-shadow: 0 10px 30px var(--primary-glow); }
-        .product-badge-pop {
-            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--primary), #a855f7); color: #fff; padding: 2px 14px; border-radius: 50px; font-size: 0.72rem; font-weight: 900; white-space: nowrap;
+        .product-card.featured {
+            border: 2px solid var(--primary);
+            background: linear-gradient(145deg, rgba(35, 22, 72, 0.98), rgba(14, 9, 32, 0.99));
+            box-shadow: 0 20px 55px var(--primary-glow);
         }
-        .product-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
-        .product-thumb-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(124, 58, 237, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .product-title-wrap h3 { font-size: 1.1rem; font-weight: 900; color: var(--text-main); }
-        .product-duration { color: #ffffff !important; font-size: 0.75rem; font-weight: 800; background: rgba(124, 58, 237, 0.85); padding: 2px 8px; border-radius: 6px; display: inline-block; margin-top: 4px; }
-        .price-container { margin: 8px 0; display: flex; align-items: baseline; gap: 6px; }
-        .current-price { font-size: 2rem; font-weight: 900; color: var(--text-main); }
-        .current-price span { font-size: 0.8rem; color: var(--text-muted); }
-        .product-features-list { list-style: none; margin: 10px 0 16px; display: flex; flex-direction: column; gap: 8px; }
-        .product-features-list li { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-muted); }
-        .product-features-list li i { flex-shrink: 0; }
-        .btn-group { display: flex; flex-direction: column; gap: 10px; }
-        .rmz-button-wrapper { width: 100%; }
-        .rmz-button-wrapper button, .rmz-button-wrapper button[data-rmz-product] {
-            width: 100% !important; padding: 12px 14px !important; border-radius: 10px !important; background: var(--accent-green) !important; color: #ffffff !important; font-weight: 900 !important; font-size: 0.95rem !important; border: none !important; cursor: pointer !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important; box-shadow: 0 4px 15px var(--accent-green-glow) !important;
-        }
-        .installment-box-card { background: rgba(124, 58, 237, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
-        .installment-box-title { font-size: 0.78rem; font-weight: 800; color: var(--text-main); text-align: center; }
-        .pay-today-premium-banner { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(16, 185, 129, 0.1)); border: 1px solid var(--border-active); padding: 6px 10px; border-radius: 8px; }
-        .pay-today-tag { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 900; color: var(--text-main); }
-        .pay-today-tag i { color: var(--accent-green); }
-        .pay-today-amount { background: var(--accent-green); color: #ffffff; padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 900; }
         
-        /* أزرار التقسيط داخل الكارد لتابي وتمارا */
-        .card-gateway-btns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
-        .card-gw-btn { 
-            background: #ffffff !important; 
-            border: 1.5px solid var(--border-color); 
-            padding: 8px; 
-            border-radius: 10px; 
-            cursor: pointer; 
+        .product-badge-pop {
+            position: absolute; top: -14px; left: 20px;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            color: #fff; padding: 4px 14px; border-radius: 50px; 
+            font-size: 0.72rem; font-weight: 900; box-shadow: 0 4px 15px var(--primary-glow);
+        }
+        
+        .savings-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: var(--accent-green);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .product-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .product-thumb-icon { 
+            width: 50px; height: 50px; border-radius: 14px; 
+            background: rgba(139, 92, 246, 0.15); color: var(--primary); 
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0; 
+            box-shadow: inset 0 2px 8px rgba(139, 92, 246, 0.25);
+        }
+        .product-title-wrap h3 { font-size: 1.15rem; font-weight: 900; color: var(--text-main); }
+        .product-duration { color: #3bffc8; font-size: 0.75rem; font-weight: 800; display: block; margin-top: 3px; }
+        
+        .price-container { margin: 8px 0 16px; display: flex; align-items: baseline; gap: 6px; }
+        .current-price { font-size: 2.2rem; font-weight: 900; color: var(--text-main); letter-spacing: -1px; }
+        .current-price span { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; }
+
+        /* كبسولات الميزات السينمائية */
+        .feature-pills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .feature-pill-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+        .feature-pill-item i {
+            color: var(--accent-green);
+            flex-shrink: 0;
+        }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        .rmz-button-wrapper { width: 100%; }
+        
+        /* زر أطلب الآن الأبيض اللامع والفخم */
+        .rmz-button-wrapper button, .rmz-button-wrapper button[data-rmz-product] {
+            width: 100% !important; 
+            padding: 14px 16px !important; 
+            border-radius: 12px !important; 
+            background: linear-gradient(135deg, #ffffff, #f1f5f9) !important; 
+            color: #0f172a !important; 
+            font-weight: 900 !important; 
+            font-size: 1.05rem !important; 
+            border: 1px solid rgba(255, 255, 255, 0.8) !important; 
+            cursor: pointer !important; 
+            display: flex !important; 
+            align-items: center !important; 
+            justify-content: center !important; 
+            gap: 8px !important; 
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.25) !important;
+            transition: all 0.25s ease !important;
+            position: relative;
+            overflow: hidden;
+        }
+        .rmz-button-wrapper button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.8) 50%, transparent 70%);
+            transform: rotate(30deg);
+            animation: btnShine 3s infinite linear;
+            pointer-events: none;
+        }
+        @keyframes btnShine {
+            0% { transform: translateY(-100%) rotate(30deg); }
+            100% { transform: translateY(100%) rotate(30deg); }
+        }
+        .rmz-button-wrapper button:hover { 
+            transform: translateY(-2px) !important; 
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4) !important; 
+            background: linear-gradient(135deg, #ffffff, #ffffff) !important;
+        }
+
+        .installment-box-card { background: rgba(124, 58, 237, 0.05); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+        .installment-box-title { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-align: center; }
+        
+        /* 🌟 [مستطيل "ادفع اليوم" الفخم والمتكيف مع الوضع الليلي والنهاري بدون خلفية خضراء] 🌟 */
+        .pay-today-premium-banner { 
             display: flex; 
             align-items: center; 
-            justify-content: center; 
-            height: 48px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            justify-content: space-between; 
+            background: var(--pay-today-bg); 
+            border: 1.5px solid var(--pay-today-border); 
+            padding: 8px 12px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
         }
-        .card-gw-btn:hover { transform: translateY(-2px); border-color: var(--primary); }
-        .btn-pay-logo { 
-            height: 100%; 
-            max-height: 32px; 
-            width: 100%; 
-            max-width: 100%; 
-            object-fit: contain; 
-            display: block; 
+        .pay-today-tag { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 900; color: var(--pay-today-text); }
+        .pay-today-tag i { color: var(--primary); }
+        .pay-today-amount { background: var(--pay-today-val-bg); color: var(--pay-today-val-text); padding: 4px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.3px; border: 1px solid rgba(255,255,255,0.15); }
+        
+        .card-gateway-btns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+        .card-gw-btn { 
+            background: #ffffff !important; border: 1.5px solid var(--border-color); padding: 6px; border-radius: 8px; 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; height: 44px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.2s ease;
         }
+        .card-gw-btn:hover { transform: translateY(-1px); border-color: var(--primary); }
+        .btn-pay-logo { height: 100%; max-height: 28px; width: 100%; object-fit: contain; display: block; }
+        /* ========================================================== */
 
         .comparison-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.8rem; }
         .comparison-table th, .comparison-table td { border: 1px solid var(--border-color); padding: 8px; text-align: center; }
         .comparison-table th { background: rgba(124, 58, 237, 0.1); color: var(--text-main); font-weight: 900; }
         .comparison-table td:first-child { font-weight: 800; color: var(--text-main); text-align: right; }
 
-        /* التقييمات */
+        /* التقييمات والفوتر وباقي العناصر */
         .reviews-section { padding: 15px 0 10px; max-width: 920px; margin: 0 auto; }
         .reviews-header-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
         .reviews-header-title h3 { font-size: 1.05rem; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
@@ -513,7 +577,6 @@
             background: rgba(124, 58, 237, 0.08); border: 1px solid var(--border-color); color: var(--text-main); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
 
-        /* الأسئلة الشائعة والفوتر */
         .faq-section { padding: 20px 0; }
         .mini-section-title { font-size: 1.1rem; font-weight: 900; text-align: center; margin-bottom: 12px; }
         .faq-wrapper { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 6px; }
@@ -535,7 +598,6 @@
         .footer-col a, .footer-col button { color: var(--text-muted); text-decoration: none; font-size: 0.78rem; background: none; border: none; cursor: pointer; padding: 0; text-align: right; font-family: 'Tajawal', sans-serif; }
         .footer-bottom { text-align: center; padding-top: 12px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.72rem; }
 
-        /* شريط الجوال */
         .mobile-cta {
             position: fixed; bottom: 6px; left: 10px; right: 10px; background: var(--surface-card); backdrop-filter: blur(16px);
             border: 1px solid var(--border-color); padding: 5px 6px; display: flex; align-items: center; gap: 6px; z-index: 999; border-radius: 50px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -551,7 +613,6 @@
             .floating-whatsapp-btn { display: flex; position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; border-radius: 50%; background: #25d366; color: #ffffff; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 998; text-decoration: none; }
         }
 
-        /* النوافذ المنبثقة الشاملة وبطاقة زر التأكيد المدمج المتناسق */
         .modal-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px);
             display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 16px;
@@ -566,7 +627,6 @@
         .modal-close-x { background: rgba(124, 58, 237, 0.1); border: none; color: var(--text-main); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .modal-body-content { overflow-y: auto; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; text-align: right; }
         
-        /* خريطة التقسيط وزر التأكيد المتناسق مع هوية المتجر البنفسجية */
         .timeline-container { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 8px; margin-bottom: 10px; }
         .timeline-title { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 10px; text-align: center; }
         .timeline-steps { display: flex; align-items: center; justify-content: space-between; position: relative; }
@@ -580,28 +640,14 @@
         .summary-total-bar { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; }
         .modal-saudi-note { background: rgba(217, 119, 6, 0.08); border: 1px dashed rgba(217, 119, 6, 0.3); color: var(--accent-gold); padding: 6px 8px; border-radius: 8px; font-size: 0.72rem; font-weight: 800; text-align: center; margin-bottom: 10px; }
         
-        /* زر التأكيد بتصميم متناسق مع درجات البنفسجي الخاصة بالمتجر */
         .modal-btn-confirm { 
-            width: 100%; 
-            padding: 14px; 
-            border-radius: 12px; 
-            background: linear-gradient(135deg, var(--primary), #7c3aed); 
-            color: #ffffff; 
-            font-weight: 900; 
-            font-size: 0.95rem; 
-            border: 1px solid rgba(139, 92, 246, 0.5); 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 8px; 
-            box-shadow: 0 6px 20px var(--primary-glow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%; padding: 14px; border-radius: 12px; 
+            background: linear-gradient(135deg, var(--primary), #7c3aed); color: #ffffff; 
+            font-weight: 900; font-size: 0.95rem; border: 1px solid rgba(139, 92, 246, 0.5); 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; 
+            box-shadow: 0 6px 20px var(--primary-glow); transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .modal-btn-confirm:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6); 
-        }
+        .modal-btn-confirm:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6); }
     </style>
 </head>
 <body>
@@ -630,7 +676,7 @@
         </div>
     </div>
 
-    <!-- 3. النبذة والبيانات (مع مستطيل بارز وفخم محصور على عرض عنوان شاهد VIP ومزود باللمعان) -->
+    <!-- 3. النبذة والبيانات -->
     <div class="container">
         <div class="banner-info-box">
             <div class="banner-title-wrap">
@@ -656,7 +702,7 @@
         </div>
     </div>
 
-    <!-- 4. مستطيل بارز وفخم جداً مع تأثير اللمعان لأزرار التبديل السريع بين الباقات -->
+    <!-- 4. أزرار التبديل السريع بين الباقات -->
     <div class="container">
         <div class="quick-tabs-container">
             <button type="button" class="quick-tab-btn active" id="tab3m" onclick="filterPlans('3m')">
@@ -670,7 +716,7 @@
         </div>
     </div>
 
-    <!-- زر المقارنة السريعة في الأعلى -->
+    <!-- زر المقارنة السريعة -->
     <div class="container">
         <div class="comparison-trigger-box">
             <button type="button" class="comparison-btn" onclick="openComparisonModal()">
@@ -680,48 +726,25 @@
         </div>
     </div>
 
-    <!-- شريط وسائل الدفع حسب الترتيب الدقيق -->
+    <!-- شريط وسائل الدفع -->
     <div class="container">
         <div class="payment-methods-bar">
             <span class="payment-methods-title">طرق الدفع المتوفرة:</span>
             <div class="payment-grid-layout">
-                
-                <!-- السطر الأول: مدى، Apple Pay، Visa -->
                 <div class="pay-row-line1">
-                    <div class="pay-badge-card" title="Mada">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183130.png" alt="Mada" class="pay-logo-img">
-                    </div>
-                    <div class="pay-badge-card" title="Apple Pay">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183055.png" alt="Apple Pay" class="pay-logo-img">
-                    </div>
-                    <div class="pay-badge-card" title="Visa">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183155.png" alt="Visa" class="pay-logo-img">
-                    </div>
+                    <div class="pay-badge-card" title="Mada"><img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183130.png" alt="Mada" class="pay-logo-img"></div>
+                    <div class="pay-badge-card" title="Apple Pay"><img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183055.png" alt="Apple Pay" class="pay-logo-img"></div>
+                    <div class="pay-badge-card" title="Visa"><img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183155.png" alt="Visa" class="pay-logo-img"></div>
                 </div>
-
-                <!-- السطر الثاني: Mastercard، STC Pay، تحويل بنكي -->
                 <div class="pay-row-line2" style="margin-top: 8px;">
-                    <div class="pay-badge-card" title="Mastercard">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183255.png" alt="Mastercard" class="pay-logo-img">
-                    </div>
-                    <div class="pay-badge-card" title="STC Pay">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_182948.png" alt="STC Pay" class="pay-logo-img">
-                    </div>
-                    <div class="pay-text-card" title="التحويل البنكي">
-                        تحويل بنكي
-                    </div>
+                    <div class="pay-badge-card" title="Mastercard"><img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183255.png" alt="Mastercard" class="pay-logo-img"></div>
+                    <div class="pay-badge-card" title="STC Pay"><img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_182948.png" alt="STC Pay" class="pay-logo-img"></div>
+                    <div class="pay-text-card" title="التحويل البنكي">تحويل بنكي</div>
                 </div>
-                
-                <!-- السطر الثالث: Tabby، Tamara -->
                 <div class="pay-row-line3" style="margin-top: 8px;">
-                    <div class="pay-badge-card" title="Tabby">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183233.png" alt="Tabby" class="pay-logo-img">
-                    </div>
-                    <div class="pay-badge-card" title="Tamara">
-                        <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183018.png" alt="Tamara" class="pay-logo-img">
-                    </div>
+                    <div class="pay-badge-card" title="Tabby"><img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183233.png" alt="Tabby" class="pay-logo-img"></div>
+                    <div class="pay-badge-card" title="Tamara"><img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183018.png" alt="Tamara" class="pay-logo-img"></div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -730,39 +753,15 @@
     <section class="trust-bar">
         <div class="container">
             <div class="trust-grid">
-                <div class="trust-item">
-                    <div class="trust-item-icon"><i data-lucide="lock" size="15"></i></div>
-                    <div>
-                        <span class="trust-item-title">دفع آمن</span>
-                        <span class="trust-item-sub">بوابة دفع محمية</span>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-item-icon"><i data-lucide="zap" size="15"></i></div>
-                    <div>
-                        <span class="trust-item-title">تفعيل سريع</span>
-                        <span class="trust-item-sub">تنفيذ فوري</span>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-item-icon"><i data-lucide="mail" size="15"></i></div>
-                    <div>
-                        <span class="trust-item-title">على إيميلك</span>
-                        <span class="trust-item-sub">حسابك الخاص</span>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-item-icon"><i data-lucide="shield" size="15"></i></div>
-                    <div>
-                        <span class="trust-item-title">ضمان شامل</span>
-                        <span class="trust-item-sub">استقرار البث</span>
-                    </div>
-                </div>
+                <div class="trust-item"><div class="trust-item-icon"><i data-lucide="lock" size="15"></i></div><div><span class="trust-item-title">دفع آمن</span><span class="trust-item-sub">بوابة دفع محمية</span></div></div>
+                <div class="trust-item"><div class="trust-item-icon"><i data-lucide="zap" size="15"></i></div><div><span class="trust-item-title">تفعيل سريع</span><span class="trust-item-sub">تنفيذ فوري</span></div></div>
+                <div class="trust-item"><div class="trust-item-icon"><i data-lucide="mail" size="15"></i></div><div><span class="trust-item-title">على إيميلك</span><span class="trust-item-sub">حسابك الخاص</span></div></div>
+                <div class="trust-item"><div class="trust-item-icon"><i data-lucide="shield" size="15"></i></div><div><span class="trust-item-title">ضمان شامل</span><span class="trust-item-sub">استقرار البث</span></div></div>
             </div>
         </div>
     </section>
 
-    <!-- 5. قسم المنتجات -->
+    <!-- 5. قسم المنتجات (مع زر أطلب الآن الأبيض اللامع، ومستطيل "ادفع اليوم" المتكيف) -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             <div class="pricing-grid">
@@ -770,11 +769,12 @@
                 <!-- باقة 3 أشهر (Product: 29956) -->
                 <div class="product-card" id="card-3m">
                     <div>
+                        <div class="savings-tag"><i data-lucide="tag" size="12"></i> وفر 25%</div>
                         <div class="product-header">
-                            <div class="product-thumb-icon"><i data-lucide="tv" size="20"></i></div>
-                            <div class="product-title-wrap-card">
+                            <div class="product-thumb-icon"><i data-lucide="tv" size="24"></i></div>
+                            <div class="product-title-wrap">
                                 <h3>شاهد VIP — 3 أشهر</h3>
-                                <span class="product-duration">على إيميلك الخاص</span>
+                                <span class="product-duration">تفعيل على إيميلك الخاص</span>
                             </div>
                         </div>
 
@@ -782,12 +782,12 @@
                             <div class="current-price">60 <span>ر.س</span></div>
                         </div>
 
-                        <ul class="product-features-list">
-                            <li><i data-lucide="layers" size="14" style="color: var(--primary);"></i><span>مكتبة العروض والأعمال الكاملة</span></li>
-                            <li><i data-lucide="monitor-play" size="14" style="color: var(--accent-green);"></i><span>مشاهدة بجودة Full HD بدون إعلانات</span></li>
-                            <li><i data-lucide="user-check" size="14" style="color: var(--accent-gold);"></i><span>تفعيل على بريدك الإلكتروني الشخصي</span></li>
-                            <li><i data-lucide="shield-check" size="14" style="color: var(--primary);"></i><span>ضمان شامل لمدة 90 يوماً</span></li>
-                        </ul>
+                        <div class="feature-pills-grid">
+                            <div class="feature-pill-item"><i data-lucide="check" size="14"></i> أعمال شاهد الحصرية</div>
+                            <div class="feature-pill-item"><i data-lucide="check" size="14"></i> جودة Full HD / 4K</div>
+                            <div class="feature-pill-item"><i data-lucide="check" size="14"></i> بدون إعلانات نهائياً</div>
+                            <div class="feature-pill-item"><i data-lucide="check" size="14"></i> ضمان 90 يوم</div>
+                        </div>
                     </div>
 
                     <div class="btn-group">
@@ -806,11 +806,10 @@
                             <div class="pay-today-premium-banner">
                                 <div class="pay-today-tag">
                                     <i data-lucide="zap" size="12"></i>
-                                    <span>المطلوب دفعه اليوم:</span>
+                                    <span>ادفع اليوم:</span>
                                 </div>
                                 <div class="pay-today-amount">17 ريال فقط</div>
                             </div>
-                            <!-- أزرار التقسيط داخل الكارد لتابي وتمارا -->
                             <div class="card-gateway-btns">
                                 <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-gw-btn">
                                     <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183233.png" alt="Tabby" class="btn-pay-logo">
@@ -827,11 +826,12 @@
                 <div class="product-card featured" id="card-1y">
                     <div class="product-badge-pop">الأكثر طلباً ⭐</div>
                     <div>
+                        <div class="savings-tag" style="background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.3); color: var(--primary);"><i data-lucide="tag" size="12"></i> الأفضل قيمة (وفر 50%)</div>
                         <div class="product-header">
-                            <div class="product-thumb-icon" style="background: rgba(5, 150, 105, 0.15); color: var(--accent-green);"><i data-lucide="sparkles" size="20"></i></div>
-                            <div class="product-title-wrap-card">
+                            <div class="product-thumb-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);"><i data-lucide="sparkles" size="24"></i></div>
+                            <div class="product-title-wrap">
                                 <h3>شاهد VIP — سنة كاملة</h3>
-                                <span class="product-duration">على إيميلك الخاص</span>
+                                <span class="product-duration">تفعيل على إيميلك الخاص</span>
                             </div>
                         </div>
 
@@ -839,12 +839,12 @@
                             <div class="current-price">180 <span>ر.س</span></div>
                         </div>
 
-                        <ul class="product-features-list">
-                            <li><i data-lucide="film" size="14" style="color: var(--primary);"></i><span>وصول كامل لكافة أعمال شاهد الأصلية</span></li>
-                            <li><i data-lucide="tv-2" size="14" style="color: var(--accent-green);"></i><span>عرض بأعلى جودة بدقة Full HD/4K</span></li>
-                            <li><i data-lucide="ban" size="14" style="color: #ef4444;"></i><span>بدون أي فواصل أو إعلانات</span></li>
-                            <li><i data-lucide="shield-alert" size="14" style="color: var(--accent-gold);"></i><span>ضمان شامل لمدة 12 شهراً</span></li>
-                        </ul>
+                        <div class="feature-pills-grid">
+                            <div class="feature-pill-item"><i data-lucide="check" size="14"></i> أعمال شاهد الحصرية</div>
+                            <div class="feature-pill-item"><i data-lucide="check" size="14"></i> جودة Full HD / 4K</div>
+                            <div class="feature-pill-item"><i data-lucide="check" size="14"></i> بدون إعلانات نهائياً</div>
+                            <div class="feature-pill-item"><i data-lucide="check" size="14"></i> ضمان 12 شهر</div>
+                        </div>
                     </div>
 
                     <div class="btn-group">
@@ -863,11 +863,10 @@
                             <div class="pay-today-premium-banner">
                                 <div class="pay-today-tag">
                                     <i data-lucide="zap" size="12"></i>
-                                    <span>المطلوب دفعه اليوم:</span>
+                                    <span>ادفع اليوم:</span>
                                 </div>
                                 <div class="pay-today-amount">50 ريال فقط</div>
                             </div>
-                            <!-- أزرار التقسيط داخل الكارد لتابي وتمارا -->
                             <div class="card-gateway-btns">
                                 <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="card-gw-btn">
                                     <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/IMG_20260813_183233.png" alt="Tabby" class="btn-pay-logo">

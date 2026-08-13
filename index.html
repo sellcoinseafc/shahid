@@ -70,7 +70,7 @@
             overflow-x: hidden;
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
-            padding-bottom: 70px;
+            padding-bottom: 50px;
         }
 
         @media (min-width: 769px) {
@@ -99,9 +99,9 @@
             z-index: 1;
         }
 
-        /* Header المتجر */
+        /* Header المتجر المتناسق مع الشعار المصمم */
         .navbar {
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border-color);
             backdrop-filter: blur(16px);
             position: sticky;
@@ -119,27 +119,20 @@
         .brand-logo {
             display: flex;
             align-items: center;
-            gap: 8px;
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--primary), #a855f7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: 900;
-            box-shadow: 0 4px 12px var(--primary-glow);
+        .logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
-        .logo-text {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--text-main);
+        @media (max-width: 480px) {
+            .logo-img {
+                height: 34px;
+            }
         }
 
         .nav-actions {
@@ -303,7 +296,7 @@
         .trust-item-title { font-size: 0.82rem; font-weight: 800; display: block; }
         .trust-item-sub { font-size: 0.72rem; color: var(--text-muted); }
 
-        /* شريط التقييمات المتنقل المتوافق */
+        /* شريط التقييمات */
         .reviews-slider-box {
             max-width: 920px;
             margin: 0 auto 20px;
@@ -624,32 +617,33 @@
         .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; }
         .footer-bottom { text-align: center; padding-top: 14px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.78rem; }
 
-        /* Mobile Fixed Navigation Bar (التصميم المحدث للجوال) */
+        /* Mobile Fixed Bottom Navigation Bar */
         .mobile-cta {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 8px;
+            left: 12px;
+            right: 12px;
             background: var(--surface-card);
             backdrop-filter: blur(16px);
-            border-top: 1px solid var(--border-color);
-            padding: 10px 16px;
+            border: 1px solid var(--border-color);
+            padding: 6px 10px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             z-index: 999;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         .mobile-nav-btn {
             flex: 1;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 8px 12px;
+            border-radius: 50px;
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 5px;
             text-decoration: none;
             border: none;
             cursor: pointer;
@@ -659,13 +653,13 @@
         .mobile-btn-subscriptions {
             background: var(--primary);
             color: #ffffff;
-            box-shadow: 0 4px 15px var(--primary-glow);
+            box-shadow: 0 2px 10px var(--primary-glow);
         }
 
         .mobile-btn-whatsapp {
             background: #25d366;
             color: #ffffff;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+            box-shadow: 0 2px 10px rgba(37, 211, 102, 0.25);
         }
 
         @media (min-width: 769px) {
@@ -677,12 +671,11 @@
 
     <div class="ambient-glow"></div>
 
-    <!-- 1. Header المتجر -->
+    <!-- 1. Header المتجر مع الشعار الرسمي الجديد -->
     <nav class="navbar">
         <div class="container nav-wrapper">
             <a href="#" class="brand-logo">
-                <div class="logo-icon">N</div>
-                <span class="logo-text">Nexorasa</span>
+                <img src="https://c.top4top.io/p_3877h1xkz1.png" alt="Nexorasa Logo" class="logo-img">
             </a>
             <div class="nav-actions">
                 <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
@@ -694,7 +687,7 @@
         </div>
     </nav>
 
-    <!-- 2. Hero Section -->
+    <!-- 2. Hero Section مع الصورة المصممة الجديدة -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
@@ -716,7 +709,8 @@
 
                 <div class="hero-media">
                     <div class="hero-media-card">
-                        <img src="https://e.top4top.io/p_3877drff41.png" alt="Shahid VIP Nexorasa Banner">
+                        <!-- الصورة الكبيرة المصممة الجديدة -->
+                        <img src="https://a.top4top.io/p_3877syzt41.png" alt="Shahid VIP Nexorasa Banner">
                     </div>
                 </div>
             </div>
@@ -759,7 +753,7 @@
         </div>
     </section>
 
-    <!-- 4. قسم الباقات مع شريط التقييمات الـ 150 التفاعلي -->
+    <!-- 4. قسم الباقات -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             
@@ -768,7 +762,7 @@
                 <p class="section-subtitle">تفعيل مباشر ورسمي على بريدك الإلكتروني الخاص</p>
             </div>
 
-            <!-- شريط التقييمات الـ 150 المتنقل التفاعلي (10 ثوانٍ) -->
+            <!-- شريط التقييمات الـ 150 -->
             <div class="reviews-slider-box">
                 <div class="reviews-slider-content">
                     <div class="review-avatar-icon" id="sliderAvatar">ع</div>
@@ -1043,14 +1037,14 @@
         </div>
     </footer>
 
-    <!-- Mobile Fixed Bottom Navigation Bar المحدث للجوال (زر الاشتراكات + زر الواتساب) -->
+    <!-- Mobile Fixed Bottom Navigation Bar -->
     <div class="mobile-cta">
         <a href="#pricing" class="mobile-nav-btn mobile-btn-subscriptions">
-            <i data-lucide="shopping-bag" size="16"></i>
+            <i data-lucide="shopping-bag" size="14"></i>
             <span>الاشتراكات</span>
         </a>
         <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83%D9%85" target="_blank" class="mobile-nav-btn mobile-btn-whatsapp">
-            <i data-lucide="message-circle" size="16"></i>
+            <i data-lucide="message-circle" size="14"></i>
             <span>واتساب</span>
         </a>
     </div>
@@ -1060,7 +1054,7 @@
         // Lucide Icons Initialization
         lucide.createIcons();
 
-        // القائمة الشاملة لـ 150 تقييماً بدون تكرار المدن
+        // القائمة الشاملة لـ 150 تقييماً
         const rawReviews = [
             "عبد الله محمد|سرعة بالتفعيل وتجاوب ممتاز، الحساب تفعل على إيميلي بنفس اللحظة!",
             "فهد علي|تجربة ممتازة وسلسة، أفضل متجر لتفعيل شاهد VIP بدون وجع رأس.",
@@ -1209,7 +1203,6 @@
             "خالد خالد|أنصح الجميع بالتعامل معهم."
         ];
 
-        // الآلية الذكية لتوزيع وتقليب التقييمات بناءً على أجهزة المستخدمين والوقت (حظر التكرار لـ 24 ساعة)
         function getRotatedReviews() {
             const STORAGE_KEY_TIME = "nx_rev_last_reset";
             const STORAGE_KEY_SEED = "nx_rev_seed";
@@ -1230,7 +1223,6 @@
                 return { name: parts[0], comment: parts[1] };
             });
 
-            // خوارزمية Pseudo-Random Shuffle ثابتة لملايين الزوار بناءً على الـ Seed
             let currentSeed = parseInt(seed);
             for (let i = reviews.length - 1; i > 0; i--) {
                 currentSeed = (currentSeed * 9301 + 49297) % 233280;
@@ -1263,7 +1255,6 @@
             updateReviewDisplay();
         }
 
-        // إطلاق الانتقال التلقائي للتقييم القادم كل 10 ثوانٍ (10000ms)
         updateReviewDisplay();
         setInterval(nextReview, 10000);
 
@@ -1297,8 +1288,8 @@
             if (type === '3m') {
                 const basePrice = 60;
                 const extra = 5;
-                const totalPrice = basePrice + extra; // 65 ريال
-                const monthlyPayment = (totalPrice / 4).toFixed(2); // 16.25 ريال
+                const totalPrice = basePrice + extra;
+                const monthlyPayment = (totalPrice / 4).toFixed(2);
 
                 message = `مرحباً متجر Nexorasa 👋\nأرغب في طلب تقسيط اشتراك شاهد VIP عبر (تابي / تمارا):\n\n` +
                           `📌 *الباقة:* اشتراك شاهد VIP (3 أشهر)\n` +
@@ -1309,8 +1300,8 @@
             } else if (type === '1y') {
                 const basePrice = 180;
                 const extra = 15;
-                const totalPrice = basePrice + extra; // 195 ريال
-                const monthlyPayment = (totalPrice / 4).toFixed(2); // 48.75 ريال
+                const totalPrice = basePrice + extra;
+                const monthlyPayment = (totalPrice / 4).toFixed(2);
 
                 message = `مرحباً متجر Nexorasa 👋\nأرغب في طلب تقسيط اشتراك شاهد VIP عبر (تابي / تمارا):\n\n` +
                           `📌 *الباقة:* اشتراك شاهد VIP (سنة كاملة)\n` +

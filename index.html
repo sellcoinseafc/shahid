@@ -133,7 +133,7 @@
             border-radius: 8px; color: var(--primary); font-size: 0.78rem; font-weight: 800;
         }
 
-        /* Hero الجديد: خلفية سوداء غامقة جداً وواضحة جداً فوق الصورة */
+        /* Hero الجديد: خلفية سوداء غامقة جداً ومرتبة للشاشات كلها */
         .hero-banner-bg {
             position: relative;
             width: 100%;
@@ -143,7 +143,6 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
             border: 1px solid var(--border-color);
-            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -160,45 +159,51 @@
             z-index: 1;
         }
 
-        /* طبقة عزل سوداء غامقة جداً (Deep Black Overlay) لضمان وضوح النص 100% */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(3, 2, 8, 0.95), rgba(10, 8, 22, 0.90));
+            background: linear-gradient(135deg, rgba(3, 2, 8, 0.95), rgba(10, 8, 22, 0.92));
             z-index: 2;
         }
 
         .hero-content-box {
             position: relative;
             z-index: 3;
-            padding: 35px 20px;
+            padding: 28px 16px;
             color: #ffffff;
-            max-width: 800px;
+            max-width: 850px;
         }
 
         .hero-content-box h1 {
-            font-size: 1.65rem;
+            font-size: 1.4rem;
             font-weight: 900;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #ffffff;
-            line-height: 1.3;
+            line-height: 1.35;
+        }
+        @media (min-width: 768px) {
+            .hero-content-box h1 { font-size: 1.8rem; }
+            .hero-content-box { padding: 35px 20px; }
         }
 
         .hero-content-box p {
-            font-size: 0.92rem;
-            color: #e2e8f0;
-            margin-bottom: 16px;
-            line-height: 1.7;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-bottom: 14px;
+            line-height: 1.65;
+        }
+        @media (min-width: 768px) {
+            .hero-content-box p { font-size: 0.95rem; }
         }
 
         .sub-brand-logo-white {
-            height: 40px;
+            height: 36px;
             width: auto;
             object-fit: contain;
-            margin: 0 auto 14px;
+            margin: 0 auto 12px;
             display: block;
             filter: brightness(0) invert(1);
         }
@@ -207,19 +212,19 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .highlight-pill-white {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 6px 14px;
+            padding: 5px 10px;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 800;
             color: #ffffff;
         }
@@ -256,48 +261,56 @@
         .trust-item-title { font-size: 0.78rem; font-weight: 800; display: block; color: var(--text-main); }
         .trust-item-sub { font-size: 0.68rem; color: var(--text-muted); }
 
-        /* قسم المنتجات (عرض جنباً إلى جنب) */
+        /* قسم المنتجات المحدث (تصميم بطاقات مريحة وممتازة للجوال والكمبيوتر) */
         .pricing-section { padding: 5px 0 15px; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 920px; margin: 0 auto; }
-        @media (max-width: 480px) { .pricing-grid { gap: 8px; } }
+        .pricing-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 16px; 
+            max-width: 920px; 
+            margin: 0 auto; 
+        }
+        @media (min-width: 768px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        }
 
         .product-card {
-            background: var(--surface-card); border: 1.5px solid var(--border-color); border-radius: 16px;
-            padding: 12px 10px; position: relative; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--card-shadow);
+            background: var(--surface-card); border: 2px solid var(--border-color); border-radius: 20px;
+            padding: 20px 16px; position: relative; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--card-shadow);
         }
-        .product-card.featured { border-color: var(--primary); box-shadow: 0 8px 25px var(--primary-glow); }
+        .product-card.featured { border-color: var(--primary); box-shadow: 0 10px 30px var(--primary-glow); }
         .product-badge-pop {
-            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--primary), #a855f7); color: #fff; padding: 1px 10px; border-radius: 50px; font-size: 0.65rem; font-weight: 900; white-space: nowrap;
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--primary), #a855f7); color: #fff; padding: 2px 14px; border-radius: 50px; font-size: 0.72rem; font-weight: 900; white-space: nowrap;
         }
-        .product-header { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
-        .product-thumb-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(124, 58, 237, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center; }
-        .product-title-wrap h3 { font-size: 0.92rem; font-weight: 900; color: var(--text-main); }
-        .product-duration { color: #ffffff !important; font-size: 0.7rem; font-weight: 800; background: rgba(124, 58, 237, 0.85); padding: 2px 6px; border-radius: 4px; }
-        .price-container { margin: 6px 0; text-align: center; }
-        .current-price { font-size: 1.5rem; font-weight: 900; color: var(--text-main); }
-        .current-price span { font-size: 0.72rem; color: var(--text-muted); }
-        .product-features-list { list-style: none; margin: 6px 0 10px; display: flex; flex-direction: column; gap: 4px; }
-        .product-features-list li { display: flex; align-items: center; gap: 4px; font-size: 0.72rem; color: var(--text-muted); }
+        .product-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+        .product-thumb-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(124, 58, 237, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .product-title-wrap h3 { font-size: 1.1rem; font-weight: 900; color: var(--text-main); }
+        .product-duration { color: #ffffff !important; font-size: 0.75rem; font-weight: 800; background: rgba(124, 58, 237, 0.85); padding: 2px 8px; border-radius: 6px; display: inline-block; margin-top: 4px; }
+        .price-container { margin: 8px 0; display: flex; align-items: baseline; gap: 6px; }
+        .current-price { font-size: 2rem; font-weight: 900; color: var(--text-main); }
+        .current-price span { font-size: 0.8rem; color: var(--text-muted); }
+        .product-features-list { list-style: none; margin: 10px 0 16px; display: flex; flex-direction: column; gap: 8px; }
+        .product-features-list li { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-muted); }
         .product-features-list li i { color: var(--accent-green); flex-shrink: 0; }
-        .btn-group { display: flex; flex-direction: column; gap: 6px; }
+        .btn-group { display: flex; flex-direction: column; gap: 10px; }
         .rmz-button-wrapper { width: 100%; }
         .rmz-button-wrapper button, .rmz-button-wrapper button[data-rmz-product] {
-            width: 100% !important; padding: 10px 8px !important; border-radius: 8px !important; background: var(--accent-green) !important; color: #ffffff !important; font-weight: 900 !important; font-size: 0.82rem !important; border: none !important; cursor: pointer !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 4px !important; box-shadow: 0 3px 12px var(--accent-green-glow) !important;
+            width: 100% !important; padding: 12px 14px !important; border-radius: 10px !important; background: var(--accent-green) !important; color: #ffffff !important; font-weight: 900 !important; font-size: 0.95rem !important; border: none !important; cursor: pointer !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important; box-shadow: 0 4px 15px var(--accent-green-glow) !important;
         }
-        .installment-box-card { background: rgba(124, 58, 237, 0.04); border: 1px solid var(--border-color); border-radius: 10px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
-        .installment-box-title { font-size: 0.72rem; font-weight: 800; color: var(--text-main); text-align: center; }
-        .pay-today-premium-banner { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(16, 185, 129, 0.1)); border: 1px solid var(--border-active); padding: 5px 8px; border-radius: 6px; }
-        .pay-today-tag { display: flex; align-items: center; gap: 4px; font-size: 0.68rem; font-weight: 900; color: var(--text-main); }
+        .installment-box-card { background: rgba(124, 58, 237, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .installment-box-title { font-size: 0.78rem; font-weight: 800; color: var(--text-main); text-align: center; }
+        .pay-today-premium-banner { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(16, 185, 129, 0.1)); border: 1px solid var(--border-active); padding: 6px 10px; border-radius: 8px; }
+        .pay-today-tag { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 900; color: var(--text-main); }
         .pay-today-tag i { color: var(--accent-green); }
-        .pay-today-amount { background: var(--accent-green); color: #ffffff; padding: 1px 6px; border-radius: 4px; font-size: 0.68rem; font-weight: 900; }
-        .card-gateway-btns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; }
-        .card-gw-btn { background: var(--surface-card); border: 1px solid var(--border-color); padding: 6px; border-radius: 6px; font-size: 0.72rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .pay-today-amount { background: var(--accent-green); color: #ffffff; padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 900; }
+        .card-gateway-btns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+        .card-gw-btn { background: var(--surface-card); border: 1px solid var(--border-color); padding: 8px; border-radius: 8px; font-size: 0.78rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .card-gw-btn.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); }
         .card-gw-btn.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); }
 
         /* زر المقارنة الذكي الجديد */
-        .comparison-trigger-box { max-width: 920px; margin: 14px auto 0; text-align: center; }
+        .comparison-trigger-box { max-width: 920px; margin: 16px auto 0; text-align: center; }
         .comparison-btn {
             background: rgba(124, 58, 237, 0.1); border: 1.5px dashed var(--primary);
             color: var(--primary); width: 100%; padding: 12px; border-radius: 12px;
@@ -368,24 +381,24 @@
             .floating-whatsapp-btn { display: flex; position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; border-radius: 50%; background: #25d366; color: #ffffff; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 998; text-decoration: none; }
         }
 
-        /* النوافذ المنبثقة */
+        /* النوافذ المنبثقة الشاملة */
         .modal-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px);
             display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 16px;
         }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
         .modal-card {
-            background: var(--surface-card); border: 1px solid var(--border-active); border-radius: 18px; padding: 20px 16px; max-width: 700px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.4); transform: translateY(15px); transition: transform 0.3s ease;
+            background: var(--surface-card); border: 1px solid var(--border-active); border-radius: 18px; padding: 24px 20px; max-width: 750px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.4); transform: translateY(15px); transition: transform 0.3s ease;
         }
         .modal-overlay.active .modal-card { transform: translateY(0); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
-        .modal-title { font-size: 1.05rem; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
-        .modal-close-x { background: rgba(124, 58, 237, 0.1); border: none; color: var(--text-main); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .modal-body-content { overflow-y: auto; color: var(--text-muted); font-size: 0.82rem; line-height: 1.7; text-align: right; }
-        .modal-body-content h4 { color: var(--text-main); margin-top: 10px; margin-bottom: 4px; font-size: 0.92rem; font-weight: 800; }
-        .modal-body-content p { margin-bottom: 8px; }
-        .modal-body-content ul { margin: 6px 16px 10px 0; }
-        .modal-body-content li { margin-bottom: 3px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+        .modal-title { font-size: 1.1rem; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+        .modal-close-x { background: rgba(124, 58, 237, 0.1); border: none; color: var(--text-main); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .modal-body-content { overflow-y: auto; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; text-align: right; }
+        .modal-body-content h4 { color: var(--text-main); margin-top: 14px; margin-bottom: 4px; font-size: 1rem; font-weight: 800; }
+        .modal-body-content p { margin-bottom: 10px; }
+        .modal-body-content ul { margin: 8px 20px 12px 0; }
+        .modal-body-content li { margin-bottom: 4px; }
 
         /* خريطة التقسيط */
         .timeline-container { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 8px; margin-bottom: 10px; }
@@ -422,7 +435,7 @@
         </div>
     </nav>
 
-    <!-- 2. Hero الجديد: خلفية سوداء غامقة جداً وواضحة جداً فوق الصورة -->
+    <!-- 2. Hero الجديد: خلفية سوداء غامقة جداً ومرتبة -->
     <div class="container">
         <div class="hero-banner-bg">
             <img src="https://a.top4top.io/p_3877syzt41.png" alt="Shahid VIP Nexorasa Banner" class="hero-bg-img">
@@ -497,7 +510,7 @@
         </div>
     </section>
 
-    <!-- 3. قسم المنتجات (عرض جنباً إلى جنب كمتجر حقيقي) -->
+    <!-- 3. قسم المنتجات المحدث (بطاقات مريحة ومصممة بعناية للجوال والكمبيوتر) -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             <div class="pricing-grid">
@@ -506,7 +519,7 @@
                 <div class="product-card" id="card-3m">
                     <div>
                         <div class="product-header">
-                            <div class="product-thumb-icon"><i data-lucide="tv" size="18"></i></div>
+                            <div class="product-thumb-icon"><i data-lucide="tv" size="20"></i></div>
                             <div class="product-title-wrap">
                                 <h3>شاهد VIP — 3 أشهر</h3>
                                 <span class="product-duration">على إيميلك الخاص</span>
@@ -518,9 +531,10 @@
                         </div>
 
                         <ul class="product-features-list">
-                            <li><i data-lucide="check" size="12"></i><span>مكتبة العروض والأعمال</span></li>
-                            <li><i data-lucide="check" size="12"></i><span>جودة Full HD بدون إعلانات</span></li>
-                            <li><i data-lucide="check" size="12"></i><span>ضمان شامل طوال الفترة</span></li>
+                            <li><i data-lucide="check" size="14"></i><span>مكتبة العروض والأعمال الكاملة</span></li>
+                            <li><i data-lucide="check" size="14"></i><span>مشاهدة بجودة Full HD بدون إعلانات</span></li>
+                            <li><i data-lucide="check" size="14"></i><span>تفعيل على بريدك الإلكتروني الشخصي</span></li>
+                            <li><i data-lucide="check" size="14"></i><span>ضمان شامل لمدة 90 يوماً</span></li>
                         </ul>
                     </div>
 
@@ -536,17 +550,17 @@
                         </div>
 
                         <div class="installment-box-card">
-                            <div class="installment-box-title">خيارات التقسيط</div>
+                            <div class="installment-box-title">اختر طريقة التقسيط</div>
                             <div class="pay-today-premium-banner">
                                 <div class="pay-today-tag">
                                     <i data-lucide="zap" size="12"></i>
-                                    <span>اليوم:</span>
+                                    <span>المطلوب دفعه اليوم:</span>
                                 </div>
-                                <div class="pay-today-amount">17 ر.س</div>
+                                <div class="pay-today-amount">17 ريال فقط</div>
                             </div>
                             <div class="card-gateway-btns">
-                                <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-gw-btn tabby">تابي</button>
-                                <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-gw-btn tamara">تمارا</button>
+                                <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-gw-btn tabby">تابي (Tabby)</button>
+                                <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-gw-btn tamara">تمارا (Tamara)</button>
                             </div>
                         </div>
                     </div>
@@ -557,9 +571,9 @@
                     <div class="product-badge-pop">الأكثر طلباً ⭐</div>
                     <div>
                         <div class="product-header">
-                            <div class="product-thumb-icon" style="background: rgba(5, 150, 105, 0.1); color: var(--accent-green);"><i data-lucide="sparkles" size="18"></i></div>
+                            <div class="product-thumb-icon" style="background: rgba(5, 150, 105, 0.1); color: var(--accent-green);"><i data-lucide="sparkles" size="20"></i></div>
                             <div class="product-title-wrap">
-                                <h3>شاهد VIP — سنة</h3>
+                                <h3>شاهد VIP — سنة كاملة</h3>
                                 <span class="product-duration">على إيميلك الخاص</span>
                             </div>
                         </div>
@@ -569,9 +583,10 @@
                         </div>
 
                         <ul class="product-features-list">
-                            <li><i data-lucide="check" size="12"></i><span>كافة أعمال شاهد الأصلية</span></li>
-                            <li><i data-lucide="check" size="12"></i><span>جودة عالية Full HD/4K</span></li>
-                            <li><i data-lucide="check" size="12"></i><span>ضمان شامل 12 شهراً</span></li>
+                            <li><i data-lucide="check" size="14"></i><span>وصول كامل لكافة أعمال شاهد الأصلية</span></li>
+                            <li><i data-lucide="check" size="14"></i><span>عرض بأعلى جودة بدقة Full HD/4K</span></li>
+                            <li><i data-lucide="check" size="14"></i><span>بدون أي فواصل أو إعلانات</span></li>
+                            <li><i data-lucide="check" size="14"></i><span>ضمان شامل لمدة 12 شهراً</span></li>
                         </ul>
                     </div>
 
@@ -587,17 +602,17 @@
                         </div>
 
                         <div class="installment-box-card">
-                            <div class="installment-box-title">خيارات التقسيط</div>
+                            <div class="installment-box-title">اختر طريقة التقسيط</div>
                             <div class="pay-today-premium-banner">
                                 <div class="pay-today-tag">
                                     <i data-lucide="zap" size="12"></i>
-                                    <span>اليوم:</span>
+                                    <span>المطلوب دفعه اليوم:</span>
                                 </div>
-                                <div class="pay-today-amount">50 ر.س</div>
+                                <div class="pay-today-amount">50 ريال فقط</div>
                             </div>
                             <div class="card-gateway-btns">
-                                <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="card-gw-btn tabby">تابي</button>
-                                <button type="button" onclick="openGatewayModal('1y', 'tamara')" class="card-gw-btn tamara">تمارا</button>
+                                <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="card-gw-btn tabby">تابي (Tabby)</button>
+                                <button type="button" onclick="openGatewayModal('1y', 'tamara')" class="card-gw-btn tamara">تمارا (Tamara)</button>
                             </div>
                         </div>
                     </div>
@@ -721,14 +736,14 @@
             <i data-lucide="shopping-bag" size="13"></i>
             <span>الاشتراكات</span>
         </a>
-        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" class="mobile-nav-btn mobile-btn-support">
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%85%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%A1" class="mobile-nav-btn mobile-btn-support">
             <i data-lucide="headphones" size="13"></i>
             <span>خدمة العملاء</span>
         </a>
         <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')" title="ساعات عمل المتجر">
             <i data-lucide="clock" size="16"></i>
         </button>
-        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B" target="_blank" class="mobile-btn-icon-wa" title="محادثة واتساب">
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%85%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B" target="_blank" class="mobile-btn-icon-wa" title="محادثة واتساب">
             <i data-lucide="message-circle" size="16"></i>
         </a>
     </div>
@@ -779,7 +794,9 @@
         </div>
     </div>
 
-    <!-- النوافذ المنبثقة للسياسات -->
+    <!-- النوافذ المنبثقة للسياسات (بالنصوص الكاملة الحرفية كما أرسلتها سابقاً) -->
+    
+    <!-- 1. الشروط والأحكام -->
     <div class="modal-overlay" id="termsModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -788,21 +805,51 @@
             </div>
             <div class="modal-body-content">
                 <p>مرحبًا بك في NEXORA SA، وجهتك للحصول على الاشتراكات والخدمات الرقمية والترفيهية. باستخدامك لمتجر NEXORA SA أو إتمام أي عملية شراء، فإنك تقر بقراءة هذه الشروط والأحكام والموافقة عليها.</p>
+                
                 <h4>1. طبيعة خدمات المتجر</h4>
                 <p>يقدم متجر NEXORA SA خدمات واشتراكات رقمية وترفيهية يتم تفعيلها أو توفيرها للعميل وفق آلية كل منتج. المنصات والخدمات التي يتم الاشتراك بها مملوكة ومدارة من قبل الشركات والجهات المالكة لها، ولا يدعي متجر NEXORA SA ملكية أو تطوير هذه المنصات.</p>
+                <p>تخضع كل خدمة لشروط وسياسات الجهة المالكة لها، وقد تختلف طريقة التفعيل أو الاستخدام حسب المنتج.</p>
+
                 <h4>2. مسؤولية المتجر</h4>
-                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج. لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة (تحديثات التطبيق، تغيير المزايا، الأسعار، أو إيقاف الخدمات).</p>
+                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج. لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة، بما في ذلك:</p>
+                <ul>
+                    <li>تحديثات المنصة أو التطبيق.</li>
+                    <li>تغيير المزايا أو المحتوى.</li>
+                    <li>تغيير سياسات الاستخدام.</li>
+                    <li>تغيير الأسعار أو الباقات.</li>
+                    <li>إيقاف أو تعليق بعض الخدمات من قبل المنصة.</li>
+                    <li>أي قيود أو تغييرات تفرضها الجهة المالكة للخدمة.</li>
+                </ul>
+                <p>وفي حال كان المنتج مشمولًا بضمان، يتم التعامل مع المشكلة وفق سياسة الضمان الخاصة بالمنتج.</p>
+
                 <h4>3. سياسة الاسترجاع والاسترداد</h4>
-                <p>نظرًا لطبيعة المنتجات الرقمية، يمكن طلب الاسترجاع خلال 24 ساعة في حال وجود مشكلة في التفعيل. بعد نجاح التفعيل واستخدام الاشتراك لا يمكن استرجاع قيمته.</p>
+                <p>نظرًا لطبيعة المنتجات الرقمية، فإن جميع عمليات الشراء تخضع للشروط التالية:</p>
+                <ul>
+                    <li>يمكن طلب الاسترجاع خلال 24 ساعة من تنفيذ الطلب في حال وجود مشكلة في التفعيل أو عدم تمكن المتجر من توفير الخدمة المتفق عليها.</li>
+                    <li>بعد نجاح التفعيل وبدء استخدام الاشتراك، لا يمكن استرجاع قيمة المنتج باعتباره منتجًا رقميًا تم تسليمه وتفعيله.</li>
+                    <li>لا يحق للعميل طلب استرداد بسبب تغيير أو تحديث صادر من المنصة المالكة للخدمة.</li>
+                    <li>في حال وجود ضمان للمنتج، يتم تطبيق سياسة الضمان بدلًا من الاسترجاع، متى كانت المشكلة مشمولة بالضمان.</li>
+                </ul>
+
                 <h4>4. سياسة الضمان</h4>
-                <p>الضمان يشمل الاشتراك المفعّل فقط، ويختلف نطاقه حسب المدة (90 يوماً لاشتراك 3 أشهر، و12 شهراً لاشتراك السنة).</p>
+                <p>الضمان، عند وجوده، يشمل الاشتراك الذي تم شراؤه وتفعيله من خلال متجر NEXORA SA فقط. ويختلف نطاق ومدة الضمان حسب المنتج:</p>
+                <ul>
+                    <li>اشتراك 3 أشهر: ضمان لمدة 90 يومًا.</li>
+                    <li>اشتراك سنة: ضمان لمدة 12 شهرًا.</li>
+                </ul>
+                <p>ولا يشمل الضمان تحديثات أو تغييرات المنصة أو الأعطال العامة الناتجة عن مزود الخدمة.</p>
+
                 <h4>5. مسؤولية العميل</h4>
-                <p>يتحمل العميل مسؤولية تقديم البيانات الصحيحة واستخدام الاشتراك وفق شروط المنصة.</p>
+                <p>يتحمل العميل مسؤولية تقديم البيانات الصحيحة، التأكد من صحة البريد الإلكتروني، المحافظة على بيانات الدخول، واستخدام الاشتراك وفق شروط المنصة المالكة.</p>
+
+                <h4>6. ملخص الشروط</h4>
+                <p>المنتجات الرقمية لا تُسترد بعد نجاح التفعيل. الضمان يخص الاشتراك نفسه فقط. شراء أي منتج يعني موافقة العميل على هذه الشروط والأحكام.</p>
                 <p><strong>آخر تحديث: 2026</strong></p>
             </div>
         </div>
     </div>
 
+    <!-- 2. سياسة الضمان -->
     <div class="modal-overlay" id="warrantyModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -817,10 +864,12 @@
                     <li>اشتراك سنة: 12 شهرًا</li>
                 </ul>
                 <p>لا يشمل الضمان أي تحديثات أو تغييرات أو تعديلات تطرأ على منصة شاهد أو أنظمتها أو سياساتها، كما لا نتحمل مسؤولية أي تغييرات صادرة من المنصة نفسها.</p>
+                <p>ويقتصر الضمان على الاشتراك الذي تم شراؤه من المتجر، ولا يشمل أي خدمات أو مشاكل خارج نطاق الاشتراك.</p>
             </div>
         </div>
     </div>
 
+    <!-- 3. سياسة الخصوصية -->
     <div class="modal-overlay" id="privacyModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -828,18 +877,21 @@
                 <button class="modal-close-x" onclick="closePolicyModal('privacyModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="modal-body-content">
-                <p>في NEXORA SA نحرص على حماية خصوصية عملائنا والحفاظ على سرية بياناتهم، ونلتزم باستخدام المعلومات بالقدر اللازم لتقديم خدماتنا وتنفيذ الطلبات.</p>
+                <p>في NEXORA SA نحرص على حماية خصوصية عملائنا والحفاظ على سرية بياناتهم، ونلتزم باستخدام المعلومات التي يتم جمعها بالقدر اللازم لتقديم خدماتنا وتنفيذ الطلبات وتحسين تجربة المستخدم.</p>
                 <h4>1. المعلومات التي نجمعها</h4>
-                <p>الاسم، البريد الإلكتروني، رقم الجوال، وبيانات الطلب والاشتراكات.</p>
+                <p>الاسم، البريد الإلكتروني، رقم الجوال، بيانات الطلب والاشتراكات، وأي معلومات يرسلها العميل لخدمة العملاء. نجمع أيضاً بيانات تقنية تلقائياً مثل الـ IP.</p>
                 <h4>2. كيفية استخدام بياناتك</h4>
-                <p>تنفيذ الطلبات وتفعيل الخدمات، التواصل، تقديم الدعم، ومعالجة المدفوعات.</p>
+                <p>تنفيذ الطلبات وتفعيل الخدمات، التواصل، تقديم الدعم، ومعالجة المدفوعات والتحقق من الطلبات.</p>
                 <h4>3. حماية البيانات</h4>
-                <p>نتخذ إجراءات لحماية بيانات العملاء ولا نقوم ببيعها لأي طرف تجاري آخر.</p>
+                <p>نتخذ إجراءات تقنية وتنظيمية لحماية بيانات العملاء، ولا نقوم ببيع بيانات العملاء الشخصية أو تأجيرها لأطراف أخرى لأغراض تجارية.</p>
+                <h4>4. مشاركة البيانات</h4>
+                <p>قد تتم مشاركة بعض البيانات مع بوابات الدفع ومزودي الخدمات الرقمية عند الحاجة لتنفيذ الطلب.</p>
                 <p><strong>آخر تحديث: 2026</strong></p>
             </div>
         </div>
     </div>
 
+    <!-- 4. ساعات العمل -->
     <div class="modal-overlay" id="hoursModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -850,7 +902,7 @@
                 <div style="font-size: 2.2rem; margin-bottom: 8px;">🕒</div>
                 <h4 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 6px;">نحن في خدمتكم يوميًا على مدار الأسبوع!</h4>
                 <p style="font-size: 1rem; color: var(--primary); font-weight: 800; margin-bottom: 10px;">ساعات العمل: من 11 صباحًا حتى 3 فجراً.</p>
-                <p>فريقنا جاهز لاستقبال طلباتك واستفساراتك في أي وقت ضمن هذه الساعات.</p>
+                <p>سواء كنت تبحث عن منتجاتنا الرقمية أو ترغب في التواصل معنا، فريقنا جاهز لاستقبال طلباتك واستفساراتك في أي وقت ضمن هذه الساعات.</p>
                 <p style="margin-top: 12px; font-size: 0.75rem; color: var(--text-muted);">📌 ملاحظة: الالتزام بهذه المواعيد يضمن حصولك على خدمة سريعة وفعّالة.</p>
             </div>
         </div>

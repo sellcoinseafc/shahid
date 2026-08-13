@@ -842,7 +842,7 @@
             transform: scale(1.08);
         }
 
-        /* النافذة المنبثقة التفاعلية مع خريطة التقسيط الخطية */
+        /* النافذة المنبثقة التفاعلية لخريطة التقسيط بدون اختيار البوابة بداخله */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -907,7 +907,7 @@
             border: 1px solid var(--border-color);
             border-radius: 14px;
             padding: 16px 10px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .timeline-title {
@@ -1001,9 +1001,9 @@
             background: rgba(217, 119, 6, 0.08);
             border: 1px dashed rgba(217, 119, 6, 0.3);
             color: var(--accent-gold);
-            padding: 6px 10px;
+            padding: 8px 10px;
             border-radius: 8px;
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             font-weight: 800;
             text-align: center;
             margin-bottom: 14px;
@@ -1483,7 +1483,7 @@
         </a>
     </div>
 
-    <!-- Modal Pop-up المنبثقة الذكية مع خريطة التقسيط والرسالة المبسطة -->
+    <!-- Modal Pop-up المنبثقة الذكية لعرض خريطة التقسيط فقط -->
     <div class="modal-overlay" id="installmentModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -1522,17 +1522,6 @@
                 <div class="summary-total-bar">
                     <span>إجمالي المبالغ كاملة:</span>
                     <strong id="modalTotalSum">0 ريال</strong>
-                </div>
-            </div>
-
-            <!-- اختيار طريقة التقسيط -->
-            <div class="gateway-selector-title">اختر طريقة التقسيط:</div>
-            <div class="gateway-grid">
-                <div class="gateway-option-btn tabby-btn selected" id="tabbyOption" onclick="selectGateway('tabby')">
-                    <span>تابي Tabby</span>
-                </div>
-                <div class="gateway-option-btn tamara-btn" id="tamaraOption" onclick="selectGateway('tamara')">
-                    <span>تمارا Tamara</span>
                 </div>
             </div>
 
@@ -1786,7 +1775,6 @@
         function openGatewayModal(plan, gateway) {
             selectedPlan = plan;
             selectedGateway = gateway;
-            selectGateway(gateway);
 
             const modalTitle = document.getElementById('modalPlanTitle');
             const modalTotalSum = document.getElementById('modalTotalSum');
@@ -1819,19 +1807,7 @@
             document.getElementById('installmentModal').classList.remove('active');
         }
 
-        function selectGateway(gateway) {
-            selectedGateway = gateway;
-            document.getElementById('tabbyOption').classList.remove('selected');
-            document.getElementById('tamaraOption').classList.remove('selected');
-
-            if (gateway === 'tabby') {
-                document.getElementById('tabbyOption').classList.add('selected');
-            } else {
-                document.getElementById('tamaraOption').classList.add('selected');
-            }
-        }
-
-        // إرسال نموذج الواتساب بالصياغة المعتمدة
+        // إرسال نموذج الواتساب مع التأكد من اسم البوابة المختارة بدقة تامة
         function proceedToWhatsApp() {
             closeModal();
             const phone = "966551040375";

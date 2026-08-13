@@ -14,8 +14,8 @@
     <!-- الأيقونات -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- RMZ Embed Script الرسمي المحدث -->
-    <script src="https://rmz.gg/embed/rmz-embed.js"></script>
+    <!-- RMZ Embed Script الرسمي -->
+    <script src="https://embed-js.rmz.gg/rmz-embed.js"></script>
 
     <style>
         /* الوضع النهاري الافتراضي (Light Mode) */
@@ -25,7 +25,7 @@
             --primary: #7c3aed;
             --primary-glow: rgba(124, 58, 237, 0.15);
             --accent-green: #059669;
-            --accent-green-glow: rgba(5, 150, 105, 0.2);
+            --accent-green-glow: rgba(5, 150, 105, 0.25);
             --accent-gold: #d97706;
             --border-color: #e2e8f0;
             --border-active: rgba(124, 58, 237, 0.4);
@@ -127,12 +127,15 @@
             width: auto;
             object-fit: contain;
             display: block;
+            transition: filter 0.3s ease;
+        }
+
+        body.dark-theme .logo-img {
+            filter: brightness(0) invert(1);
         }
 
         @media (max-width: 480px) {
-            .logo-img {
-                height: 34px;
-            }
+            .logo-img { height: 34px; }
         }
 
         .nav-actions {
@@ -141,18 +144,24 @@
             gap: 8px;
         }
 
-        .theme-toggle-btn {
+        /* زر الأيقونة فقط للوضع الليلي والنهاري */
+        .theme-icon-btn {
             background: var(--surface-card);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 6px 10px;
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 4px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .theme-icon-btn:hover {
+            border-color: var(--border-active);
+            transform: scale(1.05);
         }
 
         .nav-link {
@@ -166,9 +175,7 @@
         }
 
         /* Hero Section */
-        .hero {
-            padding: 24px 0;
-        }
+        .hero { padding: 24px 0; }
 
         .hero-grid {
             display: grid;
@@ -299,7 +306,7 @@
         /* شريط التقييمات */
         .reviews-slider-box {
             max-width: 920px;
-            margin: 0 auto 20px;
+            margin: 0 auto 16px;
             background: var(--surface-card);
             border: 1px solid var(--border-active);
             border-radius: 16px;
@@ -360,6 +367,41 @@
             align-items: center;
             justify-content: center;
         }
+
+        /* شريط وسائل الدفع المتاحة */
+        .payment-methods-bar {
+            max-width: 920px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 14px;
+            background: var(--surface-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .payment-methods-title {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            margin-left: 6px;
+        }
+
+        .pay-badge {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .pay-badge.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); }
+        .pay-badge.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); }
 
         /* قسم الباقات */
         .pricing-section { padding: 10px 0 40px; }
@@ -458,22 +500,23 @@
         .btn-group { display: flex; flex-direction: column; gap: 8px; }
         .rmz-button-wrapper { width: 100%; }
 
-        /* تنسيق أزرار RMZ للظهور بنفس ثيم المتجر الأنيق */
-        .rmz-button-wrapper button {
+        .rmz-button-wrapper button, 
+        .rmz-button-wrapper button[data-rmz-product] {
             width: 100% !important;
-            padding: 13px !important;
+            padding: 14px 16px !important;
             border-radius: 10px !important;
             background: var(--accent-green) !important;
             color: #ffffff !important;
             font-weight: 900 !important;
-            font-size: 0.95rem !important;
-            border: 0 !important;
+            font-size: 1rem !important;
+            border: none !important;
             cursor: pointer !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            gap: 6px !important;
-            box-shadow: 0 4px 15px var(--accent-green-glow) !important;
+            gap: 8px !important;
+            box-shadow: 0 4px 20px var(--accent-green-glow) !important;
+            transition: all 0.2s ease-in-out !important;
         }
 
         .btn-installment {
@@ -490,6 +533,47 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
+        }
+
+        /* طوق ومستطيل "المطلوب دفعه اليوم" */
+        .pay-today-premium-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(16, 185, 129, 0.12));
+            border: 1px solid var(--border-active);
+            padding: 8px 12px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .pay-today-tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 900;
+            color: var(--text-main);
+        }
+
+        .pay-today-tag i { color: var(--accent-green); }
+
+        .pay-today-amount {
+            background: var(--accent-green);
+            color: #ffffff;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 900;
+            box-shadow: 0 2px 8px var(--accent-green-glow);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.96); opacity: 0.9; }
         }
 
         /* لماذا نحن والخطوات والتقسيط */
@@ -546,6 +630,7 @@
         .step-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
         .step-card p { color: var(--text-muted); font-size: 0.82rem; }
 
+        /* قسم التقسيط السفلي */
         .installment-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -561,8 +646,21 @@
         .partner-card {
             background: var(--surface-card);
             border: 1px solid var(--border-color);
-            padding: 14px;
-            border-radius: 14px;
+            padding: 16px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .partner-card:hover {
+            border-color: var(--border-active);
+            transform: translateY(-2px);
+        }
+
+        .partner-header {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -586,6 +684,18 @@
 
         .partner-info h4 { font-size: 0.95rem; font-weight: 800; }
         .partner-info p { color: var(--text-muted); font-size: 0.8rem; }
+
+        .saudi-only-tag {
+            background: rgba(217, 119, 6, 0.08);
+            border: 1px dashed rgba(217, 119, 6, 0.3);
+            color: var(--accent-gold);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-align: center;
+            margin-top: 14px;
+        }
 
         /* FAQ */
         .faq-wrapper { max-width: 800px; margin: 20px auto 0; display: flex; flex-direction: column; gap: 8px; }
@@ -619,7 +729,7 @@
         .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; }
         .footer-bottom { text-align: center; padding-top: 14px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.78rem; }
 
-        /* Mobile Fixed Bottom Navigation Bar */
+        /* الشريط السفلي المطور للجوال */
         .mobile-cta {
             position: fixed;
             bottom: 8px;
@@ -628,9 +738,10 @@
             background: var(--surface-card);
             backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
-            padding: 6px 10px;
+            padding: 6px 8px;
             display: flex;
-            gap: 8px;
+            align-items: center;
+            gap: 6px;
             z-index: 999;
             border-radius: 50px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -638,7 +749,7 @@
 
         .mobile-nav-btn {
             flex: 1;
-            padding: 8px 12px;
+            padding: 8px 10px;
             border-radius: 50px;
             font-weight: 800;
             font-size: 0.78rem;
@@ -658,14 +769,298 @@
             box-shadow: 0 2px 10px var(--primary-glow);
         }
 
-        .mobile-btn-whatsapp {
+        .mobile-btn-support {
+            background: rgba(124, 58, 237, 0.08);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            color: var(--primary);
+        }
+
+        .mobile-btn-icon-wa {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             background: #25d366;
             color: #ffffff;
-            box-shadow: 0 2px 10px rgba(37, 211, 102, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
         }
 
         @media (min-width: 769px) {
             .mobile-cta { display: none; }
+        }
+
+        /* أيقونة الواتساب العائمة للجوال والكمبيوتر */
+        .floating-whatsapp-btn {
+            position: fixed;
+            bottom: 70px;
+            left: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #25d366;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 998;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        @media (min-width: 769px) {
+            .floating-whatsapp-btn { bottom: 24px; left: 24px; width: 54px; height: 54px; }
+        }
+
+        .floating-whatsapp-btn:hover {
+            transform: scale(1.08);
+        }
+
+        /* النافذة المنبثقة التفاعلية مع خريطة التقسيط الخطية */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 16px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-active);
+            border-radius: 20px;
+            padding: 24px 20px;
+            max-width: 440px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+        }
+
+        .modal-title { font-size: 1.2rem; font-weight: 900; color: var(--text-main); }
+
+        /* خريطة الأقساط الأربعة المصممة (Timeline Style) */
+        .timeline-container {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px 10px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .timeline-steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 18px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+
+        .timeline-step {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .timeline-node {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--surface-card);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 900;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .timeline-step.current .timeline-node {
+            border-color: var(--accent-green);
+            background: var(--accent-green);
+            color: #ffffff;
+            box-shadow: 0 0 12px var(--accent-green-glow);
+        }
+
+        .timeline-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+
+        .timeline-step.current .timeline-label {
+            color: var(--accent-green);
+            font-weight: 900;
+        }
+
+        .timeline-price {
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: var(--text-main);
+        }
+
+        .summary-total-bar {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.88rem;
+        }
+
+        .summary-total-bar span { font-weight: 800; color: var(--text-muted); }
+        .summary-total-bar strong { font-weight: 900; color: var(--accent-green); font-size: 1.05rem; }
+
+        /* اختيار طريقة التقسيط */
+        .gateway-selector-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            text-align: right;
+        }
+
+        .gateway-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .gateway-option-btn {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .gateway-option-btn span {
+            font-size: 0.9rem;
+            font-weight: 900;
+        }
+
+        .gateway-option-btn.tabby-btn span { color: var(--tabby-color); }
+        .gateway-option-btn.tamara-btn span { color: var(--tamara-color); }
+
+        .gateway-option-btn.selected {
+            border-color: var(--primary);
+            background: rgba(124, 58, 237, 0.06);
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        .modal-saudi-note {
+            background: rgba(217, 119, 6, 0.08);
+            border: 1px dashed rgba(217, 119, 6, 0.3);
+            color: var(--accent-gold);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .modal-btn-confirm {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            background: #25d366;
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 0.92rem;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .modal-btn-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            cursor: pointer;
+            font-weight: 700;
+            padding: 4px;
         }
     </style>
 </head>
@@ -673,23 +1068,22 @@
 
     <div class="ambient-glow"></div>
 
-    <!-- 1. Header المتجر مع الشعار الرسمي الجديد -->
+    <!-- 1. Header المتجر مع زر الأيقونة الأنيق للثيم -->
     <nav class="navbar">
         <div class="container nav-wrapper">
             <a href="#" class="brand-logo">
                 <img src="https://c.top4top.io/p_3877h1xkz1.png" alt="Nexorasa Logo" class="logo-img">
             </a>
             <div class="nav-actions">
-                <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
-                    <i data-lucide="moon" size="14"></i>
-                    <span id="themeBtnText">الليل</span>
+                <button class="theme-icon-btn" onclick="toggleTheme()" id="themeToggleBtn" title="تبديل الوضع">
+                    <i data-lucide="moon" size="18"></i>
                 </button>
                 <a href="#pricing" class="nav-link"><i data-lucide="shopping-bag" size="16"></i><span>الاشتراكات</span></a>
             </div>
         </div>
     </nav>
 
-    <!-- 2. Hero Section مع الصورة المصممة الجديدة -->
+    <!-- 2. Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
@@ -754,7 +1148,7 @@
         </div>
     </section>
 
-    <!-- 4. قسم الباقات مع الكودين الفعليين لمنتجات RMZ -->
+    <!-- 4. قسم الباقات -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             
@@ -781,10 +1175,21 @@
                 </div>
             </div>
 
+            <!-- شريط خيارات ووسائل الدفع المتاحة بالمتجر -->
+            <div class="payment-methods-bar">
+                <span class="payment-methods-title">خيارات الدفع المتاحة:</span>
+                <span class="pay-badge">مدى mada</span>
+                <span class="pay-badge">Apple Pay</span>
+                <span class="pay-badge">Visa</span>
+                <span class="pay-badge">Mastercard</span>
+                <span class="pay-badge tabby">تابي Tabby</span>
+                <span class="pay-badge tamara">تمارا Tamara</span>
+            </div>
+
             <div class="pricing-grid">
                 
-                <!-- باقة 3 أشهر (60 ريال) - كود RMZ الخاص بالـ 3 أشهر (Product: 29956) -->
-                <div class="product-card" id="card-3m" data-price="60" data-plan="اشتراك شاهد VIP (3 أشهر)">
+                <!-- باقة 3 أشهر (Product: 29956) -->
+                <div class="product-card" id="card-3m">
                     <div>
                         <div class="product-header">
                             <div class="product-thumb-icon"><i data-lucide="tv" size="20"></i></div>
@@ -813,20 +1218,28 @@
                                 data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
                                 data-rmz-theme="auto" 
                                 data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                                <i data-lucide="shopping-cart" size="16"></i>
                                 اطلب الآن
                             </button>
                         </div>
 
-                        <button type="button" onclick="triggerInstallment('3m')" class="btn-installment">
+                        <button type="button" onclick="openModal('3m')" class="btn-installment">
                             <i data-lucide="credit-card" size="14"></i>
                             قسّط عبر تابي وتمارا
                         </button>
+                        
+                        <!-- المستطيل الفاخر والبارز جداً لـ "المطلوب دفعه اليوم" -->
+                        <div class="pay-today-premium-banner">
+                            <div class="pay-today-tag">
+                                <i data-lucide="zap" size="14"></i>
+                                <span>المطلوب دفعه اليوم:</span>
+                            </div>
+                            <div class="pay-today-amount">17 ريال فقط</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- باقة السنة الكاملة (180 ريال) - كود RMZ الخاص بالسنة (Product: 61070) -->
-                <div class="product-card featured" id="card-1y" data-price="180" data-plan="اشتراك شاهد VIP (سنة كاملة)">
+                <!-- باقة السنة الكاملة (Product: 61070) -->
+                <div class="product-card featured" id="card-1y">
                     <div class="product-badge-pop">الأكثر طلباً ⭐</div>
                     <div>
                         <div class="product-header">
@@ -854,17 +1267,25 @@
                             <button 
                                 data-rmz-product="61070" 
                                 data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
-                                data-rmz-theme="auto" 
+                                data-rmz-theme="auto"
                                 data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                                <i data-lucide="shopping-cart" size="16"></i>
                                 اطلب الآن
                             </button>
                         </div>
 
-                        <button type="button" onclick="triggerInstallment('1y')" class="btn-installment">
+                        <button type="button" onclick="openModal('1y')" class="btn-installment">
                             <i data-lucide="credit-card" size="14"></i>
                             قسّط عبر تابي وتمارا
                         </button>
+
+                        <!-- المستطيل الفاخر والبارز جداً لـ "المطلوب دفعه اليوم" -->
+                        <div class="pay-today-premium-banner">
+                            <div class="pay-today-tag">
+                                <i data-lucide="zap" size="14"></i>
+                                <span>المطلوب دفعه اليوم:</span>
+                            </div>
+                            <div class="pay-today-amount">50 ريال فقط</div>
+                        </div>
                     </div>
                 </div>
 
@@ -933,29 +1354,38 @@
         </div>
     </section>
 
-    <!-- 7. قسم التقسيط -->
+    <!-- 7. قسم التقسيط التفاعلي المربوط بالمنبثقة مباشرة -->
     <section class="installment-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">خيارات التقسيط المتاحة</h2>
-                <p class="section-subtitle">يمكنك تقسيم فاتورتك بسهولة على 4 أشهر عبر الخدمات التالية</p>
+                <p class="section-subtitle">اضغط على الباقة لاستعراض خريطة تفاصيل التقسيط على 4 أشهر</p>
             </div>
 
             <div class="installment-grid">
-                <div class="partner-card">
-                    <div class="partner-logo-box tabby">tabby</div>
-                    <div class="partner-info">
-                        <h4>التقسيط عبر تابي</h4>
-                        <p>قسّم اشتراكك على 4 دفعات شهرية مريحة.</p>
+                <div class="partner-card" onclick="openModal('3m')">
+                    <div class="partner-header">
+                        <div class="partner-logo-box tabby">tabby</div>
+                        <div class="partner-info">
+                            <h4>تقسيط باقة 3 أشهر</h4>
+                            <p>ادفع 17 ريال اليوم واستمتع باشتراكك فوراً.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="partner-card">
-                    <div class="partner-logo-box tamara">tamara</div>
-                    <div class="partner-info">
-                        <h4>التقسيط عبر تمارا</h4>
-                        <p>دفع ميسر على 4 أشهر لتسهيل عملية الشراء.</p>
+                <div class="partner-card" onclick="openModal('1y')">
+                    <div class="partner-header">
+                        <div class="partner-logo-box tamara">tamara</div>
+                        <div class="partner-info">
+                            <h4>تقسيط باقة السنة الكاملة</h4>
+                            <p>ادفع 50 ريال اليوم واستمتع باشتراكك فوراً.</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- التنبيه الخاص بحصر خدمة التقسيط داخل المملكة العربية السعودية -->
+            <div class="saudi-only-tag">
+                ⚠️ خدمة التقسيط عبر تابي وتمارا متاحة للعملاء داخل المملكة العربية السعودية فقط.
             </div>
         </div>
     </section>
@@ -1038,16 +1468,91 @@
         </div>
     </footer>
 
-    <!-- Mobile Fixed Bottom Navigation Bar -->
+    <!-- أيقونة الواتساب العائمة -->
+    <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
+        <i data-lucide="message-circle" size="26"></i>
+    </a>
+
+    <!-- الشريط السفلي المطور للجوال -->
     <div class="mobile-cta">
         <a href="#pricing" class="mobile-nav-btn mobile-btn-subscriptions">
             <i data-lucide="shopping-bag" size="14"></i>
             <span>الاشتراكات</span>
         </a>
-        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83%D9%85" target="_blank" class="mobile-nav-btn mobile-btn-whatsapp">
-            <i data-lucide="message-circle" size="14"></i>
-            <span>واتساب</span>
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83%D9%85" target="_blank" class="mobile-nav-btn mobile-btn-support">
+            <i data-lucide="headphones" size="14"></i>
+            <span>خدمة العملاء</span>
         </a>
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B" target="_blank" class="mobile-btn-icon-wa" title="محادثة واتساب">
+            <i data-lucide="message-circle" size="18"></i>
+        </a>
+    </div>
+
+    <!-- Modal Pop-up المنبثقة الذكية مع خريطة التقسيط والرسالة المبسطة -->
+    <div class="modal-overlay" id="installmentModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i data-lucide="calculator" size="24"></i>
+                </div>
+                <h3 class="modal-title" id="modalPlanTitle">خريطة تقسيط الباقة</h3>
+            </div>
+
+            <!-- خريطة الأقساط الـ 4 الخطيّة المصممة (Timeline) -->
+            <div class="timeline-container">
+                <div class="timeline-title">جدول دفعات الأقساط المقسمة على 4 أشهر:</div>
+                <div class="timeline-steps">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-step current">
+                        <div class="timeline-node">1</div>
+                        <div class="timeline-label">اليوم</div>
+                        <div class="timeline-price" id="mPrice1">0 ر.س</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-node">2</div>
+                        <div class="timeline-label">شهر 2</div>
+                        <div class="timeline-price" id="mPrice2">0 ر.س</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-node">3</div>
+                        <div class="timeline-label">شهر 3</div>
+                        <div class="timeline-price" id="mPrice3">0 ر.س</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-node">4</div>
+                        <div class="timeline-label">شهر 4</div>
+                        <div class="timeline-price" id="mPrice4">0 ر.س</div>
+                    </div>
+                </div>
+                <div class="summary-total-bar">
+                    <span>إجمالي المبالغ كاملة:</span>
+                    <strong id="modalTotalSum">0 ريال</strong>
+                </div>
+            </div>
+
+            <!-- اختيار طريقة التقسيط -->
+            <div class="gateway-selector-title">اختر طريقة التقسيط:</div>
+            <div class="gateway-grid">
+                <div class="gateway-option-btn tabby-btn selected" id="tabbyOption" onclick="selectGateway('tabby')">
+                    <span>تابي Tabby</span>
+                </div>
+                <div class="gateway-option-btn tamara-btn" id="tamaraOption" onclick="selectGateway('tamara')">
+                    <span>تمارا Tamara</span>
+                </div>
+            </div>
+
+            <div class="modal-saudi-note">
+                🇸🇦 تنبيه: خدمة التقسيط متاحة للعملاء داخل المملكة العربية السعودية فقط.
+            </div>
+
+            <div class="modal-actions">
+                <button class="modal-btn-confirm" onclick="proceedToWhatsApp()">
+                    <i data-lucide="message-circle" size="18"></i>
+                    متابعة الطلب عبر الواتساب
+                </button>
+                <button class="modal-btn-close" onclick="closeModal()">إلغاء</button>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
@@ -1265,8 +1770,6 @@
             body.classList.toggle('dark-theme');
             const isDark = body.classList.contains('dark-theme');
             
-            document.getElementById('themeBtnText').innerText = isDark ? 'النهار' : 'الليل';
-            
             const btn = document.getElementById('themeToggleBtn');
             btn.querySelector('i').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
             lucide.createIcons();
@@ -1281,38 +1784,70 @@
             }
         }
 
-        // المحرك التلقائي لتقسيط الـ 4 أشهر عبر الواتساب بدون إظهار الأسعار بالواجهة
-        function triggerInstallment(type) {
-            const phone = "966551040375";
-            let message = "";
+        // إدارة خريطة النافذة المنبثقة وحسبات التقسيط
+        let selectedPlan = '';
+        let selectedGateway = 'tabby';
 
-            if (type === '3m') {
-                const basePrice = 60;
-                const extra = 5;
-                const totalPrice = basePrice + extra;
-                const monthlyPayment = (totalPrice / 4).toFixed(2);
+        function openModal(plan) {
+            selectedPlan = plan;
+            const modalTitle = document.getElementById('modalPlanTitle');
+            const modalTotalSum = document.getElementById('modalTotalSum');
 
-                message = `مرحباً متجر Nexorasa 👋\nأرغب في طلب تقسيط اشتراك شاهد VIP عبر (تابي / تمارا):\n\n` +
-                          `📌 *الباقة:* اشتراك شاهد VIP (3 أشهر)\n` +
-                          `📅 *خيار التقسيط:* 4 أشهر تلقائيًا\n` +
-                          `💰 *المبلغ الإجمالي شامل رسوم التقسيط:* ${totalPrice} ريال\n` +
-                          `💵 *القسط الشهري (4 دفعات):* ${monthlyPayment} ريال / شهرياً\n\n` +
-                          `يرجى تزويدي برابط وتفاصيل الدفع لإتمام الطلب.`;
-            } else if (type === '1y') {
-                const basePrice = 180;
-                const extra = 15;
-                const totalPrice = basePrice + extra;
-                const monthlyPayment = (totalPrice / 4).toFixed(2);
+            const p1 = document.getElementById('mPrice1');
+            const p2 = document.getElementById('mPrice2');
+            const p3 = document.getElementById('mPrice3');
+            const p4 = document.getElementById('mPrice4');
 
-                message = `مرحباً متجر Nexorasa 👋\nأرغب في طلب تقسيط اشتراك شاهد VIP عبر (تابي / تمارا):\n\n` +
-                          `📌 *الباقة:* اشتراك شاهد VIP (سنة كاملة)\n` +
-                          `📅 *خيار التقسيط:* 4 أشهر تلقائيًا\n` +
-                          `💰 *المبلغ الإجمالي شامل رسوم التقسيط:* ${totalPrice} ريال\n` +
-                          `💵 *القسط الشهري (4 دفعات):* ${monthlyPayment} ريال / شهرياً\n\n` +
-                          `يرجى تزويدي برابط وتفاصيل الدفع لإتمام الطلب.`;
-            } else {
-                message = "مرحباً متجر Nexorasa 👋\nأرغب في الاستفسار عن تقسيط اشتراكات شاهد VIP المتاحة على 4 أشهر عبر تابي أو تمارا.";
+            if (plan === '3m') {
+                modalTitle.innerText = 'تقسيط شاهد VIP — 3 أشهر';
+                p1.innerText = '17 ر.س';
+                p2.innerText = '17 ر.س';
+                p3.innerText = '17 ر.س';
+                p4.innerText = '17 ر.س';
+                modalTotalSum.innerText = '68 ريال';
+            } else if (plan === '1y') {
+                modalTitle.innerText = 'تقسيط شاهد VIP — سنة كاملة';
+                p1.innerText = '50 ر.س';
+                p2.innerText = '50 ر.س';
+                p3.innerText = '50 ر.س';
+                p4.innerText = '50 ر.س';
+                modalTotalSum.innerText = '200 ريال';
             }
+
+            document.getElementById('installmentModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('installmentModal').classList.remove('active');
+        }
+
+        function selectGateway(gateway) {
+            selectedGateway = gateway;
+            document.getElementById('tabbyOption').classList.remove('selected');
+            document.getElementById('tamaraOption').classList.remove('selected');
+
+            if (gateway === 'tabby') {
+                document.getElementById('tabbyOption').classList.add('selected');
+            } else {
+                document.getElementById('tamaraOption').classList.add('selected');
+            }
+        }
+
+        // إرسال نموذج الواتساب المحدث وفق الصياغة المعتمدة
+        function proceedToWhatsApp() {
+            closeModal();
+            const phone = "966551040375";
+            const gatewayName = selectedGateway === 'tabby' ? 'تابي' : 'تمارا';
+            const productName = selectedPlan === '3m' ? 'اشتراك شاهد VIP (3 أشهر)' : 'اشتراك شاهد VIP (سنة كاملة)';
+            const payToday = selectedPlan === '3m' ? '17' : '50';
+            const totalPrice = selectedPlan === '3m' ? '68' : '200';
+
+            const message = `مرحباً متجر Nexorasa 👋\n` +
+                            `أرغب بتقسيط: ${productName}\n` +
+                            `طريقة الدفع: ${gatewayName}\n` +
+                            `المطلوب دفعه اليوم: ${payToday} ريال فقط\n` +
+                            `المبلغ الإجمالي: ${totalPrice} ريال\n\n` +
+                            `يرجى تزويدي برابط الدفع والتفعيل.`;
 
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');

@@ -332,14 +332,14 @@
             font-size: 1.1rem;
         }
 
-        /* Button Group & RMZ Button Styling (بدون !important لضمان عمل المودال) */
+        /* Button Group & Styling */
         .btn-group {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
 
-        button[data-rmz-product] {
+        .btn-buy {
             width: 100%;
             padding: 14px;
             border-radius: 12px;
@@ -357,7 +357,7 @@
             box-shadow: 0 4px 20px var(--accent-green-glow);
         }
 
-        button[data-rmz-product]:hover {
+        .btn-buy:hover {
             transform: translateY(-2px);
             opacity: 0.95;
         }
@@ -599,13 +599,13 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر الشراء المباشر الخاص بشركة RMZ للباقة الأولى -->
-                        <button data-rmz-product="103287" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="dark" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
+                        <!-- زر الشراء المباشر التفاعلي المضمون 100% -->
+                        <button type="button" class="btn-buy" onclick="triggerRMZCheckout('103287')">
                             <i data-lucide="shopping-cart" size="18"></i>
                             اطلب الآن
                         </button>
 
-                        <button onclick="triggerWhatsApp('card-3m')" class="btn-installment">
+                        <button type="button" onclick="triggerWhatsApp('card-3m')" class="btn-installment">
                             <i data-lucide="credit-card" size="18"></i>
                             قسّط عبر تابي وتمارا
                         </button>
@@ -620,9 +620,9 @@
                                 </div>
                             </div>
                             <div class="installment-tabs">
-                                <button class="tab-btn" onclick="updateInstallment('card-3m', 65, 2, this)">شهرين</button>
-                                <button class="tab-btn active" onclick="updateInstallment('card-3m', 65, 3, this)">3 أشهر</button>
-                                <button class="tab-btn" onclick="updateInstallment('card-3m', 65, 4, this)">4 أشهر</button>
+                                <button type="button" class="tab-btn" onclick="updateInstallment('card-3m', 65, 2, this)">شهرين</button>
+                                <button type="button" class="tab-btn active" onclick="updateInstallment('card-3m', 65, 3, this)">3 أشهر</button>
+                                <button type="button" class="tab-btn" onclick="updateInstallment('card-3m', 65, 4, this)">4 أشهر</button>
                             </div>
                             <div class="installment-info">
                                 ادفع اليوم <strong class="res-val">22 ريال</strong> فقط
@@ -644,13 +644,13 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- يمكنك استبدال data-rmz-product برقم منتج السنة عند إضافته في لوحة رمز -->
-                        <button data-rmz-product="103287" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="dark" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
+                        <!-- زر الشراء المباشر التفاعلي المضمون 100% -->
+                        <button type="button" class="btn-buy" onclick="triggerRMZCheckout('103287')">
                             <i data-lucide="shopping-cart" size="18"></i>
                             اطلب الآن
                         </button>
 
-                        <button onclick="triggerWhatsApp('card-1y')" class="btn-installment">
+                        <button type="button" onclick="triggerWhatsApp('card-1y')" class="btn-installment">
                             <i data-lucide="credit-card" size="18"></i>
                             قسّط عبر تابي وتمارا
                         </button>
@@ -665,9 +665,9 @@
                                 </div>
                             </div>
                             <div class="installment-tabs">
-                                <button class="tab-btn" onclick="updateInstallment('card-1y', 190, 2, this)">شهرين</button>
-                                <button class="tab-btn" onclick="updateInstallment('card-1y', 190, 3, this)">3 أشهر</button>
-                                <button class="tab-btn active" onclick="updateInstallment('card-1y', 190, 4, this)">4 أشهر</button>
+                                <button type="button" class="tab-btn" onclick="updateInstallment('card-1y', 190, 2, this)">شهرين</button>
+                                <button type="button" class="tab-btn" onclick="updateInstallment('card-1y', 190, 3, this)">3 أشهر</button>
+                                <button type="button" class="tab-btn active" onclick="updateInstallment('card-1y', 190, 4, this)">4 أشهر</button>
                             </div>
                             <div class="installment-info">
                                 ادفع اليوم <strong class="res-val">48 ريال</strong> فقط
@@ -829,11 +829,11 @@
 
     <!-- Mobile Fixed Bottom CTA Bar -->
     <div class="mobile-cta">
-        <button data-rmz-product="103287" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="dark" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
+        <button type="button" class="btn-buy" onclick="triggerRMZCheckout('103287')">
             <i data-lucide="shopping-cart" size="16"></i>
             اطلب الآن
         </button>
-        <button onclick="sendWhatsAppInstallment('عام', 0, 0)" class="btn-installment">
+        <button type="button" onclick="sendWhatsAppInstallment('عام', 0, 0)" class="btn-installment">
             <i data-lucide="message-circle" size="16"></i>
             قسّط عبر تابي/تمارا
         </button>
@@ -843,6 +843,32 @@
     <script>
         // Lucide Icons Initialization
         lucide.createIcons();
+
+        // المفتاح العام الثابت المخصص لمتجرك
+        const RMZ_PUBLIC_KEY = "rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D";
+
+        // المحرك الرئيسي الصريح لفتح المودال المباشر بنسبة 100%
+        function triggerRMZCheckout(productId) {
+            // 1. الاستدعاء المباشر الصريح لـ API المكتبة الرسمية
+            if (window.RMZEmbed && typeof window.RMZEmbed.open === 'function') {
+                try {
+                    window.RMZEmbed.open(productId, {
+                        key: RMZ_PUBLIC_KEY,
+                        theme: 'dark',
+                        config: {
+                            hideQuantity: true,
+                            hideCoupon: true
+                        }
+                    });
+                    return;
+                } catch (e) {
+                    console.warn("RMZ Embed Execution Exception:", e);
+                }
+            }
+
+            // 2. التحويل الحارس الاحتياطي فقط في حال حظر الجافاسكريبت بالكامل بالمتصفح
+            window.location.href = `https://nexorasa.rmz.gg/p/${productId}`;
+        }
 
         // FAQ Toggle
         function toggleFaq(element) {

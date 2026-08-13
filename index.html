@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexorasa | اشتراك شاهد VIP الرسمي</title>
-    <meta name="description" content="اشترك في شاهد VIP رسميًا على إيميلك الشخصي من متجر Nexorasa. جودة Full HD، بدون إعلانات، ودعم التقسيط عبر تابي وتمارا.">
+    <title>Nexorasa | متجر اشتراكات شاهد VIP</title>
+    <meta name="description" content="متجر Nexorasa الرقمي - احصل على اشتراك شاهد VIP مع تفعيل مباشر على بريدك الإلكتروني الشخصي بأفضل الأسعار وضمان كامل.">
     
     <!-- الخطوط -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,24 +14,46 @@
     <!-- الأيقونات -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- RMZ Embed Script المحدث والأصلي -->
+    <!-- RMZ Embed Script الرسمي -->
     <script src="https://embed-js.rmz.gg/rmz-embed.js"></script>
 
     <style>
+        /* الوضع النهاري الافتراضي (Light Mode) */
         :root {
-            --bg-body: #05030a;
-            --surface-card: #0d0a1a;
-            --surface-card-hover: #140f28;
+            --bg-body: #f8fafc;
+            --surface-card: #ffffff;
+            --primary: #7c3aed;
+            --primary-glow: rgba(124, 58, 237, 0.15);
+            --accent-green: #059669;
+            --accent-green-glow: rgba(5, 150, 105, 0.2);
+            --accent-gold: #d97706;
+            --border-color: #e2e8f0;
+            --border-active: rgba(124, 58, 237, 0.4);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --tabby-color: #059669;
+            --tamara-color: #d97706;
+            --navbar-bg: rgba(255, 255, 255, 0.85);
+            --ambient-bg: radial-gradient(circle at 50% 10%, rgba(124, 58, 237, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+        }
+
+        /* الوضع الليلي (Dark Mode) */
+        body.dark-theme {
+            --bg-body: #06040d;
+            --surface-card: rgba(18, 14, 33, 0.85);
             --primary: #8b5cf6;
             --primary-glow: rgba(139, 92, 246, 0.35);
             --accent-green: #10b981;
             --accent-green-glow: rgba(16, 185, 129, 0.25);
+            --accent-gold: #f59e0b;
             --border-color: rgba(255, 255, 255, 0.08);
-            --border-active: rgba(139, 92, 246, 0.4);
+            --border-active: rgba(139, 92, 246, 0.45);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --tabby-color: #3bffc8;
             --tamara-color: #ffab40;
+            --navbar-bg: rgba(6, 4, 13, 0.85);
+            --ambient-bg: radial-gradient(circle at 50% 10%, rgba(139, 92, 246, 0.18) 0%, rgba(6, 4, 13, 0) 75%);
         }
 
         * {
@@ -47,17 +69,18 @@
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .ambient-glow {
             position: absolute;
-            top: 0;
+            top: -80px;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
             height: 600px;
-            background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.18) 0%, rgba(5, 3, 10, 0) 70%);
+            background: var(--ambient-bg);
             pointer-events: none;
             z-index: 0;
         }
@@ -70,15 +93,15 @@
             z-index: 1;
         }
 
-        /* Navbar Header */
+        /* Header المتجر */
         .navbar {
-            padding: 20px 0;
+            padding: 16px 0;
             border-bottom: 1px solid var(--border-color);
             backdrop-filter: blur(16px);
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(5, 3, 10, 0.8);
+            background: var(--navbar-bg);
         }
 
         .nav-wrapper {
@@ -87,109 +110,347 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             text-decoration: none;
         }
 
-        .nav-badge {
-            display: inline-flex;
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: var(--text-main);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 14px;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.25);
-            border-radius: 50px;
-            color: var(--primary);
             font-size: 0.85rem;
             font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--border-active);
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
         }
 
         /* Hero Section */
         .hero {
-            padding: 60px 0 40px;
-            text-align: center;
+            padding: 50px 0 30px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 36px;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(124, 58, 237, 0.08);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 16px;
         }
 
         .hero-title {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 900;
-            line-height: 1.2;
+            line-height: 1.25;
             margin-bottom: 16px;
-            background: linear-gradient(180deg, #ffffff 40%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.35rem;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 20px;
+            color: var(--text-main);
         }
 
         .hero-description {
-            max-width: 680px;
-            margin: 0 auto 32px;
             color: var(--text-muted);
             font-size: 1.05rem;
+            margin-bottom: 24px;
+            max-width: 560px;
         }
 
-        /* Trust Strip */
-        .trust-strip {
+        .hero-bullets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .hero-bullet-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface-card);
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .hero-bullet-item i {
+            color: var(--accent-green);
+        }
+
+        .hero-media-card {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+            background: var(--surface-card);
+            position: relative;
+        }
+
+        .hero-media-card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .shahid-badge-overlay {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.18);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .shahid-badge-overlay span {
+            color: #fff;
+            font-weight: 900;
+            font-size: 0.92rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* شريط الثقة */
+        .trust-bar {
+            padding: 16px 0;
+            margin: 10px 0 30px;
+            border-y: 1px solid var(--border-color);
+            background: var(--surface-card);
+        }
+
+        .trust-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 48px;
+            gap: 16px;
         }
 
         @media (min-width: 768px) {
-            .trust-strip {
+            .trust-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
 
-        .trust-box {
-            background: var(--surface-card);
-            border: 1px solid var(--border-color);
-            padding: 14px;
-            border-radius: 14px;
+        .trust-item {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-weight: 700;
-            font-size: 0.92rem;
+            padding: 8px;
         }
 
-        .trust-box i {
+        .trust-item-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(124, 58, 237, 0.1);
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
 
-        /* Pricing Section */
+        .trust-item-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .trust-item-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* شريط التقييمات التفاعلي فوق المنتجات */
+        .reviews-slider-box {
+            max-width: 920px;
+            margin: 0 auto 30px;
+            background: var(--surface-card);
+            border: 1px solid var(--border-active);
+            border-radius: 18px;
+            padding: 18px 24px;
+            position: relative;
+            box-shadow: 0 8px 25px var(--primary-glow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .reviews-slider-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+        }
+
+        .review-avatar-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: 800;
+        }
+
+        .review-text-wrap {
+            flex-grow: 1;
+        }
+
+        .review-header-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2px;
+        }
+
+        .review-user-name {
+            font-weight: 900;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .review-stars-list {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+        }
+
+        .review-comment {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .reviews-nav-btns {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .reviews-nav-btn {
+            background: rgba(124, 58, 237, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .reviews-nav-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* قسم الباقات */
         .pricing-section {
-            padding: 20px 0 60px;
+            padding: 10px 0 50px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 900;
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
         }
 
         .pricing-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 28px;
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
         }
 
@@ -199,29 +460,30 @@
             }
         }
 
-        .plan-card {
+        .product-card {
             background: var(--surface-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 32px 24px;
+            padding: 28px 22px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
         }
 
-        .plan-card:hover {
+        .product-card:hover {
             border-color: var(--border-active);
             transform: translateY(-4px);
         }
 
-        .plan-card.featured {
+        .product-card.featured {
             border-color: var(--primary);
-            box-shadow: 0 0 35px var(--primary-glow);
+            box-shadow: 0 0 25px var(--primary-glow);
         }
 
-        .featured-badge {
+        .product-badge-pop {
             position: absolute;
             top: -14px;
             left: 50%;
@@ -230,109 +492,82 @@
             color: #fff;
             padding: 4px 18px;
             border-radius: 50px;
-            font-size: 0.82rem;
-            font-weight: 800;
-        }
-
-        .plan-header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .plan-name {
-            font-size: 2rem;
+            font-size: 0.8rem;
             font-weight: 900;
         }
 
-        .plan-sub {
+        .product-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .product-thumb-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(124, 58, 237, 0.1);
             color: var(--primary);
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
 
-        .plan-price {
-            font-size: 2.8rem;
+        .product-title-wrap h3 {
+            font-size: 1.35rem;
             font-weight: 900;
-            margin: 16px 0 8px;
         }
 
-        .plan-price span {
-            font-size: 1rem;
+        .product-duration {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .price-container {
+            margin: 14px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .current-price {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--text-main);
+        }
+
+        .current-price span {
+            font-size: 0.95rem;
             color: var(--text-muted);
             font-weight: 500;
         }
 
-        .plan-desc {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        /* Installment Widget */
-        .installment-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 16px;
-            margin-top: 16px;
-        }
-
-        .installment-header {
+        .product-features-list {
+            list-style: none;
+            margin: 16px 0 24px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-features-list li {
+            display: flex;
             align-items: center;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .partner-logos {
-            display: flex;
             gap: 8px;
-        }
-
-        .tabby-badge { color: var(--tabby-color); font-weight: 900; }
-        .tamara-badge { color: var(--tamara-color); font-weight: 900; }
-
-        .installment-tabs {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 12px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 8px 4px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-        }
-
-        .installment-info {
-            text-align: center;
             font-size: 0.9rem;
-            font-weight: 700;
+            color: var(--text-muted);
         }
 
-        .installment-info strong {
-            color: var(--primary);
-            font-size: 1.1rem;
+        .product-features-list li i {
+            color: var(--accent-green);
+            flex-shrink: 0;
         }
 
-        /* Button Group & Wrapper Styling */
         .btn-group {
             display: flex;
             flex-direction: column;
@@ -345,11 +580,11 @@
 
         .rmz-button-wrapper button {
             width: 100%;
-            padding: 14px;
+            padding: 15px;
             border-radius: 12px;
             background: var(--accent-green);
             color: #ffffff;
-            font-weight: 800;
+            font-weight: 900;
             font-size: 1rem;
             border: 0;
             cursor: pointer;
@@ -368,13 +603,13 @@
 
         .btn-installment {
             width: 100%;
-            padding: 14px;
+            padding: 13px;
             border-radius: 12px;
-            background: var(--primary);
-            color: #fff;
+            background: rgba(124, 58, 237, 0.08);
+            color: var(--primary);
             font-weight: 800;
-            font-size: 1rem;
-            border: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(124, 58, 237, 0.2);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -384,16 +619,21 @@
         }
 
         .btn-installment:hover {
-            transform: translateY(-2px);
-            opacity: 0.95;
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
         }
 
-        /* Features Section */
+        /* لماذا نحن */
+        .why-us-section {
+            padding: 50px 0;
+        }
+
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+            margin-top: 28px;
         }
 
         .feature-card {
@@ -407,7 +647,7 @@
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background: rgba(139, 92, 246, 0.12);
+            background: rgba(124, 58, 237, 0.1);
             color: var(--primary);
             display: flex;
             align-items: center;
@@ -417,7 +657,8 @@
 
         .feature-card h3 {
             font-size: 1.15rem;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-weight: 800;
         }
 
         .feature-card p {
@@ -425,10 +666,111 @@
             font-size: 0.9rem;
         }
 
+        /* خطوات التفعيل */
+        .steps-section {
+            padding: 50px 0;
+            background: var(--surface-card);
+            border-y: 1px solid var(--border-color);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .steps-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .step-card {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 26px 20px;
+        }
+
+        .step-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .step-card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* التقسيط */
+        .installment-section {
+            padding: 50px 0;
+        }
+
+        .installment-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            max-width: 740px;
+            margin: 28px auto 0;
+        }
+
+        @media (min-width: 768px) {
+            .installment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .partner-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .partner-logo-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .partner-logo-box.tabby { color: var(--tabby-color); border: 1px solid rgba(5, 150, 105, 0.2); }
+        .partner-logo-box.tamara { color: var(--tamara-color); border: 1px solid rgba(217, 119, 6, 0.2); }
+
+        .partner-info h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .partner-info p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
         /* FAQ */
         .faq-wrapper {
-            max-width: 780px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 30px auto 0;
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -438,7 +780,7 @@
             background: var(--surface-card);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 20px;
+            padding: 18px 20px;
             cursor: pointer;
         }
 
@@ -446,8 +788,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 700;
-            font-size: 1.05rem;
+            font-weight: 800;
+            font-size: 1rem;
         }
 
         .faq-answer {
@@ -455,11 +797,12 @@
             overflow: hidden;
             transition: max-height 0.3s ease, margin-top 0.3s ease;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
+            line-height: 1.6;
         }
 
         .faq-item.active .faq-answer {
-            max-height: 120px;
+            max-height: 140px;
             margin-top: 12px;
         }
 
@@ -474,9 +817,9 @@
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
-            padding: 40px 0 24px;
+            padding: 40px 0 20px;
             margin-top: 60px;
-            background: rgba(5, 3, 10, 0.9);
+            background: var(--surface-card);
         }
 
         .footer-content {
@@ -489,17 +832,19 @@
         .footer-brand h3 {
             font-size: 1.4rem;
             margin-bottom: 10px;
+            font-weight: 900;
         }
 
         .footer-brand p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .footer-col h4 {
             color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1rem;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            font-weight: 800;
         }
 
         .footer-col ul {
@@ -512,7 +857,7 @@
         .footer-col a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .footer-bottom {
@@ -523,29 +868,19 @@
             font-size: 0.85rem;
         }
 
-        /* Mobile Fixed Bar */
+        /* Mobile CTA المثبت */
         .mobile-cta {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(5, 3, 10, 0.92);
+            background: var(--surface-card);
             backdrop-filter: blur(16px);
             border-top: 1px solid var(--border-color);
-            padding: 12px 16px;
+            padding: 10px 14px;
             display: flex;
             gap: 10px;
             z-index: 999;
-        }
-
-        .mobile-cta .rmz-button-wrapper {
-            flex: 1;
-        }
-
-        .mobile-cta button {
-            flex: 1;
-            padding: 12px;
-            font-size: 0.85rem;
         }
 
         @media (min-width: 769px) {
@@ -559,55 +894,146 @@
 
     <div class="ambient-glow"></div>
 
-    <!-- Navigation Header -->
+    <!-- 1. Header المتجر -->
     <nav class="navbar">
         <div class="container nav-wrapper">
-            <a href="#" class="logo">Nexorasa</a>
-            <div class="nav-badge">
-                <i data-lucide="check-circle-2" size="14"></i>
-                <span>متجر موثوق 100%</span>
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">N</div>
+                <span class="logo-text">Nexorasa</span>
+            </a>
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
+                    <i data-lucide="moon" size="16"></i>
+                    <span id="themeBtnText">الوضع الليلي</span>
+                </button>
+                <a href="#pricing" class="nav-link"><i data-lucide="shopping-bag" size="18"></i><span>الاشتراكات</span></a>
+                <a href="https://wa.me/966551040375" target="_blank" class="nav-link"><i data-lucide="headphones" size="18"></i><span>الدعم</span></a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- 2. Hero Section مع الصورة العائلية وشعار شاهد VIP -->
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title">اشتراك شاهد VIP الرسمي</h1>
-            <div class="hero-subtitle">تفعيل مباشر وسريع على إيميلك الشخصي</div>
-            <p class="hero-description">استمتع بمتابعة أحدث المسلسلات والأفلام الحصرية وعروض شاهد الأصلية بجودة Full HD وبدون أي إعلانات مزعجة مع ضمان كامل طوال فترة الاشتراك.</p>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-tag">
+                        <i data-lucide="sparkles" size="16"></i>
+                        <span>متجر الاشتراكات الرقمية</span>
+                    </div>
+                    <h1 class="hero-title">اشتراك شاهد VIP — تفعيل مباشر على بريدك الشخصي</h1>
+                    <p class="hero-description">استمتع مع عائلتك بمتابعة أحدث المسلسلات والأفلام الحصرية وعروض شاهد الأصلية بجودة عالية وبدون إعلانات مع ضمان كامل وفوري طوال فترة الاشتراك.</p>
+                    
+                    <div class="hero-bullets">
+                        <div class="hero-bullet-item"><i data-lucide="check-circle" size="16"></i><span>تفعيل على إيميلك الخاص</span></div>
+                        <div class="hero-bullet-item"><i data-lucide="check-circle" size="16"></i><span>أعلى جودة بث</span></div>
+                        <div class="hero-bullet-item"><i data-lucide="check-circle" size="16"></i><span>بدون أي إعلانات</span></div>
+                        <div class="hero-bullet-item"><i data-lucide="check-circle" size="16"></i><span>ضمان كامل المدة</span></div>
+                    </div>
+                </div>
 
-            <div class="trust-strip">
-                <div class="trust-box"><i data-lucide="zap" size="18"></i><span>تفعيل فوري</span></div>
-                <div class="trust-box"><i data-lucide="shield-check" size="18"></i><span>حساب شخصي 100%</span></div>
-                <div class="trust-box"><i data-lucide="globe" size="18"></i><span>متاح عالمياً</span></div>
-                <div class="trust-box"><i data-lucide="tv" size="18"></i><span>كافة الأجهزة</span></div>
+                <div class="hero-media">
+                    <div class="hero-media-card">
+                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1000&auto=format&fit=crop" alt="Family Watching Shahid VIP">
+                        <div class="shahid-badge-overlay">
+                            <i data-lucide="tv" size="18" style="color: var(--primary);"></i>
+                            <span>شاهد VIP - تفعيل رسمي</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- 3. شريط الثقة -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-item-icon"><i data-lucide="lock" size="18"></i></div>
+                    <div>
+                        <span class="trust-item-title">دفع آمن</span>
+                        <span class="trust-item-sub">بوابة دفع محمية وتشفير كامل</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon"><i data-lucide="zap" size="18"></i></div>
+                    <div>
+                        <span class="trust-item-title">تفعيل سريع</span>
+                        <span class="trust-item-sub">تنفيذ الطلب خلال وقت قياسي</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon"><i data-lucide="mail" size="18"></i></div>
+                    <div>
+                        <span class="trust-item-title">على حسابك الشخصي</span>
+                        <span class="trust-item-sub">تفعيل بريدك الخاص دون مشاركة</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon"><i data-lucide="shield" size="18"></i></div>
+                    <div>
+                        <span class="trust-item-title">ضمان الخدمة</span>
+                        <span class="trust-item-sub">ضمان استقرار البث كامل المدة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. قسم الباقات مع شريط التقييمات الـ 50 التفاعلي في الأعلى -->
     <section class="pricing-section" id="pricing">
         <div class="container">
+            
             <div class="section-header">
-                <h2 class="section-title">اختر الباقة المناسبة لك</h2>
+                <h2 class="section-title">اختر اشتراكك المناسب</h2>
+                <p class="section-subtitle">تفعيل مباشر ورسمي على بريدك الإلكتروني الخاص</p>
+            </div>
+
+            <!-- شريط التقييمات الـ 50 المتنقل التفاعلي فوق بطاقات المنتجات -->
+            <div class="reviews-slider-box">
+                <div class="reviews-slider-content">
+                    <div class="review-avatar-icon" id="sliderAvatar">ع</div>
+                    <div class="review-text-wrap">
+                        <div class="review-header-line">
+                            <span class="review-user-name" id="sliderName">عبد الله محمد</span>
+                            <span class="review-stars-list">★★★★★</span>
+                        </div>
+                        <p class="review-comment" id="sliderComment">"سرعة بالتفعيل وتجاوب ممتاز، الحساب تفعل على إيميلي بنفس اللحظة!"</p>
+                    </div>
+                </div>
+                <div class="reviews-nav-btns">
+                    <button class="reviews-nav-btn" onclick="prevReview()" title="السابق"><i data-lucide="chevron-right" size="16"></i></button>
+                    <button class="reviews-nav-btn" onclick="nextReview()" title="التالي"><i data-lucide="chevron-left" size="16"></i></button>
+                </div>
             </div>
 
             <div class="pricing-grid">
                 
-                <!-- 3 Months Card -->
-                <div class="plan-card" id="card-3m" data-price="65" data-plan="اشتراك شاهد VIP (3 أشهر)" data-months="3">
+                <!-- باقة 3 أشهر (60 ريال) -->
+                <div class="product-card" id="card-3m" data-price="60" data-plan="اشتراك شاهد VIP (3 أشهر)">
                     <div>
-                        <div class="plan-header">
-                            <h3 class="plan-name">3 Months</h3>
-                            <div class="plan-sub">تفعيل على إيميلك الشخصي</div>
-                            <div class="plan-price">65 <span>ريال</span></div>
+                        <div class="product-header">
+                            <div class="product-thumb-icon"><i data-lucide="tv" size="24"></i></div>
+                            <div class="product-title-wrap">
+                                <h3>شاهد VIP — 3 أشهر</h3>
+                                <span class="product-duration">تفعيل على إيميلك الخاص</span>
+                            </div>
                         </div>
-                        <p class="plan-desc">وصول كامل لكامل مكتبة العروض والمسلسلات العائلية بدون إعلانات مع استقرار كامل بالحساب.</p>
+
+                        <div class="price-container">
+                            <div class="current-price">60 <span>ريال</span></div>
+                        </div>
+
+                        <ul class="product-features-list">
+                            <li><i data-lucide="check" size="16"></i><span>مكتبة العروض والأعمال الكاملة</span></li>
+                            <li><i data-lucide="check" size="16"></i><span>مشاهدة بجودة Full HD بدون إعلانات</span></li>
+                            <li><i data-lucide="check" size="16"></i><span>تفعيل على بريدك الإلكتروني الشخصي</span></li>
+                            <li><i data-lucide="check" size="16"></i><span>ضمان شامل طوال فترة الاشتراك</span></li>
+                        </ul>
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر رمز داخل الـ Wrapper للباقة الأولى (3 أشهر) -->
                         <div class="rmz-button-wrapper">
                             <button
                                 data-rmz-product="103287"
@@ -619,49 +1045,42 @@
                             </button>
                         </div>
 
-                        <button type="button" onclick="triggerWhatsApp('card-3m')" class="btn-installment">
-                            <i data-lucide="credit-card" size="18"></i>
+                        <!-- زر التقسيط التلقائي لـ 4 أشهر عبر الواتساب -->
+                        <button type="button" onclick="triggerInstallment('3m')" class="btn-installment">
+                            <i data-lucide="credit-card" size="16"></i>
                             قسّط عبر تابي وتمارا
                         </button>
-
-                        <!-- Installment Widget -->
-                        <div class="installment-box">
-                            <div class="installment-header">
-                                <span>قسّم فاتورتك على دفعات</span>
-                                <div class="partner-logos">
-                                    <span class="tabby-badge">tabby</span>
-                                    <span class="tamara-badge">tamara</span>
-                                </div>
-                            </div>
-                            <div class="installment-tabs">
-                                <button type="button" class="tab-btn" onclick="updateInstallment('card-3m', 65, 2, this)">شهرين</button>
-                                <button type="button" class="tab-btn active" onclick="updateInstallment('card-3m', 65, 3, this)">3 أشهر</button>
-                                <button type="button" class="tab-btn" onclick="updateInstallment('card-3m', 65, 4, this)">4 أشهر</button>
-                            </div>
-                            <div class="installment-info">
-                                ادفع اليوم <strong class="res-val">22 ريال</strong> فقط
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- 1 Year Card -->
-                <div class="plan-card featured" id="card-1y" data-price="190" data-plan="اشتراك شاهد VIP (سنة كاملة)" data-months="4">
-                    <div class="featured-badge">الأكثر طلباً ⭐</div>
+                <!-- باقة السنة الكاملة (180 ريال) -->
+                <div class="product-card featured" id="card-1y" data-price="180" data-plan="اشتراك شاهد VIP (سنة كاملة)">
+                    <div class="product-badge-pop">الأكثر طلباً ⭐</div>
                     <div>
-                        <div class="plan-header">
-                            <h3 class="plan-name">1 Year</h3>
-                            <div class="plan-sub">تفعيل على إيميلك الشخصي</div>
-                            <div class="plan-price">190 <span>ريال</span></div>
+                        <div class="product-header">
+                            <div class="product-thumb-icon" style="background: rgba(5, 150, 105, 0.1); color: var(--accent-green);"><i data-lucide="sparkles" size="24"></i></div>
+                            <div class="product-title-wrap">
+                                <h3>شاهد VIP — سنة كاملة</h3>
+                                <span class="product-duration">تفعيل على إيميلك الخاص</span>
+                            </div>
                         </div>
-                        <p class="plan-desc">الخيار الأوفر للاستمتاع بسنة كاملة من الترفيه الشامل لجميع أعمال شاهد الأصلية بدون انقطاع.</p>
+
+                        <div class="price-container">
+                            <div class="current-price">180 <span>ريال</span></div>
+                        </div>
+
+                        <ul class="product-features-list">
+                            <li><i data-lucide="check" size="16"></i><span>وصول كامل لكافة أعمال شاهد الأصلية</span></li>
+                            <li><i data-lucide="check" size="16"></i><span>عرض بأعلى جودة بدقة Full HD/4K</span></li>
+                            <li><i data-lucide="check" size="16"></i><span>بدون أي فواصل أو إعلانات</span></li>
+                            <li><i data-lucide="check" size="16"></i><span>خيار أقتصادي لسنة كاملة مع الضمان</span></li>
+                        </ul>
                     </div>
 
                     <div class="btn-group">
-                        <!-- زر رمز داخل الـ Wrapper لباقة السنة (يمكنك استبدال 103287 لاحقاً بالـ ID الخاص بها) -->
                         <div class="rmz-button-wrapper">
                             <button
-                                data-rmz-product="103287"
+                                data-rmz-product="YOUR_1_YEAR_PRODUCT_ID"
                                 data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D"
                                 data-rmz-theme="auto"
                                 data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
@@ -670,29 +1089,11 @@
                             </button>
                         </div>
 
-                        <button type="button" onclick="triggerWhatsApp('card-1y')" class="btn-installment">
-                            <i data-lucide="credit-card" size="18"></i>
+                        <!-- زر التقسيط التلقائي لـ 4 أشهر عبر الواتساب -->
+                        <button type="button" onclick="triggerInstallment('1y')" class="btn-installment">
+                            <i data-lucide="credit-card" size="16"></i>
                             قسّط عبر تابي وتمارا
                         </button>
-
-                        <!-- Installment Widget -->
-                        <div class="installment-box">
-                            <div class="installment-header">
-                                <span>قسّم فاتورتك على دفعات</span>
-                                <div class="partner-logos">
-                                    <span class="tabby-badge">tabby</span>
-                                    <span class="tamara-badge">tamara</span>
-                                </div>
-                            </div>
-                            <div class="installment-tabs">
-                                <button type="button" class="tab-btn" onclick="updateInstallment('card-1y', 190, 2, this)">شهرين</button>
-                                <button type="button" class="tab-btn" onclick="updateInstallment('card-1y', 190, 3, this)">3 أشهر</button>
-                                <button type="button" class="tab-btn active" onclick="updateInstallment('card-1y', 190, 4, this)">4 أشهر</button>
-                            </div>
-                            <div class="installment-info">
-                                ادفع اليوم <strong class="res-val">48 ريال</strong> فقط
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -700,144 +1101,163 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section>
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">مميزات الاشتراك</h2>
-            </div>
-            <div class="info-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="film" size="24"></i></div>
-                    <h3>+40,000 حلقة</h3>
-                    <p>مكتبة متجددة يومياً تتضمن أحدث الحلقات والإنتاجات العربية والعالمية.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="sparkles" size="24"></i></div>
-                    <h3>أعمال شاهد الأصلية</h3>
-                    <p>محتوى عالي الجودة وحصري متاح للمشاهدة قبل العرض التلفزيوني.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="ban" size="24"></i></div>
-                    <h3>بدون إعلانات</h3>
-                    <p>استمتع بمشاهدة متواصلة وسلسة دون أي فواصل إعلانية تقطع استمتاعك.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="download" size="24"></i></div>
-                    <h3>تحميل أوفلاين</h3>
-                    <p>حمل مسلسلاتك وحلقاتك المفضلة للمشاهدة بدون الحاجة لاتصال بالإنترنت.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Supported Devices -->
-    <section>
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">الأجهزة المدعومة</h2>
-            </div>
-            <div class="info-grid">
-                <div class="feature-card" style="text-align: center;">
-                    <div class="feature-icon" style="margin: 0 auto 12px;"><i data-lucide="smartphone" size="24"></i></div>
-                    <h3>الجوال والآيباد</h3>
-                </div>
-                <div class="feature-card" style="text-align: center;">
-                    <div class="feature-icon" style="margin: 0 auto 12px;"><i data-lucide="laptop" size="24"></i></div>
-                    <h3>الكمبيوتر واللابتوب</h3>
-                </div>
-                <div class="feature-card" style="text-align: center;">
-                    <div class="feature-icon" style="margin: 0 auto 12px;"><i data-lucide="tv" size="24"></i></div>
-                    <h3>التلفزيون الذكي</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Nexorasa -->
-    <section>
+    <!-- 5. قسم لماذا Nexorasa؟ -->
+    <section class="why-us-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">لماذا تختار Nexorasa؟</h2>
+                <p class="section-subtitle">مميزات تضمن لك أفضل تجربة تفعيل واستخدام</p>
             </div>
+
             <div class="info-grid">
                 <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="mail" size="24"></i></div>
-                    <h3>تفعيل على إيميلك</h3>
-                    <p>نُفعّل الاشتراك مباشرة على بريدك الخاص لضمان استقلالية الخدمة وحفظ بياناتك.</p>
+                    <div class="feature-icon"><i data-lucide="mail" size="22"></i></div>
+                    <h3>حسابك الشخصي</h3>
+                    <p>نُفعّل الاشتراك على إيميلك الخاص لضمان الخصوصية الكاملة واستقلالية الاستخدام.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="shield-check" size="24"></i></div>
-                    <h3>اشتراك رسمي 100%</h3>
-                    <p>ضمان كامل ومستمر طوال فترة الاشتراك لضمان عدم انقطاع البث نهائياً.</p>
+                    <div class="feature-icon"><i data-lucide="zap" size="22"></i></div>
+                    <h3>تنفيذ سريع</h3>
+                    <p>معالجة الطلبات وإتمام التفعيل في أقصر وقت ممكن فور تأكيد الدفع.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="headphones" size="24"></i></div>
-                    <h3>دعم فني متواصل</h3>
-                    <p>فريقنا متواجد على مدار الساعة للرد على استفساراتك ومساعدتك فوراً.</p>
+                    <div class="feature-icon"><i data-lucide="shield-check" size="22"></i></div>
+                    <h3>ضمان شامل</h3>
+                    <p>نوفر ضماناً كاملاً لمتابعة اشتراكك وضمان استمرار البث طوال فترة الخطة.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="headphones" size="22"></i></div>
+                    <h3>دعم متواصل</h3>
+                    <p>فريقنا متواجد للرد على استفساراتك ومساعدتك فوراً عبر خدمة الواتساب.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section>
+    <!-- 6. قسم خطوات التفعيل -->
+    <section class="steps-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">كيف يتم التفعيل؟</h2>
+                <p class="section-subtitle">خطوات بسيطة وسلسة لإتمام طلبك</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>اختر الباقة</h3>
+                    <p>اختر المدة المناسبة لك (3 أشهر أو سنة) واضغط على اطلب الآن.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>أكمل الدفع</h3>
+                    <p>أدخل بيانات الطلب وأكمل عملية الدفع الآمنة عبر البوابة.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>استلم التفعيل</h3>
+                    <p>يتم تفعيل الاشتراك رسمياً على بريدك الإلكتروني المخصص فوراً.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. قسم التقسيط -->
+    <section class="installment-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">خيارات التقسيط المتاحة</h2>
+                <p class="section-subtitle">يمكنك تقسيم فاتورتك بسهولة على 4 أشهر عبر الخدمات التالية</p>
+            </div>
+
+            <div class="installment-grid">
+                <div class="partner-card">
+                    <div class="partner-logo-box tabby">tabby</div>
+                    <div class="partner-info">
+                        <h4>التقسيط عبر تابي</h4>
+                        <p>قسّم اشتراكك على 4 دفعات شهرية مريحة.</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo-box tamara">tamara</div>
+                    <div class="partner-info">
+                        <h4>التقسيط عبر تمارا</h4>
+                        <p>دفع ميسر على 4 أشهر لتسهيل عملية الشراء.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. الأسئلة الشائعة -->
+    <section class="faq-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">الأسئلة الشائعة</h2>
+                <p class="section-subtitle">إجابات شفافة ومباشرة على استفساراتك</p>
             </div>
+
             <div class="faq-wrapper">
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>هل الاشتراك على حسابي الشخصي؟</span>
+                        <span>هل يتم التفعيل على حسابي الشخصي؟</span>
                         <i data-lucide="chevron-down" class="chevron" size="18"></i>
                     </div>
                     <div class="faq-answer">
-                        نعم، يتم تفعيل الاشتراك مباشرة على حسابك الشخصي وعلى بريدك الإلكتروني الخاص دون الحاجة لحسابات مشتركة.
+                        نعم، نطلب بريدك الإلكتروني المخصص لشاهد ونقوم بتفعيل الاشتراك عليه مباشرة ليكون الحساب خاصاً بك تماماً.
                     </div>
                 </div>
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>هل يشمل المحتوى الرياضي؟</span>
+                        <span>كم يستغرق وقت التفعيل بعد الدفع؟</span>
                         <i data-lucide="chevron-down" class="chevron" size="18"></i>
                     </div>
                     <div class="faq-answer">
-                        هذا الاشتراك مخصص لباقة شاهد VIP للمسلسلات والأفلام والإنتاجات الأصلية. للمحتوى الرياضي يمكنك التواصل معنا للحصول على باقة VIP + الرياضة.
+                        يتم تجهيز الطلبات وتفعيلها في وقت قياسي يتراوح عادة من 15 دقيقة إلى ساعات قليلة كحد أقصى بعد تأكيد الدفع.
                     </div>
                 </div>
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>متى يتم التفعيل بعد الطلب؟</span>
+                        <span>ما هي الأجهزة المدعومة للمشاهدة؟</span>
                         <i data-lucide="chevron-down" class="chevron" size="18"></i>
                     </div>
                     <div class="faq-answer">
-                        يتم تنفيذ الطلب والتفعيل بسرعة فائقة تتراوح عادة من 15 دقيقة إلى ساعات قليلة كحد أقصى بعد تأكيد عملية الدفع.
+                        الخدمة تعمل على كافة الأجهزة: الشاشات الذكية (Smart TV)، الجوالات، الآيباد، والكمبيوتر بدون أي قيود.
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>هل يوجد ضمان على الاشتراك؟</span>
+                        <i data-lucide="chevron-down" class="chevron" size="18"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، نقدم ضماناً كاملاً لمتابعة الحساب وضمان استمرار عمل الاشتراك طوال الفترة المحددة بالباقة.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 9. Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>Nexorasa</h3>
-                    <p>المتجر الموثوق الأول لتفعيل خدمات البث الترفيهية الرقمية بأعلى معايير الأمان والجودة.</p>
+                    <p>متجرك الرقمي الموثوق لتفعيل خدمات البث الترفيهي بأعلى معايير الجودة والسرعة.</p>
                 </div>
                 <div class="footer-col">
                     <h4>روابط سريعة</h4>
                     <ul>
-                        <li><a href="#pricing">الباقات والأسعار</a></li>
-                        <li><a href="#pricing">طرق التقسيط</a></li>
+                        <li><a href="#pricing">باقات شاهد VIP</a></li>
+                        <li><a href="#pricing">خيارات التقسيط</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>تواصل معنا</h4>
                     <ul>
-                        <li><a href="https://wa.me/966551040375" target="_blank">خدمة العملاء (واتساب)</a></li>
-                        <li><a href="https://wa.me/966551040375" target="_blank">الدعم الفني المباشر</a></li>
+                        <li><a href="https://wa.me/966551040375" target="_blank">الدعم الفني (واتساب)</a></li>
+                        <li><a href="https://wa.me/966551040375" target="_blank">خدمة العملاء</a></li>
                     </ul>
                 </div>
             </div>
@@ -859,16 +1279,105 @@
                 اطلب الآن
             </button>
         </div>
-        <button type="button" onclick="sendWhatsAppInstallment('عام', 0, 0)" class="btn-installment">
+        <button type="button" onclick="triggerInstallment('general')" class="btn-installment">
             <i data-lucide="message-circle" size="16"></i>
             قسّط عبر تابي/تمارا
         </button>
     </div>
 
-    <!-- JavaScript Scripts -->
+    <!-- Scripts -->
     <script>
         // Lucide Icons Initialization
         lucide.createIcons();
+
+        // قائمة الـ 50 تقييماً الصافية
+        const allReviews = [
+            { name: "عبد الله محمد", comment: "سرعة بالتفعيل وتجاوب ممتاز، الحساب تفعل على إيميلي بنفس اللحظة!" },
+            { name: "فهد علي", comment: "تجربة ممتازة وسلسة، أفضل متجر لتفعيل شاهد VIP بدون وجع رأس." },
+            { name: "سارة خالد", comment: "سعر أسطوري والدعم الفني متجاوب بطل، شكراً نكسوراسا." },
+            { name: "محمد ناصر", comment: "تفعيل رسمي وسريع جداً على الإيميل، ينصح بالتعامل معهم 100%." },
+            { name: "خالد أحمد", comment: "كنت متخوف في البداية بس التفعيل جاني خلال 5 دقائق بالضبط." },
+            { name: "أميرة حسن", comment: "تعامل راقي والخدمة سريعة بدون أي مشاكل في البث." },
+            { name: "سلطان سعيد", comment: "اشتراك السنة أوفر بكثير، والتفعيل على إيميلي الخاص أمن لي." },
+            { name: "فيصل عادل", comment: "ما شاء الله سرعة بالإنجاز، الشرح واضح والدعم متواجد على الواتس." },
+            { name: "ريم إبراهيم", comment: "أفضل خدمة عملاء، أخطأت بالإيميل وعدلوه لي بثواني." },
+            { name: "عبد الرحمن صالح", comment: "التفعيل رسمي وما يقطع إطلاقاً، هذه ثاني مرة أشترك من عندهم." },
+            { name: "نورة يوسف", comment: "تقسيط مريح وممتاز عبر الواتساب وسرعة بالتفعيل." },
+            { name: "ماجد طارق", comment: "جودة ممتازة بدون أي إعلانات وصورة 4K واضحة جدًا على التلفزيون." },
+            { name: "ياسر حسين", comment: "خدمة 10/10 وسعر منافس جداً." },
+            { name: "هدى منصور", comment: "تفعيل على الإيميل مباشرة، مو حساب مشترك ومضمون." },
+            { name: "مشاري نواف", comment: "مصداقية وسرعة أسلوب يشكرون عليه." },
+            { name: "طارق بدر", comment: "أسرع متجر جربته لشاهد، تم الشراء والتفعيل بأقل من 10 دقائق." },
+            { name: "منيرة زياد", comment: "ممتازين جدًا والأسعار حكاية ثانية." },
+            { name: "بدر ماجد", comment: "ما قصروا معي بالدعم الفني وضحوا لي كل الخطوات." },
+            { name: "أسماء حمد", comment: "الخدمة سريعة والتفعيل مضمون طوال فترة الاشتراك." },
+            { name: "تركي مشعل", comment: "تجربة ممتازة وسأكرر التعامل معهم بالتأكيد." },
+            { name: "سلمان وليد", comment: "كل شيء واضح وسلس والتفعيل فوري على الإيميل." },
+            { name: "دلال مسعود", comment: "سعر بطل وخدمة سريعة، شكراً لكم." },
+            { name: "نايف حمدان", comment: "اشتراك رسمي وصورة ممتازة بدون تقطيع." },
+            { name: "رزان إياد", comment: "أنصح بالتعامل معهم وبشدة لسرعة التجاوب." },
+            { name: "معاذ سامي", comment: "شغلت الاشتراك على التلفزيون والجوال بنفس الوقت وبدون مشاكل." },
+            { name: "أحمد علي", comment: "سرعة واستجابة ممتازة، تم التفعيل بثواني." },
+            { name: "منال خالد", comment: "أفضل متجر تعاملت معه، مصداقية عالية وضمان كامل." },
+            { name: "عمر ناصر", comment: "خدمة العملاء سريعة جداً وحلوا استفساري فوراً." },
+            { name: "نوف حسن", comment: "السعر جداً منافس مقارنة بالاشتراك المباشر." },
+            { name: "سعود إبراهيم", comment: "الاشتراك شغال كفاءة عالية وبدون أي تقطيع." },
+            { name: "لطيفة يوسف", comment: "سهولة في الشراء وتفعيل فوري على الإيميل." },
+            { name: "عبد العزيز طارق", comment: "باقة السنة ممتازة جداً وتوفر عليك الكثير." },
+            { name: "حنان صالح", comment: "الدعم الفني متعاون جداً وسريع في الرد." },
+            { name: "بدر منصور", comment: "التفعيل رسمي 100% والجودة جبارة." },
+            { name: "شهد بدر", comment: "خدمة ممتازة وأنصح الجميع بالاشتراك من نكسوراسا." },
+            { name: "حمد نواف", comment: "تجربة شراء سلسة وبدون أي تعقيدات." },
+            { name: "ريما ماجد", comment: "كل شيء كان أسرع من المتوقع، شكراً لكم." },
+            { name: "ناصر زياد", comment: "وضوح في التعامل وسرعة في تنفيذ الطلب." },
+            { name: "وفاء مسعود", comment: "أهم شيء عندي أن التفعيل على إيميلي الخاص وهذا الميزان بالنسبة لي." },
+            { name: "إبراهيم وليد", comment: "جودة البث ممتازة جداً وبدون أي فواصل." },
+            { name: "عبير سامي", comment: "أسلوب راقي بالتعامل وسرعة عالية في التفعيل." },
+            { name: "زياد حمدان", comment: "متجر موثوق وسريع، تجربة تستحق 5 نجوم." },
+            { name: "منى عادل", comment: "كل التوضيحات المكتوبة بالموقع مطابقة للواقع تماماً." },
+            { name: "سليمان سعيد", comment: "تفعيل فوري وخدمة تشكرون عليها." },
+            { name: "العنود مشعل", comment: "من أفضل المتاجر اللي تعاملت معها رقمياً." },
+            { name: "خالد أياد", comment: "سرعة إنجاز تفتح النفس." },
+            { name: "لمى مسعود", comment: "الدعم الفني خلوق وسريع جداً على الواتساب." },
+            { name: "فهد عادل", comment: "اشتركت لـ 3 أشهر والخدمة ماشية معي تمام بدون انقطاع." },
+            { name: "نورة إبراهيم", comment: "سلسين جداً بالتجاوب والتفعيل تم فوراً." },
+            { name: "سلطان علي", comment: "جودة واستقرار بالخدمة، يعطيك العافية." }
+        ];
+
+        let currentReviewIndex = 0;
+
+        function updateReviewDisplay() {
+            const r = allReviews[currentReviewIndex];
+            document.getElementById('sliderName').innerText = r.name;
+            document.getElementById('sliderComment').innerText = r.comment;
+            document.getElementById('sliderAvatar').innerText = r.name.charAt(0);
+        }
+
+        function nextReview() {
+            currentReviewIndex = (currentReviewIndex + 1) % allReviews.length;
+            updateReviewDisplay();
+        }
+
+        function prevReview() {
+            currentReviewIndex = (currentReviewIndex - 1 + allReviews.length) % allReviews.length;
+            updateReviewDisplay();
+        }
+
+        // تشغيل التنقل التلقائي كل 4 ثوانٍ
+        setInterval(nextReview, 4000);
+
+        // Toggle Dark / Light Theme
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            
+            document.getElementById('themeBtnText').innerText = isDark ? 'الوضع النهاري' : 'الوضع الليلي';
+            
+            const btn = document.getElementById('themeToggleBtn');
+            btn.querySelector('i').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        }
 
         // FAQ Toggle
         function toggleFaq(element) {
@@ -879,41 +1388,37 @@
             }
         }
 
-        // Installment Calculator Tabs
-        function updateInstallment(cardId, price, months, btn) {
-            const card = document.getElementById(cardId);
-            card.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
-            btn.classList.add('active');
-            
-            card.setAttribute('data-months', months);
-            const perMonth = Math.round(price / months);
-            card.querySelector('.res-val').innerText = perMonth + ' ريال';
-        }
-
-        // WhatsApp Routing Engine
-        function triggerWhatsApp(cardId) {
-            const card = document.getElementById(cardId);
-            const planName = card.getAttribute('data-plan');
-            const price = parseInt(card.getAttribute('data-price'));
-            const months = parseInt(card.getAttribute('data-months'));
-            
-            sendWhatsAppInstallment(planName, price, months);
-        }
-
-        function sendWhatsAppInstallment(planName, totalPrice, months) {
+        // المحرك التلقائي لتقسيط الـ 4 أشهر عبر الواتساب بدون إظهار الأسعار بالواجهة
+        function triggerInstallment(type) {
             const phone = "966551040375";
             let message = "";
 
-            if (totalPrice === 0) {
-                message = "مرحباً متجر Nexorasa 👋\nأرغب في الاستفسار عن خدمة تقسيط اشتراكات شاهد VIP عبر تابي أو تمارا.";
-            } else {
-                const firstPayment = Math.round(totalPrice / months);
-                message = `مرحباً متجر Nexorasa 👋\nأرغب في طلب تقسيط الاشتراك التالي:\n\n` +
-                          `📌 *الباقة:* ${planName}\n` +
-                          `💰 *المبلغ الإجمالي:* ${totalPrice} ريال\n` +
-                          `📅 *خيار التقسيط:* ${months} أشهر (عبر تابي / تمارا)\n` +
-                          `💵 *المبلغ المستحق دفعه اليوم:* ${firstPayment} ريال فقط\n\n` +
+            if (type === '3m') {
+                const basePrice = 60;
+                const extra = 5;
+                const totalPrice = basePrice + extra; // 65 ريال
+                const monthlyPayment = (totalPrice / 4).toFixed(2); // 16.25 ريال
+
+                message = `مرحباً متجر Nexorasa 👋\nأرغب في طلب تقسيط اشتراك شاهد VIP عبر (تابي / تمارا):\n\n` +
+                          `📌 *الباقة:* اشتراك شاهد VIP (3 أشهر)\n` +
+                          `📅 *خيار التقسيط:* 4 أشهر تلقائيًا\n` +
+                          `💰 *المبلغ الإجمالي شامل رسوم التقسيط:* ${totalPrice} ريال\n` +
+                          `💵 *القسط الشهري (4 دفعات):* ${monthlyPayment} ريال / شهرياً\n\n` +
                           `يرجى تزويدي برابط وتفاصيل الدفع لإتمام الطلب.`;
+            } else if (type === '1y') {
+                const basePrice = 180;
+                const extra = 15;
+                const totalPrice = basePrice + extra; // 195 ريال
+                const monthlyPayment = (totalPrice / 4).toFixed(2); // 48.75 ريال
+
+                message = `مرحباً متجر Nexorasa 👋\nأرغب في طلب تقسيط اشتراك شاهد VIP عبر (تابي / تمارا):\n\n` +
+                          `📌 *الباقة:* اشتراك شاهد VIP (سنة كاملة)\n` +
+                          `📅 *خيار التقسيط:* 4 أشهر تلقائيًا\n` +
+                          `💰 *المبلغ الإجمالي شامل رسوم التقسيط:* ${totalPrice} ريال\n` +
+                          `💵 *القسط الشهري (4 دفعات):* ${monthlyPayment} ريال / شهرياً\n\n` +
+                          `يرجى تزويدي برابط وتفاصيل الدفع لإتمام الطلب.`;
+            } else {
+                message = "مرحباً متجر Nexorasa 👋\nأرغب في الاستفسار عن تقسيط اشتراكات شاهد VIP المتاحة على 4 أشهر عبر تابي أو تمارا.";
             }
 
             const encodedMessage = encodeURIComponent(message);

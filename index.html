@@ -466,12 +466,10 @@
             transform: translateY(-4px);
         }
 
-        /* باقة 3 أشهر: خط حدود أبيض بارز */
         .product-card#card-3m {
             border-color: rgba(255, 255, 255, 0.6);
         }
 
-        /* باقة السنة: خط حدود أزرق/بنفسجي بارز */
         .product-card.featured {
             border-color: var(--primary);
             box-shadow: 0 15px 40px var(--primary-glow);
@@ -513,7 +511,6 @@
 
         .product-title-wrap h3 { font-size: 1.15rem; font-weight: 900; color: var(--text-main); }
         
-        /* تفعيل على إيميلك الخاص باللون الأبيض الصريح الواضح جداً */
         .product-duration { 
             color: #ffffff !important; 
             font-size: 0.82rem; 
@@ -569,7 +566,6 @@
             transition: all 0.2s ease-in-out !important;
         }
 
-        /* حاوية قسم "اختر طريقة التقسيط" داخل كارت المنتج */
         .installment-box-card {
             background: rgba(124, 58, 237, 0.04);
             border: 1px solid var(--border-color);
@@ -587,7 +583,6 @@
             text-align: center;
         }
 
-        /* مستطيل "المطلوب دفعه اليوم" الفاخر */
         .pay-today-premium-banner {
             display: flex;
             align-items: center;
@@ -619,7 +614,6 @@
             box-shadow: 0 2px 6px var(--accent-green-glow);
         }
 
-        /* أزرار التقسيط جنب بعض داخل الكارت (تابي وتمارا) */
         .card-gateway-btns {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -806,7 +800,7 @@
         .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; }
         .footer-bottom { text-align: center; padding-top: 14px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.78rem; }
 
-        /* الشريط السفلي المطور للجوال */
+        /* الشريط السفلي للجوال */
         .mobile-cta {
             position: fixed;
             bottom: 8px;
@@ -870,7 +864,6 @@
             .mobile-cta { display: none; }
         }
 
-        /* أيقونة الواتساب العائمة (تظهر في شاشات الكمبيوتر فقط) */
         .floating-whatsapp-btn {
             display: none;
         }
@@ -898,7 +891,7 @@
             }
         }
 
-        /* النافذة المنبثقة التفاعلية مع خريطة التقسيط الخطية */
+        /* النافذة المنبثقة التفاعلية */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -957,7 +950,6 @@
 
         .modal-title { font-size: 1.2rem; font-weight: 900; color: var(--text-main); }
 
-        /* خريطة الأقساط الأربعة المصممة (Timeline) */
         .timeline-container {
             background: var(--bg-body);
             border: 1px solid var(--border-color);
@@ -1183,7 +1175,7 @@
         </div>
     </section>
 
-    <!-- 4. قسم الباقات -->
+    <!-- 4. قسم الباقات (مع نقل عنوان "اختر اشتراكك المناسب" وشرط وسائل الدفع في مكانهما الصحيح) -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             
@@ -1210,7 +1202,7 @@
                 </div>
             </div>
 
-            <!-- شريط خيارات ووسائل الدفع المرتبة (مدى، Apple Pay، فيزا، ماستر كارد، تابي، تمارا) -->
+            <!-- شريط خيارات ووسائل الدفع المرتبة (تحت التقييمات وقبل كروت المنتجات مباشرة) -->
             <div class="payment-methods-bar">
                 <span class="payment-methods-title">خيارات الدفع المتاحة:</span>
                 <div class="payment-grid-layout">
@@ -1552,7 +1544,6 @@
                 <h3 class="modal-title" id="modalPlanTitle">خريطة تقسيط الباقة</h3>
             </div>
 
-            <!-- خريطة الأقساط الأربعة المصممة (Timeline) -->
             <div class="timeline-container">
                 <div class="timeline-title">جدول دفعات الأقساط المقسمة على 4 أشهر:</div>
                 <div class="timeline-steps">
@@ -1600,18 +1591,14 @@
 
     <!-- Scripts -->
     <script>
-        // Lucide Icons Initialization
         lucide.createIcons();
 
-        // التشغيل التلقائي للوضع الليلي والنهاري بناءً على توقيت أم القرى (السعودية)
         function initAutoTheme() {
             try {
                 const now = new Date();
                 const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
                 const makkahTime = new Date(utc + (3600000 * 3));
                 const hours = makkahTime.getHours();
-
-                // يعتبر النهار من الساعة 6 صباحاً حتى 6 مساءً
                 const isDaytime = hours >= 6 && hours < 18;
 
                 if (!isDaytime) {
@@ -1628,7 +1615,6 @@
         }
         initAutoTheme();
 
-        // القائمة الشاملة لـ 150 تقييماً
         const rawReviews = [
             "عبد الله محمد|سرعة بالتفعيل وتجاوب ممتاز، الحساب تفعل على إيميلي بنفس اللحظة!",
             "فهد علي|تجربة ممتازة وسلسة، أفضل متجر لتفعيل شاهد VIP بدون وجع رأس.",
@@ -1832,7 +1818,6 @@
         updateReviewDisplay();
         setInterval(nextReview, 10000);
 
-        // Toggle Dark / Light Theme يدوياً
         function toggleTheme() {
             const body = document.body;
             body.classList.toggle('dark-theme');
@@ -1843,7 +1828,6 @@
             lucide.createIcons();
         }
 
-        // FAQ Toggle
         function toggleFaq(element) {
             const isActive = element.classList.contains('active');
             document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
@@ -1852,7 +1836,6 @@
             }
         }
 
-        // إدارة خريطة النافذة المنبثقة وحسبات التقسيط
         let selectedPlan = '';
         let selectedGateway = 'tabby';
 
@@ -1891,7 +1874,6 @@
             document.getElementById('installmentModal').classList.remove('active');
         }
 
-        // إرسال نموذج الواتساب بالصياغة المعتمدة بدقة تامة
         function proceedToWhatsApp() {
             closeModal();
             const phone = "966551040375";

@@ -144,7 +144,6 @@
             gap: 8px;
         }
 
-        /* زر الأيقونة فقط للوضع الليلي والنهاري */
         .theme-icon-btn {
             background: var(--surface-card);
             border: 1px solid var(--border-color);
@@ -497,7 +496,7 @@
 
         .product-features-list li i { color: var(--accent-green); flex-shrink: 0; }
 
-        .btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .btn-group { display: flex; flex-direction: column; gap: 10px; }
         .rmz-button-wrapper { width: 100%; }
 
         .rmz-button-wrapper button, 
@@ -519,41 +518,40 @@
             transition: all 0.2s ease-in-out !important;
         }
 
-        .btn-installment {
-            width: 100%;
-            padding: 11px;
-            border-radius: 10px;
-            background: rgba(124, 58, 237, 0.08);
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 0.85rem;
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            cursor: pointer;
+        /* حاوية قسم "اختر طريقة التقسيط" داخل كارت المنتج */
+        .installment-box-card {
+            background: rgba(124, 58, 237, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 12px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        /* طوق ومستطيل "المطلوب دفعه اليوم" */
+        .installment-box-title {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        /* مستطيل "ادفع اليوم" الفاخر */
         .pay-today-premium-banner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(16, 185, 129, 0.12));
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(16, 185, 129, 0.1));
             border: 1px solid var(--border-active);
-            padding: 8px 12px;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            padding: 7px 10px;
+            border-radius: 8px;
         }
 
         .pay-today-tag {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.82rem;
+            gap: 5px;
+            font-size: 0.78rem;
             font-weight: 900;
             color: var(--text-main);
         }
@@ -563,17 +561,42 @@
         .pay-today-amount {
             background: var(--accent-green);
             color: #ffffff;
-            padding: 3px 10px;
+            padding: 2px 8px;
             border-radius: 6px;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 900;
-            box-shadow: 0 2px 8px var(--accent-green-glow);
-            animation: pulseGlow 2s infinite;
+            box-shadow: 0 2px 6px var(--accent-green-glow);
         }
 
-        @keyframes pulseGlow {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(0.96); opacity: 0.9; }
+        /* أزرار التقسيط جنب بعض داخل الكارت (تابي وتمارا) */
+        .card-gateway-btns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .card-gw-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border-color);
+            padding: 9px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 900;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .card-gw-btn.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); }
+        .card-gw-btn.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); }
+
+        .card-gw-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--primary-glow);
+            border-color: var(--primary);
         }
 
         /* لماذا نحن والخطوات والتقسيط */
@@ -630,7 +653,6 @@
         .step-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
         .step-card p { color: var(--text-muted); font-size: 0.82rem; }
 
-        /* قسم التقسيط السفلي */
         .installment-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -793,7 +815,7 @@
             .mobile-cta { display: none; }
         }
 
-        /* أيقونة الواتساب العائمة للجوال والكمبيوتر */
+        /* أيقونة الواتساب العائمة */
         .floating-whatsapp-btn {
             position: fixed;
             bottom: 70px;
@@ -974,49 +996,6 @@
 
         .summary-total-bar span { font-weight: 800; color: var(--text-muted); }
         .summary-total-bar strong { font-weight: 900; color: var(--accent-green); font-size: 1.05rem; }
-
-        /* اختيار طريقة التقسيط */
-        .gateway-selector-title {
-            font-size: 0.85rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--text-main);
-            text-align: right;
-        }
-
-        .gateway-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .gateway-option-btn {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .gateway-option-btn span {
-            font-size: 0.9rem;
-            font-weight: 900;
-        }
-
-        .gateway-option-btn.tabby-btn span { color: var(--tabby-color); }
-        .gateway-option-btn.tamara-btn span { color: var(--tamara-color); }
-
-        .gateway-option-btn.selected {
-            border-color: var(--primary);
-            background: rgba(124, 58, 237, 0.06);
-            box-shadow: 0 0 12px var(--primary-glow);
-        }
 
         .modal-saudi-note {
             background: rgba(217, 119, 6, 0.08);
@@ -1222,18 +1201,26 @@
                             </button>
                         </div>
 
-                        <button type="button" onclick="openModal('3m')" class="btn-installment">
-                            <i data-lucide="credit-card" size="14"></i>
-                            قسّط عبر تابي وتمارا
-                        </button>
-                        
-                        <!-- المستطيل الفاخر والبارز جداً لـ "المطلوب دفعه اليوم" -->
-                        <div class="pay-today-premium-banner">
-                            <div class="pay-today-tag">
-                                <i data-lucide="zap" size="14"></i>
-                                <span>المطلوب دفعه اليوم:</span>
+                        <!-- حاوية التقسيط المحدثة (اختر طريقة التقسيط + ادفع اليوم + زري تابي وتمارا) -->
+                        <div class="installment-box-card">
+                            <div class="installment-box-title">اختر طريقة التقسيط</div>
+                            
+                            <div class="pay-today-premium-banner">
+                                <div class="pay-today-tag">
+                                    <i data-lucide="zap" size="14"></i>
+                                    <span>المطلوب دفعه اليوم:</span>
+                                </div>
+                                <div class="pay-today-amount">17 ريال فقط</div>
                             </div>
-                            <div class="pay-today-amount">17 ريال فقط</div>
+
+                            <div class="card-gateway-btns">
+                                <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-gw-btn tabby">
+                                    <span>تابي (Tabby)</span>
+                                </button>
+                                <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-gw-btn tamara">
+                                    <span>تمارا (Tamara)</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1273,18 +1260,26 @@
                             </button>
                         </div>
 
-                        <button type="button" onclick="openModal('1y')" class="btn-installment">
-                            <i data-lucide="credit-card" size="14"></i>
-                            قسّط عبر تابي وتمارا
-                        </button>
-
-                        <!-- المستطيل الفاخر والبارز جداً لـ "المطلوب دفعه اليوم" -->
-                        <div class="pay-today-premium-banner">
-                            <div class="pay-today-tag">
-                                <i data-lucide="zap" size="14"></i>
-                                <span>المطلوب دفعه اليوم:</span>
+                        <!-- حاوية التقسيط المحدثة (اختر طريقة التقسيط + ادفع اليوم + زري تابي وتمارا) -->
+                        <div class="installment-box-card">
+                            <div class="installment-box-title">اختر طريقة التقسيط</div>
+                            
+                            <div class="pay-today-premium-banner">
+                                <div class="pay-today-tag">
+                                    <i data-lucide="zap" size="14"></i>
+                                    <span>المطلوب دفعه اليوم:</span>
+                                </div>
+                                <div class="pay-today-amount">50 ريال فقط</div>
                             </div>
-                            <div class="pay-today-amount">50 ريال فقط</div>
+
+                            <div class="card-gateway-btns">
+                                <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="card-gw-btn tabby">
+                                    <span>تابي (Tabby)</span>
+                                </button>
+                                <button type="button" onclick="openGatewayModal('1y', 'tamara')" class="card-gw-btn tamara">
+                                    <span>تمارا (Tamara)</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1354,7 +1349,7 @@
         </div>
     </section>
 
-    <!-- 7. قسم التقسيط التفاعلي المربوط بالمنبثقة مباشرة -->
+    <!-- 7. قسم التقسيط السفلي -->
     <section class="installment-section">
         <div class="container">
             <div class="section-header">
@@ -1363,7 +1358,7 @@
             </div>
 
             <div class="installment-grid">
-                <div class="partner-card" onclick="openModal('3m')">
+                <div class="partner-card" onclick="openGatewayModal('3m', 'tabby')">
                     <div class="partner-header">
                         <div class="partner-logo-box tabby">tabby</div>
                         <div class="partner-info">
@@ -1372,7 +1367,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="partner-card" onclick="openModal('1y')">
+                <div class="partner-card" onclick="openGatewayModal('1y', 'tamara')">
                     <div class="partner-header">
                         <div class="partner-logo-box tamara">tamara</div>
                         <div class="partner-info">
@@ -1470,7 +1465,7 @@
 
     <!-- أيقونة الواتساب العائمة -->
     <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
-        <i data-lucide="message-circle" size="26"></i>
+        <i data-lucide="message-circle" size="28"></i>
     </a>
 
     <!-- الشريط السفلي المطور للجوال -->
@@ -1788,8 +1783,11 @@
         let selectedPlan = '';
         let selectedGateway = 'tabby';
 
-        function openModal(plan) {
+        function openGatewayModal(plan, gateway) {
             selectedPlan = plan;
+            selectedGateway = gateway;
+            selectGateway(gateway);
+
             const modalTitle = document.getElementById('modalPlanTitle');
             const modalTotalSum = document.getElementById('modalTotalSum');
 
@@ -1833,7 +1831,7 @@
             }
         }
 
-        // إرسال نموذج الواتساب المحدث وفق الصياغة المعتمدة
+        // إرسال نموذج الواتساب بالصياغة المعتمدة
         function proceedToWhatsApp() {
             closeModal();
             const phone = "966551040375";

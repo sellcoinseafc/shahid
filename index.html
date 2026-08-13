@@ -133,12 +133,12 @@
             border-radius: 8px; color: var(--primary); font-size: 0.78rem; font-weight: 800;
         }
 
-        /* Hero الجديد: خلفية صورة واضحة جداً مع تدرج خفيف يظهر جمال الصورة */
+        /* Hero */
         .hero-banner-bg {
             position: relative;
             width: 100%;
             max-width: 1140px;
-            margin: 16px auto 20px;
+            margin: 16px auto 14px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
@@ -159,7 +159,6 @@
             z-index: 1;
         }
 
-        /* طبقة عزل متوازنة تظهر تفاصيل الصورة بوضوح مع الحفاظ على قراءة النص تماماً */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -231,9 +230,40 @@
         }
         .highlight-pill-white i { color: #3bffc8; }
 
+        /* أزرار التنقل السريع بين الباقات (التبويبات تحت الصورة وفوق طرق الدفع) */
+        .quick-tabs-container {
+            max-width: 1140px;
+            margin: 0 auto 12px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .quick-tab-btn {
+            flex: 1;
+            background: var(--surface-card);
+            border: 1.5px solid var(--border-color);
+            padding: 12px 14px;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            font-weight: 900;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.2s ease;
+        }
+        .quick-tab-btn:hover, .quick-tab-btn.active {
+            border-color: var(--primary);
+            background: rgba(124, 58, 237, 0.08);
+            color: var(--primary);
+        }
+
         /* شريط وسائل الدفع */
         .payment-methods-bar {
-            max-width: 1140px; margin: 10px auto 16px; background: var(--surface-card);
+            max-width: 1140px; margin: 0 auto 16px; background: var(--surface-card);
             border: 1px solid var(--border-color); border-radius: 14px; padding: 10px 14px; box-shadow: var(--card-shadow);
         }
         .payment-methods-title { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-align: center; margin-bottom: 8px; display: block; }
@@ -262,38 +292,7 @@
         .trust-item-title { font-size: 0.78rem; font-weight: 800; display: block; color: var(--text-main); }
         .trust-item-sub { font-size: 0.68rem; color: var(--text-muted); }
 
-        /* أزرار التنقل السريع بين الباقات (التبويبات) */
-        .quick-tabs-container {
-            max-width: 920px;
-            margin: 0 auto 16px;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-        .quick-tab-btn {
-            flex: 1;
-            background: var(--surface-card);
-            border: 1.5px solid var(--border-color);
-            padding: 10px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 900;
-            color: var(--text-main);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            box-shadow: var(--card-shadow);
-            transition: all 0.2s ease;
-        }
-        .quick-tab-btn:hover, .quick-tab-btn.active {
-            border-color: var(--primary);
-            background: rgba(124, 58, 237, 0.05);
-            color: var(--primary);
-        }
-
-        /* قسم المنتجات (عرض جنباً إلى جنب) */
+        /* قسم المنتجات */
         .pricing-section { padding: 5px 0 15px; }
         .pricing-grid { 
             display: grid; 
@@ -352,7 +351,7 @@
         .card-gw-btn.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); }
         .card-gw-btn.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); }
 
-        /* زر المقارنة الذكي الجديد */
+        /* زر المقارنة الذكي */
         .comparison-trigger-box { max-width: 920px; margin: 16px auto 0; text-align: center; }
         .comparison-btn {
             background: rgba(124, 58, 237, 0.1); border: 1.5px dashed var(--primary);
@@ -478,7 +477,7 @@
         </div>
     </nav>
 
-    <!-- 2. Hero الجديد: صورة واضحة في الخلفية وطبقة عزل متوازنة تظهر التفاصيل مع وضوح النص -->
+    <!-- 2. Hero: صورة خلفية واضحة جداً وفوقها النبذة -->
     <div class="container">
         <div class="hero-banner-bg">
             <img src="https://a.top4top.io/p_3877syzt41.png" alt="Shahid VIP Nexorasa Banner" class="hero-bg-img">
@@ -495,6 +494,20 @@
                     <div class="highlight-pill-white"><i data-lucide="check-circle" size="13"></i> ضمان كامل المدة</div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- 3. أزرار التنقل السريع بين الباقات (التبويبات في المكان الجديد تحت الصورة وفوق طرق الدفع) -->
+    <div class="container">
+        <div class="quick-tabs-container">
+            <button type="button" class="quick-tab-btn active" id="tab3m" onclick="filterPlans('3m')">
+                <i data-lucide="tv" size="16"></i>
+                <span>باقة 3 أشهر (60 ر.س)</span>
+            </button>
+            <button type="button" class="quick-tab-btn" id="tab1y" onclick="filterPlans('1y')">
+                <i data-lucide="sparkles" size="16"></i>
+                <span>باقة سنة كاملة (180 ر.س)</span>
+            </button>
         </div>
     </div>
 
@@ -553,22 +566,9 @@
         </div>
     </section>
 
-    <!-- 3. قسم المنتجات (مع أزرار التبديل الذكية Tab Selector) -->
+    <!-- 4. قسم المنتجات -->
     <section class="pricing-section" id="pricing">
         <div class="container">
-            
-            <!-- أزرار الاختيار السريع للباقات -->
-            <div class="quick-tabs-container">
-                <button type="button" class="quick-tab-btn active" id="tab3m" onclick="filterPlans('3m')">
-                    <i data-lucide="tv" size="16"></i>
-                    <span>باقة 3 أشهر (60 ر.س)</span>
-                </button>
-                <button type="button" class="quick-tab-btn" id="tab1y" onclick="filterPlans('1y')">
-                    <i data-lucide="sparkles" size="16"></i>
-                    <span>باقة سنة كاملة (180 ر.س)</span>
-                </button>
-            </div>
-
             <div class="pricing-grid">
                 
                 <!-- باقة 3 أشهر (Product: 29956) -->
@@ -686,7 +686,7 @@
         </div>
     </section>
 
-    <!-- 4. قسم التقييمات الاحترافي والمتحرك -->
+    <!-- 5. قسم التقييمات الاحترافي والمتحرك -->
     <section class="reviews-section">
         <div class="container">
             <div class="reviews-header-title">
@@ -800,7 +800,7 @@
         <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')" title="ساعات عمل المتجر">
             <i data-lucide="clock" size="16"></i>
         </button>
-        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%85%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B" target="_blank" class="mobile-btn-icon-wa" title="محادثة واتساب">
+        <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B" target="_blank" class="mobile-btn-icon-wa" title="محادثة واتساب">
             <i data-lucide="message-circle" size="16"></i>
         </a>
     </div>
@@ -851,7 +851,7 @@
         </div>
     </div>
 
-    <!-- النوافذ المنبثقة للسياسات (بالنصوص الكاملة) -->
+    <!-- النوافذ المنبثقة للسياسات -->
     <div class="modal-overlay" id="termsModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -867,7 +867,7 @@
                 <h4>3. سياسة الاسترجاع والاسترداد</h4>
                 <p>نظرًا لطبيعة المنتجات الرقمية، يمكن طلب الاسترجاع خلال 24 ساعة في حال وجود مشكلة في التفعيل. بعد نجاح التفعيل واستخدام الاشتراك لا يمكن استرجاع قيمته.</p>
                 <h4>4. سياسة الضمان</h4>
-                <p>الضمان يشمل الاشتراك المفعّل فقط، ويختلف نطاقه حسب المدة (90 يوماً لاشتراك 3 أشهر، و12 شهراً لاشتراك السنة).</p>
+                <p>الضمان يشمل الاشتراك المفعّل فقط، ويغطي استمرارية الاشتراك خلال مدة الضمان المحددة للمنتج (90 يوماً لاشتراك 3 أشهر، و12 شهراً لاشتراك السنة).</p>
                 <p><strong>آخر تحديث: 2026</strong></p>
             </div>
         </div>
@@ -1019,7 +1019,7 @@
             openPolicyModal('comparisonModal');
         }
 
-        /* نظام التبويبات للتنقل السريع بين الباقات */
+        /* نظام التبويبات للتنقل السريع بين الباقات وتحديد الفوكس عليها */
         function filterPlans(plan) {
             const tab3m = document.getElementById('tab3m');
             const tab1y = document.getElementById('tab1y');

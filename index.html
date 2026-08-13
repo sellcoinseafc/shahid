@@ -536,7 +536,7 @@
             text-align: center;
         }
 
-        /* مستطيل "ادفع اليوم" الفاخر */
+        /* مستطيل "المطلوب دفعه اليوم" الفاخر */
         .pay-today-premium-banner {
             display: flex;
             align-items: center;
@@ -815,34 +815,35 @@
             .mobile-cta { display: none; }
         }
 
-        /* أيقونة الواتساب العائمة */
+        /* أيقونة الواتساب العائمة تظهر فقط في الشاشات الكبيرة (متصفح الكمبيوتر) وتختفي في الجوال */
         .floating-whatsapp-btn {
-            position: fixed;
-            bottom: 70px;
-            left: 16px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #25d366;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 998;
-            text-decoration: none;
-            transition: transform 0.2s;
+            display: none;
         }
 
         @media (min-width: 769px) {
-            .floating-whatsapp-btn { bottom: 24px; left: 24px; width: 54px; height: 54px; }
+            .floating-whatsapp-btn {
+                display: flex;
+                position: fixed;
+                bottom: 24px;
+                left: 24px;
+                width: 54px;
+                height: 54px;
+                border-radius: 50%;
+                background: #25d366;
+                color: #ffffff;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+                z-index: 998;
+                text-decoration: none;
+                transition: transform 0.2s;
+            }
+            .floating-whatsapp-btn:hover {
+                transform: scale(1.08);
+            }
         }
 
-        .floating-whatsapp-btn:hover {
-            transform: scale(1.08);
-        }
-
-        /* النافذة المنبثقة التفاعلية لخريطة التقسيط بدون اختيار البوابة بداخله */
+        /* النافذة المنبثقة التفاعلية مع خريطة التقسيط الخطية */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -907,7 +908,7 @@
             border: 1px solid var(--border-color);
             border-radius: 14px;
             padding: 16px 10px;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .timeline-title {
@@ -1201,7 +1202,7 @@
                             </button>
                         </div>
 
-                        <!-- حاوية التقسيط المحدثة (اختر طريقة التقسيط + ادفع اليوم + زري تابي وتمارا) -->
+                        <!-- حاوية التقسيط المحدثة -->
                         <div class="installment-box-card">
                             <div class="installment-box-title">اختر طريقة التقسيط</div>
                             
@@ -1260,7 +1261,7 @@
                             </button>
                         </div>
 
-                        <!-- حاوية التقسيط المحدثة (اختر طريقة التقسيط + ادفع اليوم + زري تابي وتمارا) -->
+                        <!-- حاوية التقسيط المحدثة -->
                         <div class="installment-box-card">
                             <div class="installment-box-title">اختر طريقة التقسيط</div>
                             
@@ -1378,7 +1379,6 @@
                 </div>
             </div>
 
-            <!-- التنبيه الخاص بحصر خدمة التقسيط داخل المملكة العربية السعودية -->
             <div class="saudi-only-tag">
                 ⚠️ خدمة التقسيط عبر تابي وتمارا متاحة للعملاء داخل المملكة العربية السعودية فقط.
             </div>
@@ -1463,12 +1463,12 @@
         </div>
     </footer>
 
-    <!-- أيقونة الواتساب العائمة -->
+    <!-- أيقونة الواتساب العائمة (تظهر في الكمبيوتر فقط وتختفي في الجوال بناءً على طلبك) -->
     <a href="https://wa.me/966551040375?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20Nexorasa%20%F0%9F%90%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" class="floating-whatsapp-btn" title="تواصل معنا عبر الواتساب">
         <i data-lucide="message-circle" size="28"></i>
     </a>
 
-    <!-- الشريط السفلي المطور للجوال -->
+    <!-- الشريط السفلي المطور للجوال (الاشتراكات + خدمة العملاء + أيقونة واتساب) -->
     <div class="mobile-cta">
         <a href="#pricing" class="mobile-nav-btn mobile-btn-subscriptions">
             <i data-lucide="shopping-bag" size="14"></i>
@@ -1493,7 +1493,7 @@
                 <h3 class="modal-title" id="modalPlanTitle">خريطة تقسيط الباقة</h3>
             </div>
 
-            <!-- خريطة الأقساط الـ 4 الخطيّة المصممة (Timeline) -->
+            <!-- خريطة الأقساط الأربعة المصممة (Timeline) -->
             <div class="timeline-container">
                 <div class="timeline-title">جدول دفعات الأقساط المقسمة على 4 أشهر:</div>
                 <div class="timeline-steps">
@@ -1543,6 +1543,32 @@
     <script>
         // Lucide Icons Initialization
         lucide.createIcons();
+
+        // 1. الوضع الليلي والنهاري التلقائي بناءً على توقيت أم القرى (السعودية)
+        function initAutoTheme() {
+            try {
+                // حساب توقيت مكة المكرمة (توقيت أم القرى UTC+3 ثابتة)
+                const now = new Date();
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const makkahTime = new Date(utc + (3600000 * 3));
+                const hours = makkahTime.getHours();
+
+                // يعتبر النهار من الساعة 6 صباحاً (06:00) وحتى الساعة 6 مساءً (18:00)
+                const isDaytime = hours >= 6 && hours < 18;
+
+                if (!isDaytime) {
+                    document.body.classList.add('dark-theme');
+                    const btn = document.getElementById('themeToggleBtn');
+                    if(btn) {
+                        btn.querySelector('i').setAttribute('data-lucide', 'sun');
+                        lucide.createIcons();
+                    }
+                }
+            } catch (e) {
+                console.log("Theme init error:", e);
+            }
+        }
+        initAutoTheme();
 
         // القائمة الشاملة لـ 150 تقييماً
         const rawReviews = [
@@ -1748,7 +1774,7 @@
         updateReviewDisplay();
         setInterval(nextReview, 10000);
 
-        // Toggle Dark / Light Theme
+        // Toggle Dark / Light Theme يدوياً
         function toggleTheme() {
             const body = document.body;
             body.classList.toggle('dark-theme');
@@ -1807,7 +1833,7 @@
             document.getElementById('installmentModal').classList.remove('active');
         }
 
-        // إرسال نموذج الواتساب مع التأكد من اسم البوابة المختارة بدقة تامة
+        // إرسال نموذج الواتساب بالصياغة المعتمدة بدقة تامة
         function proceedToWhatsApp() {
             closeModal();
             const phone = "966551040375";

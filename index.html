@@ -14,8 +14,8 @@
     <!-- الأيقونات -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- RMZ Embed Script الرسمي -->
-    <script src="https://embed-js.rmz.gg/rmz-embed.js"></script>
+    <!-- RMZ Embed Script الرسمي المحدث -->
+    <script src="https://rmz.gg/embed/rmz-embed.js"></script>
 
     <style>
         /* الوضع النهاري الافتراضي (Light Mode) */
@@ -99,7 +99,7 @@
             z-index: 1;
         }
 
-        /* Header المتجر المتناسق مع الشعار المصمم */
+        /* Header المتجر */
         .navbar {
             padding: 10px 0;
             border-bottom: 1px solid var(--border-color);
@@ -458,20 +458,22 @@
         .btn-group { display: flex; flex-direction: column; gap: 8px; }
         .rmz-button-wrapper { width: 100%; }
 
+        /* تنسيق أزرار RMZ للظهور بنفس ثيم المتجر الأنيق */
         .rmz-button-wrapper button {
-            width: 100%;
-            padding: 13px;
-            border-radius: 10px;
-            background: var(--accent-green);
-            color: #ffffff;
-            font-weight: 900;
-            font-size: 0.95rem;
-            border: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            width: 100% !important;
+            padding: 13px !important;
+            border-radius: 10px !important;
+            background: var(--accent-green) !important;
+            color: #ffffff !important;
+            font-weight: 900 !important;
+            font-size: 0.95rem !important;
+            border: 0 !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            box-shadow: 0 4px 15px var(--accent-green-glow) !important;
         }
 
         .btn-installment {
@@ -709,7 +711,6 @@
 
                 <div class="hero-media">
                     <div class="hero-media-card">
-                        <!-- الصورة الكبيرة المصممة الجديدة -->
                         <img src="https://a.top4top.io/p_3877syzt41.png" alt="Shahid VIP Nexorasa Banner">
                     </div>
                 </div>
@@ -753,7 +754,7 @@
         </div>
     </section>
 
-    <!-- 4. قسم الباقات -->
+    <!-- 4. قسم الباقات مع الكودين الفعليين لمنتجات RMZ -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             
@@ -782,7 +783,7 @@
 
             <div class="pricing-grid">
                 
-                <!-- باقة 3 أشهر (60 ريال) -->
+                <!-- باقة 3 أشهر (60 ريال) - كود RMZ الخاص بالـ 3 أشهر (Product: 29956) -->
                 <div class="product-card" id="card-3m" data-price="60" data-plan="اشتراك شاهد VIP (3 أشهر)">
                     <div>
                         <div class="product-header">
@@ -807,10 +808,10 @@
 
                     <div class="btn-group">
                         <div class="rmz-button-wrapper">
-                            <button
-                                data-rmz-product="103287"
-                                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D"
-                                data-rmz-theme="auto"
+                            <button 
+                                data-rmz-product="29956" 
+                                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
+                                data-rmz-theme="auto" 
                                 data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                                 <i data-lucide="shopping-cart" size="16"></i>
                                 اطلب الآن
@@ -824,7 +825,7 @@
                     </div>
                 </div>
 
-                <!-- باقة السنة الكاملة (180 ريال) -->
+                <!-- باقة السنة الكاملة (180 ريال) - كود RMZ الخاص بالسنة (Product: 61070) -->
                 <div class="product-card featured" id="card-1y" data-price="180" data-plan="اشتراك شاهد VIP (سنة كاملة)">
                     <div class="product-badge-pop">الأكثر طلباً ⭐</div>
                     <div>
@@ -850,10 +851,10 @@
 
                     <div class="btn-group">
                         <div class="rmz-button-wrapper">
-                            <button
-                                data-rmz-product="YOUR_1_YEAR_PRODUCT_ID"
-                                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D"
-                                data-rmz-theme="auto"
+                            <button 
+                                data-rmz-product="61070" 
+                                data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" 
+                                data-rmz-theme="auto" 
                                 data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                                 <i data-lucide="shopping-cart" size="16"></i>
                                 اطلب الآن

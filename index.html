@@ -47,11 +47,11 @@
             --accent-green: #10b981;
             --accent-green-glow: rgba(16, 185, 129, 0.25);
             --accent-gold: #f59e0b;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --border-color: rgba(255, 255, 255, 0.12);
             --border-active: rgba(139, 92, 246, 0.5);
-            --text-main: #f8fafc;
-            --text-muted: #cbd5e1;
-            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #e2e8f0;
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             --tabby-color: #3bffc8;
             --tamara-color: #ffab40;
             --navbar-bg: rgba(6, 4, 13, 0.9);
@@ -101,7 +101,7 @@
             z-index: 1;
         }
 
-        /* Header المتجر */
+        /* Header المتجر الرسمي */
         .navbar {
             padding: 10px 0;
             border-bottom: 1px solid var(--border-color);
@@ -240,6 +240,7 @@
             border-radius: 8px;
             font-size: 0.82rem;
             font-weight: 700;
+            color: var(--text-main);
         }
 
         .hero-bullet-item i { color: var(--accent-green); }
@@ -264,10 +265,70 @@
             object-fit: cover;
         }
 
-        /* شريط الثقة */
+        /* شريط وسائل الدفع المتاحة (تحت الصورة مباشرة) */
+        .payment-methods-bar {
+            max-width: 1140px;
+            margin: 10px auto 24px;
+            background: var(--surface-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 14px 16px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .payment-methods-title {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .payment-grid-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pay-row-top {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        @media (min-width: 576px) {
+            .pay-row-top { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .pay-row-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .pay-badge-card {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .pay-badge-card.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); background: rgba(5, 150, 105, 0.04); }
+        .pay-badge-card.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); background: rgba(217, 119, 6, 0.04); }
+
+        /* شريط الثقة (تحت وسائل الدفع) */
         .trust-bar {
             padding: 12px 0;
-            margin: 10px 0 24px;
+            margin: 0 0 24px;
             border-y: 1px solid var(--border-color);
             background: var(--surface-card);
         }
@@ -301,13 +362,13 @@
             flex-shrink: 0;
         }
 
-        .trust-item-title { font-size: 0.82rem; font-weight: 800; display: block; }
+        .trust-item-title { font-size: 0.82rem; font-weight: 800; display: block; color: var(--text-main); }
         .trust-item-sub { font-size: 0.72rem; color: var(--text-muted); }
 
-        /* شريط التقييمات */
+        /* شريط التقييمات (تحت شريط الثقة) */
         .reviews-slider-box {
             max-width: 920px;
-            margin: 0 auto 16px;
+            margin: 0 auto 24px;
             background: var(--surface-card);
             border: 1px solid var(--border-active);
             border-radius: 16px;
@@ -369,70 +430,10 @@
             justify-content: center;
         }
 
-        /* شريط وسائل الدفع المتاحة */
-        .payment-methods-bar {
-            max-width: 920px;
-            margin: 0 auto 24px;
-            background: var(--surface-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 14px 16px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .payment-methods-title {
-            font-size: 0.82rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .payment-grid-layout {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .pay-row-top {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-        }
-
-        @media (min-width: 576px) {
-            .pay-row-top { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .pay-row-bottom {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-        }
-
-        .pay-badge-card {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            padding: 8px 10px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--text-main);
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .pay-badge-card.tabby { color: var(--tabby-color); border-color: rgba(5, 150, 105, 0.3); background: rgba(5, 150, 105, 0.04); }
-        .pay-badge-card.tamara { color: var(--tamara-color); border-color: rgba(217, 119, 6, 0.3); background: rgba(217, 119, 6, 0.04); }
-
-        /* قسم الباقات */
+        /* قسم الباقات (اختر اشتراكك المناسب وبطاقات المنتج) */
         .pricing-section { padding: 10px 0 40px; }
         .section-header { text-align: center; margin-bottom: 20px; }
-        .section-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 4px; }
+        .section-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 4px; color: var(--text-main); }
         .section-subtitle { color: var(--text-muted); font-size: 0.88rem; }
 
         .pricing-grid {
@@ -448,7 +449,6 @@
             .section-title { font-size: 2rem; }
         }
 
-        /* بطاقات المنتج البارزة مع ظل فخم */
         .product-card {
             background: var(--surface-card);
             border: 2px solid var(--border-color);
@@ -462,18 +462,9 @@
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        .product-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .product-card#card-3m {
-            border-color: rgba(255, 255, 255, 0.6);
-        }
-
-        .product-card.featured {
-            border-color: var(--primary);
-            box-shadow: 0 15px 40px var(--primary-glow);
-        }
+        .product-card:hover { transform: translateY(-4px); }
+        .product-card#card-3m { border-color: rgba(255, 255, 255, 0.6); }
+        .product-card.featured { border-color: var(--primary); box-shadow: 0 15px 40px var(--primary-glow); }
 
         .product-badge-pop {
             position: absolute;
@@ -1110,7 +1101,7 @@
         </div>
     </nav>
 
-    <!-- 2. Hero Section -->
+    <!-- 2. Hero Section (صورة شاهد VIP والأعلى) -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
@@ -1139,7 +1130,26 @@
         </div>
     </section>
 
-    <!-- 3. شريط الثقة -->
+    <!-- 3. شريط وسائل الدفع المتاحة (تحت الصورة مباشرة) -->
+    <div class="container">
+        <div class="payment-methods-bar">
+            <span class="payment-methods-title">خيارات الدفع المتاحة:</span>
+            <div class="payment-grid-layout">
+                <div class="pay-row-top">
+                    <div class="pay-badge-card">مدى mada</div>
+                    <div class="pay-badge-card">Apple Pay</div>
+                    <div class="pay-badge-card">Visa</div>
+                    <div class="pay-badge-card">Mastercard</div>
+                </div>
+                <div class="pay-row-bottom">
+                    <div class="pay-badge-card tabby">تابي Tabby</div>
+                    <div class="pay-badge-card tamara">تمارا Tamara</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. شريط الثقة (تحت وسائل الدفع) -->
     <section class="trust-bar">
         <div class="container">
             <div class="trust-grid">
@@ -1175,7 +1185,27 @@
         </div>
     </section>
 
-    <!-- 4. قسم الباقات (مع نقل عنوان "اختر اشتراكك المناسب" وشرط وسائل الدفع في مكانهما الصحيح) -->
+    <!-- 5. شريط التقييمات (تحت شريط الثقة) -->
+    <div class="container">
+        <div class="reviews-slider-box">
+            <div class="reviews-slider-content">
+                <div class="review-avatar-icon" id="sliderAvatar">ع</div>
+                <div class="review-text-wrap">
+                    <div class="review-header-line">
+                        <span class="review-user-name" id="sliderName">عبد الله محمد</span>
+                        <span class="review-stars-list">★★★★★</span>
+                    </div>
+                    <p class="review-comment" id="sliderComment">"سرعة بالتفعيل وتجاوب ممتاز، الحساب تفعل على إيميلي بنفس اللحظة!"</p>
+                </div>
+            </div>
+            <div class="reviews-nav-btns">
+                <button class="reviews-nav-btn" onclick="prevReview()" title="السابق"><i data-lucide="chevron-right" size="14"></i></button>
+                <button class="reviews-nav-btn" onclick="nextReview()" title="التالي"><i data-lucide="chevron-left" size="14"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. قسم الباقات (اختر اشتراكك المناسب وبطاقات المنتجات) -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             
@@ -1184,44 +1214,9 @@
                 <p class="section-subtitle">تفعيل مباشر ورسمي على بريدك الإلكتروني الخاص</p>
             </div>
 
-            <!-- شريط التقييمات الـ 150 -->
-            <div class="reviews-slider-box">
-                <div class="reviews-slider-content">
-                    <div class="review-avatar-icon" id="sliderAvatar">ع</div>
-                    <div class="review-text-wrap">
-                        <div class="review-header-line">
-                            <span class="review-user-name" id="sliderName">عبد الله محمد</span>
-                            <span class="review-stars-list">★★★★★</span>
-                        </div>
-                        <p class="review-comment" id="sliderComment">"سرعة بالتفعيل وتجاوب ممتاز، الحساب تفعل على إيميلي بنفس اللحظة!"</p>
-                    </div>
-                </div>
-                <div class="reviews-nav-btns">
-                    <button class="reviews-nav-btn" onclick="prevReview()" title="السابق"><i data-lucide="chevron-right" size="14"></i></button>
-                    <button class="reviews-nav-btn" onclick="nextReview()" title="التالي"><i data-lucide="chevron-left" size="14"></i></button>
-                </div>
-            </div>
-
-            <!-- شريط خيارات ووسائل الدفع المرتبة (تحت التقييمات وقبل كروت المنتجات مباشرة) -->
-            <div class="payment-methods-bar">
-                <span class="payment-methods-title">خيارات الدفع المتاحة:</span>
-                <div class="payment-grid-layout">
-                    <div class="pay-row-top">
-                        <div class="pay-badge-card">مدى mada</div>
-                        <div class="pay-badge-card">Apple Pay</div>
-                        <div class="pay-badge-card">Visa</div>
-                        <div class="pay-badge-card">Mastercard</div>
-                    </div>
-                    <div class="pay-row-bottom">
-                        <div class="pay-badge-card tabby">تابي Tabby</div>
-                        <div class="pay-badge-card tamara">تمارا Tamara</div>
-                    </div>
-                </div>
-            </div>
-
             <div class="pricing-grid">
                 
-                <!-- باقة 3 أشهر (Product: 29956) - بحد أبيض بارز -->
+                <!-- باقة 3 أشهر (Product: 29956) -->
                 <div class="product-card" id="card-3m">
                     <div>
                         <div class="product-header">
@@ -1278,7 +1273,7 @@
                     </div>
                 </div>
 
-                <!-- باقة السنة الكاملة (Product: 61070) - بحد أزرق متوهج -->
+                <!-- باقة السنة الكاملة (Product: 61070) -->
                 <div class="product-card featured" id="card-1y">
                     <div class="product-badge-pop">الأكثر طلباً ⭐</div>
                     <div>
@@ -1340,7 +1335,7 @@
         </div>
     </section>
 
-    <!-- 5. قسم لماذا Nexorasa؟ -->
+    <!-- 7. قسم لماذا Nexorasa؟ -->
     <section class="why-us-section">
         <div class="container">
             <div class="section-header">
@@ -1373,7 +1368,7 @@
         </div>
     </section>
 
-    <!-- 6. قسم خطوات التفعيل -->
+    <!-- 8. قسم خطوات التفعيل -->
     <section class="steps-section">
         <div class="container">
             <div class="section-header">
@@ -1401,7 +1396,7 @@
         </div>
     </section>
 
-    <!-- 7. قسم التقسيط السفلي -->
+    <!-- 9. قسم التقسيط السفلي -->
     <section class="installment-section">
         <div class="container">
             <div class="section-header">
@@ -1436,7 +1431,7 @@
         </div>
     </section>
 
-    <!-- 8. الأسئلة الشائعة -->
+    <!-- 10. الأسئلة الشائعة -->
     <section class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -1485,7 +1480,7 @@
         </div>
     </section>
 
-    <!-- 9. Footer -->
+    <!-- 11. Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1725,7 +1720,7 @@
             "بدر منصور|شغال التلفزيون تمام والجودة عالية.",
             "سارة إبراهيم|خدمة رائعة جداً وسريعة.",
             "طلال يوسف|تفعيل آمن وسريع على بريدي.",
-            "شهد عادل|سلس بالدفع والدعم متواجد.",
+            "شهد عادل|سلس بالدعم متواجد.",
             "وليد مسعود|جودة ممتازة بدون إعلانات.",
             "حصة زياد|تعامل راقي وأسلوب ممتاز.",
             "محمد سامي|سعر بطل وتفعيل أسرع.",

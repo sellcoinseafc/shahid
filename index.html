@@ -133,7 +133,7 @@
             border-radius: 8px; color: var(--primary); font-size: 0.78rem; font-weight: 800;
         }
 
-        /* البانر الاحترافي في أعلى الصفحة */
+        /* البانر الاحترافي في أعلى الصفحة (محدث بـ contain لضمان ظهور الصورة كاملة وواضحة على الجوال والكمبيوتر) */
         .top-banner-wrapper {
             max-width: 1140px;
             margin: 16px auto 14px;
@@ -142,12 +142,14 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             border: 1px solid var(--border-color);
             background: var(--surface-card);
+            text-align: center;
         }
         .top-banner-img {
             width: 100%;
             height: auto;
             display: block;
             object-fit: contain;
+            max-height: none;
         }
 
         /* قسم النبذة والبيانات تحت الصورة مباشرة */
@@ -573,10 +575,10 @@
         </div>
     </nav>
 
-    <!-- 2. البانر الاحترافي في أعلى الصفحة -->
+    <!-- 2. البانر الاحترافي في أعلى الصفحة (محدث بالرابط الجديد من المستودع وبصيغة contain لضمان ظهور الصورة كاملة وواضحة) -->
     <div class="container">
         <div class="top-banner-wrapper">
-            <img src="https://l.top4top.io/p_3877s760u1.png" alt="Nexorasa Banner" class="top-banner-img">
+            <img src="https://raw.githubusercontent.com/sellcoinseafc/shahid/main/images/payment/file_00000000d1488246bdc769177af0965a.png" alt="Nexorasa Banner" class="top-banner-img">
         </div>
     </div>
 
@@ -609,7 +611,7 @@
         </div>
     </div>
 
-    <!-- زر المقارنة السريعة في الأعلى (تحت أزرار الباقات وفوق طرق الدفع) -->
+    <!-- زر المقارنة السريعة في الأعلى -->
     <div class="container">
         <div class="comparison-trigger-box">
             <button type="button" class="comparison-btn" onclick="openComparisonModal()">
@@ -990,7 +992,7 @@
 
     <!-- النوافذ المنبثقة للسياسات -->
     <div class="modal-overlay" id="termsModal">
-        <div class="modal-card">
+        <div class="modal-card" style="max-width: 750px;">
             <div class="modal-header">
                 <h3 class="modal-title"><i data-lucide="file-text" size="18"></i>الشروط والأحكام – متجر NEXORA SA</h3>
                 <button class="modal-close-x" onclick="closePolicyModal('termsModal')"><i data-lucide="x" size="16"></i></button>

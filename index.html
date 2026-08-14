@@ -76,14 +76,14 @@
             width: 100%;
             max-width: 1140px;
             margin: 0 auto;
-            padding: 0 12px;
+            padding: 0 16px;
             position: relative;
             z-index: 1;
         }
 
-        /* 1. Header (تكبير الشعار + زر موثوق الأبيض التفاعلي) */
+        /* 1. Header (الشعار + زر موثوق الأبيض) */
         .navbar {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border-color);
             backdrop-filter: blur(16px);
             position: sticky;
@@ -99,12 +99,13 @@
         }
 
         .brand-logo { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 50px; width: auto; object-fit: contain; display: block; filter: brightness(0) invert(1); }
+        .logo-img { height: 50px; width: auto; object-fit: contain; display: block; filter: brightness(0) invert(1); transition: transform 0.2s; }
+        .logo-img:hover { transform: scale(1.03); }
 
         .store-badge-white-btn {
-            display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px;
+            display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px;
             background: #ffffff; color: #090615; border-radius: 50px;
-            font-size: 0.78rem; font-weight: 900; border: none; cursor: pointer;
+            font-size: 0.8rem; font-weight: 900; border: none; cursor: pointer;
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); transition: all 0.2s ease;
         }
         .store-badge-white-btn:hover {
@@ -115,8 +116,8 @@
         /* 2. البانر */
         .top-banner-wrapper {
             max-width: 1140px;
-            margin: 14px auto 12px;
-            border-radius: 16px;
+            margin: 16px auto 14px;
+            border-radius: 18px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             border: 1px solid var(--border-color);
@@ -130,14 +131,76 @@
             object-fit: contain;
         }
 
+        /* 2.5 صندوق "اختر باقتك المناسبة" المدمج بالإطار */
+        .plan-selector-box {
+            position: relative;
+            max-width: 700px;
+            margin: 22px auto 20px;
+            border: 2px solid var(--border-active);
+            border-radius: 20px;
+            padding: 24px 16px 16px;
+            background: rgba(18, 14, 33, 0.6);
+            box-shadow: 0 8px 25px var(--primary-glow);
+            text-align: center;
+        }
+
+        .plan-selector-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #090615;
+            border: 1.5px solid var(--primary);
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 900;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            white-space: nowrap;
+        }
+        .plan-selector-badge i { color: var(--accent-gold); }
+
+        .plan-selector-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .plan-nav-btn {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(124, 58, 237, 0.05));
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            color: #ffffff;
+            padding: 11px 8px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 900;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.25s ease;
+        }
+        .plan-nav-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
         /* 3. صندوق النبذة */
         .banner-info-box {
             max-width: 1140px;
-            margin: 0 auto 16px;
+            margin: 0 auto 20px;
             background: var(--surface-card);
             border: 2px solid var(--border-active);
-            border-radius: 18px;
-            padding: 18px 14px;
+            border-radius: 20px;
+            padding: 22px 18px;
             box-shadow: 0 12px 35px var(--primary-glow);
             text-align: center;
         }
@@ -147,28 +210,28 @@
             background: linear-gradient(135deg, #0f0b1e, #1a142e);
             border: 1.5px solid rgba(139, 92, 246, 0.5);
             border-radius: 12px;
-            padding: 6px 16px;
-            margin-bottom: 12px;
+            padding: 8px 20px;
+            margin-bottom: 14px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
         .banner-title-wrap h2 {
-            font-size: 1.02rem;
+            font-size: 1.1rem;
             font-weight: 900;
             color: #ffffff;
         }
 
         .banner-info-box p {
-            font-size: 0.84rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.6;
             max-width: 850px;
-            margin: 0 auto 14px;
+            margin: 0 auto 16px;
         }
         
         .banner-features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
+            gap: 8px;
             max-width: 850px;
             margin: 0 auto;
         }
@@ -178,103 +241,83 @@
         .banner-feature-card {
             background: rgba(124, 58, 237, 0.08);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 8px 6px;
+            border-radius: 12px;
+            padding: 10px 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
         }
         .banner-feature-icon { color: var(--primary); display: flex; align-items: center; }
-        .banner-feature-text { font-size: 0.78rem; font-weight: 900; color: var(--text-main); }
+        .banner-feature-text { font-size: 0.8rem; font-weight: 900; color: var(--text-main); }
 
-        /* 4. شبكة منتجات المتجر (مدمجة جنباً إلى جنب في الجوال والتابلت) */
-        .store-grid-section { padding: 6px 0 16px; }
-        
+        /* 4. شبكة منتجات المتجر (عمودية متتابعة تحت بعض في الجوال - وجنباً إلى جنب في الكمبيوتر) */
+        .store-grid-section { padding: 10px 0 20px; }
         .store-cards-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            max-width: 900px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 880px;
             margin: 0 auto;
         }
         @media (min-width: 768px) {
-            .store-cards-grid { gap: 18px; }
+            .store-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
         }
 
         .store-product-card {
             background: var(--product-card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 12px 10px;
+            border-radius: 20px;
+            padding: 20px 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             position: relative;
-        }
-        @media (min-width: 768px) {
-            .store-product-card { border-radius: 20px; padding: 20px 18px; }
+            scroll-margin-top: 85px;
         }
         .store-product-card:hover {
             border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px var(--primary-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px var(--primary-glow);
         }
         .store-product-card.featured {
             border: 1.5px solid var(--primary);
         }
 
         .card-top-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
-        @media (min-width: 768px) {
-            .card-top-icon { width: 48px; height: 48px; border-radius: 14px; margin-bottom: 12px; }
-        }
+        .card-title { font-size: 1.15rem; font-weight: 900; color: #ffffff; margin-bottom: 4px; }
+        .card-subtitle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; }
         
-        .card-title { font-size: 0.92rem; font-weight: 900; color: #ffffff; margin-bottom: 2px; }
-        .card-subtitle { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 8px; }
-        @media (min-width: 768px) {
-            .card-title { font-size: 1.15rem; margin-bottom: 4px; }
-            .card-subtitle { font-size: 0.8rem; margin-bottom: 12px; }
-        }
-        
-        .card-price-box { font-size: 1.4rem; font-weight: 900; color: #ffffff; margin-bottom: 10px; }
-        .card-price-box span { font-size: 0.72rem; color: var(--text-muted); font-weight: 700; }
-        @media (min-width: 768px) {
-            .card-price-box { font-size: 1.9rem; margin-bottom: 14px; }
-            .card-price-box span { font-size: 0.85rem; }
-        }
+        .card-price-box { font-size: 1.9rem; font-weight: 900; color: #ffffff; margin-bottom: 14px; }
+        .card-price-box span { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; }
 
         .card-action-btns {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            margin-bottom: 10px;
+            gap: 8px;
+            margin-bottom: 14px;
         }
-        @media (min-width: 768px) { .card-action-btns { gap: 8px; margin-bottom: 14px; } }
-
         .btn-details {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-color);
             color: #ffffff;
-            padding: 7px 2px;
-            border-radius: 8px;
-            font-size: 0.72rem;
+            padding: 10px 4px;
+            border-radius: 10px;
+            font-size: 0.85rem;
             font-weight: 800;
             cursor: pointer;
             text-align: center;
             transition: background 0.2s;
-        }
-        @media (min-width: 768px) {
-            .btn-details { padding: 10px 4px; border-radius: 10px; font-size: 0.85rem; }
         }
         .btn-details:hover { background: rgba(255, 255, 255, 0.12); }
         
@@ -286,9 +329,9 @@
             background: var(--primary) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
             color: #ffffff !important;
-            padding: 7px 2px !important;
-            border-radius: 8px !important;
-            font-size: 0.75rem !important;
+            padding: 10px 4px !important;
+            border-radius: 10px !important;
+            font-size: 0.85rem !important;
             font-weight: 900 !important;
             cursor: pointer !important;
             text-align: center !important;
@@ -297,11 +340,6 @@
             justify-content: center !important;
             box-shadow: 0 4px 15px var(--primary-glow) !important;
             transition: background 0.2s, transform 0.2s !important;
-        }
-        @media (min-width: 768px) {
-            .btn-rmz-wrapper button, .btn-rmz-wrapper button[data-rmz-product] {
-                padding: 10px 4px !important; border-radius: 10px !important; font-size: 0.85rem !important;
-            }
         }
         .btn-rmz-wrapper button:hover { 
             background: #7c3aed !important; 
@@ -330,162 +368,139 @@
         /* طرق الدفع */
         .card-payments-box {
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 8px;
-            margin-bottom: 8px;
+            padding-top: 10px;
+            margin-bottom: 12px;
         }
         .card-payments-label {
-            font-size: 0.62rem;
+            font-size: 0.7rem;
             font-weight: 800;
             color: var(--text-muted);
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: block;
         }
-        @media (min-width: 768px) { .card-payments-label { font-size: 0.7rem; margin-bottom: 8px; } }
-        
         .card-payments-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 3px;
+            gap: 6px;
         }
-        @media (min-width: 768px) { .card-payments-grid { gap: 6px; } }
-
         .card-pay-item {
             background: #ffffff;
-            border-radius: 5px;
-            padding: 2px 1px;
-            height: 22px;
+            border-radius: 6px;
+            padding: 3px 2px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        @media (min-width: 768px) { .card-pay-item { height: 28px; border-radius: 6px; padding: 3px 2px; } }
         .card-pay-item img {
-            max-height: 14px;
+            max-height: 18px;
             max-width: 100%;
             object-fit: contain;
         }
-        @media (min-width: 768px) { .card-pay-item img { max-height: 18px; } }
 
         /* صندوق خدمة التقسيط داخل البطاقة */
         .card-installment-box {
             background: rgba(124, 58, 237, 0.06);
             border: 1.5px solid rgba(139, 92, 246, 0.3);
-            border-radius: 12px;
-            padding: 8px 6px;
+            border-radius: 14px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
-        @media (min-width: 768px) { .card-installment-box { border-radius: 14px; padding: 12px; gap: 8px; } }
-
         .card-installment-title {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 800;
             color: var(--text-muted);
             text-align: center;
         }
-        @media (min-width: 768px) { .card-installment-title { font-size: 0.75rem; } }
-
         .card-pay-today-banner {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: var(--pay-today-bg);
             border: 1px solid var(--pay-today-border);
-            padding: 4px 6px;
-            border-radius: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
         }
-        @media (min-width: 768px) { .card-pay-today-banner { padding: 6px 12px; border-radius: 8px; } }
-
         .card-pay-today-tag {
             display: flex;
             align-items: center;
-            gap: 3px;
-            font-size: 0.68rem;
+            gap: 4px;
+            font-size: 0.78rem;
             font-weight: 900;
             color: #ffffff;
         }
-        @media (min-width: 768px) { .card-pay-today-tag { font-size: 0.78rem; gap: 4px; } }
         .card-pay-today-tag i { color: var(--primary); }
-
         .card-pay-today-amount {
             background: var(--pay-today-val-bg);
             color: var(--pay-today-val-text);
-            padding: 1px 5px;
-            border-radius: 5px;
-            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.82rem;
             font-weight: 900;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        @media (min-width: 768px) { .card-pay-today-amount { padding: 2px 8px; border-radius: 6px; font-size: 0.82rem; } }
-
         .card-installment-btns {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4px;
+            gap: 8px;
         }
-        @media (min-width: 768px) { .card-installment-btns { gap: 8px; } }
-
         .card-inst-btn {
             background: #ffffff !important;
             border: 1px solid var(--border-color);
-            padding: 3px 4px;
-            border-radius: 6px;
+            padding: 4px 8px;
+            border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 30px;
+            height: 40px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
-        @media (min-width: 768px) { .card-inst-btn { height: 40px; border-radius: 8px; padding: 4px 8px; } }
         .card-inst-btn:hover {
             transform: translateY(-1px);
             border-color: var(--primary);
         }
         .card-inst-btn img {
-            max-height: 18px;
+            max-height: 24px;
             width: 100%;
             object-fit: contain;
         }
-        @media (min-width: 768px) { .card-inst-btn img { max-height: 24px; } }
 
         /* 5. شريط الثقة */
         .trust-bar {
-            max-width: 1140px; margin: 10px auto 18px; padding: 12px 14px; background: var(--surface-card);
+            max-width: 1140px; margin: 10px auto 20px; padding: 14px 16px; background: var(--surface-card);
             border: 1px solid var(--border-color); border-radius: 16px; box-shadow: var(--card-shadow);
         }
-        .trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        @media (min-width: 768px) { .trust-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 14px 16px; } }
-        .trust-item { display: flex; align-items: center; gap: 8px; }
+        .trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        @media (min-width: 768px) { .trust-grid { grid-template-columns: repeat(4, 1fr); } }
+        .trust-item { display: flex; align-items: center; gap: 10px; }
         .trust-item-icon {
-            width: 32px; height: 32px; border-radius: 8px; background: rgba(124, 58, 237, 0.15);
+            width: 36px; height: 36px; border-radius: 10px; background: rgba(124, 58, 237, 0.15);
             color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
-        @media (min-width: 768px) { .trust-item-icon { width: 36px; height: 36px; border-radius: 10px; } }
-        .trust-item-title { font-size: 0.8rem; font-weight: 800; display: block; color: var(--text-main); }
-        .trust-item-sub { font-size: 0.68rem; color: var(--text-muted); }
-        @media (min-width: 768px) { .trust-item-title { font-size: 0.85rem; } .trust-item-sub { font-size: 0.72rem; } }
+        .trust-item-title { font-size: 0.85rem; font-weight: 800; display: block; color: var(--text-main); }
+        .trust-item-sub { font-size: 0.72rem; color: var(--text-muted); }
 
         /* 6. زر المقارنة السريعة */
-        .comparison-trigger-box { max-width: 1140px; margin: 0 auto 20px; text-align: center; }
+        .comparison-trigger-box { max-width: 1140px; margin: 0 auto 24px; text-align: center; }
         .comparison-btn {
             background: rgba(124, 58, 237, 0.08); border: 1.5px dashed var(--primary);
-            color: var(--primary); width: 100%; padding: 11px; border-radius: 14px;
-            font-size: 0.85rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+            color: var(--primary); width: 100%; padding: 13px; border-radius: 14px;
+            font-size: 0.9rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
             transition: all 0.25s ease;
         }
-        @media (min-width: 768px) { .comparison-btn { font-size: 0.9rem; padding: 13px; } }
         .comparison-btn:hover { background: var(--primary); color: #ffffff; box-shadow: 0 6px 20px var(--primary-glow); }
 
         /* 7. قسم التقييمات المطور (بطاقات صغيرة متحركة) */
-        .reviews-section { padding: 8px 0 20px; max-width: 1140px; margin: 0 auto; overflow: hidden; }
-        .reviews-header-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-        .reviews-header-title h3 { font-size: 1rem; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
-        .reviews-badge-counter { font-size: 0.72rem; font-weight: 800; color: var(--accent-gold); background: rgba(217, 119, 6, 0.1); padding: 3px 8px; border-radius: 50px; border: 1px solid rgba(217, 119, 6, 0.2); }
+        .reviews-section { padding: 10px 0 24px; max-width: 1140px; margin: 0 auto; overflow: hidden; }
+        .reviews-header-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .reviews-header-title h3 { font-size: 1.05rem; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
+        .reviews-badge-counter { font-size: 0.75rem; font-weight: 800; color: var(--accent-gold); background: rgba(217, 119, 6, 0.1); padding: 3px 10px; border-radius: 50px; border: 1px solid rgba(217, 119, 6, 0.2); }
 
         .reviews-marquee-container {
             width: 100%;
@@ -493,12 +508,12 @@
             position: relative;
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-            padding: 8px 0;
+            padding: 10px 0;
         }
 
         .reviews-marquee-track {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             width: max-content;
             animation: marqueeScroll 85s linear infinite;
         }
@@ -515,9 +530,9 @@
         .mini-review-card {
             background: var(--surface-card);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 12px;
-            width: 270px;
+            border-radius: 16px;
+            padding: 14px;
+            width: 290px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
@@ -533,12 +548,12 @@
         .mini-review-top {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         .mini-review-avatar {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: rgba(124, 58, 237, 0.2);
             color: var(--primary);
@@ -546,7 +561,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             flex-shrink: 0;
         }
         .mini-review-meta {
@@ -554,42 +569,42 @@
             flex-direction: column;
         }
         .mini-review-author {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 900;
             color: var(--text-main);
         }
         .mini-review-stars {
             color: var(--accent-gold);
-            font-size: 0.68rem;
+            font-size: 0.72rem;
             letter-spacing: 1px;
         }
         .mini-review-text {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
-            line-height: 1.45;
+            line-height: 1.5;
         }
 
         /* 8. الأسئلة الشائعة */
-        .faq-section { padding: 8px 0 20px; max-width: 1140px; margin: 0 auto; }
-        .mini-section-title { font-size: 1.05rem; font-weight: 900; text-align: center; margin-bottom: 14px; color: var(--text-main); }
+        .faq-section { padding: 10px 0 24px; max-width: 1140px; margin: 0 auto; }
+        .mini-section-title { font-size: 1.15rem; font-weight: 900; text-align: center; margin-bottom: 16px; color: var(--text-main); }
         .faq-wrapper { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
-        .faq-item { background: var(--surface-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 14px; cursor: pointer; box-shadow: var(--card-shadow); transition: border-color 0.2s; }
+        .faq-item { background: var(--surface-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 16px; cursor: pointer; box-shadow: var(--card-shadow); transition: border-color 0.2s; }
         .faq-item:hover { border-color: rgba(139, 92, 246, 0.3); }
-        .faq-question { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 0.84rem; color: var(--text-main); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, margin-top 0.3s ease; color: var(--text-muted); font-size: 0.78rem; line-height: 1.5; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 0.88rem; color: var(--text-main); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, margin-top 0.3s ease; color: var(--text-muted); font-size: 0.82rem; line-height: 1.5; }
         .faq-item.active .faq-answer { max-height: 160px; margin-top: 8px; }
         .faq-item.active .chevron { transform: rotate(180deg); }
 
         /* 9. الفوتر وتواصل معنا (واتساب + تليجرام + انستغرام) */
-        footer { border-top: 1px solid var(--border-color); padding: 24px 0 16px; margin-top: 26px; background: var(--surface-card); }
+        footer { border-top: 1px solid var(--border-color); padding: 26px 0 18px; margin-top: 30px; background: var(--surface-card); }
         .footer-content { display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 16px; }
         @media (min-width: 768px) { .footer-content { grid-template-columns: repeat(3, 1fr); } }
         
-        .footer-brand img { height: 44px; width: auto; object-fit: contain; display: block; margin-bottom: 6px; filter: brightness(0) invert(1); }
-        .footer-brand p { color: var(--text-muted); font-size: 0.75rem; }
+        .footer-brand img { height: 46px; width: auto; object-fit: contain; display: block; margin-bottom: 6px; filter: brightness(0) invert(1); }
+        .footer-brand p { color: var(--text-muted); font-size: 0.76rem; }
         .footer-col h4 { color: var(--primary); margin-bottom: 8px; font-size: 0.84rem; font-weight: 800; }
         .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-        .footer-col a, .footer-col button { color: var(--text-muted); text-decoration: none; font-size: 0.78rem; background: none; border: none; cursor: pointer; padding: 0; text-align: right; font-family: 'Tajawal', sans-serif; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
+        .footer-col a, .footer-col button { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; background: none; border: none; cursor: pointer; padding: 0; text-align: right; font-family: 'Tajawal', sans-serif; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
         .footer-col a:hover, .footer-col button:hover { color: #ffffff; }
         
         .social-link-item {
@@ -597,12 +612,12 @@
         }
         .social-link-item i { flex-shrink: 0; }
         
-        .footer-bottom { text-align: center; padding-top: 12px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.72rem; }
+        .footer-bottom { text-align: center; padding-top: 14px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.74rem; }
 
         /* 10. الشريط السفلي للجوال وزر الواتساب */
         .mobile-cta {
-            position: fixed; bottom: 8px; left: 10px; right: 10px; background: rgba(18, 14, 33, 0.95); backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color); padding: 5px 6px; display: flex; align-items: center; gap: 5px; z-index: 999; border-radius: 50px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: fixed; bottom: 8px; left: 12px; right: 12px; background: rgba(18, 14, 33, 0.95); backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color); padding: 6px 8px; display: flex; align-items: center; gap: 6px; z-index: 999; border-radius: 50px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
         .mobile-nav-btn { flex: 1.2; padding: 7px 4px; border-radius: 50px; font-weight: 800; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; gap: 4px; text-decoration: none; border: none; cursor: pointer; }
         .mobile-btn-subscriptions { background: var(--primary); color: #ffffff; }
@@ -851,6 +866,26 @@
         </div>
     </div>
 
+    <!-- 2.5 صندوق اختيار الباقة المدمج بالإطار (Floating Border Badge) -->
+    <div class="container">
+        <div class="plan-selector-box">
+            <div class="plan-selector-badge">
+                <i data-lucide="sparkles" size="14"></i>
+                <span>اختر باقتك المناسبة</span>
+            </div>
+            <div class="plan-selector-grid">
+                <a href="#plan-3m" class="plan-nav-btn">
+                    <i data-lucide="tv" size="16"></i>
+                    <span>باقة 3 أشهر</span>
+                </a>
+                <a href="#plan-1y" class="plan-nav-btn">
+                    <i data-lucide="crown" size="16" style="color: var(--accent-gold);"></i>
+                    <span>باقة سنة كاملة</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- 3. صندوق النبذة والمميزات -->
     <div class="container">
         <div class="banner-info-box">
@@ -877,16 +912,16 @@
         </div>
     </div>
 
-    <!-- 4. شبكة منتجات المتجر (3 أشهر أولاً ثم سنة كاملة - مدمجة جنباً إلى جنب) -->
+    <!-- 4. شبكة منتجات المتجر (3 أشهر أولاً ثم سنة كاملة - عمودية وواضحة) -->
     <section class="store-grid-section" id="products">
         <div class="container">
             <div class="store-cards-grid">
                 
-                <!-- 1. باقة 3 أشهر (Product ID: 29956) - تظهر أولاً -->
-                <div class="store-product-card">
+                <!-- 1. باقة 3 أشهر (Product ID: 29956) -->
+                <div class="store-product-card" id="plan-3m">
                     <div>
                         <div class="card-top-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--primary);">
-                            <i data-lucide="tv" size="20"></i>
+                            <i data-lucide="tv" size="24"></i>
                         </div>
                         <h3 class="card-title">شاهد VIP — 3 أشهر</h3>
                         <p class="card-subtitle">تفعيل فوري على إيميلك الخاص (90 يوم)</p>
@@ -924,7 +959,7 @@
                             <div class="card-installment-title">قسطها عبر تابي أو تمارا</div>
                             <div class="card-pay-today-banner">
                                 <div class="card-pay-today-tag">
-                                    <i data-lucide="zap" size="12"></i>
+                                    <i data-lucide="zap" size="13"></i>
                                     <span>ادفع اليوم:</span>
                                 </div>
                                 <div class="card-pay-today-amount">18 ريال فقط</div>
@@ -942,11 +977,11 @@
                     </div>
                 </div>
 
-                <!-- 2. باقة السنة الكاملة (Product ID: 61070) - تظهر ثانياً -->
-                <div class="store-product-card featured">
+                <!-- 2. باقة السنة الكاملة (Product ID: 61070) -->
+                <div class="store-product-card featured" id="plan-1y">
                     <div>
                         <div class="card-top-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);">
-                            <i data-lucide="sparkles" size="20"></i>
+                            <i data-lucide="sparkles" size="24"></i>
                         </div>
                         <h3 class="card-title">شاهد VIP — سنة كاملة</h3>
                         <p class="card-subtitle">تفعيل فوري على إيميلك الخاص (12 شهر)</p>
@@ -984,7 +1019,7 @@
                             <div class="card-installment-title">قسطها عبر تابي أو تمارا</div>
                             <div class="card-pay-today-banner">
                                 <div class="card-pay-today-tag">
-                                    <i data-lucide="zap" size="12"></i>
+                                    <i data-lucide="zap" size="13"></i>
                                     <span>ادفع اليوم:</span>
                                 </div>
                                 <div class="card-pay-today-amount">55 ريال فقط</div>
@@ -1081,7 +1116,7 @@
         </div>
     </section>
 
-    <!-- 9. Footer المتجر والسياسات وتواصل معنا المحدث -->
+    <!-- 9. Footer المتجر والسياسات وتواصل معنا -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1131,7 +1166,7 @@
         </div>
     </footer>
 
-    <!-- 10. الشريط السفلي للجوال وزر الواتساب مع إشعار التنبيه -->
+    <!-- 10. الشريط السفلي للجوال وزر الواتساب -->
     <div class="mobile-cta">
         <a href="#products" class="mobile-nav-btn mobile-btn-subscriptions">
             <i data-lucide="shopping-bag" size="13"></i>

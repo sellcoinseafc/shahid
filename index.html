@@ -7,6 +7,8 @@
     <meta name="description" content="متجر Nexorasa - احصل على اشتراك شاهد VIP رسمي ومضمون بتفعيل مباشر على بريدك الإلكتروني الشخصي.">
     
     <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -44,7 +46,7 @@
     <!-- المحتوى الرئيسي -->
     <main class="main-container">
 
-        <!-- 1. البانر الترويجي -->
+        <!-- 1. البانر الترويجي في الأعلى -->
         <div class="banner-wrapper">
             <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786687936/file_000000000160824695ed9695702c42a0.png" alt="Nexorasa Banner" class="banner-img">
         </div>
@@ -81,13 +83,184 @@
             </button>
         </div>
 
+        <!-- 3. محاكي تجربة شاهد VIP التفاعلي -->
+        <div class="shahid-auto-simulator" id="simulatorCard">
+            <div id="simCursor" class="auto-cursor"></div>
+
+            <div class="sim-header">
+                <div class="sim-header-title">
+                    <i data-lucide="play-circle" size="18" style="color: var(--shahid-teal);"></i>
+                    <span>تجربة منصة شاهد VIP (عرض حي وتفاعلي):</span>
+                </div>
+                <div class="sim-header-controls">
+                    <span class="sim-mode-badge" id="simModeBadge">جولة تلقائية 🤖</span>
+                    <span class="sim-stage-badge" id="simStageBadge">1. تسجيل الدخول</span>
+                </div>
+            </div>
+
+            <!-- المرحلة 1: شاشة تسجيل الدخول -->
+            <div class="sim-step-view active" id="simStep1">
+                <div class="sim-login-form">
+                    <p class="sim-step-hint">💡 اضغط على الزر بنفسك لتجربة التفعيل الفوري:</p>
+                    <div class="sim-input-box">
+                        <i data-lucide="mail" size="16" style="color: var(--shahid-teal);"></i>
+                        <input type="text" id="simInputEmail" value="user@your-email.com" readonly>
+                    </div>
+                    <div class="sim-input-box">
+                        <i data-lucide="lock" size="16" style="color: var(--shahid-teal);"></i>
+                        <input type="password" value="••••••••••••" readonly>
+                    </div>
+                    <button type="button" class="sim-login-btn" id="simBtnLogin" onclick="userTriggerStep(2)">
+                        <span>دخول وتفعيل الحساب في شاهد</span>
+                        <i data-lucide="arrow-left" size="16"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- المرحلة 2: بطاقة معلومات الاشتراك المفعّل -->
+            <div class="sim-step-view" id="simStepSubInfo">
+                <div class="sim-sub-info-card">
+                    <div class="sub-info-header">
+                        <div class="sub-info-status">
+                            <i data-lucide="badge-check" size="16"></i>
+                            <span id="subCardTitle">شاهد VIP (سنة كاملة) 👑</span>
+                        </div>
+                        <span class="sub-official-tag">تفعيل رسمي 100%</span>
+                    </div>
+
+                    <div class="sub-details-grid">
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-lbl">نوع الحساب:</span>
+                            <span class="sub-detail-val" style="color: var(--shahid-teal);">شخصي ومستقل 🔒</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-lbl">مدة الاشتراك:</span>
+                            <span class="sub-detail-val" id="subCardDuration">12 شهر (سنة كاملة)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-lbl">تاريخ الانتهاء:</span>
+                            <span class="sub-detail-val" id="subCardExpire" style="color: #f59e0b;">14 أغسطس 2027</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-lbl">حالة الضمان:</span>
+                            <span class="sub-detail-val" id="subCardWarranty" style="color: var(--shahid-teal);">ساري طوال المدة</span>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-continue-profiles" id="simBtnContinue" onclick="userTriggerStep(3)">
+                        <span>الانتقال لاختيار ملف المشاهدة</span>
+                        <i data-lucide="arrow-left" size="14"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- المرحلة 3: اختيار ملفك الشخصي -->
+            <div class="sim-step-view" id="simStep2">
+                <div class="sim-profiles-title">من يشاهد الآن في شاهد VIP؟ (اختر ملفك)</div>
+                <div class="sim-profiles-row">
+                    <div class="sim-profile-avatar-btn" id="simTargetProfile" onclick="userTriggerStep(4)">
+                        <div class="sim-avatar-circle" style="background: linear-gradient(135deg, #00e096, #007a52); color: #06040d; font-weight: 900;">👤</div>
+                        <span class="sim-avatar-label">ملفي الخاص</span>
+                    </div>
+                    <div class="sim-profile-avatar-btn" onclick="userTriggerStep(4)">
+                        <div class="sim-avatar-circle" style="background: linear-gradient(135deg, #8b5cf6, #5b21b6);">🎬</div>
+                        <span class="sim-avatar-label">سينما وأفلام</span>
+                    </div>
+                    <div class="sim-profile-avatar-btn" onclick="userTriggerStep(4)">
+                        <div class="sim-avatar-circle" style="background: linear-gradient(135deg, #f59e0b, #b45309);">👨‍👩‍👧</div>
+                        <span class="sim-avatar-label">العائلة</span>
+                    </div>
+                    <div class="sim-profile-avatar-btn" onclick="userTriggerStep(4)">
+                        <div class="sim-avatar-circle" style="background: linear-gradient(135deg, #ec4899, #9d174d);">👶</div>
+                        <span class="sim-avatar-label">أطفال</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المرحلة 4: استعراض المسلسلات والأفلام -->
+            <div class="sim-step-view" id="simStep3">
+                <div class="sim-shows-header">
+                    <div class="sim-active-profile-tag">
+                        <i data-lucide="check-circle" size="15"></i>
+                        <span>ملفي الخاص (سجل مشاهدة مستقل 🔒)</span>
+                    </div>
+                    <span class="sim-top-count">أكثر من 40,000 عمل</span>
+                </div>
+                
+                <div class="sim-shows-grid">
+                    <div class="sim-show-card" id="simTargetShow" onclick="userTriggerStep(5)">
+                        <div class="sim-show-poster">
+                            <span class="sim-vip-tag">أصلية</span>
+                            <div class="sim-show-icon-center"><i data-lucide="play" size="24"></i></div>
+                        </div>
+                        <span class="sim-show-name">أعمال شاهد الأصلية</span>
+                    </div>
+                    <div class="sim-show-card" onclick="userTriggerStep(5)">
+                        <div class="sim-show-poster">
+                            <span class="sim-vip-tag">VIP</span>
+                            <div class="sim-show-icon-center"><i data-lucide="film" size="24"></i></div>
+                        </div>
+                        <span class="sim-show-name">دراما خليجية حصرية</span>
+                    </div>
+                    <div class="sim-show-card" onclick="userTriggerStep(5)">
+                        <div class="sim-show-poster">
+                            <span class="sim-vip-tag">VIP</span>
+                            <div class="sim-show-icon-center"><i data-lucide="clapperboard" size="24"></i></div>
+                        </div>
+                        <span class="sim-show-name">أفلام سينمائية حديثة</span>
+                    </div>
+                    <div class="sim-show-card" onclick="userTriggerStep(5)">
+                        <div class="sim-show-poster">
+                            <span class="sim-vip-tag">Full HD</span>
+                            <div class="sim-show-icon-center"><i data-lucide="tv" size="24"></i></div>
+                        </div>
+                        <span class="sim-show-name">مسلسلات ووثائقيات</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المرحلة 5: المشغل السينمائي -->
+            <div class="sim-step-view" id="simStep4">
+                <div class="sim-cinematic-screen">
+                    <div class="cinematic-bg-movie"></div>
+                    
+                    <div class="cinematic-top-bar">
+                        <div class="cinematic-top-pill" id="cinematicTopPill">
+                            <i data-lucide="shield-check" size="13" style="color: var(--shahid-teal);"></i>
+                            <span id="cinematicTopText">🚫 بدون أي فواصل إعلانية نهائياً</span>
+                        </div>
+                        <span class="cinematic-hd-badge">Full HD 1080p</span>
+                    </div>
+
+                    <div class="cinematic-center-content">
+                        <button type="button" class="cinematic-play-icon-glow" id="cinematicPlayBtn" onclick="toggleSimVideoPlayback()">
+                            <i data-lucide="pause" id="playPauseIcon" size="22" style="color: var(--shahid-teal);"></i>
+                        </button>
+                        <div class="cinematic-movie-title">أعمال شاهد الأصلية (الحلقة 1)</div>
+                        <span class="cinematic-status-text" id="cinematicStatus">جاري التشغيل المباشر بدقة سينمائية..</span>
+                    </div>
+
+                    <div class="cinematic-bottom-timeline">
+                        <div class="timeline-bar-bg" onclick="seekSimProgress(event)">
+                            <div class="timeline-bar-progress" id="timelineProgress"></div>
+                        </div>
+                        <div class="timeline-meta-row">
+                            <span id="videoTimeCounter">00:01</span>
+                            <span>🔒 حساب خاص مفعل على إيميلك</span>
+                            <span>45:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- عنوان قسم الباقات -->
         <div class="section-title-box">
             <h2>اختر باقتك المفضلة في شاهد VIP</h2>
             <p>تفعيل فوري ومباشر على بريدك الإلكتروني الشخصي</p>
         </div>
 
-        <!-- 3. شبكة المنتجين بتصميم أنيق وبدون إطارات سميكة -->
+        <!-- 4. شبكة المنتجين بتصميم أنيق وبدون إطارات سميكة -->
         <div class="products-grid">
             
             <!-- باقة 3 أشهر -->
@@ -121,7 +294,7 @@
                             </div>
                         </div>
 
-                        <!-- قسم التقسيط مع لون أسود فخم لـ ادفع اليوم -->
+                        <!-- قسم التقسيط -->
                         <div class="card-installment-box">
                             <div class="card-installment-title">قسطها عبر تابي أو تمارا</div>
                             <div class="card-pay-today-banner">
@@ -189,7 +362,7 @@
                             </div>
                         </div>
 
-                        <!-- قسم التقسيط مع لون أسود فخم لـ ادفع اليوم -->
+                        <!-- قسم التقسيط -->
                         <div class="card-installment-box">
                             <div class="card-installment-title">قسطها عبر تابي أو تمارا</div>
                             <div class="card-pay-today-banner">
@@ -228,7 +401,7 @@
 
         </div>
 
-        <!-- 4. شريط الثقة -->
+        <!-- 5. شريط الثقة -->
         <section class="trust-bar">
             <div class="trust-grid">
                 <div class="trust-item"><div class="trust-item-icon"><i data-lucide="lock" size="16"></i></div><div><span class="trust-item-title">دفع آمن</span><span class="trust-item-sub">بوابة دفع محمية</span></div></div>
@@ -238,7 +411,7 @@
             </div>
         </section>
 
-        <!-- 5. التقييمات -->
+        <!-- 6. التقييمات -->
         <section class="reviews-section">
             <div class="reviews-header-title">
                 <h3><i data-lucide="star" size="16" style="color: var(--accent-gold); fill: var(--accent-gold);"></i> آراء وتجارب عملائنا</h3>
@@ -249,7 +422,7 @@
             </div>
         </section>
 
-        <!-- 6. الأسئلة الشائعة -->
+        <!-- 7. الأسئلة الشائعة -->
         <section class="faq-section">
             <h2 class="mini-section-title">الأسئلة الشائعة</h2>
             <div class="faq-wrapper">
@@ -286,7 +459,7 @@
 
     </main>
 
-    <!-- 7. الفوتر -->
+    <!-- 8. الفوتر -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
@@ -318,7 +491,7 @@
 
     <!-- الشريط السفلي للجوال -->
     <div class="mobile-cta">
-        <a href="#" class="mobile-nav-btn mobile-btn-subscriptions"><i data-lucide="shopping-bag" size="13"></i><span>الاشتراكات</span></a>
+        <a href="#simulatorCard" class="mobile-nav-btn mobile-btn-subscriptions"><i data-lucide="shopping-bag" size="13"></i><span>الاشتراكات</span></a>
         <a href="https://wa.me/966551040375" class="mobile-nav-btn mobile-btn-support" target="_blank"><i data-lucide="headphones" size="13"></i><span>خدمة العملاء</span></a>
         <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')"><i data-lucide="clock" size="16"></i></button>
         <a href="https://wa.me/966551040375" target="_blank" class="mobile-btn-icon-wa"><i data-lucide="message-circle" size="16"></i></a>
@@ -326,7 +499,7 @@
 
     <a href="https://wa.me/966551040375" target="_blank" class="floating-whatsapp-btn"><i data-lucide="message-circle" size="26"></i></a>
 
-    <!-- ================= النوافذ المنبثقة كاملة ومطابقة ================= -->
+    <!-- ================= النوافذ المنبثقة ================= -->
 
     <!-- 1. نافذة الموثوقية -->
     <div class="modal-overlay" id="trustVerifiedModal">
@@ -344,50 +517,116 @@
         </div>
     </div>
 
-    <!-- 2. نافذة المقارنة الشاملة (5 نقاط كاملة) -->
+    <!-- 2. نافذة المقارنة المتناسقة والمتوافقة تماماً مع الجوال -->
     <div class="modal-overlay" id="comparisonModal">
-        <div class="modal-card" style="max-width: 650px; max-height: 85vh;">
+        <div class="modal-card comparison-modal-card">
             <div class="modal-header">
-                <h3 class="modal-title"><i data-lucide="info" size="18"></i>جدول مقارنة باقات شاهد VIP</h3>
+                <h3 class="modal-title"><i data-lucide="info" size="18"></i>مقارنة بين الحساب الشخصي والمشترك</h3>
                 <button class="modal-close-x" onclick="closePolicyModal('comparisonModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="modal-body-content">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>وجه المقارنة</th>
-                            <th>الحساب الشخصي (على إيميلك الخاص) 🔒</th>
-                            <th>الحساب المشترك ⚠️</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>الخصوصية والأمان</td>
-                            <td style="color: var(--accent); font-weight: 900;"><strong>عالية جداً</strong> (حسابك خاص بك وحدك، ولا يمكن لأي شخص الاطلاع على سجلك أو إعداداتك).</td>
-                            <td><strong>منعدمة</strong> (يتم مشاركة كلمة المرور والبيانات مع عدة مستخدمين آخرين).</td>
-                        </tr>
-                        <tr>
-                            <td>استقرار البث</td>
-                            <td style="color: var(--accent); font-weight: 900;"><strong>مستقر تماماً</strong> طوال فترة الاشتراك وبدون أي انقطاع مزعج.</td>
-                            <td><strong>عرضة للتوقف المتكرر</strong> بسبب تجاوز الحد الأقصى للمشاهدة أو ضغط المستخدمين.</td>
-                        </tr>
-                        <tr>
-                            <td>تغيير كلمة المرور</td>
-                            <td style="color: var(--accent); font-weight: 900;"><strong>متاح لك بالكامل</strong> متى شئت ولن يستطيع أحد تغييرها غيرك.</td>
-                            <td><strong>غير متاح</strong> (لأن الحساب يخص عدة أشخاص ومزود الخدمة أو المتجر المشترك يديره).</td>
-                        </tr>
-                        <tr>
-                            <td>سجل ومشاهدات الملفات</td>
-                            <td style="color: var(--accent); font-weight: 900;"><strong>مستقل بنسبة 100%</strong>، تتابع أفلامك ومسلسلاتك بحرية دون تدخل أحد.</td>
-                            <td><strong>متداخل</strong>، قد تجد أسماء أو سجل مشاهدات لأشخاص آخرين يشاركونك نفس الحساب.</td>
-                        </tr>
-                        <tr>
-                            <td>الضمان والاستمرارية</td>
-                            <td style="color: var(--accent); font-weight: 900;"><strong>ضمان شامل طوال المدة</strong> يضمن لك استقرار الخدمة وراحة بالك.</td>
-                            <td><strong>غالبًا بدون ضمان</strong> أو لفترة قصيرة جداً وغالباً ما يتعطل مبكراً.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- جدول المقارنة للشاشات الكبيرة -->
+                <div class="desktop-comparison-wrap">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>وجه المقارنة</th>
+                                <th>الحساب الشخصي (على إيميلك) 🔒</th>
+                                <th>الحساب المشترك ⚠️</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الخصوصية والأمان</td>
+                                <td class="highlight-personal"><strong>عالية جداً</strong> (حسابك خاص بك وحدك، ولا يمكن لأي شخص الاطلاع على سجلك أو إعداداتك).</td>
+                                <td class="highlight-shared"><strong>منعدمة</strong> (يتم مشاركة كلمة المرور والبيانات مع عدة مستخدمين آخرين).</td>
+                            </tr>
+                            <tr>
+                                <td>استقرار البث</td>
+                                <td class="highlight-personal"><strong>مستقر تماماً</strong> طوال فترة الاشتراك وبدون أي انقطاع مزعج.</td>
+                                <td class="highlight-shared"><strong>عرضة للتوقف المتكرر</strong> بسبب تجاوز الحد الأقصى للمشاهدة أو ضغط المستخدمين.</td>
+                            </tr>
+                            <tr>
+                                <td>تغيير كلمة المرور</td>
+                                <td class="highlight-personal"><strong>متاح لك بالكامل</strong> متى شئت ولن يستطيع أحد تغييرها غيرك.</td>
+                                <td class="highlight-shared"><strong>غير متاح</strong> (لأن الحساب يخص عدة أشخاص ومزود الخدمة أو المتجر المشترك يديره).</td>
+                            </tr>
+                            <tr>
+                                <td>سجل ومشاهدات الملفات</td>
+                                <td class="highlight-personal"><strong>مستقل بنسبة 100%</strong>، تتابع أفلامك ومسلسلاتك بحرية دون تدخل أحد.</td>
+                                <td class="highlight-shared"><strong>متداخل</strong>، قد تجد أسماء أو سجل مشاهدات لأشخاص آخرين يشاركونك نفس الحساب.</td>
+                            </tr>
+                            <tr>
+                                <td>الضمان والاستمرارية</td>
+                                <td class="highlight-personal"><strong>ضمان شامل طوال المدة</strong> يضمن لك استقرار الخدمة وراحة بالك.</td>
+                                <td class="highlight-shared"><strong>غالبًا بدون ضمان</strong> أو لفترة قصيرة جداً وغالباً ما يتعطل مبكراً.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- بطاقات المقارنة التفاعلية والمنسقة للجوال -->
+                <div class="mobile-comparison-list">
+                    <div class="comp-mobile-card">
+                        <div class="comp-mobile-title">🛡️ الخصوصية والأمان</div>
+                        <div class="comp-mobile-row personal">
+                            <span class="comp-label">على إيميلك الشخصي 🔒</span>
+                            <span class="comp-val">عالية جداً، حسابك لك وحدك وسجلك محمي تماماً.</span>
+                        </div>
+                        <div class="comp-mobile-row shared">
+                            <span class="comp-label">الحساب المشترك ⚠️</span>
+                            <span class="comp-val">منعدمة، مشاركة البيانات وكلمة السر مع غرباء.</span>
+                        </div>
+                    </div>
+
+                    <div class="comp-mobile-card">
+                        <div class="comp-mobile-title">⚡ استقرار وجودة البث</div>
+                        <div class="comp-mobile-row personal">
+                            <span class="comp-label">على إيميلك الشخصي 🔒</span>
+                            <span class="comp-val">مستقر تماماً وبدون أي انقطاع طوال فترة الاشتراك.</span>
+                        </div>
+                        <div class="comp-mobile-row shared">
+                            <span class="comp-label">الحساب المشترك ⚠️</span>
+                            <span class="comp-val">توقف متكرر بسبب تجاوز حد المشاهدين المتزامنين.</span>
+                        </div>
+                    </div>
+
+                    <div class="comp-mobile-card">
+                        <div class="comp-mobile-title">🔑 التحكم وكلمة المرور</div>
+                        <div class="comp-mobile-row personal">
+                            <span class="comp-label">على إيميلك الشخصي 🔒</span>
+                            <span class="comp-val">متاح لك تغيير كلمة المرور والتحكم بحسابك بأي وقت.</span>
+                        </div>
+                        <div class="comp-mobile-row shared">
+                            <span class="comp-label">الحساب المشترك ⚠️</span>
+                            <span class="comp-val">ممنوع التغيير، والحساب معرض للإغلاق بأي لحظة.</span>
+                        </div>
+                    </div>
+
+                    <div class="comp-mobile-card">
+                        <div class="comp-mobile-title">🎬 سجل المتابعة والملفات</div>
+                        <div class="comp-mobile-row personal">
+                            <span class="comp-label">على إيميلك الشخصي 🔒</span>
+                            <span class="comp-val">مستقل 100%، قائمتك المفضلة وأعمالك محفوظة لك وحدك.</span>
+                        </div>
+                        <div class="comp-mobile-row shared">
+                            <span class="comp-label">الحساب المشترك ⚠️</span>
+                            <span class="comp-val">متداخل وفوضوي مع مستخدمين آخرين.</span>
+                        </div>
+                    </div>
+
+                    <div class="comp-mobile-card">
+                        <div class="comp-mobile-title">🏆 الضمان وخدمة ما بعد البيع</div>
+                        <div class="comp-mobile-row personal">
+                            <span class="comp-label">على إيميلك الشخصي 🔒</span>
+                            <span class="comp-val">ضمان كامل شامل طوال المدة المحددة (3 أشهر / سنة).</span>
+                        </div>
+                        <div class="comp-mobile-row shared">
+                            <span class="comp-label">الحساب المشترك ⚠️</span>
+                            <span class="comp-val">غالباً بدون ضمان أو ضمان وهمي ينتهي سريعاً.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

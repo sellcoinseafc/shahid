@@ -21,7 +21,229 @@ if (localStorage.getItem('nexora_theme') === 'light') {
     if (themeIcon) themeIcon.setAttribute('data-lucide', 'moon');
 }
 
-// شريط التقييمات المتحرك
+// متغيرات المحاكي الذكي
+const simCursor = document.getElementById('simCursor');
+const simCard = document.getElementById('simulatorCard');
+const simModeBadge = document.getElementById('simModeBadge');
+const stageBadge = document.getElementById('simStageBadge');
+
+const step1 = document.getElementById('simStep1');
+const stepSubInfo = document.getElementById('simStepSubInfo');
+const step2 = document.getElementById('simStep2');
+const step3 = document.getElementById('simStep3');
+const step4 = document.getElementById('simStep4');
+
+const btnLogin = document.getElementById('simBtnLogin');
+const btnContinue = document.getElementById('simBtnContinue');
+const targetProfile = document.getElementById('simTargetProfile');
+const targetShow = document.getElementById('simTargetShow');
+const timelineProgress = document.getElementById('timelineProgress');
+const videoTimeCounter = document.getElementById('videoTimeCounter');
+const playPauseIcon = document.getElementById('playPauseIcon');
+const cinematicStatus = document.getElementById('cinematicStatus');
+
+const subCardTitle = document.getElementById('subCardTitle');
+const subCardDuration = document.getElementById('subCardDuration');
+const subCardExpire = document.getElementById('subCardExpire');
+const subCardWarranty = document.getElementById('subCardWarranty');
+
+let autoTourTimer = null;
+let userInactiveTimer = null;
+let isUserInteracting = false;
+let isVideoPlaying = true;
+let videoSeconds = 1;
+let videoInterval = null;
+let isYearPlanState = true;
+
+// حساب إحداثيات العناصر للمؤشر
+function moveCursorTo(element) {
+    if (!simCard || !simCursor || !element) return;
+    const cardRect = simCard.getBoundingClientRect();
+    const elRect = element.getBoundingClientRect();
+    const top = elRect.top - cardRect.top + (elRect.height / 2);
+    const left = elRect.left - cardRect.left + (elRect.width / 2);
+    simCursor.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+}
+
+// التبديل بين الشاشات
+function showSimStep(stepNumber) {
+    [step1, stepSubInfo, step2, step3, step4].forEach(el => el.classList.remove('active'));
+    
+    if (stepNumber === 1) {
+        step1.classList.add('active');
+        stageBadge.innerText = '1. تسجيل الدخول';
+        stageBadge.style.color = 'var(--shahid-teal)';
+        clearInterval(videoInterval);
+    } else if (stepNumber === 2) {
+        stepSubInfo.classList.add('active');
+        stageBadge.innerText = '2. تأكيد تفعيل الاشتراك ✅';
+    } else if (stepNumber === 3) {
+        step2.classList.add('active');
+        stageBadge.innerText = '3. اختيار ملفك الخاص';
+    } else if (stepNumber === 4) {
+        step3.classList.add('active');
+        stageBadge.innerText = '4. مسلسلات وأفلام VIP';
+    } else if (stepNumber === 5) {
+        step4.classList.add('active');
+        stageBadge.innerText = '5. مشاهدة سينمائية بدون إعلانات ✨';
+        stageBadge.style.color = 'var(--accent-gold)';
+        startSimVideoPlayer();
+    }
+    lucide.createIcons();
+}
+
+// تفاعل المستخدم اليدوي المباشر
+function userTriggerStep(targetStep) {
+    isUserInteracting = true;
+    clearTimeout(autoTourTimer);
+    clearTimeout(userInactiveTimer);
+
+    if (simCursor) simCursor.style.opacity = '0';
+    if (simModeBadge) {
+        simModeBadge.innerText = 'تفاعل يدوي 👆';
+        simModeBadge.style.background = 'rgba(0, 224, 150, 0.2)';
+        simModeBadge.style.color = 'var(--shahid-teal)';
+    }
+
+    showSimStep(targetStep);
+
+    // بعد 8 ثوانٍ من عدم اللمس، يعود للجولة التلقائية
+    userInactiveTimer = setTimeout(() => {
+        isUserInteracting = false;
+        if (simModeBadge) {
+            simModeBadge.innerText = 'جولة تلقائية 🤖';
+            simModeBadge.style.background = 'rgba(139, 92, 246, 0.15)';
+            simModeBadge.style.color = 'var(--primary)';
+        }
+        runAutoTour();
+    }, 8000);
+}
+
+// دورة الجولة التلقائية
+function runAutoTour() {
+    if (isUserInteracting || !simCard) return;
+
+    if (isYearPlanState) {
+        if(subCardTitle) subCardTitle.innerText = 'شاهد VIP (سنة كاملة) 👑';
+        if(subCardDuration) subCardDuration.innerText = '12 شهر (سنة كاملة)';
+        if(subCardExpire) subCardExpire.innerText = '14 أغسطس 2027';
+        if(subCardWarranty) subCardWarranty.innerText = 'شامل 12 شهر كاملة';
+    } else {
+        if(subCardTitle) subCardTitle.innerText = 'شاهد VIP (3 أشهر) ⚡';
+        if(subCardDuration) subCardDuration.innerText = '3 أشهر (90 يوم)';
+        if(subCardExpire) subCardExpire.innerText = '14 نوفمبر 2026';
+        if(subCardWarranty) subCardWarranty.innerText = 'شامل 90 يوم كاملة';
+    }
+    isYearPlanState = !isYearPlanState;
+
+    showSimStep(1);
+    simCursor.style.opacity = '1';
+    simCursor.style.transform = 'translate3d(30px, 30px, 0)';
+
+    autoTourTimer = setTimeout(() => {
+        moveCursorTo(btnLogin);
+        setTimeout(() => {
+            simCursor.classList.add('clicking');
+            btnLogin.classList.add('active-click');
+            setTimeout(() => {
+                simCursor.classList.remove('clicking');
+                btnLogin.classList.remove('active-click');
+                showSimStep(2);
+
+                autoTourTimer = setTimeout(() => {
+                    moveCursorTo(btnContinue);
+                    setTimeout(() => {
+                        simCursor.classList.add('clicking');
+                        btnContinue.classList.add('active-click');
+                        setTimeout(() => {
+                            simCursor.classList.remove('clicking');
+                            btnContinue.classList.remove('active-click');
+                            showSimStep(3);
+
+                            autoTourTimer = setTimeout(() => {
+                                moveCursorTo(targetProfile);
+                                setTimeout(() => {
+                                    simCursor.classList.add('clicking');
+                                    targetProfile.classList.add('active-click');
+                                    setTimeout(() => {
+                                        simCursor.classList.remove('clicking');
+                                        targetProfile.classList.remove('active-click');
+                                        showSimStep(4);
+
+                                        autoTourTimer = setTimeout(() => {
+                                            moveCursorTo(targetShow);
+                                            setTimeout(() => {
+                                                simCursor.classList.add('clicking');
+                                                targetShow.classList.add('active-click');
+                                                setTimeout(() => {
+                                                    simCursor.classList.remove('clicking');
+                                                    targetShow.classList.remove('active-click');
+                                                    simCursor.style.opacity = '0';
+                                                    showSimStep(5);
+
+                                                    autoTourTimer = setTimeout(() => {
+                                                        runAutoTour();
+                                                    }, 9000);
+                                                }, 500);
+                                            }, 700);
+                                        }, 1200);
+                                    }, 500);
+                                }, 700);
+                            }, 1200);
+                        }, 500);
+                    }, 700);
+                }, 1400);
+            }, 500);
+        }, 800);
+    }, 1000);
+}
+
+// التحكم في المشغل
+function startSimVideoPlayer() {
+    clearInterval(videoInterval);
+    isVideoPlaying = true;
+    videoSeconds = 1;
+    if (timelineProgress) timelineProgress.style.width = '5%';
+    if (playPauseIcon) playPauseIcon.setAttribute('data-lucide', 'pause');
+
+    videoInterval = setInterval(() => {
+        if (!isVideoPlaying) return;
+        videoSeconds += 2;
+        const progressPercent = Math.min(100, (videoSeconds / 2700) * 100 + 15);
+        if (timelineProgress) timelineProgress.style.width = `${progressPercent}%`;
+        
+        const mins = String(Math.floor(videoSeconds / 60)).padStart(2, '0');
+        const secs = String(videoSeconds % 60).padStart(2, '0');
+        if (videoTimeCounter) videoTimeCounter.innerText = `${mins}:${secs}`;
+    }, 1000);
+}
+
+function toggleSimVideoPlayback() {
+    isVideoPlaying = !isVideoPlaying;
+    if (playPauseIcon) {
+        playPauseIcon.setAttribute('data-lucide', isVideoPlaying ? 'pause' : 'play');
+        lucide.createIcons();
+    }
+    if (cinematicStatus) {
+        cinematicStatus.innerText = isVideoPlaying ? 'جاري التشغيل المباشر بدقة سينمائية..' : 'تم إيقاف العرض مؤقتاً ⏸️';
+    }
+}
+
+function seekSimProgress(e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const width = rect.width;
+    const percent = Math.max(0, Math.min(100, (clickX / width) * 100));
+    if (timelineProgress) timelineProgress.style.width = `${percent}%`;
+    videoSeconds = Math.floor((percent / 100) * 2700);
+}
+
+// بدء المحاكي عند التحميل
+window.addEventListener('load', () => {
+    setTimeout(runAutoTour, 500);
+});
+
+// التقييمات
 const allReviewsList = [
     "نورة القحطاني|ما كملت 5 دقايق إلا والاشتراك مفعل على إيميلي، سرعة خيالية وتجاوب يفتح النفس!",
     "ريان الحربي|أكتب تقييمي بعد شهر كامل من الاستخدام.. الحساب شغال وبدون أي انقطاع.",

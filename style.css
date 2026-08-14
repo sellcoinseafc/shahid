@@ -12,10 +12,9 @@
     --text-main: #ffffff;
     --text-muted: #cbd5e1;
     --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    --navbar-bg: rgba(6, 4, 13, 0.95);
-    --ambient-bg: radial-gradient(circle at 50% 5%, rgba(139, 92, 246, 0.15) 0%, rgba(6, 4, 13, 0) 75%);
-    --product-card-bg: linear-gradient(145deg, rgba(22, 17, 42, 0.98), rgba(10, 7, 20, 0.99));
-    --pay-today-bg: linear-gradient(135deg, #181130, #251b47);
+    --navbar-bg: #0b071a;
+    --ambient-bg: radial-gradient(circle at 50% 5%, rgba(139, 92, 246, 0.12) 0%, rgba(6, 4, 13, 0) 70%);
+    --product-card-bg: linear-gradient(145deg, #150f28, #0d091a);
 }
 
 body.light-mode {
@@ -32,13 +31,15 @@ body.light-mode {
     --text-main: #0f172a;
     --text-muted: #64748b;
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    --navbar-bg: rgba(255, 255, 255, 0.95);
+    --navbar-bg: #ffffff;
     --ambient-bg: radial-gradient(circle at 50% 5%, rgba(124, 58, 237, 0.06) 0%, rgba(248, 250, 252, 0) 60%);
     --product-card-bg: #ffffff;
-    --pay-today-bg: #f1f5f9;
 }
 
-html { scroll-behavior: smooth; }
+html { 
+    scroll-behavior: smooth; 
+    -webkit-text-size-adjust: 100%;
+}
 
 * {
     box-sizing: border-box;
@@ -46,6 +47,8 @@ html { scroll-behavior: smooth; }
     padding: 0;
     font-family: 'Tajawal', sans-serif;
     -webkit-tap-highlight-color: transparent;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 body {
@@ -54,14 +57,14 @@ body {
     direction: rtl;
     min-height: 100vh;
     padding-bottom: 60px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
 }
 
 @media (min-width: 769px) { body { padding-bottom: 0; } }
 
 .ambient-glow {
-    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-    width: 100%; max-width: 1400px; height: 500px;
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%) translateZ(0);
+    width: 100%; max-width: 1400px; height: 450px;
     background: var(--ambient-bg); pointer-events: none; z-index: 0;
 }
 
@@ -73,7 +76,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(16px);
+    transform: translateZ(0);
 }
 .header-container {
     max-width: 900px;
@@ -114,7 +117,7 @@ body:not(.light-mode) .logo-img { filter: brightness(0) invert(1); }
     z-index: 1;
 }
 
-/* 🌟 البانر الترويجي الكبير والكامل 100% */
+/* البانر الترويجي الكامل بدون قص */
 .banner-wrapper {
     border-radius: 16px;
     overflow: hidden;
@@ -123,12 +126,13 @@ body:not(.light-mode) .logo-img { filter: brightness(0) invert(1); }
     background: var(--surface-card);
     margin-bottom: 20px;
     width: 100%;
+    transform: translateZ(0);
 }
 .banner-img {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain; /* يضمن ظهور كامل البانر بدون أي اقتصاص */
+    object-fit: contain;
 }
 
 /* صندوق النبذة */
@@ -170,7 +174,7 @@ body.light-mode .banner-title-wrap { background: linear-gradient(135deg, #7c3aed
 .section-title-box h2 { font-size: 1.1rem; font-weight: 900; color: var(--text-main); margin-bottom: 2px; }
 .section-title-box p { font-size: 0.75rem; color: var(--text-muted); }
 
-/* شبكة المنتجين مع إطارات ملونة مختلفة */
+/* 🌟 شبكة المنتجين بتصميم نظيف بدون إطارات سميكة */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -181,84 +185,97 @@ body.light-mode .banner-title-wrap { background: linear-gradient(135deg, #7c3aed
 
 .product-card {
     background: var(--product-card-bg);
-    border-radius: var(--radius);
+    border: none; /* إزالة الإطار بالكامل كما طلبت */
+    border-radius: 18px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    transform: translateZ(0);
 }
 
-/* إطار باقة 3 أشهر */
-.card-3m-style {
-    border: 2px solid #8b5cf6;
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
-}
-
-/* إطار باقة السنة */
-.card-1y-style {
-    border: 2px solid #10b981;
-    box-shadow: 0 10px 35px rgba(16, 185, 129, 0.25);
-}
-
+/* 🌟 حاوية الصور المتناسقة والناعمة */
 .product-image-wrap {
     position: relative;
     width: 100%;
-    height: 180px;
-    background: #000000;
+    padding: 10px 10px 0 10px;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-bottom: 1px solid var(--border-color);
-}
-@media (min-width: 768px) {
-    .product-image-wrap { height: 210px; }
 }
 .product-banner-img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 195px;
     object-fit: contain;
+    border-radius: 12px;
     transition: transform 0.3s ease;
 }
 .product-card:hover .product-banner-img {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .product-tag {
-    position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.85);
+    position: absolute; top: 18px; right: 18px; background: rgba(0, 0, 0, 0.85);
     color: var(--shahid-teal); font-size: 0.7rem; font-weight: 900; padding: 4px 10px; border-radius: 6px; z-index: 2;
     border: 1px solid rgba(0, 224, 150, 0.4);
 }
 .featured-tag { background: #10b981; color: #ffffff; border: none; }
 
 .product-info { padding: 14px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; gap: 12px; }
-.product-title { font-size: 0.95rem; font-weight: 900; color: var(--text-main); margin-bottom: 2px; }
-.product-desc { font-size: 0.74rem; color: var(--text-muted); line-height: 1.4; }
+
+/* 🌟 تكبير العنوان ووضوحه */
+.product-title { 
+    font-size: 1.15rem; 
+    font-weight: 900; 
+    color: var(--text-main); 
+    margin-bottom: 2px; 
+    letter-spacing: -0.3px;
+}
+.product-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.4; }
 
 .product-footer { border-top: 1px solid var(--border-color); padding-top: 10px; display: flex; flex-direction: column; gap: 10px; }
 .price-box { display: flex; align-items: baseline; gap: 4px; }
-.current-price { font-size: 1.3rem; font-weight: 900; color: var(--text-main); }
-.currency { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); }
-.old-price { font-size: 0.75rem; color: #94a3b8; text-decoration: line-through; margin-right: 4px; }
+.current-price { font-size: 1.35rem; font-weight: 900; color: var(--text-main); }
+.currency { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); }
+.old-price { font-size: 0.78rem; color: #94a3b8; text-decoration: line-through; margin-right: 4px; }
 
-/* طرق الدفع الرسمية فوق التقسيط */
+/* طرق الدفع الرسمية */
 .card-payments-box { border-top: 1px solid var(--border-color); padding-top: 8px; }
 .card-payments-label { font-size: 0.65rem; font-weight: 800; color: var(--text-muted); text-align: center; margin-bottom: 6px; display: block; }
 .card-payments-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
 .card-pay-item { background: #ffffff; border-radius: 6px; padding: 3px 2px; height: 26px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; }
 .card-pay-item img { max-height: 16px; max-width: 100%; object-fit: contain; }
 
-/* قسم التقسيط المكبر والواضح */
-.card-installment-box { background: rgba(124, 58, 237, 0.08); border: 1.5px solid var(--border-active); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+/* 🌟 قسم التقسيط مع لون أسود فخم لـ ادفع اليوم */
+.card-installment-box { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
 .card-installment-title { font-size: 0.72rem; font-weight: 800; color: var(--text-muted); text-align: center; }
-.card-pay-today-banner { display: flex; align-items: center; justify-content: space-between; background: var(--pay-today-bg); border: 1.5px solid var(--border-active); padding: 8px 12px; border-radius: 8px; }
-.card-pay-today-tag { display: flex; align-items: center; gap: 5px; font-size: 0.82rem; font-weight: 900; color: var(--text-main); }
-.card-pay-today-tag i { color: var(--primary); }
-.card-pay-today-amount { background: var(--primary); color: #ffffff; padding: 3px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 900; }
+.card-pay-today-banner { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    background: #000000; /* اللون الأسود كما طلبت */
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    padding: 8px 12px; 
+    border-radius: 10px; 
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+}
+.card-pay-today-tag { display: flex; align-items: center; gap: 5px; font-size: 0.84rem; font-weight: 900; color: #ffffff; }
+.card-pay-today-tag i { color: var(--accent); }
+.card-pay-today-amount { 
+    background: #110d22; 
+    color: #ffffff; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    padding: 3px 12px; 
+    border-radius: 6px; 
+    font-size: 0.88rem; 
+    font-weight: 900; 
+}
 .card-installment-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.card-inst-btn { background: #ffffff !important; border: 1.5px solid var(--border-color); padding: 6px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 38px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.2s ease; }
-.card-inst-btn:hover { transform: translateY(-1px); border-color: var(--primary); }
+.card-inst-btn { background: #ffffff !important; border: 1.5px solid var(--border-color); padding: 6px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 38px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 .card-inst-btn img { max-height: 22px; width: 100%; object-fit: contain; }
 
 .card-action-buttons { display: grid; grid-template-columns: 1fr 2fr; gap: 6px; }
@@ -290,10 +307,24 @@ body.light-mode .btn-details-salla { background: #f1f5f9; }
 .reviews-header-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
 .reviews-header-title h3 { font-size: 0.95rem; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
 .reviews-badge-counter { font-size: 0.72rem; font-weight: 800; color: var(--accent-gold); background: rgba(245, 158, 11, 0.1); padding: 2px 8px; border-radius: 50px; }
-.reviews-marquee-container { width: 100%; overflow: hidden; position: relative; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); padding: 4px 0; }
-.reviews-marquee-track { display: flex; gap: 12px; width: max-content; animation: marqueeScroll 60s linear infinite; }
+.reviews-marquee-container { 
+    width: 100%; 
+    overflow: hidden; 
+    position: relative; 
+    padding: 4px 0;
+    transform: translateZ(0);
+}
+.reviews-marquee-track { 
+    display: flex; 
+    gap: 12px; 
+    width: max-content; 
+    animation: marqueeScroll 50s linear infinite; 
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
 .reviews-marquee-track:hover { animation-play-state: paused; }
-@keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(50%); } }
+@keyframes marqueeScroll { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(50%, 0, 0); } }
+
 .mini-review-card { background: var(--surface-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px; width: 250px; flex-shrink: 0; display: flex; flex-direction: column; gap: 6px; }
 .mini-review-top { display: flex; align-items: center; gap: 8px; }
 .mini-review-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(124, 58, 237, 0.2); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.8rem; }
@@ -326,8 +357,9 @@ body:not(.light-mode) .footer-logo-img { filter: brightness(0) invert(1); }
 
 /* الشريط السفلي للجوال */
 .mobile-cta {
-    position: fixed; bottom: 8px; left: 10px; right: 10px; background: var(--surface-card); backdrop-filter: blur(16px);
+    position: fixed; bottom: 8px; left: 10px; right: 10px; background: #0e0a20;
     border: 1px solid var(--border-color); padding: 6px 8px; display: flex; align-items: center; gap: 6px; z-index: 999; border-radius: 50px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transform: translateZ(0);
 }
 .mobile-nav-btn { flex: 1.2; padding: 7px 4px; border-radius: 50px; font-weight: 800; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; gap: 4px; text-decoration: none; border: none; cursor: pointer; }
 .mobile-btn-subscriptions { background: var(--primary); color: #ffffff; }
@@ -340,17 +372,18 @@ body:not(.light-mode) .footer-logo-img { filter: brightness(0) invert(1); }
     .floating-whatsapp-btn { display: flex; position: fixed; bottom: 24px; left: 24px; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #ffffff; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 998; text-decoration: none; }
 }
 
-/* ================= النوافذ المنبثقة بالمنتصف تماماً ================= */
+/* ================= النوافذ المنبثقة ================= */
 .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px);
-    display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 16px;
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8);
+    display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 16px;
+    transform: translateZ(0);
 }
 .modal-overlay.active { opacity: 1; pointer-events: auto; }
 .modal-card {
-    background: var(--surface-card); border: 1px solid var(--border-active); border-radius: 18px; padding: 22px 20px; max-width: 520px; width: 100%; max-height: 85vh;
-    display: flex; flex-direction: column; box-shadow: 0 15px 45px rgba(0,0,0,0.5); transform: scale(0.95); transition: transform 0.3s ease;
+    background: #0f0b1e; border: 1px solid var(--border-active); border-radius: 18px; padding: 22px 20px; max-width: 520px; width: 100%; max-height: 85vh;
+    display: flex; flex-direction: column; box-shadow: 0 15px 45px rgba(0,0,0,0.5); transform: scale(0.96) translateZ(0); transition: transform 0.25s ease;
 }
-.modal-overlay.active .modal-card { transform: scale(1); }
+.modal-overlay.active .modal-card { transform: scale(1) translateZ(0); }
 .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
 .modal-title { font-size: 1.05rem; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
 .modal-close-x { background: rgba(124, 58, 237, 0.15); border: none; color: var(--text-main); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }

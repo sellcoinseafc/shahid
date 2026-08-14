@@ -6,6 +6,7 @@
     --primary-glow: rgba(139, 92, 246, 0.35);
     --accent: #10b981;
     --accent-gold: #f59e0b;
+    --shahid-teal: #00e096;
     --border-color: rgba(255, 255, 255, 0.12);
     --border-active: rgba(139, 92, 246, 0.5);
     --text-main: #ffffff;
@@ -25,6 +26,7 @@ body.light-mode {
     --primary-glow: rgba(124, 58, 237, 0.15);
     --accent: #059669;
     --accent-gold: #d97706;
+    --shahid-teal: #059669;
     --border-color: #e2e8f0;
     --border-active: rgba(124, 58, 237, 0.4);
     --text-main: #0f172a;
@@ -112,21 +114,21 @@ body:not(.light-mode) .logo-img { filter: brightness(0) invert(1); }
     z-index: 1;
 }
 
-/* البانر */
+/* 🌟 البانر الترويجي الكبير والكامل 100% */
 .banner-wrapper {
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+    border: 1.5px solid var(--border-active);
     background: var(--surface-card);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 .banner-img {
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 5.5;
     display: block;
-    object-fit: cover;
+    object-fit: contain; /* يضمن ظهور كامل البانر بدون أي اقتصاص */
 }
 
 /* صندوق النبذة */
@@ -156,13 +158,6 @@ body.light-mode .banner-title-wrap { background: linear-gradient(135deg, #7c3aed
 .banner-feature-icon { color: var(--primary); display: flex; align-items: center; }
 .banner-feature-text { font-size: 0.72rem; font-weight: 900; color: var(--text-main); }
 
-/* شريط الترويج */
-.promo-ticker-bar {
-    background: rgba(124, 58, 237, 0.08); border: 1px dashed var(--border-active); border-radius: 10px;
-    height: 38px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0 12px; margin-bottom: 16px;
-}
-.promo-ticker-text { font-size: 0.75rem; font-weight: 800; color: var(--text-main); white-space: nowrap; }
-
 /* زر المقارنة */
 .comparison-trigger-box { margin-bottom: 16px; text-align: center; }
 .comparison-btn {
@@ -175,7 +170,7 @@ body.light-mode .banner-title-wrap { background: linear-gradient(135deg, #7c3aed
 .section-title-box h2 { font-size: 1.1rem; font-weight: 900; color: var(--text-main); margin-bottom: 2px; }
 .section-title-box p { font-size: 0.75rem; color: var(--text-muted); }
 
-/* شبكة المنتجين بالصور الأصلية الكاملة 100% */
+/* شبكة المنتجين مع إطارات ملونة مختلفة */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -185,10 +180,26 @@ body.light-mode .banner-title-wrap { background: linear-gradient(135deg, #7c3aed
 @media (max-width: 500px) { .products-grid { grid-template-columns: 1fr; } }
 
 .product-card {
-    background: var(--product-card-bg); border: 1.5px solid var(--border-active); border-radius: var(--radius);
-    overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--card-shadow);
+    background: var(--product-card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--card-shadow);
 }
-.product-card.featured { border: 2px solid var(--primary); }
+
+/* إطار باقة 3 أشهر */
+.card-3m-style {
+    border: 2px solid #8b5cf6;
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+}
+
+/* إطار باقة السنة */
+.card-1y-style {
+    border: 2px solid #10b981;
+    box-shadow: 0 10px 35px rgba(16, 185, 129, 0.25);
+}
 
 .product-image-wrap {
     position: relative;
@@ -219,7 +230,7 @@ body.light-mode .banner-title-wrap { background: linear-gradient(135deg, #7c3aed
     color: var(--shahid-teal); font-size: 0.7rem; font-weight: 900; padding: 4px 10px; border-radius: 6px; z-index: 2;
     border: 1px solid rgba(0, 224, 150, 0.4);
 }
-.featured-tag { background: var(--primary); color: #ffffff; border: none; }
+.featured-tag { background: #10b981; color: #ffffff; border: none; }
 
 .product-info { padding: 14px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; gap: 12px; }
 .product-title { font-size: 0.95rem; font-weight: 900; color: var(--text-main); margin-bottom: 2px; }
@@ -356,9 +367,9 @@ body:not(.light-mode) .footer-logo-img { filter: brightness(0) invert(1); }
 
 .req-box { background: rgba(239, 68, 68, 0.12); border: 1.5px solid rgba(239, 68, 68, 0.4); color: #f87171; padding: 12px; border-radius: 12px; font-size: 0.82rem; font-weight: 800; display: flex; gap: 8px; align-items: flex-start; margin-bottom: 12px; }
 .comparison-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.82rem; }
-.comparison-table th, .comparison-table td { border: 1px solid var(--border-color); padding: 8px; text-align: center; }
+.comparison-table th, .comparison-table td { border: 1px solid var(--border-color); padding: 10px 8px; text-align: center; }
 .comparison-table th { background: rgba(124, 58, 237, 0.15); color: var(--text-main); font-weight: 900; }
-.comparison-table td:first-child { font-weight: 800; color: var(--text-main); text-align: right; }
+.comparison-table td:first-child { font-weight: 800; color: var(--text-main); text-align: right; width: 25%; }
 
 .details-rich-text h4 { color: var(--primary); font-size: 0.95rem; font-weight: 900; margin-top: 14px; margin-bottom: 6px; }
 .details-rich-text ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }

@@ -21,23 +21,6 @@ if (localStorage.getItem('nexora_theme') === 'light') {
     if (themeIcon) themeIcon.setAttribute('data-lucide', 'moon');
 }
 
-// شريط العبارات التسويقية
-const promoQuotes = [
-    "💸 وفّر كاش! اشتراك سنة بـ 180 ريال فقط بدل 450 ريال.",
-    "🔥 عرض الـ 3 أشهر بـ 60 ريال فقط بدل 115 ريال.. وفر واستمتع!",
-    "⚡ اشترك الآن بـ 180 ريال للسنة كاملة ووفر أكثر من نصف القيمة.",
-    "🔒 تفعيل رسمي 100% على إيميلك الشخصي في شاهد.. لا مشاركة بعد اليوم.",
-    "🛡️ حسابك ملكك بالكامل.. سجل مشاهدة خاص وخصوصية مطلقة."
-];
-let currentQuoteIndex = 0;
-const textEl = document.getElementById('promoTickerText');
-if (textEl) textEl.innerText = promoQuotes[0];
-setInterval(() => {
-    if (!textEl) return;
-    currentQuoteIndex = (currentQuoteIndex + 1) % promoQuotes.length;
-    textEl.innerText = promoQuotes[currentQuoteIndex];
-}, 6000);
-
 // شريط التقييمات المتحرك
 const allReviewsList = [
     "نورة القحطاني|ما كملت 5 دقايق إلا والاشتراك مفعل على إيميلي، سرعة خيالية وتجاوب يفتح النفس!",
@@ -136,41 +119,40 @@ function openDetailsModal(plan) {
     const productDetailsHTML = `
         <div class="details-rich-text">
             <p style="color: var(--accent-gold); font-weight: 800; font-size: 0.88rem; margin-bottom: 8px;">عالم من الترفيه يتبعك أينما كنت.. خصوصية تامة، وبدون إعلانات!</p>
-            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">امتلك حسابك الخاص والمستقل تماماً، مفعّل رسميًا على بريدك الإلكتروني الشخصي، واستمتع بأضخم مكتبة محتوى عربي وعالمي في المنطقة وفق أعلى معايير الجودة.</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">امتلك حسابك الخاص والمستقل تماماً، مفعّل رسميًا على بريدك الإلكتروني الشخصي، واستمتع بأضخم مكتبة محتوى عربي وعالمي وفق أعلى معايير الجودة.</p>
             
             <h4>🌟 مميزات الاشتراك:</h4>
             <ul>
-                <li><strong>🎬 مكتبة ضخمة:</strong> جميع المسلسلات والأفلام العربية والعالمية + إصدارات "أعمال شاهد الأصلية" الحصرية.</li>
-                <li><strong>📺 محتوى هائل:</strong> وصول لأكثر من 40,000 حلقة من أفضل البرامج والدراما.</li>
+                <li><strong>🎬 مكتبة ضخمة:</strong> أحدث المسلسلات والأفلام + إصدارات "أعمال شاهد الأصلية" الحصرية.</li>
                 <li><strong>🚫 تجربة صافية:</strong> مشاهدة مستمرة بدون أي فواصل إعلانية مزعجة.</li>
                 <li><strong>🎥 أعلى جودة:</strong> استمتع بدقة Full HD لتجربة بصرية سينمائية.</li>
-                <li><strong>⬇️ المشاهدة دون إنترنت:</strong> خاصية التحميل لمتابعة أعمالك المفضلة في أي وقت وأي مكان.</li>
-                <li><strong>🌍 متاح عالمياً:</strong> يمكنك المشاهدة من أي دولة في العالم دون قيود.</li>
+                <li><strong>⬇️ بدون إنترنت:</strong> خاصية التحميل لمتابعة أعمالك المفضلة في أي وقت.</li>
+                <li><strong>🌍 متاح عالمياً:</strong> يمكنك المشاهدة من أي دولة دون قيود.</li>
             </ul>
 
             <h4>📱 الأجهزة المدعومة:</h4>
-            <p style="font-size: 0.82rem; color: var(--text-main); font-weight: 800; margin-bottom: 6px;">( الجوال 📱 – الآيباد 📱 – التابلت 📱 – اللابتوب 💻 – الكمبيوتر 🖥️ – التلفزيون الذكي 📺 )</p>
+            <p style="font-size: 0.82rem; color: var(--text-main); font-weight: 800; margin-bottom: 6px;">( الجوال 📱 – الآيباد 📱 – اللابتوب 💻 – الكمبيوتر 🖥️ – التلفزيون الذكي 📺 )</p>
 
-            <h4>⚠️ حدود الأجهزة والقيود:</h4>
+            <h4>⚠️ حدود الاستخدام والقيود:</h4>
             <ul>
-                <li><strong>بدون محتوى رياضي:</strong> الباقة مخصصة للترفيه فقط ولا تشمل قنوات SSC أو الدوري السعودي.</li>
-                <li><strong>عدد الأجهزة:</strong> المشاهدة المتزامنة تقتصر على (2) جوال/تابلت و (2) تلفزيون ذكي.</li>
+                <li><strong>بدون محتوى رياضي:</strong> الباقة مخصصة للترفيه فقط (لا تشمل قنوات SSC أو الدوري السعودي).</li>
+                <li><strong>المشاهدة المتزامنة:</strong> تتيح التشغيل على (2) أجهزة كحد أقصى في نفس الوقت (من نفس العنوان المنزلي).</li>
             </ul>
 
             <h4>🛠️ طريقة التفعيل والضمان:</h4>
             <ul>
-                <li>التفعيل مباشرة على إيميلك الشخصي لضمان الخصوصية التامة لسجل مشاهداتك.</li>
-                <li>اشتراك رسمي ونظامي 100% يضمن لك الاستمرارية طوال الفترة المحددة.</li>
+                <li><strong>تفعيل مباشر:</strong> يتم على بريدك الشخصي لضمان الخصوصية التامة لسجل مشاهداتك.</li>
+                <li><strong>ضمان شامل:</strong> اشتراك رسمي ونظامي 100% يضمن لك الاستمرارية طوال المدة المحددة.</li>
             </ul>
         </div>
     `;
 
     if (plan === '1y') {
-        title.innerHTML = '<i data-lucide="sparkles" size="16"></i> تفاصيل باقة شاهد VIP (سنة كاملة - 180 ر.س)';
+        title.innerHTML = '<i data-lucide="sparkles" size="18" style="color:var(--accent);"></i> تفاصيل باقة شاهد VIP (سنة كاملة - 180 ر.س)';
         richContent.innerHTML = productDetailsHTML;
-        btnWrap.innerHTML = `<button data-rmz-product="61070" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}' style="width:100%; background:var(--primary); color:#fff; padding:12px; border-radius:10px; font-weight:900; border:none; cursor:pointer; font-size:0.9rem;">اطلب باقة السنة الآن (180 ر.س)</button>`;
+        btnWrap.innerHTML = `<button data-rmz-product="61070" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}' style="width:100%; background:var(--accent); color:#fff; padding:12px; border-radius:10px; font-weight:900; border:none; cursor:pointer; font-size:0.9rem;">اطلب باقة السنة الآن (180 ر.س)</button>`;
     } else {
-        title.innerHTML = '<i data-lucide="tv" size="16"></i> تفاصيل باقة شاهد VIP (3 أشهر - 60 ر.س)';
+        title.innerHTML = '<i data-lucide="tv" size="18" style="color:var(--primary);"></i> تفاصيل باقة شاهد VIP (3 أشهر - 60 ر.س)';
         richContent.innerHTML = productDetailsHTML;
         btnWrap.innerHTML = `<button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}' style="width:100%; background:var(--primary); color:#fff; padding:12px; border-radius:10px; font-weight:900; border:none; cursor:pointer; font-size:0.9rem;">اطلب باقة 3 أشهر الآن (60 ر.س)</button>`;
     }

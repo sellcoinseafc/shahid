@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="dark-theme">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -21,13 +21,18 @@
 </head>
 <body>
 
-    <!-- الهيدر العلوي (مع اللوجو الأصلي وزر الموثوقية) -->
+    <div class="ambient-glow"></div>
+
+    <!-- الهيدر العلوي -->
     <header>
         <div class="header-container">
             <a href="#" class="brand-logo">
                 <img src="https://c.top4top.io/p_3877h1xkz1.png" alt="Nexorasa Logo" class="logo-img">
             </a>
             <div class="header-actions">
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleAppTheme()" title="تبديل الوضع">
+                    <i data-lucide="sun" id="themeIcon" size="16"></i>
+                </button>
                 <button type="button" class="trust-badge-btn" onclick="openPolicyModal('trustVerifiedModal')">
                     <i data-lucide="shield-check" size="14"></i>
                     <span>متجر موثوق</span>
@@ -87,14 +92,14 @@
             <p>تفعيل فوري ومباشر على بريدك الإلكتروني الشخصي</p>
         </div>
 
-        <!-- 3. شبكة المنتجين (على نمط سلة - مربعات متجاوبة) -->
+        <!-- 3. شبكة المنتجين بالصور الأصلية الكاملة -->
         <div class="products-grid">
             
             <!-- باقة 3 أشهر (Product ID: 29956) -->
             <div class="product-card">
                 <div class="product-image-wrap">
                     <span class="product-tag">وفر 50% ⚡</span>
-                    <div class="card-icon-center"><i data-lucide="tv" size="28"></i></div>
+                    <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="اشتراك شاهد VIP 3 أشهر" class="product-banner-img">
                 </div>
                 <div class="product-info">
                     <div>
@@ -109,6 +114,38 @@
                             <span class="old-price">115 ر.س</span>
                         </div>
                         
+                        <!-- طرق الدفع الرسمية فوق التقسيط -->
+                        <div class="card-payments-box">
+                            <span class="card-payments-label">طرق الدفع المتاحة</span>
+                            <div class="card-payments-grid">
+                                <div class="card-pay-item" title="Mada"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183130.png" alt="Mada"></div>
+                                <div class="card-pay-item" title="Apple Pay"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183055.png" alt="Apple Pay"></div>
+                                <div class="card-pay-item" title="Visa"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183155.png" alt="Visa"></div>
+                                <div class="card-pay-item" title="Mastercard"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183255.png" alt="Mastercard"></div>
+                                <div class="card-pay-item" title="STC Pay"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_182948.png" alt="STC Pay"></div>
+                            </div>
+                        </div>
+
+                        <!-- قسم التقسيط الواضح والمكبر -->
+                        <div class="card-installment-box">
+                            <div class="card-installment-title">قسطها عبر تابي أو تمارا</div>
+                            <div class="card-pay-today-banner">
+                                <div class="card-pay-today-tag">
+                                    <i data-lucide="zap" size="14"></i>
+                                    <span>ادفع اليوم:</span>
+                                </div>
+                                <div class="card-pay-today-amount">18 ريال فقط</div>
+                            </div>
+                            <div class="card-installment-btns">
+                                <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-inst-btn">
+                                    <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183233.png" alt="Tabby">
+                                </button>
+                                <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-inst-btn">
+                                    <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183018.png" alt="Tamara">
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="card-action-buttons">
                             <button type="button" class="btn-details-salla" onclick="openDetailsModal('3m')">التفاصيل</button>
                             <div class="rmz-btn-wrap">
@@ -122,14 +159,6 @@
                             </div>
                         </div>
 
-                        <!-- قسم التقسيط المستقل -->
-                        <div class="installment-mini-box">
-                            <span>قسطها بـ 18 ر.س عبر:</span>
-                            <div class="inst-logos">
-                                <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="inst-logo-btn"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183233.png" alt="Tabby"></button>
-                                <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="inst-logo-btn"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183018.png" alt="Tamara"></button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -138,7 +167,7 @@
             <div class="product-card featured">
                 <div class="product-image-wrap">
                     <span class="product-tag featured-tag">الأكثر طلباً 👑</span>
-                    <div class="card-icon-center"><i data-lucide="sparkles" size="28"></i></div>
+                    <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="اشتراك شاهد VIP سنة كاملة" class="product-banner-img">
                 </div>
                 <div class="product-info">
                     <div>
@@ -153,6 +182,38 @@
                             <span class="old-price">450 ر.س</span>
                         </div>
                         
+                        <!-- طرق الدفع الرسمية فوق التقسيط -->
+                        <div class="card-payments-box">
+                            <span class="card-payments-label">طرق الدفع المتاحة</span>
+                            <div class="card-payments-grid">
+                                <div class="card-pay-item" title="Mada"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183130.png" alt="Mada"></div>
+                                <div class="card-pay-item" title="Apple Pay"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183055.png" alt="Apple Pay"></div>
+                                <div class="card-pay-item" title="Visa"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183155.png" alt="Visa"></div>
+                                <div class="card-pay-item" title="Mastercard"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183255.png" alt="Mastercard"></div>
+                                <div class="card-pay-item" title="STC Pay"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_182948.png" alt="STC Pay"></div>
+                            </div>
+                        </div>
+
+                        <!-- قسم التقسيط الواضح والمكبر -->
+                        <div class="card-installment-box">
+                            <div class="card-installment-title">قسطها عبر تابي أو تمارا</div>
+                            <div class="card-pay-today-banner">
+                                <div class="card-pay-today-tag">
+                                    <i data-lucide="zap" size="14"></i>
+                                    <span>ادفع اليوم:</span>
+                                </div>
+                                <div class="card-pay-today-amount">55 ريال فقط</div>
+                            </div>
+                            <div class="card-installment-btns">
+                                <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="card-inst-btn">
+                                    <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183233.png" alt="Tabby">
+                                </button>
+                                <button type="button" onclick="openGatewayModal('1y', 'tamara')" class="card-inst-btn">
+                                    <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183018.png" alt="Tamara">
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="card-action-buttons">
                             <button type="button" class="btn-details-salla" onclick="openDetailsModal('1y')">التفاصيل</button>
                             <div class="rmz-btn-wrap">
@@ -166,14 +227,6 @@
                             </div>
                         </div>
 
-                        <!-- قسم التقسيط المستقل -->
-                        <div class="installment-mini-box">
-                            <span>قسطها بـ 55 ر.س عبر:</span>
-                            <div class="inst-logos">
-                                <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="inst-logo-btn"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183233.png" alt="Tabby"></button>
-                                <button type="button" onclick="openGatewayModal('1y', 'tamara')" class="inst-logo-btn"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183018.png" alt="Tamara"></button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -323,7 +376,7 @@
                 <button class="modal-close-x" onclick="closePolicyModal('installmentModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="timeline-container">
-                <div class="timeline-title" id="installmentGatewayTitle">جدول دفعات الأقساط على 4 أشهر:</div>
+                <div class="timeline-title" id="installmentGatewayTitle">جدول دفعات الأقساط على 4 دفعات:</div>
                 <div class="installments-grid">
                     <div class="inst-step"><span>اليوم</span><strong id="mPrice1">0</strong></div>
                     <div class="inst-step"><span>شهر 2</span><strong id="mPrice2">0</strong></div>
@@ -342,9 +395,9 @@
         </div>
     </div>
 
-    <!-- نافذة التفاصيل -->
+    <!-- نافذة التفاصيل (شاملة وكاملة بالمنتصف) -->
     <div class="modal-overlay" id="detailsModal">
-        <div class="modal-card" style="max-width: 600px; height: 85vh;">
+        <div class="modal-card" style="max-width: 650px; height: 85vh;">
             <div class="modal-header">
                 <h3 class="modal-title" id="detailsModalTitle">تفاصيل الاشتراك</h3>
                 <button class="modal-close-x" onclick="closePolicyModal('detailsModal')"><i data-lucide="x" size="16"></i></button>
@@ -355,32 +408,137 @@
                         <i data-lucide="alert-circle" size="18"></i>
                         <span><strong>البيانات المطلوبة للتفعيل:</strong> الإيميل الشخصي المسجل في شاهد وباسورد الحساب.</span>
                     </div>
-                    <p id="detailsDesc" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;"></p>
+                    <div id="detailsModalRichContent"></div>
                 </div>
-                <div id="modalRmzBtnWrapper" style="margin-top: 10px;"></div>
+                <div id="modalRmzBtnWrapper" style="margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 10px;"></div>
             </div>
         </div>
     </div>
 
-    <!-- نافذة الشروط -->
+    <!-- النافذة الشاملة للسياسات -->
     <div class="modal-overlay" id="termsModal">
-        <div class="modal-card"><div class="modal-header"><h3 class="modal-title">الشروط والأحكام</h3><button class="modal-close-x" onclick="closePolicyModal('termsModal')"><i data-lucide="x" size="16"></i></button></div><div class="modal-body-content"><p>مرحبًا بك في NEXORA SA. استخدامك للمتجر يعني موافقتك على الشروط. المسؤولية تقتصر على تنفيذ وتفعيل الاشتراك، ولا يتحمل المتجر أي تغييرات تصدر من المنصة المالكة للخدمة.</p></div></div>
+        <div class="modal-card" style="max-width: 700px; height: 85vh;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i data-lucide="file-text" size="18"></i>الشروط والأحكام – متجر NEXORA SA</h3>
+                <button class="modal-close-x" onclick="closePolicyModal('termsModal')"><i data-lucide="x" size="16"></i></button>
+            </div>
+            <div class="modal-body-content">
+                <p>مرحبًا بك في <strong>NEXORA SA</strong>، وجهتك للحصول على الاشتراكات والخدمات الرقمية والترفيهية.</p>
+                <p>باستخدامك لمتجر NEXORA SA أو إتمام أي عملية شراء، فإنك تقر بقراءة هذه الشروط والأحكام والموافقة عليها.</p>
+                
+                <h4>1. طبيعة خدمات المتجر</h4>
+                <p>يقدم متجر NEXORA SA خدمات واشتراكات رقمية وترفيهية يتم تفعيلها أو توفيرها للعميل وفق آلية كل منتج. المنصات والخدمات التي يتم الاشتراك بها مملوكة ومدارة من قبل الشركات والجهات المالكة لها، ولا يدعي متجر NEXORA SA ملكية أو تطوير هذه المنصات. تخضع كل خدمة لشروط وسياسات الجهة المالكة لها، وقد تختلف طريقة التفعيل أو الاستخدام حسب المنتج.</p>
+
+                <h4>2. مسؤولية المتجر</h4>
+                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج. لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة، بما في ذلك تحديثات المنصة أو التطبيق، تغيير المزايا أو المحتوى، تغيير سياسات الاستخدام، تغيير الأسعار أو الباقات، إيقاف أو تعليق بعض الخدمات، أو أي قيود تفرضها الجهة المالكة. وفي حال كان المنتج مشمولًا بضمان، يتم التعامل مع المشكلة وفق سياسة الضمان الخاصة بالمنتج.</p>
+
+                <h4>3. سياسة الاسترجاع والاسترداد</h4>
+                <p>نظرًا لطبيعة المنتجات الرقمية، فإن جميع عمليات الشراء تخضع للشروط التالية: يمكن طلب الاسترجاع خلال 24 ساعة من تنفيذ الطلب في حال وجود مشكلة في التفعيل أو عدم تمكن المتجر من توفير الخدمة. بعد نجاح التفعيل وبدء استخدام الاشتراك، لا يمكن استرجاع قيمة المنتج باعتباره منتجًا رقميًا تم تسليمه وتفعيله. لا يحق للعميل طلب استرداد بسبب تغيير أو تحديث صادر من المنصة المالكة للخدمة. وفي حال وجود ضمان للمنتج، يتم تطبيق سياسة الضمان بدلًا من الاسترجاع، متى كانت المشكلة مشمولة بالضمان.</p>
+
+                <h4>4. سياسة الضمان</h4>
+                <p>الضمان، عند وجوده، يشمل الاشتراك الذي تم شراؤه وتفعيله من خلال متجر NEXORA SA فقط. ويختلف نطاق ومدة الضمان حسب المنتج (اشتراك 3 أشهر: ضمان لمدة 90 يومًا / اشتراك سنة: ضمان لمدة 12 شهرًا). يشمل الضمان المشاكل المتعلقة بالاشتراك نفسه خلال مدة الضمان المحددة، ولا يشمل تحديثات المنصة أو الأعطال العامة الناتجة عنها.</p>
+
+                <h4>5. مسؤولية العميل</h4>
+                <p>يتحمل العميل مسؤولية تقديم البيانات الصحيحة المطلوبة لتنفيذ الطلب، التأكد من صحة البريد الإلكتروني أو بيانات الحساب قبل إرسالها، المحافظة على بيانات الدخول وعدم مشاركتها بشكل يخالف شروط الخدمة، واستخدام الاشتراك وفق شروط وسياسات المنصة المالكة للخدمة.</p>
+
+                <h4>6. طبيعة الاشتراكات والخدمات</h4>
+                <p>قد تختلف تفاصيل كل اشتراك من منتج إلى آخر (مدة الاشتراك، طريقة التفعيل، الأجهزة المدعومة، عدد المشاهدات المتزامنة، المزايا المتاحة، مدة الضمان). لذلك يجب على العميل قراءة تفاصيل المنتج وشروطه الخاصة قبل إتمام عملية الشراء.</p>
+
+                <h4>7. التغييرات الصادرة من مزود الخدمة وإتمام الشراء</h4>
+                <p>يحق للمنصة أو الشركة المالكة للخدمة إجراء أي تحديثات أو تغييرات على خدماتها وفق سياساتها الخاصة. وإتمام عملية الشراء یعنی أن العميل اطلع على تفاصيل المنتج ومدة الاشتراك والضمان وطريقة التفعيل وقرأ الشروط والأحكام ووافق عليها بالكامل.</p>
+
+                <h4>8. التواصل والدعم وملخص الشروط</h4>
+                <p>في حال وجود مشكلة في الطلب، يمكن للعميل التواصل مع خدمة العملاء خلال مدة الضمان. المنتجات الرقمية لا تُسترد بعد نجاح التفعيل، والضمان يخص الاشتراك نفسه فقط. شراء أي منتج يعني موافقة العميل على هذه الشروط والأحكام.</p>
+
+                <p style="margin-top: 10px; font-size: 0.78rem; color: var(--text-muted);">آخر تحديث: 2026</p>
+            </div>
+        </div>
     </div>
+
     <!-- نافذة الاسترجاع -->
     <div class="modal-overlay" id="refundModal">
-        <div class="modal-card"><div class="modal-header"><h3 class="modal-title">سياسة الاسترجاع</h3><button class="modal-close-x" onclick="closePolicyModal('refundModal')"><i data-lucide="x" size="16"></i></button></div><div class="modal-body-content"><p>جميع المشتريات الرقمية غير قابلة للإلغاء أو الاستبدال بعد نجاح التفعيل، إلا في حال وجود خلل فني يمنع الاستفادة خلال 48 ساعة.</p></div></div>
+        <div class="modal-card" style="max-width: 650px; height: 85vh;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i data-lucide="rotate-ccw" size="18"></i>سياسة الاسترجاع والاستبدال</h3>
+                <button class="modal-close-x" onclick="closePolicyModal('refundModal')"><i data-lucide="x" size="16"></i></button>
+            </div>
+            <div class="modal-body-content">
+                <h4>1. الأحكام العامة للمنتجات الرقمية</h4>
+                <p>نظراً للطبيعة الفورية والخاصة للمنتجات والخدمات الرقمية (كشحن الحسابات، الأكواد، أو البطاقات الرقمية)، فإن جميع المنتجات التي يتم تسليمها أو تفعيلها بحساب العميل تُعتبر خدمات مستهلكة نهائياً بمجرد صدورها. بناءً على ذلك، فإن جميع المشتريات الرقمية غير قابلة للإلغاء، أو الرد، أو الاستبدال نهائياً، إلا في الحالات الاستثنائية المذكورة في هذه السياسة.</p>
+
+                <h4>2. حالات وحقوق الاستبدال</h4>
+                <p>يحق للعميل طلب استبدال المنتج الرقمي فقط في حال ثبت وجود خلل فني أو عيب في الكود/الخدمة يمنع الاستفادة منها، شريطة إشعار الدعم الفني خلال مدة أقصاها 48 ساعة من تاريخ الشراء، مع تقديم الإثباتات اللازمة (صور أو فيديو). في حال تعذر توفير منتج بديل أو معالجة الخلل الفني خلال مدة تتجاوز 48 ساعة من تقديم الطلب المستوفي للشروط، يحق للعميل الانتقال تلقائياً إلى خيار طلب رد الأموال.</p>
+
+                <h4>3. حدود المسؤولية وإخلاء الطرف</h4>
+                <p><strong>تنبيه هام:</strong> لا يتحمل المتجر أي مسؤولية قانونية أو مالية ناتجة عن المشتريات الخاطئة التي يقوم بها العميل بسبب الإهمال، أو سوء الفهم، أو إدخال معلومات خاطئة (مثل: اسم الحساب، نوع المنصة، أو بيانات الشحن). تقع على عاتق العميل بالكامل مراجعة تفاصيل الطلب قبل تأكيد الدفع، ولن يؤدي الخطأ من طرف العميل إلى أي حق في التعويض أو الاستبدال.</p>
+            </div>
+        </div>
     </div>
+
     <!-- نافذة الضمان -->
     <div class="modal-overlay" id="warrantyModal">
-        <div class="modal-card"><div class="modal-header"><h3 class="modal-title">سياسة الضمان</h3><button class="modal-close-x" onclick="closePolicyModal('warrantyModal')"><i data-lucide="x" size="16"></i></button></div><div class="modal-body-content"><p>الضمان يشمل الاشتراك المفعّل فقط طوال المدة (90 يومًا للباقة الأساسية / 12 شهرًا لباقة السنة).</p></div></div>
+        <div class="modal-card" style="max-width: 650px; height: 85vh;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i data-lucide="shield-check" size="18"></i>🛡️ سياسة الضمان</h3>
+                <button class="modal-close-x" onclick="closePolicyModal('warrantyModal')"><i data-lucide="x" size="16"></i></button>
+            </div>
+            <div class="modal-body-content">
+                <p>الضمان يشمل <strong>الاشتراك المفعّل فقط</strong>، ويغطي استمرارية الاشتراك خلال مدة الضمان المحددة للمنتج.</p>
+                
+                <h4>مدة الضمان:</h4>
+                <ul>
+                    <li><strong>اشتراك 3 أشهر:</strong> 90 يومًا</li>
+                    <li><strong>اشتراك سنة:</strong> 12 شهرًا</li>
+                </ul>
+
+                <p style="margin-top: 10px;">لا يشمل الضمان أي <strong>تحديثات أو تغييرات أو تعديلات</strong> تطرأ على منصة شاهد أو أنظمتها أو سياساتها، كما لا نتحمل مسؤولية أي تغييرات صادرة من المنصة نفسها.</p>
+                <p style="margin-top: 8px;">ويقتصر الضمان على الاشتراك الذي تم شراؤه من المتجر، ولا يشمل أي خدمات أو مشاكل خارج نطاق الاشتراك.</p>
+            </div>
+        </div>
     </div>
+
     <!-- نافذة الخصوصية -->
     <div class="modal-overlay" id="privacyModal">
-        <div class="modal-card"><div class="modal-header"><h3 class="modal-title">سياسة الخصوصية</h3><button class="modal-close-x" onclick="closePolicyModal('privacyModal')"><i data-lucide="x" size="16"></i></button></div><div class="modal-body-content"><p>نلتزم بحماية خصوصية عملائنا وعدم مشاركة بياناتهم الشخصية مع أي أطراف أخرى.</p></div></div>
+        <div class="modal-card" style="max-width: 700px; height: 85vh;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i data-lucide="lock" size="18"></i>سياسة الخصوصية – متجر NEXORA SA</h3>
+                <button class="modal-close-x" onclick="closePolicyModal('privacyModal')"><i data-lucide="x" size="16"></i></button>
+            </div>
+            <div class="modal-body-content">
+                <p>في <strong>NEXORA SA</strong> نحرص على حماية خصوصية عملائنا والحفاظ على سرية بياناتهم، ونلتزم باستخدام المعلومات التي يتم جمعها بالقدر اللازم لتقديم خدماتنا وتنفيذ الطلبات وتحسين تجربة المستخدم.</p>
+
+                <h4>1. المعلومات التي نجمعها</h4>
+                <p>قد نجمع المعلومات التي يقدمها العميل عند إنشاء الطلب أو استخدام المتجر (الاسم، البريد الإلكتروني، رقم الجوال، بيانات الطلب والاشتراكات، وأي معلومات يرسلها العميل لخدمة العملاء). وقد يتم جمع البيانات التقنية تلقائيًا (نوع الجهاز والمتصفح وعنوان IP) لأغراض التشغيل والأمان.</p>
+
+                <h4>2. كيفية استخدام بياناتك وحمايتها</h4>
+                <p>نستخدم البيانات لتنفيذ الطلبات وتفعيل الخدمات، التواصل مع العميل، تقديم الدعم، ومعالجة عمليات الدفع. نتخذ إجراءات تقنية وتنظيمية مناسبة لحماية بيانات العملاء ولا نقوم ببيعها أو تأجيرها لأطراف أخرى لأغراض تجارية.</p>
+
+                <h4>3. مشاركة البيانات والأطراف الأخرى</h4>
+                <p>قد تتم مشاركة بعض البيانات مع مزودي الخدمات الضروريين لتنفيذ الطلب (بوابات الدفع الإلكتروني، مزودي الخدمات الرقمية للتفعيل، ومزودي خدمات الاستضافة)، وتقتصر المشاركة على قدر الحاجة للخدمة.</p>
+
+                <h4>4. ملفات تعريف الارتباط وبيانات الدفع</h4>
+                <p>قد نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة التصفح. وتتم معالجة المدفوعات عبر مزودين معتمدين ولا نطلب منك كلمات المرور أبداً.</p>
+
+                <h4>5. حقوق العميل والاحتفاظ بالبيانات</h4>
+                <p>للعميل الحق في طلب معرفة بياناته الشخصية، أو تصحيحها، أو حذفها وفقاً للأنظمة المعمول بها عبر قنوات الدعم الرسمية.</p>
+                <p style="margin-top: 10px; font-size: 0.78rem; color: var(--text-muted);">آخر تحديث: 2026</p>
+            </div>
+        </div>
     </div>
+
     <!-- نافذة ساعات العمل -->
     <div class="modal-overlay" id="hoursModal">
-        <div class="modal-card" style="text-align: center;"><div class="modal-header"><h3 class="modal-title">ساعات العمل</h3><button class="modal-close-x" onclick="closePolicyModal('hoursModal')"><i data-lucide="x" size="16"></i></button></div><div class="modal-body-content"><p style="font-weight: 900; color: var(--primary); font-size: 1.1rem; margin-top: 10px;">من 11 صباحًا حتى 3 فجراً يومياً</p></div></div>
+        <div class="modal-card" style="text-align: center;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i data-lucide="clock" size="18"></i>ساعات عمل المتجر 🕒</h3>
+                <button class="modal-close-x" onclick="closePolicyModal('hoursModal')"><i data-lucide="x" size="16"></i></button>
+            </div>
+            <div class="modal-body-content" style="text-align: center; padding: 10px 0;">
+                <div style="font-size: 2.2rem; margin-bottom: 8px;">🕒</div>
+                <h4 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 8px;">نحن في خدمتكم يوميًا على مدار الأسبوع!</h4>
+                <p style="font-size: 1.1rem; color: var(--primary); font-weight: 800; margin-bottom: 14px;">ساعات العمل: من 11 صباحًا حتى 3 فجراً.</p>
+            </div>
+        </div>
     </div>
 
     <!-- ربط ملف الـ JS -->

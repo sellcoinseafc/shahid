@@ -21,7 +21,7 @@ if (localStorage.getItem('nexora_theme') === 'light') {
     if (themeIcon) themeIcon.setAttribute('data-lucide', 'moon');
 }
 
-// متغيرات المحاكي الذكي
+// متغيرات المحاكي التفاعلي الذكي
 const simCursor = document.getElementById('simCursor');
 const simCard = document.getElementById('simulatorCard');
 const simModeBadge = document.getElementById('simModeBadge');
@@ -72,7 +72,7 @@ function showSimStep(stepNumber) {
     if (stepNumber === 1) {
         step1.classList.add('active');
         stageBadge.innerText = '1. تسجيل الدخول';
-        stageBadge.style.color = 'var(--shahid-teal)';
+        stageBadge.style.color = 'var(--primary)';
         clearInterval(videoInterval);
     } else if (stepNumber === 2) {
         stepSubInfo.classList.add('active');
@@ -102,17 +102,16 @@ function userTriggerStep(targetStep) {
     if (simModeBadge) {
         simModeBadge.innerText = 'تفاعل يدوي 👆';
         simModeBadge.style.background = 'rgba(0, 224, 150, 0.2)';
-        simModeBadge.style.color = 'var(--shahid-teal)';
+        simModeBadge.style.color = 'var(--primary)';
     }
 
     showSimStep(targetStep);
 
-    // بعد 8 ثوانٍ من عدم اللمس، يعود للجولة التلقائية
     userInactiveTimer = setTimeout(() => {
         isUserInteracting = false;
         if (simModeBadge) {
             simModeBadge.innerText = 'جولة تلقائية 🤖';
-            simModeBadge.style.background = 'rgba(139, 92, 246, 0.15)';
+            simModeBadge.style.background = 'rgba(0, 224, 150, 0.15)';
             simModeBadge.style.color = 'var(--primary)';
         }
         runAutoTour();
@@ -341,7 +340,7 @@ function openDetailsModal(plan) {
     const productDetailsHTML = `
         <div class="details-rich-text">
             <p style="color: var(--accent-gold); font-weight: 800; font-size: 0.88rem; margin-bottom: 8px;">عالم من الترفيه يتبعك أينما كنت.. خصوصية تامة، وبدون إعلانات!</p>
-            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">امتلك حسابك الخاص والمستقل تماماً، مفعّل رسميًا على بريدك الإلكتروني الشخصي، واستمتع بأضخم مكتبة محتوى عربي وعالمي وفق أعلى معايير الجودة.</p>
+            <p style="font-size: 0.85rem; color: var(--text-pure); margin-bottom: 12px;">امتلك حسابك الخاص والمستقل تماماً، مفعّل رسميًا على حسابك في شاهد، واستمتع بأضخم مكتبة محتوى عربي وعالمي وفق أعلى معايير الجودة.</p>
             
             <h4>🌟 مميزات الاشتراك:</h4>
             <ul>
@@ -353,7 +352,7 @@ function openDetailsModal(plan) {
             </ul>
 
             <h4>📱 الأجهزة المدعومة:</h4>
-            <p style="font-size: 0.82rem; color: var(--text-main); font-weight: 800; margin-bottom: 6px;">( الجوال 📱 – الآيباد 📱 – اللابتوب 💻 – الكمبيوتر 🖥️ – التلفزيون الذكي 📺 )</p>
+            <p style="font-size: 0.85rem; color: var(--text-pure); font-weight: 800; margin-bottom: 6px;">( الجوال 📱 – الآيباد 📱 – اللابتوب 💻 – الكمبيوتر 🖥️ – التلفزيون الذكي 📺 )</p>
 
             <h4>⚠️ حدود الاستخدام والقيود:</h4>
             <ul>
@@ -363,20 +362,20 @@ function openDetailsModal(plan) {
 
             <h4>🛠️ طريقة التفعيل والضمان:</h4>
             <ul>
-                <li><strong>تفعيل مباشر:</strong> يتم على بريدك الشخصي لضمان الخصوصية التامة لسجل مشاهداتك.</li>
+                <li><strong>تفعيل مباشر:</strong> يتم على حسابك لضمان الخصوصية التامة لسجل مشاهداتك.</li>
                 <li><strong>ضمان شامل:</strong> اشتراك رسمي ونظامي 100% يضمن لك الاستمرارية طوال المدة المحددة.</li>
             </ul>
         </div>
     `;
 
     if (plan === '1y') {
-        title.innerHTML = '<i data-lucide="sparkles" size="18" style="color:var(--accent);"></i> تفاصيل باقة شاهد VIP (سنة كاملة - 180 ر.س)';
+        title.innerHTML = '<i data-lucide="sparkles" size="18" style="color:var(--primary);"></i> تفاصيل باقة شاهد VIP (سنة كاملة - 180 ر.س)';
         richContent.innerHTML = productDetailsHTML;
-        btnWrap.innerHTML = `<button data-rmz-product="61070" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}' style="width:100%; background:var(--accent); color:#fff; padding:12px; border-radius:10px; font-weight:900; border:none; cursor:pointer; font-size:0.9rem;">اطلب باقة السنة الآن (180 ر.س)</button>`;
+        btnWrap.innerHTML = `<button data-rmz-product="61070" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}' style="width:100%; background:linear-gradient(135deg, #00e096, #059669); color:#060907; padding:12px; border-radius:10px; font-weight:900; border:none; cursor:pointer; font-size:0.9rem;">اطلب باقة السنة الآن (180 ر.س)</button>`;
     } else {
         title.innerHTML = '<i data-lucide="tv" size="18" style="color:var(--primary);"></i> تفاصيل باقة شاهد VIP (3 أشهر - 60 ر.س)';
         richContent.innerHTML = productDetailsHTML;
-        btnWrap.innerHTML = `<button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}' style="width:100%; background:var(--primary); color:#fff; padding:12px; border-radius:10px; font-weight:900; border:none; cursor:pointer; font-size:0.9rem;">اطلب باقة 3 أشهر الآن (60 ر.س)</button>`;
+        btnWrap.innerHTML = `<button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}' style="width:100%; background:linear-gradient(135deg, #00e096, #059669); color:#060907; padding:12px; border-radius:10px; font-weight:900; border:none; cursor:pointer; font-size:0.9rem;">اطلب باقة 3 أشهر الآن (60 ر.س)</button>`;
     }
     
     openPolicyModal('detailsModal');

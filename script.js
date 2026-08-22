@@ -21,6 +21,33 @@ if (localStorage.getItem('nexora_theme') === 'light') {
     if (themeIcon) themeIcon.setAttribute('data-lucide', 'moon');
 }
 
+// دالة التبديل بين الباقات (3 أشهر / سنة كاملة)
+let currentActivePlan = '3m';
+function switchProductPlan(plan) {
+    currentActivePlan = plan;
+    const btn3m = document.getElementById('btnPlan3m');
+    const btn1y = document.getElementById('btnPlan1y');
+    const card3m = document.getElementById('flipContainer3m');
+    const card1y = document.getElementById('flipContainer1y');
+
+    // إرجاع أي بطاقات مقلوبة لوجهها الأمامي
+    card3m.classList.remove('flipped');
+    card1y.classList.remove('flipped');
+
+    if (plan === '3m') {
+        btn3m.classList.add('active');
+        btn1y.classList.remove('active');
+        card3m.style.display = 'block';
+        card1y.style.display = 'none';
+    } else {
+        btn1y.classList.add('active');
+        btn3m.classList.remove('active');
+        card1y.style.display = 'block';
+        card3m.style.display = 'none';
+    }
+}
+
+// دالة تدوير وتقليب البطاقة
 function toggleCardFlip(containerId) {
     const container = document.getElementById(containerId);
     if (container) {
@@ -97,9 +124,8 @@ function closePolicyModal(modalId) {
     }
 }
 
-let selectedPlan = '', selectedGateway = '';
+let selectedGateway = '';
 function openGatewayModal(plan, gateway) {
-    selectedPlan = plan;
     selectedGateway = gateway;
     const modal = document.getElementById('installmentModal');
     const title = document.getElementById('modalPlanTitle');
@@ -121,6 +147,7 @@ function openGatewayModal(plan, gateway) {
         document.getElementById('mPrice4').innerText = '55 ر.س';
         document.getElementById('modalTotalSum').innerText = '220 ريال';
     }
+
     openPolicyModal('installmentModal');
 }
 
@@ -128,9 +155,9 @@ function proceedToWhatsAppInstallment() {
     closePolicyModal('installmentModal');
     const phone = "966551040375";
     const gw = selectedGateway === 'tabby' ? 'تابي' : 'تمارا';
-    const prod = selectedPlan === '3m' ? 'اشتراك شاهد VIP (3 أشهر)' : 'اشتراك شاهد VIP (سنة كاملة)';
-    const payToday = selectedPlan === '3m' ? '18' : '55';
-    const total = selectedPlan === '3m' ? '72' : '220';
+    const prod = currentActivePlan === '3m' ? 'اشتراك شاهد VIP (3 أشهر)' : 'اشتراك شاهد VIP (سنة كاملة)';
+    const payToday = currentActivePlan === '3m' ? '18' : '55';
+    const total = currentActivePlan === '3m' ? '72' : '220';
     const msg = encodeURIComponent(`مرحباً متجر Nexorasa 👋\nأرغب بتقسيط: ${prod}\nعبر: ${gw}\nدفعة اليوم: ${payToday} ريال\nالإجمالي: ${total} ريال\n\nيرجى تزويدي برابط الدفع والتفعيل.`);
     window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
 }

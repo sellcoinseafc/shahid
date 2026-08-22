@@ -95,33 +95,46 @@
             </div>
         </section>
 
-        <!-- 5. قسم المنتجات والتفاصيل المكتملة -->
+        <!-- 5. قسم المنتجات مع تبديل الباقات (أزرار الاختيار) -->
         <section class="products-section">
             <div class="section-title-box">
-                <h2>اختر باقتك واشترك الآن 👇</h2>
-                <p>اضغط على زر "التفاصيل" للتعرف على جميع مواصفات وشروط الباقة</p>
+                <h2>اختر مدة الاشتراك المناسبة لك 👇</h2>
+                <p>اضغط على المدة لعرض البطاقة الخاصة بها</p>
             </div>
 
-            <div class="products-grid">
-                <!-- باقة 3 أشهر -->
-                <div class="flip-card-container" id="flipContainer3m">
+            <!-- أزرار التبديل الشفافة والأنيقة -->
+            <div class="plan-toggle-buttons">
+                <button type="button" class="plan-tab-btn active" id="btnPlan3m" onclick="switchProductPlan('3m')">
+                    <i data-lucide="clock" size="16"></i>
+                    <span>3 أشهر (60 ر.س)</span>
+                </button>
+                <button type="button" class="plan-tab-btn" id="btnPlan1y" onclick="switchProductPlan('1y')">
+                    <i data-lucide="crown" size="16"></i>
+                    <span>سنة كاملة (180 ر.س)</span>
+                </button>
+            </div>
+
+            <div class="single-product-wrapper">
+                
+                <!-- 1. بطاقة 3 أشهر -->
+                <div class="flip-card-container single-card active-plan" id="flipContainer3m">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front product-card">
+                        <div class="flip-card-front product-card featured">
                             <div class="product-image-wrap">
-                                <span class="product-tag">خصم 50% ⚡</span>
+                                <span class="product-tag featured-tag">عرض خاص - خصم 50% ⚡</span>
                                 <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="شاهد VIP (3 أشهر)" class="product-banner-img">
                             </div>
                             <div class="product-info">
                                 <div class="product-header-details">
-                                    <div class="product-title-badge">شاهد VIP (3 أشهر)</div>
+                                    <div class="product-title-badge large-title">✨ شاهد VIP (3 أشهر) - على إيميلك الشخصي</div>
                                     <div class="product-desc-box">
-                                        <i data-lucide="check-circle" size="14" style="color: var(--primary);"></i>
-                                        <span>تفعيل فوري على إيميلك الخاص</span>
+                                        <i data-lucide="check-circle" size="16" style="color: var(--primary);"></i>
+                                        <span>تفعيل فوري رسمي وخاص بك 100%</span>
                                     </div>
                                 </div>
 
                                 <div class="product-footer">
-                                    <div class="price-box">
+                                    <div class="price-box large-price">
                                         <span class="current-price">60</span>
                                         <span class="currency">ر.س</span>
                                         <span class="old-price">115 ر.س</span>
@@ -159,7 +172,7 @@
 
                                     <div class="card-action-buttons">
                                         <button type="button" class="btn-details-flip" onclick="toggleCardFlip('flipContainer3m')">
-                                            <i data-lucide="rotate-cw" size="13"></i> التفاصيل
+                                            <i data-lucide="rotate-cw" size="14"></i> التفاصيل
                                         </button>
                                         <div class="rmz-btn-wrap">
                                             <button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
@@ -171,10 +184,10 @@
                             </div>
                         </div>
 
-                        <!-- الوجه الخلفي (تفاصيل المنتج المكتملة) -->
-                        <div class="flip-card-back product-card">
+                        <!-- الوجه الخلفي (تفاصيل 3 أشهر) -->
+                        <div class="flip-card-back product-card featured">
                             <div class="back-card-header">
-                                <h3>✨ اشتراك شاهد VIP (ترفيهي) | على إيميلك الشخصي (3 أشهر)</h3>
+                                <h3>✨ تفاصيل اشتراك شاهد VIP (ترفيهي) - 3 أشهر</h3>
                                 <button type="button" class="btn-flip-back" onclick="toggleCardFlip('flipContainer3m')">
                                     <i data-lucide="x" size="16"></i> إغلاق
                                 </button>
@@ -216,7 +229,10 @@
                             </div>
 
                             <div class="back-card-footer">
-                                <div class="rmz-btn-wrap">
+                                <button type="button" class="btn-return-front" onclick="toggleCardFlip('flipContainer3m')">
+                                    <i data-lucide="arrow-right" size="14"></i> العودة لصفحة المنتج
+                                </button>
+                                <div class="rmz-btn-wrap" style="margin-top: 6px;">
                                     <button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                                         اشترك الآن (60 ر.س)
                                     </button>
@@ -226,25 +242,25 @@
                     </div>
                 </div>
 
-                <!-- باقة السنة الكاملة -->
-                <div class="flip-card-container" id="flipContainer1y">
+                <!-- 2. بطاقة سنة كاملة -->
+                <div class="flip-card-container single-card" id="flipContainer1y" style="display: none;">
                     <div class="flip-card-inner">
                         <div class="flip-card-front product-card featured">
                             <div class="product-image-wrap">
-                                <span class="product-tag featured-tag">الأكثر طلباً 👑</span>
+                                <span class="product-tag featured-tag">الأكثر طلباً وتوفيراً 👑</span>
                                 <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="شاهد VIP (سنة كاملة)" class="product-banner-img">
                             </div>
                             <div class="product-info">
                                 <div class="product-header-details">
-                                    <div class="product-title-badge">شاهد VIP (سنة كاملة)</div>
+                                    <div class="product-title-badge large-title">👑 شاهد VIP (سنة كاملة) - على إيميلك الشخصي</div>
                                     <div class="product-desc-box">
-                                        <i data-lucide="check-circle" size="14" style="color: var(--primary);"></i>
-                                        <span>تفعيل فوري على إيميلك الخاص</span>
+                                        <i data-lucide="check-circle" size="16" style="color: var(--primary);"></i>
+                                        <span>تفعيل فوري رسمي وخاص بك 100%</span>
                                     </div>
                                 </div>
 
                                 <div class="product-footer">
-                                    <div class="price-box">
+                                    <div class="price-box large-price">
                                         <span class="current-price">180</span>
                                         <span class="currency">ر.س</span>
                                         <span class="old-price">450 ر.س</span>
@@ -282,7 +298,7 @@
 
                                     <div class="card-action-buttons">
                                         <button type="button" class="btn-details-flip" onclick="toggleCardFlip('flipContainer1y')">
-                                            <i data-lucide="rotate-cw" size="13"></i> التفاصيل
+                                            <i data-lucide="rotate-cw" size="14"></i> التفاصيل
                                         </button>
                                         <div class="rmz-btn-wrap">
                                             <button data-rmz-product="61070" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
@@ -294,10 +310,10 @@
                             </div>
                         </div>
 
-                        <!-- الوجه الخلفي (تفاصيل المنتج المكتملة) -->
+                        <!-- الوجه الخلفي (تفاصيل سنة كاملة) -->
                         <div class="flip-card-back product-card featured">
                             <div class="back-card-header">
-                                <h3>👑 اشتراك شاهد VIP (ترفيهي) | على إيميلك الشخصي (سنة كاملة)</h3>
+                                <h3>👑 تفاصيل اشتراك شاهد VIP (ترفيهي) - سنة كاملة</h3>
                                 <button type="button" class="btn-flip-back" onclick="toggleCardFlip('flipContainer1y')">
                                     <i data-lucide="x" size="16"></i> إغلاق
                                 </button>
@@ -339,7 +355,10 @@
                             </div>
 
                             <div class="back-card-footer">
-                                <div class="rmz-btn-wrap">
+                                <button type="button" class="btn-return-front" onclick="toggleCardFlip('flipContainer1y')">
+                                    <i data-lucide="arrow-right" size="14"></i> العودة لصفحة المنتج
+                                </button>
+                                <div class="rmz-btn-wrap" style="margin-top: 6px;">
                                     <button data-rmz-product="61070" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
                                         اشترك الآن (180 ر.س)
                                     </button>
@@ -348,6 +367,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -445,7 +465,7 @@
 
     </main>
 
-    <!-- 8. الفوتر والسياسات المكتملة بحرفيتها 100% -->
+    <!-- 8. الفوتر والسياسات المكتملة -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
@@ -457,6 +477,7 @@
                 <ul>
                     <li><button type="button" onclick="openPolicyModal('termsModal')">الشروط والأحكام</button></li>
                     <li><button type="button" onclick="openPolicyModal('refundModal')">سياسة الاسترجاع والاستبدال</button></li>
+                    <li><button type="button" onclick="openPolicyModal('warrantyModal')">سياسة الضمان</button></li>
                     <li><button type="button" onclick="openPolicyModal('privacyModal')">سياسة الخصوصية</button></li>
                     <li><button type="button" onclick="openPolicyModal('hoursModal')">ساعات عمل المتجر</button></li>
                 </ul>
@@ -498,7 +519,7 @@
 
     <a href="https://wa.me/966551040375" target="_blank" class="floating-whatsapp-btn"><i data-lucide="message-circle" size="26"></i></a>
 
-    <!-- ================= النوافذ المنبثقة للسياسات بالنص الكامل المعتمد ================= -->
+    <!-- النوافذ المنبثقة الشاملة -->
     <div class="modal-overlay" id="trustVerifiedModal">
         <div class="modal-card" style="max-width: 400px; text-align: center;">
             <div class="modal-header" style="justify-content: flex-end; border: none; padding-bottom: 0;">
@@ -523,14 +544,14 @@
             <div class="timeline-container">
                 <div class="timeline-title" id="installmentGatewayTitle">جدول دفعات الأقساط على 4 دفعات:</div>
                 <div class="installments-grid">
-                    <div class="inst-step"><span>اليوم</span><strong id="mPrice1">0</strong></div>
-                    <div class="inst-step"><span>شهر 2</span><strong id="mPrice2">0</strong></div>
-                    <div class="inst-step"><span>شهر 3</span><strong id="mPrice3">0</strong></div>
-                    <div class="inst-step"><span>شهر 4</span><strong id="mPrice4">0</strong></div>
+                    <div class="inst-step"><span>اليوم</span><strong id="mPrice1">18 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 2</span><strong id="mPrice2">18 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 3</span><strong id="mPrice3">18 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 4</span><strong id="mPrice4">18 ر.س</strong></div>
                 </div>
                 <div class="inst-total">
                     <span>إجمالي المبلغ:</span>
-                    <strong id="modalTotalSum" style="color: var(--primary);">0 ريال</strong>
+                    <strong id="modalTotalSum" style="color: var(--primary);">72 ريال</strong>
                 </div>
             </div>
             <div class="modal-saudi-note">🇸🇦 خدمة التقسيط متاحة لعملاء المملكة العربية السعودية فقط.</div>
@@ -540,7 +561,7 @@
         </div>
     </div>
 
-    <!-- 1. سياسة الخصوصية بالكامل -->
+    <!-- سياسة الخصوصية بالكامل -->
     <div class="modal-overlay" id="privacyModal">
         <div class="modal-card" style="max-width: 650px; max-height: 85vh;">
             <div class="modal-header">
@@ -588,7 +609,7 @@
 
                 <h4>5. ملفات تعريف الارتباط (Cookies)</h4>
                 <p>قد يستخدم متجر NEXORA SA ملفات تعريف الارتباط (Cookies) لتحسين تجربة التصفح، وتذكر بعض الإعدادات، وتحسين أداء الموقع.</p>
-                <p>يمكن للعميل التحكم في ملفات تعريف الارتباط أو تعطيلها من إعدادات المتصفح، إلا أن تعطيلها قد يؤثر على بعض وظائف الموقع.</p>
+                <p>يمكن للعميل التحكم في ملفات تعريف الارتباط أو تعطيلها من إعدادات المتصفح، إلا أن تعطيلها قد تؤثر على بعض وظائف الموقع.</p>
 
                 <h4>6. بيانات الدفع</h4>
                 <p>تتم معالجة عمليات الدفع من خلال مزودي خدمات الدفع المعتمدين.</p>
@@ -618,7 +639,7 @@
         </div>
     </div>
 
-    <!-- 2. سياسة الاسترجاع والاستبدال بالكامل -->
+    <!-- سياسة الاسترجاع والاستبدال بالكامل -->
     <div class="modal-overlay" id="refundModal">
         <div class="modal-card" style="max-width: 600px; max-height: 85vh;">
             <div class="modal-header">
@@ -641,7 +662,33 @@
         </div>
     </div>
 
-    <!-- 3. الشروط والأحكام وسياسة الضمان بالكامل -->
+    <!-- نافذة سياسة الضمان الشاملة -->
+    <div class="modal-overlay" id="warrantyModal">
+        <div class="modal-card" style="max-width: 600px; max-height: 85vh;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i data-lucide="shield-check" size="18"></i>🛡️ سياسة الضمان – متجر NEXORA SA</h3>
+                <button class="modal-close-x" onclick="closePolicyModal('warrantyModal')"><i data-lucide="x" size="16"></i></button>
+            </div>
+            <div class="modal-body-content">
+                <p>تغطية الضمان الشامل من NEXORA SA:</p>
+                <h4>أولاً: نطاق ومدات الضمان</h4>
+                <ul>
+                    <li>يضمن المتجر استمرارية اشتراك العميل واستقراره طوال الفترة الزمنية المحددة للمنتج بشكل كامل (90 يوماً لباقة 3 أشهر / 12 شهراً لباقة السنة).</li>
+                </ul>
+                <h4>ثانياً: شروط استحقاق الضمان</h4>
+                <ul>
+                    <li>يغطي الضمان الأعطال الناتجة عن الاشتراك نفسه أو توقفه قبل انتهاء المدة المحددة.</li>
+                    <li>يلتزم المتجر بإصلاح الخلل أو إعادة تفعيل الخدمة مجاناً طوال فترة الضمان.</li>
+                </ul>
+                <h4>ثالثاً: استثناءات الضمان</h4>
+                <ul>
+                    <li>لا يسري الضمان في حال قيام العميل بمخالفة شروط استخدام المنصة المالكة.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- الشروط والأحكام بالكامل -->
     <div class="modal-overlay" id="termsModal">
         <div class="modal-card" style="max-width: 650px; max-height: 85vh;">
             <div class="modal-header">
@@ -737,7 +784,7 @@
         </div>
     </div>
 
-    <!-- 4. ساعات العمل والتوثيق -->
+    <!-- ساعات العمل والتوثيق -->
     <div class="modal-overlay" id="hoursModal">
         <div class="modal-card" style="text-align: center;">
             <div class="modal-header">

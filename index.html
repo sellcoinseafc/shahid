@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nexorasa | متجر اشتراكات شاهد VIP الرسمي</title>
-    <meta name="description" content="متجر Nexorasa - احصل على اشتراك شاهد VIP رسمي ومضمون بتفعيل مباشر على حسابك الشخصي.">
+    <title>Nexorasa | عروض اليوم الوطني - متجر اشتراكات شاهد VIP الرسمي</title>
+    <meta name="description" content="عروض اليوم الوطني من متجر Nexorasa - احصل على اشتراك شاهد VIP رسمي ومضمون 3 أشهر بسعر 55 ر.س فقط بتفعيل مباشر على حسابك الشخصي.">
     
     <!-- الخطوط والأيقونات -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,11 @@
 </head>
 <body>
     <div class="ambient-glow"></div>
+
+    <!-- شريط اليوم الوطني العلوي -->
+    <div class="national-day-bar">
+        <span>🇸🇦 عروض اليوم الوطني - لفترة محدودة جداً! 🇸🇦</span>
+    </div>
 
     <!-- 1. الهيدر العلوي -->
     <header>
@@ -40,16 +45,11 @@
 
     <main class="main-container">
 
-        <!-- 2. البانر الترويجي الرئيسي -->
-        <section class="banner-wrapper">
-            <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786687936/file_000000000160824695ed9695702c42a0.png" alt="شاهد VIP" class="banner-img">
-        </section>
-
-        <!-- 3. صندوق النبذة الترويجي الفائق البروز -->
-        <section class="banner-info-box ultra-highlight">
-            <div class="hero-badge">
+        <!-- 2. صندوق النبذة الترويجي الفائق البروز (المقدمة) -->
+        <section class="banner-info-box ultra-highlight nd-theme">
+            <div class="hero-badge nd-badge">
                 <i data-lucide="sparkles" size="16"></i>
-                <span>الخيار الأكثر أماناً وراحة بال</span>
+                <span>عروض اليوم الوطني 🇸🇦 - الخيار الأكثر أماناً وراحة بال</span>
             </div>
             
             <h1 class="hero-title">
@@ -59,7 +59,7 @@
 
             <p class="hero-description">
                 تعبت من انقطاع البث، وتغير كلمة السر، أو أحد يخرب عليك سجل متابعتك؟ مع <strong>NEXORA SA</strong>، ما تشتري حساب مشترك مع غرباء! 
-                نحن نفعل لك الاشتراك رسمياً <span class="text-highlight">على حسابك الشخصي (بريدك الإلكتروني)</span>.
+                نحن نفعل لك الاشتراك رسمياً <span class="text-highlight">على حسابك الشخصي (بريدك الإلكتروني)</span> بأقوى عروض اليوم الوطني!
                 <br><br>
                 استمتع بجميع الأفلام والمسلسلات وأعمال شاهد الأصلية بأعلى جودة <strong>Full HD</strong> وبدون أي إعلانات مزعجة.. <strong>حسابك لك وحدك، بتحكم كامل وراحة بال مطلقة!</strong>
             </p>
@@ -80,7 +80,7 @@
             </div>
         </section>
 
-        <!-- 4. شريط التقييمات التلقائي -->
+        <!-- 3. شريط التقييمات التلقائي المستمر -->
         <section class="compact-review-section">
             <div class="review-header-mini">
                 <span>⭐ 4.9 / 5.0 (أكثر من +1,200 تقييم معتمد)</span>
@@ -95,38 +95,26 @@
             </div>
         </section>
 
-        <!-- 5. قسم المنتجات مع تبديل الباقات (أزرار الاختيار) -->
+        <!-- 4. قسم عرض اليوم الوطني المخصص (3 أشهر فقط) -->
         <section class="products-section">
             <div class="section-title-box">
-                <h2>اختر مدة الاشتراك المناسبة لك 👇</h2>
-                <p>اضغط على المدة لعرض البطاقة الخاصة بها</p>
-            </div>
-
-            <!-- أزرار التبديل الشفافة والأنيقة -->
-            <div class="plan-toggle-buttons">
-                <button type="button" class="plan-tab-btn active" id="btnPlan3m" onclick="switchProductPlan('3m')">
-                    <i data-lucide="clock" size="16"></i>
-                    <span>3 أشهر (60 ر.س)</span>
-                </button>
-                <button type="button" class="plan-tab-btn" id="btnPlan1y" onclick="switchProductPlan('1y')">
-                    <i data-lucide="crown" size="16"></i>
-                    <span>سنة كاملة (180 ر.س)</span>
-                </button>
+                <h2>🟢 عرض اليوم الوطني الاستثنائي 🇸🇦</h2>
+                <p>اشتراك 3 أشهر كاملة وتفعيل رسمي على حسابك الشخصي بسعر حصري</p>
             </div>
 
             <div class="single-product-wrapper">
                 
-                <!-- 1. بطاقة 3 أشهر -->
+                <!-- بطاقة عرض اليوم الوطني - 3 أشهر -->
                 <div class="flip-card-container single-card active-plan" id="flipContainer3m">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front product-card featured">
+                        <div class="flip-card-front product-card featured nd-card-border">
                             <div class="product-image-wrap">
-                                <span class="product-tag featured-tag">عرض خاص - خصم 50% ⚡</span>
-                                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="شاهد VIP (3 أشهر)" class="product-banner-img">
+                                <span class="product-tag featured-tag nd-tag">عرض اليوم الوطني 🌴 55 ر.س</span>
+                                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="شاهد VIP (3 أشهر) - عرض اليوم الوطني" class="product-banner-img">
                             </div>
                             <div class="product-info">
                                 <div class="product-header-details">
-                                    <div class="product-title-badge large-title">✨ شاهد VIP (3 أشهر) - على إيميلك الشخصي</div>
+                                    <div class="product-title-badge large-title nd-title">✨ شاهد VIP (3 أشهر) - عرض اليوم الوطني 🇸🇦</div>
                                     <div class="product-desc-box">
                                         <i data-lucide="check-circle" size="16" style="color: var(--primary);"></i>
                                         <span>تفعيل فوري رسمي وخاص بك 100%</span>
@@ -135,7 +123,7 @@
 
                                 <div class="product-footer">
                                     <div class="price-box large-price">
-                                        <span class="current-price">60</span>
+                                        <span class="current-price">55</span>
                                         <span class="currency">ر.س</span>
                                         <span class="old-price">115 ر.س</span>
                                     </div>
@@ -151,20 +139,21 @@
                                         </div>
                                     </div>
 
+                                    <!-- أزرار التقسيط (تابي وتمارا) التفاعلية -->
                                     <div class="card-installment-box">
-                                        <div class="card-installment-title">قسطها عبر تابي أو تمارا</div>
+                                        <div class="card-installment-title">قسطها عبر تابي أو تمارا على 4 دفعات</div>
                                         <div class="card-pay-today-banner">
                                             <div class="card-pay-today-tag">
                                                 <i data-lucide="zap" size="14"></i>
                                                 <span>ادفع اليوم:</span>
                                             </div>
-                                            <div class="card-pay-today-amount">18 ريال فقط</div>
+                                            <div class="card-pay-today-amount">14 ريال فقط</div>
                                         </div>
                                         <div class="card-installment-btns">
-                                            <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-inst-btn">
+                                            <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-inst-btn" title="التقسيط عبر تابي">
                                                 <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183233.png" alt="Tabby" class="img-tabby">
                                             </button>
-                                            <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-inst-btn">
+                                            <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-inst-btn" title="التقسيط عبر تمارا">
                                                 <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183018.png" alt="Tamara" class="img-tamara">
                                             </button>
                                         </div>
@@ -176,7 +165,7 @@
                                         </button>
                                         <div class="rmz-btn-wrap">
                                             <button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                                                اشترك الآن (60 ر.س)
+                                                اشترك الآن (55 ر.س)
                                             </button>
                                         </div>
                                     </div>
@@ -187,7 +176,7 @@
                         <!-- الوجه الخلفي (تفاصيل 3 أشهر) -->
                         <div class="flip-card-back product-card featured">
                             <div class="back-card-header">
-                                <h3>✨ تفاصيل اشتراك شاهد VIP (ترفيهي) - 3 أشهر</h3>
+                                <h3>🟢 تفاصيل عرض اليوم الوطني - شاهد VIP (3 أشهر)</h3>
                                 <button type="button" class="btn-flip-back" onclick="toggleCardFlip('flipContainer3m')">
                                     <i data-lucide="x" size="16"></i> إغلاق
                                 </button>
@@ -234,133 +223,7 @@
                                 </button>
                                 <div class="rmz-btn-wrap" style="margin-top: 6px;">
                                     <button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                                        اشترك الآن (60 ر.س)
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. بطاقة سنة كاملة -->
-                <div class="flip-card-container single-card" id="flipContainer1y" style="display: none;">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front product-card featured">
-                            <div class="product-image-wrap">
-                                <span class="product-tag featured-tag">الأكثر طلباً وتوفيراً 👑</span>
-                                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="شاهد VIP (سنة كاملة)" class="product-banner-img">
-                            </div>
-                            <div class="product-info">
-                                <div class="product-header-details">
-                                    <div class="product-title-badge large-title">👑 شاهد VIP (سنة كاملة) - على إيميلك الشخصي</div>
-                                    <div class="product-desc-box">
-                                        <i data-lucide="check-circle" size="16" style="color: var(--primary);"></i>
-                                        <span>تفعيل فوري رسمي وخاص بك 100%</span>
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="price-box large-price">
-                                        <span class="current-price">180</span>
-                                        <span class="currency">ر.س</span>
-                                        <span class="old-price">450 ر.س</span>
-                                    </div>
-
-                                    <div class="card-payments-box">
-                                        <span class="card-payments-label">طرق الدفع المتاحة</span>
-                                        <div class="card-payments-grid">
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183130.png" alt="Mada"></div>
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183055.png" alt="Apple Pay"></div>
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183155.png" alt="Visa"></div>
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183255.png" alt="Mastercard"></div>
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_182948.png" alt="STC Pay"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-installment-box">
-                                        <div class="card-installment-title">قسطها عبر تابي أو تمارا</div>
-                                        <div class="card-pay-today-banner">
-                                            <div class="card-pay-today-tag">
-                                                <i data-lucide="zap" size="14"></i>
-                                                <span>ادفع اليوم:</span>
-                                            </div>
-                                            <div class="card-pay-today-amount">55 ريال فقط</div>
-                                        </div>
-                                        <div class="card-installment-btns">
-                                            <button type="button" onclick="openGatewayModal('1y', 'tabby')" class="card-inst-btn">
-                                                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183233.png" alt="Tabby" class="img-tabby">
-                                            </button>
-                                            <button type="button" onclick="openGatewayModal('1y', 'tamara')" class="card-inst-btn">
-                                                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183018.png" alt="Tamara" class="img-tamara">
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-action-buttons">
-                                        <button type="button" class="btn-details-flip" onclick="toggleCardFlip('flipContainer1y')">
-                                            <i data-lucide="rotate-cw" size="14"></i> التفاصيل
-                                        </button>
-                                        <div class="rmz-btn-wrap">
-                                            <button data-rmz-product="61070" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                                                اشترك الآن (180 ر.س)
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- الوجه الخلفي (تفاصيل سنة كاملة) -->
-                        <div class="flip-card-back product-card featured">
-                            <div class="back-card-header">
-                                <h3>👑 تفاصيل اشتراك شاهد VIP (ترفيهي) - سنة كاملة</h3>
-                                <button type="button" class="btn-flip-back" onclick="toggleCardFlip('flipContainer1y')">
-                                    <i data-lucide="x" size="16"></i> إغلاق
-                                </button>
-                            </div>
-
-                            <div class="back-card-scroll-body">
-                                <p class="back-hero-subtitle">عالم من الترفيه يتبعك أينما كنت.. خصوصية تامة، وبدون إعلانات!</p>
-                                <p class="back-text-p">امتلك حسابك الخاص والمستقل تماماً، مفعّل رسميًا على بريدك الإلكتروني الشخصي، واستمتع بأضخم مكتبة محتوى عربي وعالمي في المنطقة وفق أعلى معايير الجودة.</p>
-
-                                <h4>🌟 مميزات الاشتراك:</h4>
-                                <ul class="back-features-list">
-                                    <li>🎬 <strong>مكتبة ضخمة:</strong> جميع المسلسلات والأفلام العربية والعالمية + إصدارات "أعمال شاهد الأصلية" الحصرية.</li>
-                                    <li>📺 <strong>محتوى هائل:</strong> وصول لأكثر من 40,000 حلقة من أفضل البرامج والدراما.</li>
-                                    <li>🚫 <strong>تجربة صافية:</strong> مشاهدة مستمرة بدون أي فواصل إعلانية مزعجة.</li>
-                                    <li>🎥 <strong>أعلى جودة:</strong> استمتع بدقة Full HD لتجربة بصرية سينمائية.</li>
-                                    <li>⬇️ <strong>المشاهدة دون إنترنت:</strong> خاصية التحميل لمتابعة أعمالك المفضلة في أي وقت وأي مكان.</li>
-                                    <li>🌍 <strong>متاح عالمياً:</strong> يمكنك المشاهدة من أي دولة في العالم دون قيود.</li>
-                                </ul>
-
-                                <h4>📱 الأجهزة المدعومة:</h4>
-                                <p class="back-text-p">الاشتراك يعمل بكفاءة عالية على جميع أجهزتك المفضلة: (الجوال 📱 – الآيباد 📱 – التابلت 📱 – اللابتوب 💻 – الكمبيوتر 🖥️ – التلفزيون الذكي 📺)</p>
-
-                                <h4>⚠️ حدود الأجهزة والقيود (حسب سياسة المنصة):</h4>
-                                <p class="back-text-p">لضمان استقرار الخدمة والالتزام بسياسات منصة "شاهد"، يرجى ملاحظة الآتي:</p>
-                                <ul class="back-features-list">
-                                    <li><strong>بدون محتوى رياضي:</strong> الباقة مخصصة للترفيه فقط (أفلام ومسلسلات) ولا تشمل قنوات SSC أو الدوري السعودي.</li>
-                                    <li><strong>عدد الأجهزة:</strong> يمكنك تسجيل الدخول في أجهزة متعددة، ولكن المشاهدة المتزامنة تقتصر على:
-                                        <br>• جهازي (2) جوال/تابلت.
-                                        <br>• شاشتين (2) تلفزيون ذكي.
-                                    </li>
-                                </ul>
-
-                                <h4>🛠️ طريقة التفعيل والضمان:</h4>
-                                <ul class="back-features-list">
-                                    <li>يتم التفعيل مباشرة على إيميلك الشخصي لضمان الخصوصية التامة لسجل مشاهداتك.</li>
-                                    <li>اشتراك رسمي ونظامي 100% يضمن لك الاستمرارية طوال الفترة المحددة (12 شهراً).</li>
-                                    <li>دعم فني متواصل لضمان أفضل تجربة مستخدم.</li>
-                                </ul>
-                            </div>
-
-                            <div class="back-card-footer">
-                                <button type="button" class="btn-return-front" onclick="toggleCardFlip('flipContainer1y')">
-                                    <i data-lucide="arrow-right" size="14"></i> العودة لصفحة المنتج
-                                </button>
-                                <div class="rmz-btn-wrap" style="margin-top: 6px;">
-                                    <button data-rmz-product="61070" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                                        اشترك الآن (180 ر.س)
+                                        اشترك الآن (55 ر.س)
                                     </button>
                                 </div>
                             </div>
@@ -371,7 +234,7 @@
             </div>
         </section>
 
-        <!-- 6. قسم المقارنة السريعة -->
+        <!-- 5. قسم المقارنة السريعة -->
         <section class="email-features-section">
             <div class="email-sec-header">
                 <h2>🔐 مقارنة الخصوصية والتحكم</h2>
@@ -428,7 +291,7 @@
             </div>
         </section>
 
-        <!-- 7. الأسئلة الشائعة -->
+        <!-- 6. الأسئلة الشائعة -->
         <section class="faq-section">
             <h2 class="mini-section-title">الأسئلة الشائعة</h2>
             <div class="faq-wrapper">
@@ -448,24 +311,24 @@
                 </div>
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>كم يستغرق وقت التفعيل بعد الدفع؟</span>
+                        <span>كم يستغرق وقت التفعيل بعد الدفع في عروض اليوم الوطني؟</span>
                         <i data-lucide="chevron-down" class="chevron" size="14"></i>
                     </div>
-                    <div class="faq-answer">يتم تجهيز الطلبات وتفعيلها في وقت قياسي يتراوح عادة من 15 دقيقة إلى ساعات قليلة كحد أقصى بعد تأكيد الدفع.</div>
+                    <div class="faq-answer">رغم الإقبال المرتفع على العروض، يتم تجهيز الطلبات وتفعيلها في وقت قياسي يتراوح عادة من 15 دقيقة إلى ساعات قليلة كحد أقصى بعد تأكيد الدفع.</div>
                 </div>
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>هل يوجد ضمان على الاشتراك؟</span>
+                        <span>هل يوجد ضمان على الاشتراك خلال العرض؟</span>
                         <i data-lucide="chevron-down" class="chevron" size="14"></i>
                     </div>
-                    <div class="faq-answer">نعم، نقدم ضماناً كاملاً يغطي استمرارية الاشتراك طوال المدة المحددة للمنتج.</div>
+                    <div class="faq-answer">نعم، نقدم ضماناً كاملاً يغطي استمرارية الاشتراك طوال 90 يوماً بالكامل.</div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- 8. الفوتر والسياسات المكتملة -->
+    <!-- 7. الفوتر والسياسات المكتملة -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
@@ -511,7 +374,7 @@
 
     <!-- الشريط السفلي للجوال -->
     <div class="mobile-cta">
-        <a href="#" class="mobile-nav-btn mobile-btn-subscriptions"><i data-lucide="shopping-bag" size="13"></i><span>الاشتراكات</span></a>
+        <a href="#" class="mobile-nav-btn mobile-btn-subscriptions"><i data-lucide="shopping-bag" size="13"></i><span>طلب العرض</span></a>
         <a href="https://wa.me/966551040375" class="mobile-nav-btn mobile-btn-support" target="_blank"><i data-lucide="headphones" size="13"></i><span>خدمة العملاء</span></a>
         <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')"><i data-lucide="clock" size="16"></i></button>
         <a href="https://wa.me/966551040375" target="_blank" class="mobile-btn-icon-wa"><i data-lucide="message-circle" size="16"></i></a>
@@ -519,7 +382,7 @@
 
     <a href="https://wa.me/966551040375" target="_blank" class="floating-whatsapp-btn"><i data-lucide="message-circle" size="26"></i></a>
 
-    <!-- النوافذ المنبثقة الشاملة -->
+    <!-- نافذة توثيق المتجر -->
     <div class="modal-overlay" id="trustVerifiedModal">
         <div class="modal-card" style="max-width: 400px; text-align: center;">
             <div class="modal-header" style="justify-content: flex-end; border: none; padding-bottom: 0;">
@@ -535,6 +398,7 @@
         </div>
     </div>
 
+    <!-- نافذة تفاصيل التقسيط التفاعلية (تابي / تمارا) -->
     <div class="modal-overlay" id="installmentModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -544,19 +408,19 @@
             <div class="timeline-container">
                 <div class="timeline-title" id="installmentGatewayTitle">جدول دفعات الأقساط على 4 دفعات:</div>
                 <div class="installments-grid">
-                    <div class="inst-step"><span>اليوم</span><strong id="mPrice1">18 ر.س</strong></div>
-                    <div class="inst-step"><span>شهر 2</span><strong id="mPrice2">18 ر.س</strong></div>
-                    <div class="inst-step"><span>شهر 3</span><strong id="mPrice3">18 ر.س</strong></div>
-                    <div class="inst-step"><span>شهر 4</span><strong id="mPrice4">18 ر.س</strong></div>
+                    <div class="inst-step"><span>اليوم</span><strong id="mPrice1">14 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 2</span><strong id="mPrice2">14 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 3</span><strong id="mPrice3">14 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 4</span><strong id="mPrice4">14 ر.س</strong></div>
                 </div>
                 <div class="inst-total">
                     <span>إجمالي المبلغ:</span>
-                    <strong id="modalTotalSum" style="color: var(--primary);">72 ريال</strong>
+                    <strong id="modalTotalSum" style="color: var(--primary);">56 ريال</strong>
                 </div>
             </div>
             <div class="modal-saudi-note">🇸🇦 خدمة التقسيط متاحة لعملاء المملكة العربية السعودية فقط.</div>
             <button class="btn-whatsapp-inst" onclick="proceedToWhatsAppInstallment()">
-                <i data-lucide="credit-card" size="16"></i> اطلب رابط التقسيط الآن
+                <i data-lucide="credit-card" size="16"></i> اطلب رابط التقسيط الآن عبر الواتساب
             </button>
         </div>
     </div>
@@ -662,7 +526,7 @@
         </div>
     </div>
 
-    <!-- نافذة سياسة الضمان الشاملة -->
+    <!-- نافذة سياسة الضمان الشاملة بالكامل -->
     <div class="modal-overlay" id="warrantyModal">
         <div class="modal-card" style="max-width: 600px; max-height: 85vh;">
             <div class="modal-header">
@@ -673,7 +537,7 @@
                 <p>تغطية الضمان الشامل من NEXORA SA:</p>
                 <h4>أولاً: نطاق ومدات الضمان</h4>
                 <ul>
-                    <li>يضمن المتجر استمرارية اشتراك العميل واستقراره طوال الفترة الزمنية المحددة للمنتج بشكل كامل (90 يوماً لباقة 3 أشهر / 12 شهراً لباقة السنة).</li>
+                    <li>يضمن المتجر استمرارية اشتراك العميل واستقراره طوال الفترة الزمنية المحددة للمنتج بشكل كامل (90 يوماً لباقة 3 أشهر).</li>
                 </ul>
                 <h4>ثانياً: شروط استحقاق الضمان</h4>
                 <ul>
@@ -731,7 +595,6 @@
                 <p>ويختلف نطاق ومدة الضمان حسب المنتج، ويتم توضيح ذلك في صفحة المنتج قبل إتمام عملية الشراء. على سبيل المثال:</p>
                 <ul>
                     <li><strong>اشتراك 3 أشهر:</strong> ضمان لمدة 90 يومًا.</li>
-                    <li><strong>اشتراك سنة:</strong> ضمان لمدة 12 شهرًا.</li>
                 </ul>
                 <p>يشمل الضمان المشاكل المتعلقة بالاشتراك نفسه خلال مدة الضمان المحددة، وفق طبيعة المنتج. ولا يشمل الضمان:</p>
                 <ul>

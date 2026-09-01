@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nexorasa | عروض اليوم الوطني - متجر اشتراكات شاهد VIP الرسمي</title>
-    <meta name="description" content="عروض اليوم الوطني من متجر Nexorasa - احصل على اشتراك شاهد VIP رسمي ومضمون 3 أشهر بسعر 55 ر.س فقط بتفعيل مباشر على حسابك الشخصي.">
+    <meta name="description" content="عروض اليوم الوطني من متجر Nexorasa - احصل على اشتراك شاهد VIP رسمي ومضمون 3 أشهر بسعر 55 ر.س فقط بتفعيل مباشر على حسابك الشخصي (البريد الإلكتروني).">
     
     <!-- الخطوط والأيقونات -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,24 +20,27 @@
 <body>
     <div class="ambient-glow"></div>
 
-    <!-- شريط اليوم الوطني العلوي -->
+    <!-- شريط اليوم الوطني العلوي بخلفية خضراء غامقة ونص أبيض -->
     <div class="national-day-bar">
         <span>🇸🇦 عروض اليوم الوطني - لفترة محدودة جداً! 🇸🇦</span>
     </div>
 
-    <!-- 1. الهيدر العلوي -->
+    <!-- 1. الهيدر العلوي المتناسق (الشعار في النص، الأزرار باليسار) -->
     <header>
         <div class="header-container">
+            <div class="header-spacer"></div>
+            
             <a href="#" class="brand-logo">
                 <img src="https://c.top4top.io/p_3877h1xkz1.png" alt="Nexorasa Logo" class="logo-img">
             </a>
-            <div class="header-actions">
-                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleAppTheme()" title="تبديل الوضع">
-                    <i data-lucide="sun" id="themeIcon" size="16"></i>
+
+            <div class="header-actions-left">
+                <button type="button" class="trust-badge-btn mini-badge" onclick="openPolicyModal('trustVerifiedModal')">
+                    <i data-lucide="shield-check" size="12"></i>
+                    <span>موثوق 🇸🇦</span>
                 </button>
-                <button type="button" class="trust-badge-btn" onclick="openPolicyModal('trustVerifiedModal')">
-                    <i data-lucide="shield-check" size="14"></i>
-                    <span>متجر موثوق 🇸🇦</span>
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleAppTheme()" title="تبديل الوضع">
+                    <i data-lucide="sun" id="themeIcon" size="15"></i>
                 </button>
             </div>
         </div>
@@ -54,12 +57,12 @@
             
             <h1 class="hero-title">
                 اشتراك شاهد VIP رسمي 100%<br>
-                <span class="gradient-text">على إيميلك الشخصي مباشرة! 🎬✨</span>
+                <span class="gradient-text">على حسابك الشخصي (البريد الإلكتروني)! 🎬✨</span>
             </h1>
 
             <p class="hero-description">
                 تعبت من انقطاع البث، وتغير كلمة السر، أو أحد يخرب عليك سجل متابعتك؟ مع <strong>NEXORA SA</strong>، ما تشتري حساب مشترك مع غرباء! 
-                نحن نفعل لك الاشتراك رسمياً <span class="text-highlight">على حسابك الشخصي (بريدك الإلكتروني)</span> بأقوى عروض اليوم الوطني!
+                نحن نفعل لك الاشتراك رسمياً <span class="text-highlight">على حسابك الشخصي (البريد الإلكتروني)</span> بأقوى عروض اليوم الوطني!
                 <br><br>
                 استمتع بجميع الأفلام والمسلسلات وأعمال شاهد الأصلية بأعلى جودة <strong>Full HD</strong> وبدون أي إعلانات مزعجة.. <strong>حسابك لك وحدك، بتحكم كامل وراحة بال مطلقة!</strong>
             </p>
@@ -87,7 +90,7 @@
             </div>
             <div class="review-bar-wrapper">
                 <div class="review-bar-card" id="reviewBarCard">
-                    <p class="review-bar-text" id="reviewBarText">"تعبت من الحسابات المشتركة وكل شوي يخرجني بالنص! الحمد لله تفعل على إيميلي الشخصي وسرعة التفعيل ما أخذت 5 دقائق."</p>
+                    <p class="review-bar-text" id="reviewBarText">"تعبت من الحسابات المشتركة وكل شوي يخرجني بالنص! الحمد لله تفعل على حسابي الشخصي (البريد الإلكتروني) وسرعة التفعيل ما أخذت 5 دقائق."</p>
                     <div class="review-bar-author" id="reviewBarAuthor">
                         <span>نورة السبيعي</span> — <span class="stars">★★★★★</span> (عميل موثق)
                     </div>
@@ -99,7 +102,7 @@
         <section class="products-section">
             <div class="section-title-box">
                 <h2>🟢 عرض اليوم الوطني الاستثنائي 🇸🇦</h2>
-                <p>اشتراك 3 أشهر كاملة وتفعيل رسمي على حسابك الشخصي بسعر حصري</p>
+                <p>اشتراك 3 أشهر كاملة وتفعيل رسمي على حسابك الشخصي (البريد الإلكتروني)</p>
             </div>
 
             <div class="single-product-wrapper">
@@ -114,7 +117,7 @@
                             </div>
                             <div class="product-info">
                                 <div class="product-header-details">
-                                    <div class="product-title-badge large-title nd-title">✨ شاهد VIP (3 أشهر) - عرض اليوم الوطني 🇸🇦</div>
+                                    <div class="product-title-badge large-title nd-title">✨ شاهد VIP (3 أشهر) - على حسابك الشخصي (البريد الإلكتروني) 🇸🇦</div>
                                     <div class="product-desc-box">
                                         <i data-lucide="check-circle" size="16" style="color: var(--primary);"></i>
                                         <span>تفعيل فوري رسمي وخاص بك 100%</span>
@@ -184,7 +187,7 @@
 
                             <div class="back-card-scroll-body">
                                 <p class="back-hero-subtitle">عالم من الترفيه يتبعك أينما كنت.. خصوصية تامة، وبدون إعلانات!</p>
-                                <p class="back-text-p">امتلك حسابك الخاص والمستقل تماماً، مفعّل رسميًا على بريدك الإلكتروني الشخصي، واستمتع بأضخم مكتبة محتوى عربي وعالمي في المنطقة وفق أعلى معايير الجودة.</p>
+                                <p class="back-text-p">امتلك حسابك الخاص والمستقل تماماً، مفعّل رسميًا على حسابك الشخصي (البريد الإلكتروني)، واستمتع بأضخم مكتبة محتوى عربي وعالمي في المنطقة وفق أعلى معايير الجودة.</p>
 
                                 <h4>🌟 مميزات الاشتراك:</h4>
                                 <ul class="back-features-list">
@@ -211,7 +214,7 @@
 
                                 <h4>🛠️ طريقة التفعيل والضمان:</h4>
                                 <ul class="back-features-list">
-                                    <li>يتم التفعيل مباشرة على إيميلك الشخصي لضمان الخصوصية التامة لسجل مشاهداتك.</li>
+                                    <li>يتم التفعيل مباشرة على حسابك الشخصي (البريد الإلكتروني) لضمان الخصوصية التامة لسجل مشاهداتك.</li>
                                     <li>اشتراك رسمي ونظامي 100% يضمن لك الاستمرارية طوال الفترة المحددة (90 يوماً).</li>
                                     <li>دعم فني متواصل لضمان أفضل تجربة مستخدم.</li>
                                 </ul>
@@ -238,7 +241,7 @@
         <section class="email-features-section">
             <div class="email-sec-header">
                 <h2>🔐 مقارنة الخصوصية والتحكم</h2>
-                <p>فرق شاسع بين التفعيل الرسمي على إيميلك والحسابات المشتركة</p>
+                <p>فرق شاسع بين التفعيل الرسمي على حسابك الشخصي (البريد الإلكتروني) والحسابات المشتركة</p>
             </div>
 
             <div class="mobile-comp-wrapper">
@@ -246,7 +249,7 @@
                     <thead>
                         <tr>
                             <th class="th-feature">الميزة</th>
-                            <th class="th-personal">على إيميلك 👑</th>
+                            <th class="th-personal">على حسابك الشخصي (البريد الإلكتروني) 👑</th>
                             <th class="th-shared">حساب مشترك ❌</th>
                         </tr>
                     </thead>
@@ -287,7 +290,7 @@
 
             <div class="vs-summary-banner">
                 <i data-lucide="sparkles" size="16" style="color: var(--primary);"></i>
-                <span>اشتراكك على إيميلك = <strong>خصوصية + تحكم + راحة بال 🔒✨</strong></span>
+                <span>اشتراكك على حسابك الشخصي (البريد الإلكتروني) = <strong>خصوصية + تحكم + راحة بال 🔒✨</strong></span>
             </div>
         </section>
 
@@ -297,10 +300,10 @@
             <div class="faq-wrapper">
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>لماذا التفعيل على إيميلي الخاص أفضل من الحسابات المشتركة؟</span>
+                        <span>لماذا التفعيل على حسابي الشخصي (البريد الإلكتروني) أفضل من الحسابات المشتركة؟</span>
                         <i data-lucide="chevron-down" class="chevron" size="14"></i>
                     </div>
-                    <div class="faq-answer">لأن التفعيل على بريدك الإلكتروني الشخصي يمنحك خصوصية كاملة، أماناً تاماً لحسابك، وتحكماً كاملاً دون أن يشاركك أحد في إعداداتك أو سجلك.</div>
+                    <div class="faq-answer">لأن التفعيل على حسابك الشخصي (البريد الإلكتروني) يمنحك خصوصية كاملة، أماناً تاماً لحسابك، وتحكماً كاملاً دون أن يشاركك أحد في إعداداتك أو سجلك.</div>
                 </div>
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
@@ -372,12 +375,22 @@
         <div class="footer-bottom">جميع الحقوق محفوظة © Nexorasa 2026</div>
     </footer>
 
-    <!-- الشريط السفلي للجوال -->
+    <!-- الشريط السفلي للجوال (زر طلب العرض يفتح الدفع الفوري) -->
     <div class="mobile-cta">
-        <a href="#" class="mobile-nav-btn mobile-btn-subscriptions"><i data-lucide="shopping-bag" size="13"></i><span>طلب العرض</span></a>
-        <a href="https://wa.me/966551040375" class="mobile-nav-btn mobile-btn-support" target="_blank"><i data-lucide="headphones" size="13"></i><span>خدمة العملاء</span></a>
-        <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')"><i data-lucide="clock" size="16"></i></button>
-        <a href="https://wa.me/966551040375" target="_blank" class="mobile-btn-icon-wa"><i data-lucide="message-circle" size="16"></i></a>
+        <button type="button" class="mobile-nav-btn mobile-btn-subscriptions" data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
+            <i data-lucide="shopping-bag" size="13"></i>
+            <span>طلب العرض (55 ر.س)</span>
+        </button>
+        <a href="https://wa.me/966551040375" class="mobile-nav-btn mobile-btn-support" target="_blank">
+            <i data-lucide="headphones" size="13"></i>
+            <span>خدمة العملاء</span>
+        </a>
+        <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')">
+            <i data-lucide="clock" size="16"></i>
+        </button>
+        <a href="https://wa.me/966551040375" target="_blank" class="mobile-btn-icon-wa">
+            <i data-lucide="message-circle" size="16"></i>
+        </a>
     </div>
 
     <a href="https://wa.me/966551040375" target="_blank" class="floating-whatsapp-btn"><i data-lucide="message-circle" size="26"></i></a>
@@ -425,7 +438,7 @@
         </div>
     </div>
 
-    <!-- سياسة الخصوصية بالكامل -->
+    <!-- سياسة الخصوصية بالكامل دون اختصار -->
     <div class="modal-overlay" id="privacyModal">
         <div class="modal-card" style="max-width: 650px; max-height: 85vh;">
             <div class="modal-header">

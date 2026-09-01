@@ -34,7 +34,7 @@ function toggleCardFlip(containerId) {
     }
 }
 
-// مصفوفة التقييمات الضخمة والشاملة للتبديل التلقائي المستمر
+// مصفوفة التقييمات التلقائية المحدثة (بدون نجوم لضمان رسمية الواجهة)
 const masterReviewsList = [
     { name: "نورة السبيعي", comment: "تعبت من الحسابات المشتركة وكل شوي يخرجني بالنص! الحمد لله تفعل على حسابي الشخصي (البريد الإلكتروني) وسرعة التفعيل ما أخذت 5 دقائق. خصوصية وراحة بال." },
     { name: "منيرة القحطاني", comment: "أخيرًا كملت المسلسل بدون ما يغير أحد الباسوورد علي أو يخرب سجلي! التفعيل رسمي وعلى حسابي الشخصي مباشرة." },
@@ -81,7 +81,7 @@ function rotateSingleReview() {
     setTimeout(() => {
         const currentItem = shuffledReviews[reviewPointer % shuffledReviews.length];
         textEl.innerText = `"${currentItem.comment}"`;
-        authorEl.innerHTML = `<span>${currentItem.name}</span> — <span class="stars">★★★★★</span> (عميل موثق)`;
+        authorEl.innerHTML = `<span>${currentItem.name}</span> — <span class="verified-label">(عميل موثق)</span>`;
         card.style.opacity = '1';
         reviewPointer++;
     }, 400);

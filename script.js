@@ -75,6 +75,31 @@ function proceedToWhatsAppInstallment() {
     window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
 }
 
+/* العبارات المتحركة الـ 9 */
+const rotatingFeaturesList = [
+    "يعمل على التلفزيون وجميع أجهزتك",
+    "باقة المسلسلات والأفلام الحصرية",
+    "دعم جودات Full HD و 4K سينمائية",
+    "خصوصية مطلقة بسجل مشاهداتك",
+    "تشغيل مستقر بدون انقطاع نهائياً",
+    "تحميل المحتوى للمشاهدة أوفلاين",
+    "تجربة ترفيهية خالية من الإعلانات",
+    "متابعة أحدث الأعمال والدراما",
+    "تحكم كامل بإعدادات حسابك الخاص"
+];
+
+let featurePointer = 0;
+function rotateFeatureText() {
+    const el = document.getElementById('rotatingFeatureText');
+    if (!el) return;
+    el.style.opacity = '0';
+    setTimeout(() => {
+        featurePointer = (featurePointer + 1) % rotatingFeaturesList.length;
+        el.innerText = rotatingFeaturesList[featurePointer];
+        el.style.opacity = '1';
+    }, 400);
+}
+
 const masterReviewsList = [
     { name: "نورة السبيعي", comment: "تعبت من الحسابات المشتركة وكل شوي يخرجني بالنص! الحمد لله تفعل على حسابي الشخصي (البريد الإلكتروني) وسرعة التفعيل ما أخذت 5 دقائق. خصوصية وراحة بال." },
     { name: "منيرة القحطاني", comment: "أخيرًا كملت المسلسل بدون ما يغير أحد الباسوورد علي أو يخرب سجلي! التفعيل رسمي وعلى حسابي الشخصي (البريد الإلكتروني) مباشرة." },
@@ -112,6 +137,7 @@ function toggleFaq(element) {
 document.addEventListener('DOMContentLoaded', function() {
     rotateSingleReview();
     setInterval(rotateSingleReview, 5000);
+    setInterval(rotateFeatureText, 3500);
 });
 
 window.onclick = function(event) {

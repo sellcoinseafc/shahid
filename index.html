@@ -46,22 +46,41 @@
 
     <main class="main-container">
 
-        <!-- 2. بطاقة المنتج الموحدة إطار أبيض وظل بارز مدمج -->
+        <!-- 2. بطاقة المنتج الموحدة بالترتيب والتعديل الجديد -->
         <section class="product-unified-card">
             
-            <!-- صورة المنتج المدمجة -->
+            <!-- أ: صورة المنتج المدمجة -->
             <div class="main-image-card">
                 <span class="product-badge-tag">عرض اليوم الوطني 🌴 55 ر.س</span>
                 <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="اشتراك شاهد VIP (3 أشهر)" class="main-product-img">
             </div>
 
-            <!-- عنوان المنتج والتفعيل -->
-            <div class="white-frame-card">
-                <h1 class="product-title">اشتراك شاهد VIP (3 أشهر)</h1>
-                <span class="sub-badge-text">تفعيل على حسابك الشخصي</span>
+            <!-- ب: الإطار الرمادي لعنوان المنتج وعبارة التفعيل البيضاء بالخارج -->
+            <div class="title-subtitle-wrapper">
+                <div class="gray-frame-card">
+                    <h1 class="product-title">اشتراك شاهد VIP (3 أشهر)</h1>
+                </div>
+                <span class="sub-badge-text-white">تفعيل على حسابك الشخصي</span>
             </div>
 
-            <!-- بنر تمارا وتابي -->
+            <!-- ج: زر اطلب الآن وتوضيح السعر (55 ريال) -->
+            <div class="main-checkout-wrap">
+                <button type="button" class="btn-checkout-white-compact" data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
+                    <i data-lucide="zap" size="20"></i>
+                    <span>اطلب الآن (55 ريال)</span>
+                </button>
+            </div>
+
+            <!-- د: طرق الدفع المتاحة (مدى، Apple Pay، وغيرها) -->
+            <div class="payments-supported-grid">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183130.png" alt="Mada">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183055.png" alt="Apple Pay">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183155.png" alt="Visa">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183255.png" alt="Mastercard">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_182948.png" alt="STC Pay">
+            </div>
+
+            <!-- هـ: بنر ومربع أقساط تمارا وتابي (في الأسفل) -->
             <div class="installment-promo-banner">
                 <div class="inst-banner-title-sm">اختر طريقة التقسيط (تمارا أو تابي)</div>
                 <div class="inst-banner-text">قسطها على 4 دفعات (ادفع اليوم 14 ريال فقط)</div>
@@ -75,22 +94,6 @@
                 </div>
             </div>
 
-            <!-- زر ادفع الآن المكبر الفاخر -->
-            <div class="main-checkout-wrap">
-                <button type="button" class="btn-checkout-white-xl" data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                    <i data-lucide="zap" size="26"></i>
-                    <span>ادفع الآن (55 ريال)</span>
-                </button>
-            </div>
-
-            <!-- طرق الدفع المتاحة -->
-            <div class="payments-supported-grid">
-                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183130.png" alt="Mada">
-                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183055.png" alt="Apple Pay">
-                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183155.png" alt="Visa">
-                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183255.png" alt="Mastercard">
-                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_182948.png" alt="STC Pay">
-            </div>
         </section>
 
         <!-- 3. التفاصيل الشاملة والمميزات للمنتج -->
@@ -145,7 +148,7 @@
             </button>
         </section>
 
-        <!-- 4. قسم التقييمات بالمربع الأبيض والخط الأسود -->
+        <!-- 4. قسم التقييمات الأبيض والخط الأسود المفضّل -->
         <section class="compact-review-section">
             <div class="review-header-white">
                 <span>⭐ 4.9 من 5.0 (أكثر من +1,200 تقييم معتمد) ⭐</span>
@@ -293,7 +296,7 @@
         <div class="footer-bottom">جميع الحقوق محفوظة © Nexorasa 2026</div>
     </footer>
 
-    <!-- 8. شريط الدفع الثابت المحدث للجوال (صغير متناسق بنسبة 7% من الشاشة) -->
+    <!-- 8. شريط الشراء المحدث للجوال - نحيف ومتناسق بحدود 7% من ارتفاع الشاشة -->
     <div class="mobile-sticky-checkout">
         <div class="sticky-price-info">
             <span class="sticky-price-label">المبلغ الإجمالي</span>
@@ -332,7 +335,7 @@
         </div>
     </div>
 
-    <!-- 9. كافة السياسات الكاملة 100% بدون أي حذف أو اختصار -->
+    <!-- 9. النوافذ المنبثقة الشاملة لكافة السياسات بالنص الكامل 100% -->
     
     <!-- نافذة الشروط والأحكام الكاملة -->
     <div class="modal-overlay" id="termsModal">
@@ -547,7 +550,7 @@
 
                 <h4>3. حدود المسؤولية وإخلاء الطرف:</h4>
                 <p style="color: #f87171; font-weight: 800; margin-bottom: 4px;">تنبيه هام:</p>
-                <p>لا يتحمل المتجر أي مسؤولية قانونية أو مالية ناتجة عن المشتريات الخاطئة التي يقوم بها العميل بسبب الإهمال، أو سوء الفهم، أو إدخال معلومات خاطئة (مثل: اسم الحساب، نوع المنصة، أو بيانات الشحن). تقع على عاتق العميل بالكامل مراجعة تفاصيل الطلب قبل تأكيد الدفع، ولن يؤدي الخطأ من طرف العميل إلى أي حق في التعويض أو الاستبدال.</p>
+                <p>لا يتحمل المتجر أي مسؤولية قانونية أو مالية ناتجة عن المشتريات الخاطئة التي يقوم بها العميل بسبب الإهمال، أو سوء الفهم، أو إدخال معلومات خاطئة (مثل: اسم الحساب، نوع المنصة، أو بيانات الشحن). تقع على عاتق العميل بالكامل مراجعة تفاصيل الطلب قبل تأكيد الدفع، ولن يؤدي الأخطاء من طرف العميل إلى أي حق في التعويض أو الاستبدال.</p>
             </div>
         </div>
     </div>

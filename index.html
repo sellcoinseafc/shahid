@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nexorasa | عروض اليوم الوطني - متجر اشتراكات شاهد VIP الرسمي</title>
-    <meta name="description" content="عروض اليوم الوطني من متجر Nexorasa - احصل على اشتراك شاهد VIP رسمي ومضمون 3 أشهر بسعر 55 ر.س فقط بتفعيل مباشر على حسابك الشخصي (البريد الإلكتروني).">
+    <title>Nexorasa | اشتراك شاهد VIP (3 أشهر)</title>
+    <meta name="description" content="اشتراك شاهد VIP (3 أشهر) رسمي ومضمون بتفعيل مباشر على حسابك الشخصي.">
     
-    <!-- خط Cairo الحديث لضمان رسم الحروف والوضوح -->
+    <!-- خط Cairo المعتمد -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- الأيقونات -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- RMZ Embed Script الرسمي -->
+    <!-- RMZ Embed Script الرسمي للدفع المباشر -->
     <script src="https://embed-js.rmz.gg/rmz-embed.js"></script>
 
     <link rel="stylesheet" href="style.css">
@@ -20,12 +22,12 @@
 <body>
     <div class="ambient-glow"></div>
 
-    <!-- شريط اليوم الوطني العلوي بخلفية خضراء غامقة صريحة ونص أبيض -->
+    <!-- شريط اليوم الوطني العلوي -->
     <div class="national-day-bar">
         <span>🇸🇦 عروض اليوم الوطني - لفترة محدودة جداً! 🇸🇦</span>
     </div>
 
-    <!-- 1. الهيدر العلوي الاحترافي (الشعار بالنص، وزر الوضع أقصى اليسار) -->
+    <!-- 1. الهيدر العلوي -->
     <header>
         <div class="header-container">
             <div class="header-spacer"></div>
@@ -44,196 +46,121 @@
 
     <main class="main-container">
 
-        <!-- 2. صندوق النبذة الترويجي الرسمي -->
-        <section class="banner-info-box ultra-highlight nd-theme">
-            <div class="hero-badge nd-badge">
-                <span>عروض اليوم الوطني 🇸🇦 - الخيار الأكثر أماناً وراحة بال</span>
-            </div>
+        <!-- 2. بطاقة المنتج الموحدة إطار أبيض وظل بارز مدمج -->
+        <section class="product-unified-card">
             
-            <h1 class="hero-title">
-                اشتراك شاهد VIP رسمي 100%<br>
-                <span class="gradient-text">على حسابك الشخصي (البريد الإلكتروني)</span>
-            </h1>
+            <!-- صورة المنتج المدمجة -->
+            <div class="main-image-card">
+                <span class="product-badge-tag">عرض اليوم الوطني 🌴 55 ر.س</span>
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="اشتراك شاهد VIP (3 أشهر)" class="main-product-img">
+            </div>
 
-            <p class="hero-description">
-                تعبت من انقطاع البث، وتغير كلمة السر، أو أحد يخرب عليك سجل متابعتك؟ مع <strong>NEXORA SA</strong>، ما تشتري حساب مشترك مع غرباء! 
-                نحن نفعل لك الاشتراك رسمياً <span class="text-highlight">على حسابك الشخصي (البريد الإلكتروني)</span> بأقوى عروض اليوم الوطني!
-                <br><br>
-                استمتع بجميع الأفلام والمسلسلات وأعمال شاهد الأصلية بأعلى جودة <strong>Full HD</strong> وبدون أي إعلانات مزعجة.. <strong>حسابك لك وحدك، بتحكم كامل وراحة بال مطلقة!</strong>
-            </p>
+            <!-- عنوان المنتج والتفعيل -->
+            <div class="white-frame-card">
+                <h1 class="product-title">اشتراك شاهد VIP (3 أشهر)</h1>
+                <span class="sub-badge-text">تفعيل على حسابك الشخصي</span>
+            </div>
 
-            <div class="banner-features-grid">
-                <div class="banner-feature-card">
-                    <div class="banner-feature-icon"><i data-lucide="lock" size="16"></i></div>
-                    <div class="banner-feature-text">خصوصية 100% لسجلك</div>
+            <!-- بنر تمارا وتابي -->
+            <div class="installment-promo-banner">
+                <div class="inst-banner-title-sm">اختر طريقة التقسيط (تمارا أو تابي)</div>
+                <div class="inst-banner-text">قسطها على 4 دفعات (ادفع اليوم 14 ريال فقط)</div>
+                <div class="inst-banner-btns">
+                    <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="inst-mini-btn" title="التقسيط عبر تمارا">
+                        <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183018.png" alt="تمارا">
+                    </button>
+                    <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="inst-mini-btn" title="التقسيط عبر تابي">
+                        <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183233.png" alt="تابي">
+                    </button>
                 </div>
-                <div class="banner-feature-card">
-                    <div class="banner-feature-icon"><i data-lucide="zap" size="16"></i></div>
-                    <div class="banner-feature-text">استقرار وبدون انقطاع بث</div>
-                </div>
-                <div class="banner-feature-card">
-                    <div class="banner-feature-icon"><i data-lucide="shield-check" size="16"></i></div>
-                    <div class="banner-feature-text">ضمان يغطي كامل المدة</div>
-                </div>
+            </div>
+
+            <!-- زر ادفع الآن المكبر الفاخر -->
+            <div class="main-checkout-wrap">
+                <button type="button" class="btn-checkout-white-xl" data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
+                    <i data-lucide="zap" size="26"></i>
+                    <span>ادفع الآن (55 ريال)</span>
+                </button>
+            </div>
+
+            <!-- طرق الدفع المتاحة -->
+            <div class="payments-supported-grid">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183130.png" alt="Mada">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183055.png" alt="Apple Pay">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183155.png" alt="Visa">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183255.png" alt="Mastercard">
+                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_182948.png" alt="STC Pay">
             </div>
         </section>
 
-        <!-- 3. شريط التقييمات التلقائي المستمر -->
-        <section class="compact-review-section">
-            <div class="review-header-mini">
-                <span>تقييم 4.9 من 5.0 (أكثر من +1,200 تقييم معتمد)</span>
-            </div>
-            <div class="review-bar-wrapper">
-                <div class="review-bar-card" id="reviewBarCard">
-                    <p class="review-bar-text" id="reviewBarText">"تعبت من الحسابات المشتركة وكل شوي يخرجني بالنص! الحمد لله تفعل على حسابي الشخصي (البريد الإلكتروني) وسرعة التفعيل ما أخذت 5 دقائق."</p>
-                    <div class="review-bar-author" id="reviewBarAuthor">
-                        <span>نورة السبيعي</span> — <span class="verified-label">(عميل موثق)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. قسم عرض اليوم الوطني المخصص (بطاقة المنتج الاحترافية) -->
-        <section class="products-section">
-            <div class="section-title-box">
-                <h2>🟢 عرض اليوم الوطني الاستثنائي 🇸🇦</h2>
-                <p>اشتراك 3 أشهر كاملة وتفعيل رسمي على حسابك الشخصي (البريد الإلكتروني)</p>
-            </div>
-
-            <div class="single-product-wrapper">
+        <!-- 3. التفاصيل الشاملة والمميزات للمنتج -->
+        <section class="additional-details-section">
+            <h2 class="section-block-title">تفاصيل ومميزات الاشتراك</h2>
+            
+            <div class="details-content-box collapsible-content" id="fullDetailsBox">
                 
-                <!-- بطاقة عرض اليوم الوطني الاحترافية -->
-                <div class="flip-card-container single-card active-plan" id="flipContainer3m">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front product-card featured nd-card-border">
-                            <div class="product-image-wrap">
-                                <span class="product-tag featured-tag nd-tag">عرض اليوم الوطني 🌴 55 ر.س</span>
-                                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786735057/file_00000000e82081f4a1c48e477597927a.png" alt="شاهد VIP (3 أشهر) - عرض اليوم الوطني" class="product-banner-img">
-                            </div>
-                            
-                            <div class="product-info">
-                                <div class="product-header-details">
-                                    <div class="product-title-badge large-title nd-title">شاهد VIP (3 أشهر) - على حسابك الشخصي (البريد الإلكتروني)</div>
-                                    <div class="product-desc-box">
-                                        <i data-lucide="check-circle" size="15" style="color: var(--primary);"></i>
-                                        <span>تفعيل فوري رسمي وخاص بك 100%</span>
-                                    </div>
-                                </div>
+                <div class="detail-block">
+                    <h3>🌟 مميزات الاشتراك:</h3>
+                    <ul class="styled-list">
+                        <li>🎬 <strong>مكتبة ضخمة:</strong> جميع المسلسلات والأفلام العربية والعالمية + إصدارات "أعمال شاهد الأصلية" الحصرية.</li>
+                        <li>📺 <strong>محتوى هائل:</strong> وصول لأكثر من 40,000 حلقة من أفضل البرامج والدراما.</li>
+                        <li>🚫 <strong>تجربة صافية:</strong> مشاهدة مستمرة بدون أي فواصل إعلانية مزعجة.</li>
+                        <li>🎥 <strong>أعلى جودة:</strong> استمتع بدقة Full HD لتجربة بصرية سينمائية.</li>
+                        <li>⬇️ <strong>المشاهدة دون إنترنت:</strong> خاصية التحميل لمتابعة أعمالك المفضلة في أي وقت وأي مكان.</li>
+                        <li>🌍 <strong>متاح عالمياً:</strong> يمكنك المشاهدة من أي دولة في العالم دون قيود.</li>
+                    </ul>
+                </div>
 
-                                <div class="product-footer">
-                                    <div class="price-box large-price">
-                                        <span class="current-price">55</span>
-                                        <span class="currency">ر.س</span>
-                                        <span class="old-price">115 ر.س</span>
-                                    </div>
+                <div class="detail-block">
+                    <h3>📱 الأجهزة المدعومة:</h3>
+                    <p>الاشتراك يعمل بكفاءة عالية على جميع أجهزتك المفضلة:</p>
+                    <p class="highlight-text-sm">( الجوال 📱 – الآيباد 📱 – التابلت 📱 – اللابتوب 💻 – الكمبيوتر 🖥️ – التلفزيون الذكي 📺 )</p>
+                </div>
 
-                                    <div class="card-payments-box">
-                                        <span class="card-payments-label">طرق الدفع المتاحة</span>
-                                        <div class="card-payments-grid">
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183130.png" alt="Mada"></div>
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183055.png" alt="Apple Pay"></div>
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686869/IMG_20260813_183155.png" alt="Visa"></div>
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183255.png" alt="Mastercard"></div>
-                                            <div class="card-pay-item"><img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_182948.png" alt="STC Pay"></div>
-                                        </div>
-                                    </div>
+                <div class="detail-block">
+                    <h3>⚠️ حدود الأجهزة والقيود (حسب سياسة المنصة):</h3>
+                    <p>لضمان استقرار الخدمة والالتزام بسياسات منصة "شاهد"، يرجى ملاحظة الآتي:</p>
+                    <ul class="styled-list">
+                        <li><strong>بدون محتوى رياضي:</strong> الباقة مخصصة للترفيه فقط (أفلام ومسلسلات) ولا تشمل قنوات SSC أو الدوري السعودي.</li>
+                        <li><strong>عدد الأجهزة:</strong> يمكنك تسجيل الدخول في أجهزة متعددة، ولكن المشاهدة المتزامنة تقتصر على:
+                            <br>• جهازي (2) جوال/تابلت.
+                            <br>• شاشتين (2) تلفزيون ذكي.
+                        </li>
+                    </ul>
+                </div>
 
-                                    <!-- أزرار التقسيط الاحترافية (تابي وتمارا) -->
-                                    <div class="card-installment-box">
-                                        <div class="card-installment-title">قسطها عبر تابي أو تمارا على 4 دفعات</div>
-                                        <div class="card-pay-today-banner">
-                                            <div class="card-pay-today-tag">
-                                                <i data-lucide="zap" size="14"></i>
-                                                <span>ادفع اليوم:</span>
-                                            </div>
-                                            <div class="card-pay-today-amount">14 ريال فقط</div>
-                                        </div>
-                                        <div class="card-installment-btns">
-                                            <button type="button" onclick="openGatewayModal('3m', 'tabby')" class="card-inst-btn" title="التقسيط عبر تابي">
-                                                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183233.png" alt="Tabby" class="img-tabby">
-                                            </button>
-                                            <button type="button" onclick="openGatewayModal('3m', 'tamara')" class="card-inst-btn" title="التقسيط عبر تمارا">
-                                                <img src="https://res.cloudinary.com/g78zhcv4/image/upload/v1786686868/IMG_20260813_183018.png" alt="Tamara" class="img-tamara">
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-action-buttons">
-                                        <button type="button" class="btn-details-flip" onclick="toggleCardFlip('flipContainer3m')">
-                                            <i data-lucide="rotate-cw" size="14"></i> التفاصيل
-                                        </button>
-                                        <div class="rmz-btn-wrap">
-                                            <button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                                                اشترك الآن (55 ر.س)
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- الوجه الخلفي للتفاصيل -->
-                        <div class="flip-card-back product-card featured">
-                            <div class="back-card-header">
-                                <h3>🟢 تفاصيل عرض اليوم الوطني - شاهد VIP (3 أشهر)</h3>
-                                <button type="button" class="btn-flip-back" onclick="toggleCardFlip('flipContainer3m')">
-                                    <i data-lucide="x" size="16"></i> إغلاق
-                                </button>
-                            </div>
-
-                            <div class="back-card-scroll-body">
-                                <p class="back-hero-subtitle">عالم من الترفيه يتبعك أينما كنت.. خصوصية تامة، وبدون إعلانات!</p>
-                                <p class="back-text-p">امتلك حسابك الخاص والمستقل تماماً، مفعّل رسميًا على حسابك الشخصي (البريد الإلكتروني)، واستمتع بأضخم مكتبة محتوى عربي وعالمي في المنطقة وفق أعلى معايير الجودة.</p>
-
-                                <h4>مميزات الاشتراك:</h4>
-                                <ul class="back-features-list">
-                                    <li><strong>مكتبة ضخمة:</strong> جميع المسلسلات والأفلام العربية والعالمية + إصدارات "أعمال شاهد الأصلية" الحصرية.</li>
-                                    <li><strong>محتوى هائل:</strong> وصول لأكثر من 40,000 حلقة من أفضل البرامج والدراما.</li>
-                                    <li><strong>تجربة صافية:</strong> مشاهدة مستمرة بدون أي فواصل إعلانية مزعجة.</li>
-                                    <li><strong>أعلى جودة:</strong> استمتع بدقة Full HD لتجربة بصرية سينمائية.</li>
-                                    <li><strong>المشاهدة دون إنترنت:</strong> خاصية التحميل لمتابعة أعمالك المفضلة في أي وقت وأي مكان.</li>
-                                    <li><strong>متاح عالمياً:</strong> يمكنك المشاهدة من أي دولة في العالم دون قيود.</li>
-                                </ul>
-
-                                <h4>الأجهزة المدعومة:</h4>
-                                <p class="back-text-p">الاشتراك يعمل بكفاءة عالية على جميع أجهزتك المفضلة: (الجوال – الآيباد – التابلت – اللابتوب – الكمبيوتر – التلفزيون الذكي)</p>
-
-                                <h4>حدود الأجهزة والقيود (حسب سياسة المنصة):</h4>
-                                <p class="back-text-p">لضمان استقرار الخدمة والالتزام بسياسات منصة "شاهد"، يرجى ملاحظة الآتي:</p>
-                                <ul class="back-features-list">
-                                    <li><strong>بدون محتوى رياضي:</strong> الباقة مخصصة للترفيه فقط (أفلام ومسلسلات) ولا تشمل قنوات SSC أو الدوري السعودي.</li>
-                                    <li><strong>عدد الأجهزة:</strong> يمكنك تسجيل الدخول في أجهزة متعددة، ولكن المشاهدة المتزامنة تقتصر على:
-                                        <br>• جهازي (2) جوال/تابلت.
-                                        <br>• شاشتين (2) تلفزيون ذكي.
-                                    </li>
-                                </ul>
-
-                                <h4>طريقة التفعيل والضمان:</h4>
-                                <ul class="back-features-list">
-                                    <li>يتم التفعيل مباشرة على حسابك الشخصي (البريد الإلكتروني) لضمان الخصوصية التامة لسجل مشاهداتك.</li>
-                                    <li>اشتراك رسمي ونظامي 100% يضمن لك الاستمرارية طوال الفترة المحددة (90 يوماً).</li>
-                                    <li>دعم فني متواصل لضمان أفضل تجربة مستخدم.</li>
-                                </ul>
-                            </div>
-
-                            <div class="back-card-footer">
-                                <button type="button" class="btn-return-front" onclick="toggleCardFlip('flipContainer3m')">
-                                    <i data-lucide="arrow-right" size="14"></i> العودة لصفحة المنتج
-                                </button>
-                                <div class="rmz-btn-wrap" style="margin-top: 6px;">
-                                    <button data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-                                        اشترك الآن (55 ر.س)
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="detail-block">
+                    <h3>🛠️ طريقة التفعيل والضمان:</h3>
+                    <ul class="styled-list">
+                        <li>يتم التفعيل مباشرة على إيميلك الشخصي لضمان الخصوصية التامة لسجل مشاهداتك.</li>
+                        <li>اشتراك رسمي ونظامي 100% يضمن لك الاستمرارية طوال الفترة المحددة (90 يوماً).</li>
+                        <li>دعم فني متواصل لضمان أفضل تجربة مستخدم.</li>
+                    </ul>
                 </div>
 
             </div>
+
+            <button type="button" class="btn-toggle-more" onclick="toggleDescription('fullDetailsBox', this)">
+                <span>عرض المزيد من التفاصيل ↓</span>
+            </button>
         </section>
 
-        <!-- 5. قسم المقارنة السريعة -->
+        <!-- 4. قسم التقييمات بالمربع الأبيض والخط الأسود -->
+        <section class="compact-review-section">
+            <div class="review-header-white">
+                <span>⭐ 4.9 من 5.0 (أكثر من +1,200 تقييم معتمد) ⭐</span>
+            </div>
+            <div class="review-bar-wrapper-white">
+                <div class="review-bar-card-white" id="reviewBarCard">
+                    <p class="review-bar-text-dark" id="reviewBarText">"تعبت من الحسابات المشتركة وكل شوي يخرجني بالنص! الحمد لله تفعل على حسابي الشخصي (البريد الإلكتروني) وسرعة التفعيل ما أخذت 5 دقائق."</p>
+                    <div class="review-bar-author-dark" id="reviewBarAuthor">
+                        <span>نورة السبيعي</span> — <span class="verified-label-dark">(عميل موثق ✔️)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. قسم مقارنة الخصوصية -->
         <section class="email-features-section">
             <div class="email-sec-header">
                 <h2>🔐 مقارنة الخصوصية والتحكم</h2>
@@ -251,7 +178,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="td-feature">التحكم وببيانات الدخول</td>
+                            <td class="td-feature">التحكم ببيانات الدخول</td>
                             <td class="td-personal"><i data-lucide="check-circle-2" size="14"></i> تحكم كامل</td>
                             <td class="td-shared"><i data-lucide="x-circle" size="14"></i> تحكم مفقود</td>
                         </tr>
@@ -282,11 +209,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <div class="vs-summary-banner">
-                <i data-lucide="shield-check" size="16" style="color: var(--primary);"></i>
-                <span>اشتراكك على حسابك الشخصي (البريد الإلكتروني) = <strong>خصوصية + تحكم + راحة بال</strong></span>
             </div>
         </section>
 
@@ -327,7 +249,7 @@
 
     </main>
 
-    <!-- 7. الفوتر والسياسات المكتملة -->
+    <!-- 7. الفوتر مع الروابط -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
@@ -371,27 +293,19 @@
         <div class="footer-bottom">جميع الحقوق محفوظة © Nexorasa 2026</div>
     </footer>
 
-    <!-- الشريط السفلي للجوال (طلب العرض يدعم الدفع المباشر RMZ) -->
-    <div class="mobile-cta">
-        <button type="button" class="mobile-nav-btn mobile-btn-subscriptions" data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
-            <i data-lucide="shopping-bag" size="14"></i>
-            <span>طلب العرض (55 ر.س)</span>
+    <!-- 8. شريط الدفع الثابت المحدث للجوال (صغير متناسق بنسبة 7% من الشاشة) -->
+    <div class="mobile-sticky-checkout">
+        <div class="sticky-price-info">
+            <span class="sticky-price-label">المبلغ الإجمالي</span>
+            <span class="sticky-price-num">55 ر.س</span>
+        </div>
+        <button type="button" class="btn-sticky-checkout" data-rmz-product="29956" data-rmz-key="rmz_pk_1701_hYJycm6zIUMEdb491fVxML2D" data-rmz-theme="auto" data-rmz-config='{"hideQuantity":true,"hideCoupon":true}'>
+            <span>اطلب الآن</span>
+            <i data-lucide="zap" size="16"></i>
         </button>
-        <a href="https://wa.me/966551040375" class="mobile-nav-btn mobile-btn-support" target="_blank">
-            <i data-lucide="headphones" size="14"></i>
-            <span>خدمة العملاء</span>
-        </a>
-        <button type="button" class="mobile-btn-icon-only" onclick="openPolicyModal('hoursModal')">
-            <i data-lucide="clock" size="16"></i>
-        </button>
-        <a href="https://wa.me/966551040375" target="_blank" class="mobile-btn-icon-wa">
-            <i data-lucide="message-circle" size="16"></i>
-        </a>
     </div>
 
-    <a href="https://wa.me/966551040375" target="_blank" class="floating-whatsapp-btn"><i data-lucide="message-circle" size="26"></i></a>
-
-    <!-- نافذة تفاصيل التقسيط التفاعلية (تابي / تمارا) -->
+    <!-- نافذة تقسيط تمارا وتابي -->
     <div class="modal-overlay" id="installmentModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -401,14 +315,14 @@
             <div class="timeline-container">
                 <div class="timeline-title" id="installmentGatewayTitle">جدول دفعات الأقساط على 4 دفعات:</div>
                 <div class="installments-grid">
-                    <div class="inst-step"><span>اليوم</span><strong id="mPrice1">14 ر.س</strong></div>
-                    <div class="inst-step"><span>شهر 2</span><strong id="mPrice2">14 ر.س</strong></div>
-                    <div class="inst-step"><span>شهر 3</span><strong id="mPrice3">14 ر.س</strong></div>
-                    <div class="inst-step"><span>شهر 4</span><strong id="mPrice4">14 ر.س</strong></div>
+                    <div class="inst-step"><span>اليوم</span><strong>14 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 2</span><strong>14 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 3</span><strong>14 ر.س</strong></div>
+                    <div class="inst-step"><span>شهر 4</span><strong>14 ر.س</strong></div>
                 </div>
                 <div class="inst-total">
                     <span>إجمالي المبلغ:</span>
-                    <strong id="modalTotalSum" style="color: var(--primary);">56 ريال</strong>
+                    <strong style="color: var(--primary);">56 ريال</strong>
                 </div>
             </div>
             <div class="modal-saudi-note">🇸🇦 خدمة التقسيط متاحة لعملاء المملكة العربية السعودية فقط.</div>
@@ -418,9 +332,128 @@
         </div>
     </div>
 
-    <!-- 1. سياسة الخصوصية بالكامل دون أي نقص -->
+    <!-- 9. كافة السياسات الكاملة 100% بدون أي حذف أو اختصار -->
+    
+    <!-- نافذة الشروط والأحكام الكاملة -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-card" style="max-width: 700px; max-height: 88vh;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i data-lucide="file-text" size="18"></i>الشروط والأحكام – متجر NEXORA SA</h3>
+                <button class="modal-close-x" onclick="closePolicyModal('termsModal')"><i data-lucide="x" size="16"></i></button>
+            </div>
+            <div class="modal-body-content">
+                <p>مرحبًا بك في NEXORA SA، وجهتك للحصول على الاشتراكات والخدمات الرقمية والترفيهية.</p>
+                <p>باستخدامك لمتجر NEXORA SA أو إتمام أي عملية شراء، فإنك تقر بقراءة هذه الشروط والأحكام والموافقة عليها.</p>
+
+                <h4>1. طبيعة خدمات المتجر</h4>
+                <p>يقدم متجر NEXORA SA خدمات واشتراكات رقمية وترفيهية يتم تفعيلها أو توفيرها للعميل وفق آلية كل منتج.</p>
+                <p>المنصات والخدمات التي يتم الاشتراك بها مملوكة ومدارة من قبل الشركات والجهات المالكة لها، ولا يدعي متجر NEXORA SA ملكية أو تطوير هذه المنصات.</p>
+                <p>تخضع كل خدمة لشروط وسياسات الجهة المالكة لها، وقد تختلف طريقة التفعيل أو الاستخدام حسب المنتج.</p>
+
+                <h4>2. مسؤولية المتجر</h4>
+                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج.</p>
+                <p>لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة، بما في ذلك:</p>
+                <ul>
+                    <li>تحديثات المنصة أو التطبيق.</li>
+                    <li>تغيير المزايا أو المحتوى.</li>
+                    <li>تغيير سياسات الاستخدام.</li>
+                    <li>تغيير الأسعار أو الباقات.</li>
+                    <li>إيقاف أو تعليق بعض الخدمات من قبل المنصة.</li>
+                    <li>أي قيود أو تغييرات تفرضها الجهة المالكة للخدمة.</li>
+                </ul>
+                <p>وفي حال كان المنتج مشمولًا بضمان، يتم التعامل مع المشكلة وفق سياسة الضمان الخاصة بالمنتج.</p>
+
+                <h4>3. سياسة الاسترجاع والاسترداد</h4>
+                <p>نظرًا لطبيعة المنتجات الرقمية، فإن جميع عمليات الشراء تخضع للشروط التالية:</p>
+                <ul>
+                    <li>يمكن طلب الاسترجاع خلال 24 ساعة من تنفيذ الطلب في حال وجود مشكلة في التفعيل أو عدم تمكن المتجر من توفير الخدمة المتفق عليها.</li>
+                    <li>بعد نجاح التفعيل وبدء استخدام الاشتراك، لا يمكن استرجاع قيمة المنتج باعتباره منتجًا رقميًا تم تسليمه وتفعيله.</li>
+                    <li>لا يحق للعميل طلب استرداد بسبب تغيير أو تحديث صادر من المنصة المالكة للخدمة.</li>
+                    <li>في حال وجود ضمان للمنتج، يتم تطبيق سياسة الضمان بدلًا من الاسترجاع، متى كانت المشكلة مشمولة بالضمان.</li>
+                </ul>
+
+                <h4>4. سياسة الضمان</h4>
+                <p>الضمان، عند وجوده، يشمل الاشتراك الذي تم شراؤه وتفعيله من خلال متجر NEXORA SA فقط.</p>
+                <p>ويختلف نطاق ومدة الضمان حسب المنتج، ويتم توضيح ذلك في صفحة المنتج قبل إتمام عملية الشراء.</p>
+                <p>على سبيل المثال:</p>
+                <ul>
+                    <li>اشتراك 3 أشهر: ضمان لمدة 90 يومًا.</li>
+                    <li>اشتراك سنة: ضمان لمدة 12 شهرًا.</li>
+                </ul>
+                <p>يشمل الضمان المشاكل المتعلقة بالاشتراك نفسه خلال مدة الضمان المحددة، وفق طبيعة المنتج.</p>
+                <p>ولا يشمل الضمان:</p>
+                <ul>
+                    <li>تحديثات أو تغييرات المنصة.</li>
+                    <li>تغيير سياسات أو أنظمة مزود الخدمة.</li>
+                    <li>تغيير المحتوى أو المزايا.</li>
+                    <li>الأعطال العامة الناتجة عن المنصة.</li>
+                    <li>إيقاف أو تعليق الخدمة من قبل الشركة المالكة.</li>
+                    <li>المشاكل الناتجة عن استخدام العميل للخدمة بطريقة مخالفة لشروط المنصة.</li>
+                    <li>أي مشكلة لا تتعلق مباشرة بالاشتراك الذي تم شراؤه من المتجر.</li>
+                </ul>
+                <p>وفي حال حدوث مشكلة مشمولة بالضمان، يعمل المتجر على تقديم الحل المناسب وفق حالة الاشتراك وسياسة المنتج.</p>
+
+                <h4>5. مسؤولية العميل</h4>
+                <p>يتحمل العميل مسؤولية:</p>
+                <ul>
+                    <li>تقديم البيانات الصحيحة المطلوبة لتنفيذ الطلب.</li>
+                    <li>التأكد من صحة البريد الإلكتروني أو بيانات الحساب قبل إرسالها.</li>
+                    <li>المحافظة على بيانات الدخول وعدم مشاركتها بشكل يخالف شروط الخدمة.</li>
+                    <li>استخدام الاشتراك وفق شروط وسياسات المنصة المالكة للخدمة.</li>
+                </ul>
+                <p>ولا يتحمل المتجر مسؤولية أي مشكلة ناتجة عن بيانات غير صحيحة أو استخدام مخالف من جانب العميل.</p>
+
+                <h4>6. طبيعة الاشتراكات والخدمات</h4>
+                <p>قد تختلف تفاصيل كل اشتراك من منتج إلى آخر، مثل:</p>
+                <ul>
+                    <li>مدة الاشتراك.</li>
+                    <li>طريقة التفعيل.</li>
+                    <li>الأجهزة المدعومة.</li>
+                    <li>عدد المشاهدات أو الاستخدامات المتزامنة.</li>
+                    <li>المزايا المتاحة.</li>
+                    <li>مدة الضمان.</li>
+                </ul>
+                <p>لذلك يجب على العميل قراءة تفاصيل المنتج وشروطه الخاصة قبل إتمام عملية الشراء.</p>
+
+                <h4>7. التغييرات الصادرة من مزود الخدمة</h4>
+                <p>يحق للمنصة أو الشركة المالكة للخدمة إجراء أي تحديثات أو تغييرات على خدماتها وفق سياساتها الخاصة.</p>
+                <p>ولا يترتب على هذه التغييرات التزام على NEXORA SA بتوفير مزايا إضافية أو تمديد مدة الاشتراك، ما لم تكن المشكلة ضمن نطاق الضمان الموضح في صفحة المنتج.</p>
+
+                <h4>8. إتمام عملية الشراء</h4>
+                <p>إتمام عملية الشراء من متجر NEXORA SA يعني أن العميل:</p>
+                <ul>
+                    <li>اطلع على تفاصيل المنتج.</li>
+                    <li>اطلع على مدة الاشتراك والضمان إن وجد.</li>
+                    <li>اطلع على طريقة التفعيل.</li>
+                    <li>قرأ الشروط والأحكام.</li>
+                    <li>وافق على سياسة الاسترجاع والضمان.</li>
+                </ul>
+
+                <h4>9. التواصل والدعم</h4>
+                <p>في حال وجود مشكلة في الطلب، يمكن للعميل التواصل مع خدمة العملاء خلال مدة الضمان، عند وجود ضمان، مع تزويد فريق الدعم ببيانات الطلب اللازمة للتحقق من الحالة.</p>
+                <p>نسعى دائمًا إلى معالجة المشاكل المتعلقة بالطلبات بأسرع وقت ممكن وتقديم الحل المناسب وفق طبيعة كل حالة.</p>
+
+                <h4>10. ملخص الشروط</h4>
+                <p>باختصار:</p>
+                <ul>
+                    <li>المنتجات الرقمية لا تُسترد بعد نجاح التفعيل.</li>
+                    <li>يمكن طلب الاسترجاع خلال 24 ساعة في حالات مشاكل التفعيل وفق الشروط.</li>
+                    <li>الضمان، إن وجد، يخص الاشتراك نفسه فقط.</li>
+                    <li>مدة الضمان تختلف حسب المنتج ويتم توضيحها في صفحة المنتج.</li>
+                    <li>تحديثات وتغييرات المنصة لا تقع ضمن مسؤولية المتجر.</li>
+                    <li>يجب استخدام الخدمة وفق شروط المنصة المالكة لها.</li>
+                    <li>شراء أي منتج يعني موافقة العميل على هذه الشروط والأحكام.</li>
+                </ul>
+
+                <p style="margin-top: 12px; color: var(--accent-gold); font-weight: 800;">📌 تنويه: هدف NEXORA SA هو تقديم تجربة شراء وتفعيل سهلة وموثوقة، ونحرص على معالجة أي مشكلة تتعلق بطلبات عملائنا وفق سياسة كل منتج وبما يضمن التعامل معها بصورة واضحة وعادلة قدر الإمكان.</p>
+                <p style="font-size: 0.75rem; opacity: 0.8; margin-top: 4px;">آخر تحديث: 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة سياسة الخصوصية الكاملة -->
     <div class="modal-overlay" id="privacyModal">
-        <div class="modal-card" style="max-width: 650px; max-height: 85vh;">
+        <div class="modal-card" style="max-width: 700px; max-height: 88vh;">
             <div class="modal-header">
                 <h3 class="modal-title"><i data-lucide="lock" size="18"></i>سياسة الخصوصية – متجر NEXORA SA</h3>
                 <button class="modal-close-x" onclick="closePolicyModal('privacyModal')"><i data-lucide="x" size="16"></i></button>
@@ -490,17 +523,17 @@
                 <p>قد يتم تحديث سياسة الخصوصية من وقت لآخر بما يتناسب مع التغييرات التشغيلية أو التقنية أو المتطلبات النظامية.</p>
                 <p>سيتم نشر النسخة المحدثة من السياسة على هذه الصفحة، ويُنصح بمراجعتها بشكل دوري.</p>
 
-                <p style="margin-top: 10px; color: var(--accent-gold); font-weight: 800;">📌 تنويه: باستخدامك لمتجر NEXORA SA، فإنك تقر باطلاعك على سياسة الخصوصية هذه وفهمك لكيفية جمع واستخدام وحماية بياناتك وفقًا لما هو موضح فيها.</p>
+                <p style="margin-top: 12px; color: var(--accent-gold); font-weight: 800;">📌 تنويه: باستخدامك لمتجر NEXORA SA، فإنك تقر باطلاعك على سياسة الخصوصية هذه وفهمك لكيفية جمع واستخدام وحماية بياناتك وفقًا لما هو موضح فيها.</p>
                 <p style="font-size: 0.75rem; opacity: 0.8; margin-top: 4px;">آخر تحديث: 2026</p>
             </div>
         </div>
     </div>
 
-    <!-- 2. سياسة الاسترجاع والاستبدال بالكامل دون أي نقص -->
+    <!-- نافذة سياسة الاسترجاع والاستبدال الكاملة -->
     <div class="modal-overlay" id="refundModal">
-        <div class="modal-card" style="max-width: 600px; max-height: 85vh;">
+        <div class="modal-card" style="max-width: 680px; max-height: 85vh;">
             <div class="modal-header">
-                <h3 class="modal-title"><i data-lucide="rotate-ccw" size="18"></i>سياسة الإسترجاع والإستبدال – متجر NEXORA SA</h3>
+                <h3 class="modal-title"><i data-lucide="rotate-ccw" size="18"></i>سياسة الإسترجاع والإستبدال</h3>
                 <button class="modal-close-x" onclick="closePolicyModal('refundModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="modal-body-content">
@@ -513,146 +546,47 @@
                 <p>في حال تعذر توفير منتج بديل أو معالجة الخلل الفني خلال مدة تتجاوز 48 ساعة من تقديم الطلب المستوفي للشروط، يحق للعميل الانتقال تلقائياً إلى خيار طلب رد الأموال.</p>
 
                 <h4>3. حدود المسؤولية وإخلاء الطرف:</h4>
-                <p style="color: var(--accent-gold); font-weight: 800;">تنبيه هام:</p>
+                <p style="color: #f87171; font-weight: 800; margin-bottom: 4px;">تنبيه هام:</p>
                 <p>لا يتحمل المتجر أي مسؤولية قانونية أو مالية ناتجة عن المشتريات الخاطئة التي يقوم بها العميل بسبب الإهمال، أو سوء الفهم، أو إدخال معلومات خاطئة (مثل: اسم الحساب، نوع المنصة، أو بيانات الشحن). تقع على عاتق العميل بالكامل مراجعة تفاصيل الطلب قبل تأكيد الدفع، ولن يؤدي الخطأ من طرف العميل إلى أي حق في التعويض أو الاستبدال.</p>
             </div>
         </div>
     </div>
 
-    <!-- 3. سياسة الضمان بالكامل دون أي نقص -->
+    <!-- نافذة سياسة الضمان الكاملة -->
     <div class="modal-overlay" id="warrantyModal">
-        <div class="modal-card" style="max-width: 600px; max-height: 85vh;">
+        <div class="modal-card" style="max-width: 680px; max-height: 85vh;">
             <div class="modal-header">
-                <h3 class="modal-title"><i data-lucide="shield-check" size="18"></i>🛡️ سياسة الضمان – متجر NEXORA SA</h3>
+                <h3 class="modal-title"><i data-lucide="shield-check" size="18"></i>🛡️ سياسة الضمان</h3>
                 <button class="modal-close-x" onclick="closePolicyModal('warrantyModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="modal-body-content">
-                <p>تغطية الضمان الشامل من NEXORA SA:</p>
-                <h4>أولاً: نطاق ومدات الضمان</h4>
+                <p>الضمان يشمل <strong>الاشتراك المفعّل فقط</strong>، ويغطي استمرارية الاشتراك خلال مدة الضمان المحددة للمنتج.</p>
+                
+                <h4 style="margin-top: 10px;">مدة الضمان:</h4>
                 <ul>
-                    <li>يضمن المتجر استمرارية اشتراك العميل واستقراره طوال الفترة الزمنية المحددة للمنتج بشكل كامل (90 يوماً لباقة 3 أشهر).</li>
+                    <li>اشتراك 3 أشهر: <strong>90 يومًا</strong></li>
+                    <li>اشتراك سنة: <strong>12 شهرًا</strong></li>
                 </ul>
-                <h4>ثانياً: شروط استحقاق الضمان</h4>
-                <ul>
-                    <li>يغطي الضمان الأعطال الناتجة عن الاشتراك نفسه أو توقفه قبل انتهاء المدة المحددة.</li>
-                    <li>يلتزم المتجر بإصلاح الخلل أو إعادة تفعيل الخدمة مجاناً طوال فترة الضمان.</li>
-                </ul>
-                <h4>ثالثاً: استثناءات الضمان</h4>
-                <ul>
-                    <li>لا يسري الضمان في حال قيام العميل بمخالفة شروط استخدام المنصة المالكة.</li>
-                    <li>لا يسري الضمان في حال مشاركة العميل لبيانات حسابه الشخصي مع أطراف ثالثة مما تسبب في حظره من المنصة.</li>
-                </ul>
+
+                <p style="margin-top: 12px; color: var(--accent-gold); font-weight: 800;">لا يشمل الضمان أي تحديثات أو تغييرات أو تعديلات تطرأ على منصة شاهد أو أنظمتها أو سياساتها، كما لا نتحمل مسؤولية أي تغييرات صادرة من المنصة نفسها.</p>
+                <p style="margin-top: 6px;">ويقتصر الضمان على الاشتراك الذي تم شراؤه من المتجر، ولا يشمل أي خدمات أو مشاكل خارج نطاق الاشتراك.</p>
             </div>
         </div>
     </div>
 
-    <!-- 4. الشروط والأحكام بالكامل دون أي نقص -->
-    <div class="modal-overlay" id="termsModal">
-        <div class="modal-card" style="max-width: 650px; max-height: 85vh;">
-            <div class="modal-header">
-                <h3 class="modal-title"><i data-lucide="file-text" size="18"></i>الشروط والأحكام – متجر NEXORA SA</h3>
-                <button class="modal-close-x" onclick="closePolicyModal('termsModal')"><i data-lucide="x" size="16"></i></button>
-            </div>
-            <div class="modal-body-content">
-                <p>مرحبًا بك في NEXORA SA، وجهتك للحصول على الاشتراكات والخدمات الرقمية والترفيهية.</p>
-                <p>باستخدامك لمتجر NEXORA SA أو إتمام أي عملية شراء، فإنك تقر بقراءة هذه الشروط والأحكام والموافقة عليها.</p>
-
-                <h4>1. طبيعة خدمات المتجر</h4>
-                <p>يقدم متجر NEXORA SA خدمات واشتراكات رقمية وترفيهية يتم تفعيلها أو توفيرها للعميل وفق آلية كل منتج.</p>
-                <p>المنصات والخدمات التي يتم الاشتراك بها مملوكة ومدارة من قبل الشركات والجهات المالكة لها، ولا يدعي متجر NEXORA SA ملكية أو تطوير هذه المنصات.</p>
-                <p>تخضع كل خدمة لشروط وسياسات الجهة المالكة لها، وقد تختلف طريقة التفعيل أو الاستخدام حسب المنتج.</p>
-
-                <h4>2. مسؤولية المتجر</h4>
-                <p>تقتصر مسؤولية NEXORA SA على تنفيذ الطلب وتفعيل أو توفير الاشتراك المتفق عليه حسب تفاصيل المنتج.</p>
-                <p>لا يتحمل المتجر مسؤولية أي تغييرات تصدر من المنصة أو مزود الخدمة، بما في ذلك:</p>
-                <ul>
-                    <li>تحديثات المنصة أو التطبيق.</li>
-                    <li>تغيير المزايا أو المحتوى.</li>
-                    <li>تغيير سياسات الاستخدام.</li>
-                    <li>تغيير الأسعار أو الباقات.</li>
-                    <li>إيقاف أو تعليق بعض الخدمات من قبل المنصة.</li>
-                    <li>أي قيود أو تغييرات تفرضها الجهة المالكة للخدمة.</li>
-                </ul>
-                <p>وفي حال كان المنتج مشمولًا بضمان، يتم التعامل مع المشكلة وفق سياسة الضمان الخاصة بالمنتج.</p>
-
-                <h4>3. سياسة الاسترجاع والاسترداد</h4>
-                <p>نظرًا لطبيعة المنتجات الرقمية، فإن جميع عمليات الشراء تخضع للشروط التالية:</p>
-                <ul>
-                    <li>يمكن طلب الاسترجاع خلال 24 ساعة من تنفيذ الطلب في حال وجود مشكلة في التفعيل أو عدم تمكن المتجر من توفير الخدمة المتفق عليها.</li>
-                    <li>بعد نجاح التفعيل وبدء استخدام الاشتراك، لا يمكن استرجاع قيمة المنتج باعتباره منتجًا رقميًا تم تسليمه وتفعيله.</li>
-                    <li>لا يحق للعميل طلب استرداد بسبب تغيير أو تحديث صادر من المنصة المالكة للخدمة.</li>
-                    <li>في حال وجود ضمان للمنتج، يتم تطبيق سياسة الضمان بدلًا من الاسترجاع، متى كانت المشكلة مشمولة بالضمان.</li>
-                </ul>
-
-                <h4>4. سياسة الضمان</h4>
-                <p>الضمان، عند وجوده، يشمل الاشتراك الذي تم شراؤه وتفعيله من خلال متجر NEXORA SA فقط.</p>
-                <p>ويختلف نطاق ومدة الضمان حسب المنتج، ويتم توضيح ذلك في صفحة المنتج قبل إتمام عملية الشراء. على سبيل المثال:</p>
-                <ul>
-                    <li><strong>اشتراك 3 أشهر:</strong> ضمان لمدة 90 يومًا.</li>
-                </ul>
-                <p>يشمل الضمان المشاكل المتعلقة بالاشتراك نفسه خلال مدة الضمان المحددة، وفق طبيعة المنتج. ولا يشمل الضمان:</p>
-                <ul>
-                    <li>تحديثات أو تغييرات المنصة.</li>
-                    <li>تغيير سياسات أو أنظمة مزود الخدمة.</li>
-                    <li>تغيير المحتوى أو المزايا.</li>
-                    <li>الأعطال العامة الناتجة عن المنصة.</li>
-                    <li>إيقاف أو تعليق الخدمة من قبل الشركة المالكة.</li>
-                    <li>المشاكل الناتجة عن استخدام العميل للخدمة بطريقة مخالفة لشروط المنصة.</li>
-                    <li>أي مشكلة لا تتعلق مباشرة بالاشتراك الذي تم شراؤه من المتجر.</li>
-                </ul>
-                <p>وفي حال حدوث مشكلة مشمولة بالضمان، يعمل المتجر على تقديم الحل المناسب وفق حالة الاشتراك وسياسة المنتج.</p>
-
-                <h4>5. مسؤولية العميل</h4>
-                <p>يتحمل العميل مسؤولية:</p>
-                <ul>
-                    <li>تقديم البيانات الصحيحة المطلوبة لتنفيذ الطلب.</li>
-                    <li>التأكد من صحة البريد الإلكتروني أو بيانات الحساب قبل إرسالها.</li>
-                    <li>المحافظة على بيانات الدخول وعدم مشاركتها بشكل يخالف شروط الخدمة.</li>
-                    <li>استخدام الاشتراك وفق شروط وسياسات المنصة المالكة للخدمة.</li>
-                </ul>
-                <p>ولا يتحمل المتجر مسؤولية أي مشكلة ناتجة عن بيانات غير صحيحة أو استخدام مخالف من جانب العميل.</p>
-
-                <h4>6. طبيعة الاشتراكات والخدمات</h4>
-                <p>قد تختلف تفاصيل كل اشتراك من منتج إلى آخر، مثل (مدة الاشتراك، طريقة التفعيل، الأجهزة المدعومة، عدد المشاهدات، المزايا المتاحة، ومدة الضمان). لذلك يجب على العميل قراءة تفاصيل المنتج وشروطه الخاصة قبل إتمام عملية الشراء.</p>
-
-                <h4>7. التغييرات الصادرة من مزود الخدمة</h4>
-                <p>يحق للمنصة أو الشركة المالكة للخدمة إجراء أي تحديثات أو تغييرات على خدماتها وفق سياساتها الخاصة. ولا يترتب على هذه التغييرات التزام على NEXORA SA بتوفير مزايا إضافية أو تمديد مدة الاشتراك، ما لم تكن المشكلة ضمن نطاق الضمان الموضح في صفحة المنتج.</p>
-
-                <h4>8. إتمام عملية الشراء</h4>
-                <p>إتمام عملية الشراء من متجر NEXORA SA يعني أن العميل اطلع على تفاصيل المنتج، مدة الاشتراك والضمان، طريقة التفعيل، قرأ الشروط والأحكام، ووافق على سياسة الاسترجاع والضمان.</p>
-
-                <h4>9. التواصل والدعم</h4>
-                <p>في حال وجود مشكلة في الطلب، يمكن للعميل التواصل مع خدمة العملاء خلال مدة الضمان، عند وجود ضمان، مع تزويد فريق الدعم ببيانات الطلب اللازمة للتحقق من الحالة.</p>
-
-                <h4>10. ملخص الشروط</h4>
-                <ul>
-                    <li>المنتجات الرقمية لا تُسترد بعد نجاح التفعيل.</li>
-                    <li>يمكن طلب الاسترجاع خلال 24 ساعة في حالات مشاكل التفعيل وفق الشروط.</li>
-                    <li>الضمان، إن وجد، يخص الاشتراك نفسه فقط.</li>
-                    <li>مدة الضمان تختلف حسب المنتج ويتم توضيحها في صفحة المنتج.</li>
-                    <li>تحديثات وتغييرات المنصة لا تقع ضمن مسؤولية المتجر.</li>
-                    <li>يجب استخدام الخدمة وفق شروط المنصة المالكة لها.</li>
-                    <li>شراء أي منتج يعني موافقة العميل على هذه الشروط والأحكام.</li>
-                </ul>
-
-                <p style="margin-top: 10px; color: var(--accent-gold); font-weight: 800;">📌 تنويه: هدف NEXORA SA هو تقديم تجربة شراء وتفعيل سهلة وموثوقة، ونحرص على معالجة أي مشكلة تتعلق بطلبات عملائنا وفق سياسة كل منتج وبما يضمن التعامل معها بصورة واضحة وعادلة قدر الإمكان.</p>
-                <p style="font-size: 0.75rem; opacity: 0.8; margin-top: 4px;">آخر تحديث: 2026</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5. ساعات العمل والتوثيق بالكامل -->
+    <!-- نافذة ساعات العمل الكاملة -->
     <div class="modal-overlay" id="hoursModal">
-        <div class="modal-card" style="text-align: center;">
+        <div class="modal-card" style="text-align: center; max-width: 520px;">
             <div class="modal-header">
-                <h3 class="modal-title"><i data-lucide="clock" size="18"></i>ساعات العمل والتوثيق 🕒</h3>
+                <h3 class="modal-title"><i data-lucide="clock" size="18"></i>ساعات عمل المتجر 🕒</h3>
                 <button class="modal-close-x" onclick="closePolicyModal('hoursModal')"><i data-lucide="x" size="16"></i></button>
             </div>
             <div class="modal-body-content" style="text-align: center; padding: 10px 0;">
-                <div style="font-size: 2rem; margin-bottom: 6px;">🇸🇦</div>
-                <h4 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 6px;">نحن في خدمتكم يوميًا!</h4>
-                <p style="font-size: 0.95rem; color: var(--primary); font-weight: 800; margin-bottom: 12px;">ساعات العمل: من 11:00 صباحًا حتى 3:00 فجراً (بتوقيت السعودية).</p>
-                <p style="font-size: 0.8rem; color: var(--text-pure); line-height: 1.5;">متجر NEXORA SA موثق رسمياً عبر وثيقة العمل الحر بالمملكة العربية السعودية.</p>
+                <div style="font-size: 2.2rem; margin-bottom: 6px;">🇸🇦</div>
+                <h4 style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 6px;">نحن في خدمتكم يوميًا على مدار الأسبوع!</h4>
+                <p style="font-size: 1rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; background: rgba(0, 224, 150, 0.08); padding: 8px; border-radius: 8px;">ساعات العمل: من 11 صباحًا حتى 3 فجراً.</p>
+                <p style="font-size: 0.85rem; color: var(--text-pure); line-height: 1.6;">سواء كنت تبحث عن منتجاتنا الرقمية أو ترغب في التواصل معنا، فريقنا جاهز لاستقبال طلباتك واستفساراتك في أي وقت ضمن هذه الساعات.</p>
+                <p style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 800; margin-top: 12px; border-top: 1px dashed var(--surface-card-border); padding-top: 8px;">📌 ملاحظة: الالتزام بهذه المواعيد يضمن حصولك على خدمة سريعة وفعّالة.</p>
             </div>
         </div>
     </div>

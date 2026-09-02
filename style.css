@@ -113,7 +113,7 @@ body:not(.light-mode) .logo-img { filter: brightness(0) invert(1); }
     font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 8px; z-index: 2;
 }
 
-/* الإطار الرمادي لعنوان المنتج والعبارة البيضاء تحته */
+/* الإطار الرمادي والعناصر المتحركة */
 .title-subtitle-wrapper {
     display: flex;
     flex-direction: column;
@@ -144,13 +144,31 @@ body.light-mode .gray-frame-card {
 body.light-mode .gray-frame-card .product-title {
     color: #0f172a !important;
 }
-.sub-badge-text-white {
+
+.rotating-sub-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    min-height: 44px;
+}
+.sub-badge-static {
     color: #ffffff !important;
     font-size: 0.85rem;
     font-weight: 800;
+    white-space: nowrap;
 }
-body.light-mode .sub-badge-text-white {
+body.light-mode .sub-badge-static {
     color: #059669 !important;
+}
+.sub-badge-rotating {
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 800;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.4s ease;
 }
 
 /* زر اطلب الآن المصغر */
@@ -221,7 +239,7 @@ body.light-mode .sub-badge-text-white {
 .styled-list li::before { content: "•"; position: absolute; right: 0; color: var(--primary); font-weight: bold; }
 .highlight-text-sm { color: var(--accent-gold); font-size: 0.78rem; font-weight: 800; margin-top: 4px; }
 
-/* قسم التقييمات المصغر والمدمج (أصبح أصغر حجماً وأكثر رشاقة بدون حيز زائد) */
+/* قسم التقييمات المصغر والمدمج */
 .compact-review-section { margin-top: 2px; }
 .review-header-white { text-align: center; margin-bottom: 4px; }
 .review-header-white span {
@@ -277,7 +295,7 @@ body:not(.light-mode) .footer-logo-img { filter: brightness(0) invert(1); }
 .footer-col a, .footer-col button { color: var(--text-pure); text-decoration: none; font-size: 0.78rem; background: none; border: none; cursor: pointer; padding: 0; text-align: right; display: flex; align-items: center; gap: 5px; }
 .footer-bottom { text-align: center; padding-top: 10px; border-top: 1px solid var(--surface-card-border); color: var(--text-muted); font-size: 0.7rem; }
 
-/* شريط الشراء المحدث للجوال (~7% من ارتفاع الشاشة) */
+/* شريط الشراء المحدث للجوال */
 .mobile-sticky-checkout {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
     background: rgba(18, 24, 36, 0.96);

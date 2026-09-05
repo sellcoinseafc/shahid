@@ -20,7 +20,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     padding: 0;
-    padding-bottom: 65px; /* مساحة إضافية حتى لا يغطي الشريط السفلي محتوى الصفحة على الجوال */
+    padding-bottom: 55px; /* مساحة خفيفة ومصغرة أسفل الصفحة */
     overflow-x: hidden;
 }
 
@@ -448,45 +448,51 @@ body {
 .review-bar-author-dark { font-size: 0.7rem; font-weight: 900; color: #059669 !important; }
 .verified-label-dark { color: #64748b !important; font-weight: 800; }
 
-/* شريط الشراء السفلي المصغر والثابت للجوال */
+/* شريط الشراء السفلي المصغر جداً والمطابق لزر اطلب الآن */
 .mobile-sticky-footer {
     position: fixed;
     bottom: 0; left: 0; right: 0;
     z-index: 999;
-    background: rgba(13, 21, 34, 0.96);
-    backdrop-filter: blur(12px);
+    background: rgba(6, 10, 18, 0.95);
+    backdrop-filter: blur(10px);
     border-top: 1px solid var(--card-border);
-    padding: 8px 16px;
-    height: 56px;
+    padding: 6px 14px;
+    height: 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
 }
 .mobile-price-wrap {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 6px;
 }
 .mob-curr {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 900;
     color: #00e096;
-    line-height: 1.1;
 }
 .mob-old {
     font-size: 0.7rem;
     font-weight: 800;
     color: var(--old-price-color);
     text-decoration: line-through;
-    line-height: 1;
 }
 .btn-mobile-checkout {
-    padding: 8px 20px !important;
-    min-height: 38px !important;
-    font-size: 0.9rem !important;
-    border-radius: 10px !important;
-    width: auto !important;
+    background: var(--primary-gradient) !important;
+    color: #060a12 !important;
+    border: none !important;
+    padding: 6px 16px !important;
+    height: 32px !important;
+    font-size: 0.8rem !important;
+    font-weight: 900 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 224, 150, 0.3) !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* تنسيق المقارنة والأسئلة الشائعة */

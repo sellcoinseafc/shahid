@@ -5,7 +5,7 @@ if (typeof lucide !== 'undefined') {
 function openInstallmentWhatsApp() {
     const phone = "966551040375";
     const prodName = 'اشتراك شاهد VIP (3 أشهر)';
-    const msg = encodeURIComponent(`مرحباً متجر Nexorasa 👋\nأرغب بتقسيط منتج: ${prodName}\nعبر خدمة التقسيط (تمارا / تابي)\nالإجمالي: 55 ريال\n\nيرجى تزويدي برابط الدفع والتفعيل المباشر.`);
+    const msg = encodeURIComponent(`مرحباً متجر Nexorasa 👋\nأرغب بتقسيط منتج: ${prodName}\nعبر خدمة التقسيط (تمارا / تابي)\nالإجمالي: 69 ريال\n\nيرجى تزويدي برابط الدفع والتفعيل المباشر.`);
     window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
 }
 

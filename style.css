@@ -56,10 +56,11 @@ body {
     text-align: center;
 }
 .master-logo-img {
-    height: 36px;
+    height: 58px;
     width: auto;
-    filter: brightness(0) invert(1);
-    margin-bottom: 2px;
+    max-width: 85%;
+    object-fit: contain;
+    margin-bottom: 4px;
 }
 .master-logo-sub {
     font-size: 0.7rem;

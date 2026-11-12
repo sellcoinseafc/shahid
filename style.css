@@ -237,9 +237,9 @@ body {
     padding: 10px 14px;
 }
 .discount-percent-badge {
-    background: rgba(239, 68, 68, 0.12);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: var(--old-price-color);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
     padding: 6px 12px;
     border-radius: 10px;
     display: flex;
@@ -258,10 +258,17 @@ body {
 .old-price-tag {
     font-size: 0.85rem;
     font-weight: 800;
-    color: var(--old-price-color);
+    color: #ffffff;
+    opacity: 0.7; /* شفافية خفيفة لتمييز السعر المشطوب عن السعر الحالي */
     text-decoration: line-through;
     line-height: 1;
     margin-bottom: 2px;
+}
+.current-price-main {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
 }
 .current-price-main {
     font-size: 1.8rem;
@@ -493,12 +500,13 @@ body {
 .mob-curr {
     font-size: 1rem;
     font-weight: 900;
-    color: #00e096;
+    color: #ffffff;
 }
 .mob-old {
     font-size: 0.7rem;
     font-weight: 800;
-    color: var(--old-price-color);
+    color: #ffffff;
+    opacity: 0.7;
     text-decoration: line-through;
 }
 .btn-mobile-checkout {

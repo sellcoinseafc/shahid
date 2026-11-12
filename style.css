@@ -364,7 +364,7 @@ body {
     align-items: center;
 }
 .inst-mini-logos img {
-    height: 16px;
+    height: 20px;
     object-fit: contain;
     background: #fff;
     padding: 2px;

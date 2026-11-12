@@ -311,13 +311,34 @@ body {
     border-radius: 12px;
     padding: 10px 12px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 8px;
     cursor: pointer;
     transition: background 0.2s ease;
 }
 .installment-whatsapp-banner:hover {
     background: rgba(0, 224, 150, 0.1);
+}
+.inst-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.inst-bottom-highlight {
+    background: rgba(0, 224, 150, 0.12);
+    border: 1px solid rgba(0, 224, 150, 0.25);
+    border-radius: 8px;
+    padding: 6px 10px;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+.inst-bottom-highlight strong {
+    color: #00e096;
+    font-weight: 900;
+    font-size: 0.82rem;
 }
 .inst-banner-left {
     display: flex;
